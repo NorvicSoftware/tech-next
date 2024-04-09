@@ -10,8 +10,8 @@ class Career extends Model
     use HasFactory;
 
     protected $table = 'career';
-    public function career()
+    public function university()
     {
-        return $this->hasMany(Career::class);
+        return $this->BelonsTo(University::class);
     }
 }
