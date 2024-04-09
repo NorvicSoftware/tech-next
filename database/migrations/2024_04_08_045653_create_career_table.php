@@ -12,9 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('career', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 50);
-            $table->string('date', 10);
+            $table->idCarrera();
+            $table->string('name_career', 50);
+            $table->string('phone', 10);
+            $table->integer('id')->unsigned();
+            $table->foreing('id')->references('id')->on('university');
             $table->timestamps();
         });
     }
