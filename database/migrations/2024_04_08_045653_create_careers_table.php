@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('careers', function (Blueprint $table) {
             $table->id();
-            $table->string('name_career', 50);
-            $table->string('phone', 10);
-            $table->BigInteger('idUniversity')->unsigned();
-            $table->foreign("idUniversity")->references("id")->on("university");
+            $table->string('name', 50);
+            $table->string('phone', 10)->nullable();
+            $table->BigInteger('university_id')->unsigned();
+            $table->foreign("university_id")->references("id")->on("university");
             $table->timestamps();
         });
     }
