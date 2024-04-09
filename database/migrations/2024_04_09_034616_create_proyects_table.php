@@ -17,12 +17,10 @@ return new class extends Migration
             $table->float('average');
             $table->integer('year');
             $table->string('tutor');
-            $table->unsignedBigInteger('career_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('person_id');
-            $table->unsignedBigInteger('image_id')->nullable();
-            $table->foreign('career_id')->references('id')->on('career')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade');
-            $table->foreign('image_id')->references('id')->on('images')->onDelete('set null');
             $table->timestamps();
         });
     }
