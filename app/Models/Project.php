@@ -24,8 +24,8 @@ class Project extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
-    public function punctuations(): HasMany {
-        return $this->hasMany(Punctuations::class);
+    public function scores(): HasMany {
+        return $this->hasMany(Score::class);
     }
 
     protected $fillable = [
