@@ -12,10 +12,10 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 ### Funcionalidad Usuario
 
 * Realizar busqueda del proyecto de grado
-* seleccion de proyectos por medio de carreras.
-* selecionar y visualizar proyecto 
+* Selección de proyectos por medio de carreras.
+* Selecionar y visualizar proyecto 
 * Reaccionar al contenido encontrado
-* solicitar el proyecto.
+* Solicitar el proyecto.
 
 ### Funcionalidad Administrador
  
@@ -25,7 +25,6 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 * Edición de datos
 * Eliminación de datos
 * Importar documentos
-* Exportar documetos
 * Actualizar datos
 
 ## Diseño del Sistema
@@ -87,6 +86,7 @@ Se usaran las siguientes tecnologías para el desarrollo del software.
 * Lenguajes de programación
   * JavaScript (Frontend)
   * TypeScript
+  * PHP
 
 * Frameworks
   * Laravel (Backend)
@@ -101,7 +101,9 @@ Se usaran las siguientes tecnologías para el desarrollo del software.
   * Visual Code (IDE)
   * Node.js (Entorno de ejecución)
   * Mockitt (Herramienta de creación de prototipos)
+  * Xampp (Paquete de software gratuito)
   * phpMyAdmin (Gestor de base de datos)
+  * COMPOSER (gestor de dependencias)
   * Asana (Herramienta de gestión de proyectos)
   * Whatsapp (Herramienta de comunicación)
 
