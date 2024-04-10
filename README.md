@@ -1,7 +1,6 @@
 # SOFTWARE TECH-NEXT
-<center><img src="Img_Readme/L1.png" alt="centered image"> </center>
+<center><img src="Img_Readme/Log1.png" alt="centered image"> </center>
 
-<!--  <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>-->
 ## Descripción
 Este sistema adaptativo sera de gran ayuda para los estudiantes que se encuentran en los últimos semestres universitarios permitiendo facilitar ideas personalizadas para sus proyectos de grado. El sistema toma en cuenta sus intereses académicos, las tendencias del mercado y las necesidades sociales para ofrecer una variedad de opciones viables y relevantes. De esta manera, se facilita la selección del tema ideal para su proyecto final.
 
@@ -37,18 +36,39 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 ---
 <p align="center"><img src="Img_Readme/Img3.mov.png" alt="centered image" height="680" width="356"> </p>
 
+---
 > El usuario podrá acceder a una descripción detallada del proyecto incluyendo el autor, carrera, año de realización, entre otros. No obstante, el usuario tendrá la posibilidad de interactuar con el contenido mediante tres reacciones específicas, lo cual ayudará a otros usuarios a tener una mejor idea del contenido.
 
 ---
 
 ## Modelo UML
-* Diagrama de clases
-* Diagrama de casos de uso
-* Diagrama de secuencia
-* Diagrama de actividad
-* Diagrama de estado
-* Diagrama de despliegue
 
+Son una herramienta fundamental para el desarrollo de software, ya que permite visualizar y comprender de manera gráfica los diferentes aspectos del sistema, facilitando la comunicación entre los miembros del equipo de desarrollo y evitando errores en las primeras etapas del proyecto.
+
+* Diagrama de Clases 
+  * [Diag. Administrador](https://i.ibb.co/PhWxx1J/Diagrama-Clases-Admin-Tech-Next.png "Link")
+  * [Diag. Usuario](https://i.ibb.co/d4PXkWQ/Diagrama-Clases-Usuar-Tech-Next.png "Link")
+  
+* Diagrama de Casos de Uso
+  * [Diag. Buscar proyecto](https://i.ibb.co/Gp1Trh7/Diag-Ca-U.png "Link")
+  * [Diag. Registrar proyecto](https://i.ibb.co/9syzqPt/Diagrama-Caso-Uso2-Tech-Next.png "Link")
+ 
+* Diagrama de Secuencia
+  * [Diag. Administrador](https://i.ibb.co/c1TdLRg/Diagrama-Secuencia-Admin.png "Link")
+  * [Diag. Estudiante](https://i.ibb.co/yqHfTtc/Diagrama-Secuencia-Usuario.png "Link")
+
+* Diagrama de actividad
+  * [Diag. Administrador](https://i.ibb.co/khNJDXC/Diagrama-Actividad-Admin.pngg "Link")
+  * [Diag. Estudiante](https://i.ibb.co/tDkWq6x/Diagrama-Actividad-Usuario.png "Link")
+  
+* Diagrama de estado
+  * [Diag. Administrador]("Link")
+  * [Diag. Estudiante]("Link")
+  
+* Diagrama de despliegue
+  * [Diag. Administrador]( "Link")
+  * [Diag. Usuario]("Link")
+  
 ## Tecnologías utilizadas
 Se usaran las siguientes tecnologías para el desarrollo del software.
 
@@ -66,7 +86,8 @@ Se usaran las siguientes tecnologías para el desarrollo del software.
 * Herramientas adicionales
   * Git
   * GitHub
-  * Node.js (entorno de ejecución)
+  * Visual Code (IDE)
+  * Node.js (Entorno de ejecución)
   * Mockitt (Herramienta de creación de prototipos)
   * phpMyAdmin (Gestor de base de datos)
   * Asana (Herramienta de gestión de proyectos)
@@ -75,87 +96,165 @@ Se usaran las siguientes tecnologías para el desarrollo del software.
 ## Instalación
 Se seguiran una serie de pasos para realizar la intalación de las tecnologias para la creación del proyecto.
 
-1. Clonar el repositorio 
+**NOTA.-**
+
+> Se debe tener las ultimas versiones de PHP, NODE.JS, COMPOSER, REACT 
+
+### Servidor 1
+ ---
+
+1. Abrir la terminal Git Bash e ir a la ruta para abrir el proyecto
+```
+$ cd c:
+```
+```
+$ cd xampp/htdocs/
+```
+
+1. Clonar el repositorio desde GitHub | `<Code>` :[https://github.com/NorvicSoftware/tech-next](https://github.com/NorvicSoftware/tech-next "GitHub/Code/HTTPS")
 
 ``` 
 $ git clone https://github.com/NorvicSoftware/tech-next.git
 ```  
-2. Ingresar al proyecto Tech-Next
-```
-```
-3. Instalar dependencias
-```
-```
-4. ...
 
-## Personas Contribuyentes
+3. Ingresar al proyecto en Git 
+```
+$ cd tech-next/
+```
+
+4. Actualizar los paquetes o dependencias 
+```
+$ composer update
+```
+**NOTA.-**
+> Verificar en el proyecto tech-next la carpeta | vendor
+
+5. Para ingresar al proyecto *tech-next* desde Visaul Code introducir lo siguiente
+```
+$ code .
+```
+
+6. Crear un archivo con el nombre **.env** y copiar las siguientes variables 
+
+   `<Link>` :[https://styde.net/variables-de-entorno-en-laravel/](https://styde.net/variables-de-entorno-en-laravel/ "Link")
+
+7. Crear la Base de Datos en phpMyAdmin desde xampp con el nombre **tech-next-db** y modificar en Visual Code la carpeta **.env** y guardar los cambios
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=tech-next-db
+DB_USERNAME=root
+DB_PASSWORD=
+```
+8. En la terminal Git introducir lo siguiente:
+```
+$ php artisan migrate:fresh
+```
+**NOTA.-**
+>Esta acción permite actualizar la base de datos phpMyAdmin en el localhost, favor de verficar. 
+
+---
+
+<p align="center"><a target="_blank"><img src="Img_Readme/BD_modific.png""></a></p>
+
+---
+9. En la terminal Git introducir lo siguiente 
+```
+$ php artisan serve
+```
+Seguidamente ir a un navegador y copiar | `<Enlace>` :[http://127.0.0.1:8000/](http://127.0.0.1:8000/ "Servidor Laravel").
+
+**IMPORTANTE.***
+
+Te pedira | GENERAR CLAVE DE APLICACIÓN, desde la terminal para 1ro la terminal (Ctrl+C) e introduce lo siguiente:
+
+```
+ $ php artisan key:generate
+```
+Y verificar si apareció la siguiente clave en: Visaul Code/tech-next/.env
+
+---
+<p align="center"><a target="_blank"><img src="Img_Readme/Clave_vs.png""></a></p>
+
+---
+10. Por ultimo volver a levantar el servicio
+```
+$ php artisan serve
+```
+### Servidor 2
+
+---
+1. Abrir el proyecto tech-next desde la terminal Git
+```
+$ cd c:
+```
+```
+$ cd xampp/htdocs/tech-next 
+```
+1. Seguidamente ir: `<Link>` :[https://laravel.com/](https://laravel.com/ "Laravel")
+2. Ingresar a la opción | **DOCUMENTACIÓN** y después a la opción | **Starter Kits** que esta en la parte izquierda introducir el siguiente:
+```
+$ composer require laravel/breeze --dev
+```
+Esta acción permite instalar el paquete **Laravel Brezee**
+3. Después ejecutar el siguiente comando.
+```
+$ php artisan breeze:install
+```
+4. Seguidamente escribir escoger la opción | `<React with Inertia ................................. react>`
+
+```
+ ❯ react
+```
+5. Escoger la opción |`<Dark>`
+```
+ ❯ Dark
+```
+6. Seguidamente la opción |`<1>`
+```
+ ❯ 1
+```
+7. Ya estando en los últimos pasos ejecutar el siguiente comando
+```
+$ npm install
+```
+
+8. Y por último levantar el servicor de React
+```
+$ npm run dev
+```
+Verficar si muestra la siguiente imagen
+
+---
+<p align="center"><a target="_blank"><img src="Img_Readme/imgReact.png""></a></p>
+
+---
+
+## Colaboradores del proyecto
+
+### Analistas
+* Sharol Rojas 
+* Esteysi Guzman
+* Alcira Luque
+* Sara Herbas 
+* Jahaziel Arce 
+### Desarrolladores 
+* Cristian Barrios 
+* Americo Alvarez 
+* Maide Mamani 
+* Marisol Herrera 
+* Bernardo Gutierrez
+* Alexander Flores 
+* Adrian Gomez 
+* Jhojan Coro
+* Angel Tibubay
+* Brian Cazorla
+### Pruebas QUA
+* Manuel Arevalo 
+* Alan Colque 
+* Kevin Vicente 
+* Kevin Castellon
+* Deanira Chambi 
 
 ## Licencia
-
-
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-``
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
