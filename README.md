@@ -20,8 +20,13 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
  
 * Iniciar sesión
 * Administrar los proyectos
-* Editar, crear y eliminar proyectos
-  
+* Ingresar al sistema
+* Edición de datos
+* Eliminación de datos
+* Importar documentos
+* Exportar documetos
+* Actualizar datos
+
 ## Diseño del Sistema
 ### Mockups: Dispositivo Movil
 
