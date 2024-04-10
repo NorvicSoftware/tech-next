@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\ImportController; // Exel
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -23,5 +24,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//Excel
+Route::get('/import', [ImportController::class, 'showImportForm'])->name('import.form');
+Route::post('/import/projects', [ImportController::class, 'importProjects'])->name('import.projects');
+Route::post('/import/persons', [ImportController::class, 'importPersons'])->name('import.persons');
 
 require __DIR__.'/auth.php';
