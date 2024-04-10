@@ -36,6 +36,7 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 
 ---
 <p align="center"><a target="_blank"><img height="680" width="356" src="Img_Readme/Img3_mov.png""></a></p>
+<p align="center"><img src="Img_Readme/Img3.mov.png" alt="centered image" height="680" width="356"> </p>
 
 > El usuario podrá acceder a una descripción detallada del proyecto incluyendo el autor, carrera, año de realización, entre otros. No obstante, el usuario tendrá la posibilidad de interactuar con el contenido mediante tres reacciones específicas, lo cual ayudará a otros usuarios a tener una mejor idea del contenido.
 
