@@ -5,20 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class projects extends Model
+class Proyect extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'title_project',
-        'note',
+        'average',
         'year',
-        'manager',
-        'person_id',
+        'tutor',
+        'user_id',
+        'person_id'
     ];
-
-    public function person()
-    {
-        return $this->belongsTo(Person::class);
-    }
+    //public $timestamps = false;
 }
