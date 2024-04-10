@@ -25,8 +25,7 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 ## Diseño del Sistema
 ### Mockups: Dispositivo Movil
 
-<img src="Img_Readme/Img1_mov.png" alt="centered image"> 
-
+<center><img src="Img_Readme/Img1_mov.png" alt="centered image"> </center>
 ---
 
 > El usuario al ingresar al sistema podrá seleccionar una carrera en específico, esto permitirá al sistema enfocar la búsqueda y ofrecer resultados más relevantes y precisos en cuanto al área de interés del usuario brindando una experiencia más personalizada y eficiente.
