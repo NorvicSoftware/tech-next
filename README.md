@@ -26,9 +26,7 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 
 <p align="center"><a target="_blank"><img src="Img_Readme/Img1_mov.png""></a></p>
 
-![IMG1](Img_Readme/Img1_mov.png "IMAGEN 1")
 ---
-
 > El usuario al ingresar al sistema podrá seleccionar una carrera en específico, esto permitirá al sistema enfocar la búsqueda y ofrecer resultados más relevantes y precisos en cuanto al área de interés del usuario brindando una experiencia más personalizada y eficiente.
 ---
 <p align="center"><a target="_blank"><img src="Img_Readme/Img2_mov.png""></a></p>
@@ -37,7 +35,6 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 > A medida que el usuario realiza la búsqueda, el sistema mostrará la información del contenido utilizando un formato de lista de manera ordenada y concisa, facilitando la búsqueda y comparación de proyectos, permitiendo al usuario navegar de forma rápida y eficiente ajusatndose a sus necesidades.
 
 ---
-
 <p align="center"><a target="_blank"><img src="Img_Readme/Img3_mov.png" height="680" width="356"></a></p>
 
 > El usuario podrá acceder a una descripción detallada del proyecto incluyendo el autor, carrera, año de realización, entre otros. No obstante, el usuario tendrá la posibilidad de interactuar con el contenido mediante tres reacciones específicas, lo cual ayudará a otros usuarios a tener una mejor idea del contenido.
