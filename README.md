@@ -104,7 +104,7 @@ Se seguiran una serie de pasos para realizar la intalación de las tecnologias p
 
 **NOTA.-**
 
-> Tener en cuentas la instalación de las ultimas versiones de PHP, NODE.JS, COMPOSER, REACT 
+> Tomar en cuentas la instalación de las ultimas versiones de PHP, NODE.JS, COMPOSER, REACT 
 
 ### Servidor 1
  ---
