@@ -11,10 +11,11 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 
 ### Funcionalidad Usuario
 
-* Seleccionar una carrera para realizar una búsqueda específica
-* Búsqueda por titulo del proyecto
-* Visualizar el contenido
-* Reaccionar al proyecto encontrado
+* Realizar busqueda del proyecto de grado
+* seleccion de proyectos por medio de carreras.
+* selecionar y visualizar proyecto 
+* Reaccionar al contenido encontrado
+* solicitar el proyecto.
 
 ### Funcionalidad Administrador
  
