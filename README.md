@@ -14,11 +14,13 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 * Seleccionar una carrera para realizar una búsqueda específica
 * Búsqueda por titulo del proyecto
 * Visualizar el contenido
-* Reaccionar al contenido encontrado
+* Reaccionar al proyecto encontrado
 
 ### Funcionalidad Administrador
-  
-* Ingresar al sistema mediante un login y contraseña
+ 
+* Iniciar sesión
+* Administrar los proyectos
+* Editar, crear y eliminar proyectos
   
 ## Diseño del Sistema
 ### Mockups: Dispositivo Movil
@@ -26,12 +28,16 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 <p align="center"><a target="_blank"><img src="Img_Readme/Img1_mov.png""></a></p>
 
 ---
+> El sistema presentará una serie de botones diferenciados por carreras universitarias.
+> 
 > El usuario al ingresar al sistema podrá seleccionar una carrera en específico, esto permitirá al sistema enfocar la búsqueda y ofrecer resultados más relevantes y precisos en cuanto al área de interés del usuario brindando una experiencia más personalizada y eficiente.
 ---
 <p align="center"><a target="_blank"><img src="Img_Readme/Img2_mov.png""></a></p>
 
 ---
-> A medida que el usuario realiza la búsqueda, el sistema mostrará la información del contenido utilizando un formato de lista de manera ordenada y concisa, facilitando la búsqueda y comparación de proyectos, permitiendo al usuario navegar de forma rápida y eficiente ajusatndose a sus necesidades.
+>El sistema tendrá una función de búsqueda que permitirá al usuario encontrar fácilmente los proyectos específicos que necesita. Además, ofrecerá un modo oscuro para una mejor experiencia visual, especialmente en condiciones de poca luz o para usuarios que prefieren una interfaz más tenue.
+>
+>A medida que el usuario realiza la búsqueda, el sistema mostrará la información del contenido utilizando un formato de lista de manera ordenada y concisa, facilitando la búsqueda y comparación de proyectos, permitiendo al usuario navegar de forma rápida y eficiente ajusatndose a sus necesidades.
 
 ---
 <p align="center"><img src="Img_Readme/Img3.mov.png" alt="centered image" height="680" width="356"> </p>
