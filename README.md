@@ -25,7 +25,7 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 ## Diseño del Sistema
 ### Mockups: Dispositivo Movil
 
-<center><img src="Img_Readme/Img1_mov.png" alt="centered image"> </center>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="Img_Readme/Img1_mov.png""></a></p>
 
 ![IMG1](Img_Readme/Img1_mov.png "IMAGEN 1")
 ---
