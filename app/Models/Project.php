@@ -24,10 +24,16 @@ class Project extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
-    public function reactions(): HasMany {
-        return $this->hasMany(Reaction::class);
+    public function punctuations(): HasMany {
+        return $this->hasMany(Punctuations::class);
     }
 
-    protected $fillable = ['title', 'year'];
+    protected $fillable = [
+        'title_project',
+        'note',
+        'year',
+        'manager',
+        'person_id',
+    ];
     
 }

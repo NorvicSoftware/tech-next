@@ -22,8 +22,7 @@ class Person extends Model
 
     protected $fillable = [
         'ci',
-        'name',
-        'paternal_surname',
-        'maternal_surname',
+        'first_name',
+        'last_name',
     ];
 }
