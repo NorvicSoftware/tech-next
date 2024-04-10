@@ -2,7 +2,6 @@
 <center><img src="Img_Readme/L1.png" alt="centered image"> </center>
 
 <!--  <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>-->
-
 ## Descripción
 Este sistema adaptativo sera de gran ayuda para los estudiantes que se encuentran en los últimos semestres universitarios permitiendo facilitar ideas personalizadas para sus proyectos de grado. El sistema toma en cuenta sus intereses académicos, las tendencias del mercado y las necesidades sociales para ofrecer una variedad de opciones viables y relevantes. De esta manera, se facilita la selección del tema ideal para su proyecto final.
 
@@ -25,20 +24,21 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 ## Diseño del Sistema
 ### Mockups: Dispositivo Movil
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="Img_Readme/Img1_mov.png""></a></p>
+<p align="center"><a target="_blank"><img src="Img_Readme/Img1_mov.png""></a></p>
 
 ![IMG1](Img_Readme/Img1_mov.png "IMAGEN 1")
 ---
 
 > El usuario al ingresar al sistema podrá seleccionar una carrera en específico, esto permitirá al sistema enfocar la búsqueda y ofrecer resultados más relevantes y precisos en cuanto al área de interés del usuario brindando una experiencia más personalizada y eficiente.
 ---
-<img src="Img_Readme/Img2_mov.png" alt="centered image" > 
+<p align="center"><a target="_blank"><img src="Img_Readme/Img2_mov.png""></a></p>
 
 ---
 > A medida que el usuario realiza la búsqueda, el sistema mostrará la información del contenido utilizando un formato de lista de manera ordenada y concisa, facilitando la búsqueda y comparación de proyectos, permitiendo al usuario navegar de forma rápida y eficiente ajusatndose a sus necesidades.
 
 ---
-<img src="Img_Readme/Img3.mov.png" alt="centered image" height="680" width="356"> 
+
+<p align="center"><a target="_blank"><img src="Img_Readme/Img3_mov.png" height="680" width="356"></a></p>
 
 > El usuario podrá acceder a una descripción detallada del proyecto incluyendo el autor, carrera, año de realización, entre otros. No obstante, el usuario tendrá la posibilidad de interactuar con el contenido mediante tres reacciones específicas, lo cual ayudará a otros usuarios a tener una mejor idea del contenido.
 
