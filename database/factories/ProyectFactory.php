@@ -24,8 +24,8 @@ class ProyectFactory extends Factory
             'average' => $this->faker->randomNumber(1),
             'year' => $this->faker->year,
             'tutor' => $this->faker->firstName,
-            'user_id' => 1, // Reemplaza con el ID del usuario
-            'person_id' => 1, // Reemplaza con el ID de la persona
+            'user_id' => 1, 
+            'person_id' => 1, 
         ];
     }
 }

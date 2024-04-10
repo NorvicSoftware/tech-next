@@ -20,8 +20,8 @@ class ProyectSeeder extends Seeder
         $proyect->average = 3;
         $proyect->year = "2024";
         $proyect->tutor = "Nombre del tutor";
-        $proyect->user_id = 1; // Reemplaza con el ID del usuario
-        $proyect->person_id = 1; // Reemplaza con el ID de la persona
+        $proyect->user_id = 1; 
+        $proyect->person_id = 1; 
 
         // Guardar el proyecto en la base de datos
         $proyect->save();*/
