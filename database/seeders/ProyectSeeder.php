@@ -13,7 +13,7 @@ class ProyectSeeder extends Seeder
      */
     public function run(): void
     {
-        Proyect::factory()->count(1)->create();
+        Proyect::factory()->count(10)->create();
         /*$proyect = new \App\Models\Proyect;;
     
         $proyect->title_project = 'sistemas';

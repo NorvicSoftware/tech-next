@@ -16,13 +16,14 @@ class ProyectFactory extends Factory
      */
     public function definition(): array
     {
-        $faker = Factory::create();
+       
         return [
 
-            'title_project' => $faker->word(),
-            'average' => $faker->randomNumber(1),
-            'year' => $faker->year,
-            'tutor' => $faker->firstName,
+            'title_project' => $this->faker->word(),
+            'title_project' => $this->faker->word(),
+            'average' => $this->faker->randomNumber(1),
+            'year' => $this->faker->year,
+            'tutor' => $this->faker->firstName,
             'user_id' => 1, // Reemplaza con el ID del usuario
             'person_id' => 1, // Reemplaza con el ID de la persona
         ];
