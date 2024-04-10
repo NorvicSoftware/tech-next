@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Proyect>
  */
-class ProyectFactory extends Factory
+class ProjectFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,11 +20,9 @@ class ProyectFactory extends Factory
         return [
 
             'title_project' => $this->faker->word(),
-            'title_project' => $this->faker->word(),
-            'average' => $this->faker->randomNumber(1),
+            'note' => $this->faker->randomNumber(1),
             'year' => $this->faker->year,
-            'tutor' => $this->faker->firstName,
-            'user_id' => 1, 
+            'manager' => $this->faker->firstName,
             'person_id' => 1, 
         ];
     }
