@@ -58,28 +58,28 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 Son una herramienta fundamental para el desarrollo de software, ya que permite visualizar y comprender de manera gráfica los diferentes aspectos del sistema, facilitando la comunicación entre los miembros del equipo de desarrollo y evitando errores en las primeras etapas del proyecto.
 
 * Diagrama de Clases 
-  * [Diag. Administrador](https://i.ibb.co/PhWxx1J/Diagrama-Clases-Admin-Tech-Next.png "Link")
-  * [Diag. Usuario](https://i.ibb.co/d4PXkWQ/Diagrama-Clases-Usuar-Tech-Next.png "Link")
+  * [Diagr. Administrador](https://i.ibb.co/PhWxx1J/Diagrama-Clases-Admin-Tech-Next.png "Link")
+  * [Diagr. Usuario](https://i.ibb.co/d4PXkWQ/Diagrama-Clases-Usuar-Tech-Next.png "Link")
   
 * Diagrama de Casos de Uso
-  * [Diag. Buscar proyecto](https://i.ibb.co/Gp1Trh7/Diag-Ca-U.png "Link")
-  * [Diag. Registrar proyecto](https://i.ibb.co/9syzqPt/Diagrama-Caso-Uso2-Tech-Next.png "Link")
+  * [Diagr. Buscar proyecto](https://i.ibb.co/Gp1Trh7/Diag-Ca-U.png "Link")
+  * [Diagr. Registrar proyecto](https://i.ibb.co/9syzqPt/Diagrama-Caso-Uso2-Tech-Next.png "Link")
  
 * Diagrama de Secuencia
-  * [Diag. Administrador](https://i.ibb.co/c1TdLRg/Diagrama-Secuencia-Admin.png "Link")
-  * [Diag. Estudiante](https://i.ibb.co/yqHfTtc/Diagrama-Secuencia-Usuario.png "Link")
+  * [Diagr. Administrador](https://i.ibb.co/c1TdLRg/Diagrama-Secuencia-Admin.png "Link")
+  * [Diagr. Usuario](https://i.ibb.co/yqHfTtc/Diagrama-Secuencia-Usuario.png "Link")
 
 * Diagrama de actividad
-  * [Diag. Administrador](https://i.ibb.co/khNJDXC/Diagrama-Actividad-Admin.pngg "Link")
-  * [Diag. Estudiante](https://i.ibb.co/tDkWq6x/Diagrama-Actividad-Usuario.png "Link")
+  * [Diagr. Administrador](https://i.ibb.co/khNJDXC/Diagrama-Actividad-Admin.pngg "Link")
+  * [Diagr. Usuario](https://i.ibb.co/tDkWq6x/Diagrama-Actividad-Usuario.png "Link")
   
 * Diagrama de estado
-  * [Diag. Administrador]("Link")
-  * [Diag. Estudiante]("Link")
+  * [Diagr. Administrador]("Link")
+  * [Diagr. Usuario]("Link")
   
 * Diagrama de despliegue
-  * [Diag. Administrador]( "Link")
-  * [Diag. Usuario]("Link")
+  * [Diagr. Administrador]( "Link")
+  * [Diagr. Usuario]("Link")
   
 ## Tecnologías utilizadas
 Se usaran las siguientes tecnologías para el desarrollo del software.
