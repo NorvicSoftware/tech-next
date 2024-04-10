@@ -241,9 +241,7 @@ $ npm run dev
 Verficar si muestra la siguiente imagen
 
 ---
-<p align="center"><a target="_blank"><img src="Img_read/imgReact.png""></a></p>
 
----
 
 ## Colaboradores del proyecto
 
