@@ -263,4 +263,3 @@ Verficar si muestra la siguiente imagen
 * Kevin Castellon
 * Deanira Chambi 
 
-## Licencia
