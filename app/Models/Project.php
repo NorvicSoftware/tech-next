@@ -2,29 +2,19 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
- */
-class ProjectFactory extends Factory
+class Project extends Model
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
-    {
-        $faker = Factory::create();
-        return [
+    use HasFactory;
+    protected $table = 'projects';
 
-            'title_project' => $faker->word(),
-            'average' => $faker->randomNumber(1),
-            'year' => $faker->year,
-            'tutor' => $faker->firstName,
-            'user_id' => 1, 
-            'person_id' => 1, 
-        ];
+    protected $fillable = ['title', 'year'];
+
+    public function scores(): HasMany {
+        return $this->hasMany(Score::class);
     }
+    
 }
