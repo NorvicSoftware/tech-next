@@ -16,5 +16,5 @@ class University extends Model
     }
     protected $fillable = [
         'name', 'phone', 'address'
-    ]
+    ];
 }
