@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Person extends Model
 {
@@ -12,17 +11,10 @@ class Person extends Model
 
     protected $table = "persons";
 
-    public function projects(): HasMany {
-        return $this->hasMany(Project::class);
-    }
-
-    public function image() {
-        return $this->morphOne(Image::class, 'imageable');
-    }
-
     protected $fillable = [
         'ci',
-        'first_name',
-        'last_name',
+        'name',
+        'paternal_surname',
+        'maternal_surname',
     ];
 }
