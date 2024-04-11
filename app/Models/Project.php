@@ -12,6 +12,28 @@ class Project extends Model
     use HasFactory;
     protected $table = 'projects';
 
-    protected $fillable = ['title', 'year'];
+    public function person(): BelongsTo {
+        return $this->belongsTo(Person::class);
+    }
+
+    public function career(): BelongsTo {
+        return $this->belongsTo(Career::class);
+    }
+
+    public function image() {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function scores(): HasMany {
+        return $this->hasMany(Score::class);
+    }
+
+    protected $fillable = [
+        'title_project',
+        'note',
+        'year',
+        'manager',
+        'person_id',
+    ];
     
 }
