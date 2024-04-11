@@ -15,10 +15,10 @@ class CareerSeeder extends Seeder
     {
         //
         $career = new Career;
-        $career-> name=" Desarrollador Web";
-        $career-> date="2024";
-        $career-> save();
+        $career->name=" Desarrollador Web";
+        $career->phone="63919663";
+        $career->university_id=1;
+        $career->save();
 
-        
     }
 }
