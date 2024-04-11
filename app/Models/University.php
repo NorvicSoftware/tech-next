@@ -9,9 +9,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class University extends Model
 {
     use HasFactory;
-    protected $table = 'university';
+    protected $table = 'universities';
 
-    public function university(): HasMany{
-        return $this->hasMany(University::class);
+    public function careers(): HasMany{
+        return $this->hasMany(Career::class);
     }
+    protected $fillable = [
+        'name', 'phone', 'address'
+    ];
 }
