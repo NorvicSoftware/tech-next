@@ -16,7 +16,7 @@ return new class extends Migration
             $table->enum('reaction', ['1' , '2', '3']);
 
             $table->unsignedBigInteger('project_id');
-            $table->foreign('project_id')->references('id')->on('proyects')->onDelete('cascade');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->timestamps();
         });
     }

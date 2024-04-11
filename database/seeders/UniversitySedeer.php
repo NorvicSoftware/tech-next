@@ -17,6 +17,8 @@ class UniversitySedeer extends Seeder
         $university = new University;
 
         $university->name="UCATEC";
+        $university->phone="63919683";
+        $university->address="Cala Cala";
         $university->save();
     }
 }
