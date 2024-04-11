@@ -17,11 +17,7 @@ return new class extends Migration
             $table->string('phone', 10)->nullable();
             $table->unsignedBigInteger('university_id');
             $table->foreign("university_id")->references("id")->on("universities")->onDelete('cascade');
-<<<<<<< HEAD
             $table->timestamps();
-=======
-            $table->timestamps(); 
->>>>>>> 276d64a9614f72a256ff980d9a1c42b1a05e2b06
         });
     }
 
