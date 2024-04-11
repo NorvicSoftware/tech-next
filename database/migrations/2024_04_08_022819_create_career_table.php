@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('career', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 250);
-            $table->string('date', 8);
+            $table->unsignedBigInteger('idUniversidad');
+            $table->integer('telefono');
+            $table->string('nombreCarrera', 250);
             $table->timestamps();
         });
     }
