@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\University;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,8 @@ class CareerFactory extends Factory
         return [
             //
             'name'=>$this->faker->Name(),
-            'date'=>$this->faker->numberBetween(1,5000)
+            'phone' => $this->faker->unique()->regexify('[0-9]{1,10}'),
+            'university_id'=> University::all()->random()->id
 
         ];
     }
