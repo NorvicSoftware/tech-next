@@ -11,11 +11,10 @@ class ProjectsImport implements ToModel
     {
         return new Project([
             'title_project' => $row[0],
-            'average' => $row[1],
+            'note' => $row[1],
             'year' => $row[2],
-            'tutor' => $row[3],
-            'user_id' => $row[4],
-            'person_id' => $row[5],
+            'manager' => $row[3],
+            'person_id' => $row[4],
         ]);
     }
 }
