@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Career;
+use App\Models\Person;
+use App\Models\Project;
 use App\Models\University;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,9 +19,16 @@ class DatabaseSeeder extends Seeder
     {
 
         //llamando seeder
-        $this->call(UniversitySedeer::class);
+        $this->call(PersonSeeder::class);
+        $this->call(UniversitySeeder::class);
         $this->call(CareerSeeder::class);
-
+        $this->call(ProjectSeeder::class);
+        $this->call(ScoreSeeder::class);
+        
+        Career::factory(10)->create();
+        Person::factory(10)->create();
+        Project::factory(10)->create();
+        University::factory(10)->create();
 
         //llamando FActory
        // Career::factory(100)->create();

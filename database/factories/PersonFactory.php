@@ -15,9 +15,8 @@ class PersonFactory extends Factory
     {
         return [
             'ci' => $this->faker->randomNumber(7),
-            'name' => $this->faker->firstName,
-            'paternal_surname' => $this->faker->lastName,
-            'maternal_surname' => $this->faker->lastName,
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
         ];
         
     }
