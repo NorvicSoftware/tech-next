@@ -13,13 +13,13 @@ class PersonSeeder extends Seeder
      */
     public function run(): void
     {
-      Person::factory()->count(5)->create();
+      //Person::factory()->count(5)->create();
     
-       /*$person1 = new Person;
+        $person1 = new Person;
         $person1->ci = "123123";
         $person1->name = "Cristiano";
-        $person1->paternal_surname = "Barrios";
-        $person1->maternal_surname = "Flores";
-        $person1->save(); */
+        $person1->first_name = "Barrios";
+        $person1->last_name = "Flores";
+        $person1->save();
     }
 }
