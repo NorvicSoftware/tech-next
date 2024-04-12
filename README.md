@@ -70,7 +70,7 @@ Son una herramienta fundamental para el desarrollo de software, ya que permite v
 
 * Diagrama de actividad
   * [Diagr. Administrador](https://i.ibb.co/8zs90Wp/D-Actividades-Administrador.jpg "Link")
-  * [Diagr. Usuario](https://i.ibb.co/vzXLNGv/D-Actividades-Estudiante.jpg "Link")
+  * [Diagr. Estudiante](https://i.ibb.co/vzXLNGv/D-Actividades-Estudiante.jpg "Link")
   
 * Diagrama de estado
   * [Diagr. Estado](https://i.ibb.co/HtTJVmR/D-Estado.jpg "Link")
