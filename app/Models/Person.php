@@ -16,10 +16,6 @@ class Person extends Model
         return $this->hasMany(Project::class);
     }
 
-    public function image() {
-        return $this->morphOne(Image::class, 'imageable');
-    }
-
     protected $fillable = [
         'ci',
         'first_name',

@@ -11,7 +11,7 @@ class CreatePersonsTable extends Migration
         Schema::create('persons', function (Blueprint $table) {
             $table->id();
             $table->string('ci', 15)->nullable();
-            $table->string('first_name', 20);
+            $table->string('first_name', 75);
             $table->string('last_name', 20);
             $table->timestamps();
         });
