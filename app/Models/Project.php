@@ -25,6 +25,10 @@ class Project extends Model
         return $this->belongsTo(Career::class);
     }
 
+    public function image() {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
     protected $fillable = [
         'title_project',
         'note',
