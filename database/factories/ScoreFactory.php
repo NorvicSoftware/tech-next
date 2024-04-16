@@ -4,7 +4,10 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PersonFactory extends Factory
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Score>
+ */
+class ScoreFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,10 +17,8 @@ class PersonFactory extends Factory
     public function definition(): array
     {
         return [
-            'ci' => $this->faker->randomNumber(7),
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
+            'reaction' => $this->faker->randomElement(['1', '2', '3']),
+            'project_id' => $this->faker->randomElement([1, 2, 3, 4, 5]),
         ];
-        
     }
 }
