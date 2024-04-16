@@ -20,12 +20,10 @@ class ProjectFactory extends Factory
         return [
 
             'title_project' => $this->faker->word(),
-            'note' => $this->faker->randomElement(['Bueno', 'Excelente']),
-            /* 'university_id' => $this->faker->randomElement([1, 2, 3, 4, 5]), */
+            'qualification' => $this->faker->randomElement(['Bueno','Muy Bueno', 'Excelente']),
             'year' => $this->faker->randomNumber(4),
             'manager' => $this->faker->firstName,
             'person_id' => $this->faker->randomElement([1, 2, 3, 4, 5]), 
-            /* 'university_id' => $this->faker->randomElement([1, 2, 3, 4, 5]), */
             'career_id' => $this->faker->randomElement([1, 2, 3, 4, 5]), 
         ];
     }
