@@ -12,17 +12,17 @@ Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de l
 * Realizar busqueda del proyecto de grado
 * Selección de proyectos por medio de carreras.
 * Selecionar y visualizar proyecto 
-* Reaccionar al contenido encontrado
+* Reaccionar al proyecto.
 * Solicitar el proyecto.
 
 ### Funcionalidad Administrador
  
 * Iniciar sesión
 * Administrar los proyectos
-* Edición de datos
-* Eliminación de datos
-* Importar documentos
-* Actualizar datos
+* Editar proyectos.
+* Eliminar proyectos.
+* Importar proyectos.
+* Actualizar proyectos.
 
 ## Diseño del Sistema
 ### Mockups: Dispositivo Movil
@@ -86,6 +86,7 @@ Se usarán las siguientes tecnologías para el desarrollo del software.
 * Frameworks
   * Laravel (Backend)
   * React (Frontend)
+  * Tailwind CSS (Frontend)
 
 * Base de Datos
   * MySql
