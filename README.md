@@ -12,17 +12,17 @@ Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de l
 * Realizar busqueda del proyecto de grado
 * Selección de proyectos por medio de carreras.
 * Selecionar y visualizar proyecto 
-* Reaccionar al contenido encontrado
+* Reaccionar al proyecto.
 * Solicitar el proyecto.
 
 ### Funcionalidad Administrador
  
 * Iniciar sesión
 * Administrar los proyectos
-* Edición de datos
-* Eliminación de datos
-* Importar documentos
-* Actualizar datos
+* Editar proyectos.
+* Eliminar proyectos.
+* Importar proyectos.
+* Actualizar proyectos.
 
 ## Diseño del Sistema
 ### Mockups: Dispositivo Movil
@@ -43,7 +43,6 @@ Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de l
 
 ---
 <p align="center"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Descripcion_proyecto.png" alt="centered image" height="680" width="356"> </p>
-
 
 ---
 > El usuario podrá acceder a una descripción detallada del proyecto incluyendo el autor, carrera, año de realización, entre otros. No obstante, el usuario tendrá la posibilidad de interactuar con el contenido mediante tres reacciones específicas, lo cual ayudará a otros usuarios a tener una mejor idea del contenido.
@@ -87,6 +86,7 @@ Se usarán las siguientes tecnologías para el desarrollo del software.
 * Frameworks
   * Laravel (Backend)
   * React (Frontend)
+  * Tailwind CSS (Frontend)
 
 * Base de Datos
   * MySql
@@ -255,3 +255,5 @@ $ npm run dev
 * Kevin Vicente Poma
 * Kevin Castellon Mamani
 * Deanira Lim Chambi
+
+
