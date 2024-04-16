@@ -1,6 +1,6 @@
 # SOFTWARE TECH-NEXT
 
-<center><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/Images/Log1.png" alt="centered image"> </center>
+<center><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Logo.png" alt="centered image"></center>
 
 ## Objetivo
 Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de las diferentes universidades de último semestre una variedad de ideas personalizadas para proyectos de grado, basadas en sus intereses académicos, tendencias del mercado y necesidades sociales, facilitando así la selección de un tema viable y relevante para su proyecto final.
@@ -27,14 +27,14 @@ Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de l
 ## Diseño del Sistema
 ### Mockups: Dispositivo Movil
 
-<p align="center"><a target="_blank"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/Images/New1.png"></a></p>
+<p align="center"><a target="_blank"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Opcion_carreras.png"></a></p>
 
 ---
 > El sistema presentará una serie de botones diferenciados por carreras universitarias.
 > 
 > El usuario al ingresar al sistema podrá seleccionar una carrera en específico, esto permitirá al sistema enfocar la búsqueda y ofrecer resultados más relevantes y precisos en cuanto al área de interés del usuario brindando una experiencia más personalizada y eficiente.
 ---
-<p align="center"><a target="_blank"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/Images/New2a.png"></a></p>
+<p align="center"><a target="_blank"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Lista_proyectos.png"></a></p>
 
 ---
 >El sistema tendrá una función de búsqueda que permitirá al usuario encontrar fácilmente los proyectos específicos que necesita. Además, ofrecerá un modo oscuro para una mejor experiencia visual, especialmente en condiciones de poca luz o para usuarios que prefieren una interfaz más tenue.
@@ -42,7 +42,7 @@ Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de l
 >A medida que el usuario realiza la búsqueda, el sistema mostrará la información del contenido utilizando un formato de lista de manera ordenada y concisa, facilitando la búsqueda y comparación de proyectos, permitiendo al usuario navegar de forma rápida y eficiente ajustandose a sus necesidades.
 
 ---
-<p align="center"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/Images/Img3.mov.png" alt="centered image" height="680" width="356"> </p>
+<p align="center"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Descripcion_proyecto.png" alt="centered image" height="680" width="356"> </p>
 
 ---
 > El usuario podrá acceder a una descripción detallada del proyecto incluyendo el autor, carrera, año de realización, entre otros. No obstante, el usuario tendrá la posibilidad de interactuar con el contenido mediante tres reacciones específicas, lo cual ayudará a otros usuarios a tener una mejor idea del contenido.
