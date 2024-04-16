@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Project;
+use Inertia\Inertia;
 
 class ProjectController extends Controller
 {
@@ -12,7 +14,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all(); // Obtener todos los proyectos
-        return view('projects.index', ['projects' => $projects]); // Renderizar la vista con los proyectos
+        return Inertia::render('projects/index', ['projects' => $projects]);
     }
 
     /**
@@ -20,7 +22,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        return Inertia::render('projects/create');
     }
 
     /**
@@ -49,7 +51,7 @@ class ProjectController extends Controller
     public function show(string $id)
     {
         $project = Project::findOrFail($id); // Encuentra el proyecto por su ID
-        return view('projects.show', ['project' => $project]); // Renderiza la vista del proyecto
+        return Inertia::render('projects/show', ['project' => $project]); // Renderiza la vista del proyecto
     }
 
     /**
@@ -58,7 +60,7 @@ class ProjectController extends Controller
     public function edit(string $id)
     {
         $project = Project::findOrFail($id); // Encuentra el proyecto por su ID
-        return view('projects.edit', ['project' => $project]); // Renderiza el formulario de edición
+        return Inertia::render('projects/edit', ['project' => $project]); // Renderiza el formulario de edición
     }
 
     /**
