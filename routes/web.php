@@ -32,11 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/persons/{id}', [PersonsController::class, 'update'])->name('persons.update');
     Route::delete('/persons/{id}', [PersonsController::class, 'destroy'])->name('persons.destroy');
 
+    //Excel
+    Route::get('/import', [ImportController::class, 'showImportForm'])->name('import.form');
+    Route::post('/import/projects', [ImportController::class, 'importProjects'])->name('import.projects');
+    Route::post('/import/persons', [ImportController::class, 'importPersons'])->name('import.persons');
+
+
 });
 
-//Excel
-Route::get('/import', [ImportController::class, 'showImportForm'])->name('import.form');
-Route::post('/import/projects', [ImportController::class, 'importProjects'])->name('import.projects');
-Route::post('/import/persons', [ImportController::class, 'importPersons'])->name('import.persons');
 
 require __DIR__.'/auth.php';
