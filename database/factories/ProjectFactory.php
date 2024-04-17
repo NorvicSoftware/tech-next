@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Career;
+use App\Models\Person;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 
@@ -14,10 +16,9 @@ class ProjectFactory extends Factory
      */
     public function definition(): array
     {
-       
         return [
 
-            'title_project' => $this->faker->word(),
+            'title' => $this->faker->word(),
             'qualification' => $this->faker->numberBetween(0, 100),
             'year' => $this->faker->numberBetween(2010, 2024),
             'manager' => $this->faker->firstName,
