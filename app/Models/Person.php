@@ -15,7 +15,7 @@ class Person extends Model
     public function projects(): HasMany {
         return $this->hasMany(Project::class);
     }
-
+    
     public function image() {
         return $this->morphOne(Image::class, 'imageable');
     }

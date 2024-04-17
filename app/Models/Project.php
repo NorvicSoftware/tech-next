@@ -10,7 +10,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Project extends Model
 {
     use HasFactory;
-    protected $table = 'projects';
+
+    protected $table = "projects";
+
+    public function scores(): HasMany {
+        return $this->hasMany(Score::class);
+    }
 
     public function person(): BelongsTo {
         return $this->belongsTo(Person::class);
@@ -24,16 +29,12 @@ class Project extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
-    public function scores(): HasMany {
-        return $this->hasMany(Score::class);
-    }
-
     protected $fillable = [
         'title_project',
         'note',
         'year',
         'manager',
         'person_id',
+        'career_id',
     ];
-
 }
