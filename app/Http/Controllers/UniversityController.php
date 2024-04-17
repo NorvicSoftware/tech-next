@@ -49,7 +49,11 @@ class UniversityController extends Controller
         return Inertia::render('Universities/Create', ['university'=>$university]);
     }
     
-    
+    public function show($id){
+        $university= University::with("careers")->whereId($id)->first();
+        
+        return Inertia::render('Universities/Show',['university'=>$university]);
+    }
     public function update(Request $request,  $id)
     {
         try{
@@ -66,7 +70,7 @@ class UniversityController extends Controller
         }
     }
 
-    
+
     public function destroy(string $id)
     {
         //
