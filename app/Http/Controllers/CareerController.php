@@ -27,32 +27,21 @@ class CareerController extends Controller
      */
     public function store(Request $request)
     {
-        // Definir reglas de validación para los datos de la carrera
-        $validated = $request->validate([
-            'name' => 'required|max:50',
-            'phone' => 'max:10',
-            'university.id' => 'required|integer|exists:universities,id'
-        ]);
-        DB::beginTransaction(); //Iniciar transacciones
         try {
             $career = new Career();
             $career->name = $request->name;
             $career->phone = $request->phone;
             $career->university_id = $request->university['id'];
             $career->save();
-            DB::commit(); //Aplica los cambios realizados a la BD
             return response()->json(['status' => true, 'message' => 'La carrera' . $request->career['name'] . 'fue creada exitosamente']);
         }catch (\Exception $exc){
-            DB::rollback(); // Evita que se apliquen cambios parciales a l BD
             return response()->json(['status' => false, 'message' => 'Error al crear la carrera' .$exc]);
         }
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+
      */
     public function show(string $id)
     {
@@ -65,21 +54,14 @@ class CareerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validated = $request->validate([
-            'name' => 'required|max:50',
-            'phone' => 'max:10',
-            'university.id' => 'required|integer|exists:universities,id'
-        ]);
         try {
             $career = Career::findOrFail($id);
             $career->name = $request->name;
             $career->phone = $request->phone;
             $career->university_id = $request->university['id'];
             $career->save();
-            DB::commit(); //Aplica los cambios realizados a la BD
-            return response()->json(['status' => true, 'message' => 'La carrera' . $request->career['name'] . 'fue actualizada exitosamente']);
+            return response()->json(['status' => true, 'message' => 'La carrera' .  $career->career['name'] . 'fue actualizada exitosamente']);
         }catch (\Exception $exc){
-            DB::rollback(); // Evita que se apliquen cambios parciales a l BD
             return response()->json(['status' => false, 'message' => 'Error al editar la carrera']);
         }
     }
@@ -92,10 +74,9 @@ class CareerController extends Controller
         try{
             $career = Career::findOrFail($id);
             $career->delete();
-            DB::commit(); //Aplica los cambios realizados a la BD
-            return response()->json(['status' => true, 'message' => 'La carrera' . $request->career['name'] . 'fue eliminada exitosamente']);
+            
+            return response()->json(['status' => true, 'message' => 'La carrera' .   $career->career['name'] . 'fue eliminada exitosamente']);
         }catch (\Exception $exc){
-            DB::rollback(); // Evita que se apliquen cambios parciales a l BD
             return response()->json(['status' => false, 'message' => 'Error al eliminar la carrera']);
         }
     }

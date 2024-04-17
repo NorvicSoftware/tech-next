@@ -31,8 +31,7 @@ class DatabaseSeeder extends Seeder
         University::factory(10)->create();
 
         //llamando FActory
-       Career::factory(100)->create();
-    University::factory(100)->create();
+
         // User::factory(10)->create();
 
         //User::factory()->create([
