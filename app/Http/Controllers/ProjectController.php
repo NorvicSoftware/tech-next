@@ -14,7 +14,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all(); // Obtener todos los proyectos
-        return Inertia::render('projects/index', ['projects' => $projects]);
+        return Inertia::render('Projects/Index', ['projects' => $projects]);
     }
 
     /**
@@ -22,7 +22,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return Inertia::render('projects/create');
+        return Inertia::render('Projects/Create');
     }
 
     /**
@@ -31,15 +31,22 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'title_project' => 'required|string|max:150',
+            'note' => 'required|string|max:15',
+            'year' => 'required|string|max:4',
+            'manager' => 'required|string|max:75',
+            'person_id' => 'required|exists:persons,id',
+            'career_id' => 'required|exists:careers,id',
         ]);
 
         // Crear un nuevo proyecto
         $project = new Project;
-        $project->title = $request->title;
-        $project->description = $request->description;
-        // capas ayan mas campos que asignar 
+        $project->title_project = $request->title_project;
+        $project->note = $request->note;
+        $project->year = $request->year;
+        $project->manager = $request->manager;
+        $project->person_id = $request->person_id;
+        $project->career_id = $request->career_id;
         $project->save();
 
         return redirect('/projects')->with('success', 'Proyecto creado exitosamente.');
@@ -51,7 +58,7 @@ class ProjectController extends Controller
     public function show(string $id)
     {
         $project = Project::findOrFail($id); // Encuentra el proyecto por su ID
-        return Inertia::render('projects/show', ['project' => $project]); // Renderiza la vista del proyecto
+        return Inertia::render('Projects/Show', ['project' => $project]); // Renderiza la vista del proyecto
     }
 
     /**
@@ -60,7 +67,7 @@ class ProjectController extends Controller
     public function edit(string $id)
     {
         $project = Project::findOrFail($id); // Encuentra el proyecto por su ID
-        return Inertia::render('projects/edit', ['project' => $project]); // Renderiza el formulario de edición
+        return Inertia::render('Projects/Edit', ['project' => $project]); // Renderiza el formulario de edición
     }
 
     /**
@@ -69,16 +76,22 @@ class ProjectController extends Controller
     public function update(Request $request, string $id)
     {
         $validatedData = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            //validaciones
+            'title_project' => 'required|string|max:150',
+            'note' => 'required|string|max:15',
+            'year' => 'required|string|max:4',
+            'manager' => 'required|string|max:75',
+            'person_id' => 'required|exists:persons,id',
+            'career_id' => 'required|exists:careers,id',
         ]);
 
         // Encuentra el proyecto por su ID y actualiza sus campos
         $project = Project::findOrFail($id);
-        $project->title = $request->title;
-        $project->description = $request->description;
-        // capas ayan mas campos que asignar
+        $project->title_project = $request->title_project;
+        $project->note = $request->note;
+        $project->year = $request->year;
+        $project->manager = $request->manager;
+        $project->person_id = $request->person_id;
+        $project->career_id = $request->career_id;
         $project->save();
 
         return redirect('/projects')->with('success', 'Proyecto actualizado exitosamente.');
