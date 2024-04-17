@@ -20,7 +20,7 @@ class ProjectFactory extends Factory
         return [
 
             'title_project' => $this->faker->word(),
-            'qualification' => $this->faker->randomElement(['Bueno','Muy Bueno', 'Excelente']),
+            'qualification' => $this->faker->numberBetween(0, 100),
             'year' => $this->faker->randomNumber(4),
             'manager' => $this->faker->firstName,
             'person_id' => $this->faker->randomElement([1, 2, 3, 4, 5]), 
