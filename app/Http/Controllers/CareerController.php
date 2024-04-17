@@ -28,7 +28,6 @@ class CareerController extends Controller
      */
     public function store(Request $request)
     {
-        // Definir reglas de validación para los datos de la carrera
         $validated = $request->validate([
             'name' => 'required|max:50',
             'phone' => 'nullable|regex:/^[0-9]+$/|max:15',
