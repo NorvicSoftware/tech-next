@@ -20,7 +20,7 @@ class CareerFactory extends Factory
         return [
 
             'name' => $this->faker->words(3, true),
-            'phone' => $this->faker->unique()->regexify('[0-9]{1,10}'),
+            'phone' => $this->faker->numberBetween(65000000, 75000000),
             'university_id' => University::all()->random()->id,
         ];
     }

@@ -12,8 +12,8 @@ class UniversityController extends Controller
     public function index()
     {
         //
-        $university = University::all();
-        return Inertia::render('Univesities/Index', ['univeristies' => $university]);
+        $universities = University::all();
+        return Inertia::render('Univesities/Index', ['univeristies' => $universities]);
     }
 
 
@@ -30,8 +30,8 @@ class UniversityController extends Controller
         try {
             $validatedData = $request->validate([
                 'name'=> 'required|string|max:75',
-                'phone'=> 'required|string|max:15',
-                'address'=> 'required|string|max:75',
+                'phone'=> 'nullable|string|max:15',
+                'address'=> 'nullable|string|max:75',
             ]);
             University::create($validatedData);
             return redirect()->route( 'universities.index')->with('success','La universidad se ha creado correctamente');
@@ -45,14 +45,14 @@ class UniversityController extends Controller
     public function edit($id)
     {
         //
-        $university = University::findOrFail($id);
-        return Inertia::render('Universities/Create', ['university'=>$university]);
+        $universities = University::findOrFail($id);
+        return Inertia::render('Universities/Create', ['university'=>$universities]);
     }
     
     public function show($id){
-        $university= University::with("careers")->whereId($id)->first();
+        $universities= University::with("careers")->whereId($id)->first();
         
-        return Inertia::render('Universities/Show',['university'=>$university]);
+        return Inertia::render('Universities/Show',['university'=>$universities]);
     }
     public function update(Request $request,  $id)
     {
@@ -75,8 +75,8 @@ class UniversityController extends Controller
     {
         //
         try {
-            $university = University::findOrFail($id);
-            $university->delete();
+            $universities = University::findOrFail($id);
+            $universities->delete();
             return redirect()->route( "universities.index")->with('success','Registro eliminado correctamente'); 
 
         } catch (\Exception $e) {

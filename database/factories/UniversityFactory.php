@@ -18,7 +18,7 @@ class UniversityFactory extends Factory
     {
         return [
             'name' => $this->faker->company(),
-            'phone' => $this->faker->unique()->regexify('[0-9]{1,14}'),
+            'phone' => $this->faker->numberBetween(65000000, 75000000),
             'address' => $this->faker->streetAddress(),
         ];
     }
