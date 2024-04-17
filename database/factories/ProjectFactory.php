@@ -23,8 +23,8 @@ class ProjectFactory extends Factory
             'qualification' => $this->faker->numberBetween(0, 100),
             'year' => $this->faker->randomNumber(4),
             'manager' => $this->faker->firstName,
-            'person_id' => $this->faker->randomElement([1, 2, 3, 4, 5]), 
-            'career_id' => $this->faker->randomElement([1, 2, 3, 4, 5]), 
+            'person_id' => Person::all()->random()->id, 
+            'career_id' => Career::all()->random()->id, 
         ];
     }
 }
