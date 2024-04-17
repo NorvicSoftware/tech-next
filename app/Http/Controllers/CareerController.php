@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Career;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class CareerController extends Controller
 {
@@ -17,9 +19,8 @@ class CareerController extends Controller
     
     public function index()
     {
-        // Mostrar todas las carreras
-        $career = Career::all();
-        return Inertia::render('Career/Index', ['career' => $career]);
+        $careers = Career::all();
+        return Inertia::render('Career/Index', ['careers' => $careers]);
     }
 
     /**
@@ -30,8 +31,8 @@ class CareerController extends Controller
         // Definir reglas de validación para los datos de la carrera
         $validated = $request->validate([
             'name' => 'required|max:50',
-            'phone' => 'max:15',
-            'university.id' => 'required|integer|exists:universities,id'
+            'phone' => 'nullable|regex:/^[0-9]+$/|max:15',
+            'university.id' => 'required|Integer|exists:universities,id'
         ]);
         DB::beginTransaction(); //Iniciar transacciones
         try {
@@ -56,6 +57,7 @@ class CareerController extends Controller
      */
     public function show(string $id)
     {
+        $career = Career::findOrFail($id);
         $career = Career::with(['university'])->where('id', '=', $id)->get();
         return Inertia::render('Career/Index', ['career' => $career]);
     }
@@ -67,8 +69,8 @@ class CareerController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:50',
-            'phone' => 'max:15',
-            'university.id' => 'required|integer|exists:universities,id'
+            'phone' => 'nullable|regex:/^[0-9]+$/|max:15',
+            'university.id' => 'required|Integer|exists:universities,id'
         ]);
         try {
             $career = Career::findOrFail($id);
