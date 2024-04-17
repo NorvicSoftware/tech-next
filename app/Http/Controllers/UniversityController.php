@@ -59,8 +59,8 @@ class UniversityController extends Controller
         try{
             $validatedData = $request->validate([
                 'name'=> 'required|string|max:75',
-                'phone'=> 'required|string|max:15',
-                'address'=> 'required|string|max:75',
+                'phone'=> 'nullable|string|max:15',
+                'address'=> 'nullable|string|max:75',
             ]);
             $university= University::findOrFail($id);
             $university->update($validatedData);
