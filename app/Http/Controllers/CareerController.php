@@ -41,10 +41,10 @@ class CareerController extends Controller
             $career->university_id = $request->university['id'];
             $career->save();
             DB::commit(); //Aplica los cambios realizados a la BD
-            return response()->json(['status' => true, 'message' => 'La carrera' . $request->career['name'] . 'fue creada exitosamente']);
+            return redirect()->route('Career/Index')->with('success', 'La carrera ' . $request->career['name'] . ' fue creada exitosamente');
         }catch (\Exception $exc){
             DB::rollback(); // Evita que se apliquen cambios parciales a l BD
-            return response()->json(['status' => false, 'message' => 'Error al crear la carrera' .$exc]);
+            return redirect()->route('Career/Index')->with('success', 'Error al crear la carrera ');
         }
     }
 
@@ -57,7 +57,7 @@ class CareerController extends Controller
     public function show(string $id)
     {
         $career = Career::with(['university'])->where('id', '=', $id)->get();
-        return response()->json($career);
+        return Inertia::render('Career/Index', ['career' => $career]);
     }
 
     /**
@@ -77,10 +77,10 @@ class CareerController extends Controller
             $career->university_id = $request->university['id'];
             $career->save();
             DB::commit(); //Aplica los cambios realizados a la BD
-            return response()->json(['status' => true, 'message' => 'La carrera' . $request->career['name'] . 'fue actualizada exitosamente']);
+            return redirect()->route('Career/Index')->with('success', 'La carrera ' . $request->career['name'] . ' fue actualizada exitosamente');
         }catch (\Exception $exc){
             DB::rollback(); // Evita que se apliquen cambios parciales a l BD
-            return response()->json(['status' => false, 'message' => 'Error al editar la carrera']);
+            return redirect()->route('Career/Index')->with('success', 'Error al editar la carrera ' .$request->career['name']);
         }
     }
 
@@ -93,10 +93,10 @@ class CareerController extends Controller
             $career = Career::findOrFail($id);
             $career->delete();
             DB::commit(); //Aplica los cambios realizados a la BD
-            return response()->json(['status' => true, 'message' => 'La carrera' . $request->career['name'] . 'fue eliminada exitosamente']);
+            return redirect()->route('Career/Index')->with('success', 'La carrera ' . $request->career['name'] . ' fue eliminada exitosamente');
         }catch (\Exception $exc){
             DB::rollback(); // Evita que se apliquen cambios parciales a l BD
-            return response()->json(['status' => false, 'message' => 'Error al eliminar la carrera']);
+            return redirect()->route('Career/Index')->with('success', 'Error al eliminar la carrera ' .$request->career['name']);
         }
     }
 }
