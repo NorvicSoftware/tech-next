@@ -10,11 +10,7 @@ use App\Models\University;
  */
 class CareerFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+
     public function definition(): array
     {
         return [

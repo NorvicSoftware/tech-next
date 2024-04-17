@@ -11,7 +11,6 @@ class UniversityController extends Controller
  
     public function index()
     {
-        //
         $universities = University::all();
         return Inertia::render('Univesities/Index', ['univeristies' => $universities]);
     }
@@ -19,14 +18,12 @@ class UniversityController extends Controller
 
     public function create()
     {
-        //
         return Inertia::render('Universities/Create');
     }
 
 
     public function store(Request $request)
     {
-        //
         try {
             $validatedData = $request->validate([
                 'name'=> 'required|string|max:75',
@@ -44,16 +41,15 @@ class UniversityController extends Controller
     
     public function edit($id)
     {
-        //
         $universities = University::findOrFail($id);
         return Inertia::render('Universities/Create', ['university'=>$universities]);
     }
     
     public function show($id){
         $universities= University::with("careers")->whereId($id)->first();
-        
-        return Inertia::render('Universities/Show',['university'=>$universities]);
+        return Inertia::render('Universities/Show',['universities'=>$universities]);
     }
+
     public function update(Request $request,  $id)
     {
         try{
