@@ -21,7 +21,7 @@ class ProjectFactory extends Factory
 
             'title_project' => $this->faker->word(),
             'qualification' => $this->faker->numberBetween(0, 100),
-            'year' => $this->faker->randomNumber(4),
+            'year' => $this->faker->numberBetween(2010, 2024),
             'manager' => $this->faker->firstName,
             'person_id' => Person::all()->random()->id, 
             'career_id' => Career::all()->random()->id, 
