@@ -59,4 +59,10 @@ class PersonsController extends Controller
 
         return redirect()->route('persons.index')->with('success', 'Person deleted successfully');
     }
+
+    public function show($id)
+    {
+        $person = Person::findOrFail($id);
+        return Inertia::render('Persons/Show', ['person' => $person]);
+    }
 }

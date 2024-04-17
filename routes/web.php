@@ -44,8 +44,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
     Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
 
-
-
 });
 
 //Excel
