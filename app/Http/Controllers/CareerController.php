@@ -19,7 +19,7 @@ class CareerController extends Controller
     {
         // Mostrar todas las carreras
         $career = Career::all();
-        return response()->json($career);
+        return Inertia::render('Career/Index', ['career' => $career]);
     }
 
     /**
@@ -30,7 +30,7 @@ class CareerController extends Controller
         // Definir reglas de validación para los datos de la carrera
         $validated = $request->validate([
             'name' => 'required|max:50',
-            'phone' => 'max:10',
+            'phone' => 'max:15',
             'university.id' => 'required|integer|exists:universities,id'
         ]);
         DB::beginTransaction(); //Iniciar transacciones
@@ -67,7 +67,7 @@ class CareerController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:50',
-            'phone' => 'max:10',
+            'phone' => 'max:15',
             'university.id' => 'required|integer|exists:universities,id'
         ]);
         try {
