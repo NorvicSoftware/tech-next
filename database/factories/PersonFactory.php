@@ -14,7 +14,6 @@ class PersonFactory extends Factory
     public function definition(): array
     {
         return [
-            'ci' => $this->faker->randomNumber(7),
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
         ];

@@ -42,7 +42,7 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 ---
 >El sistema tendrá una función de búsqueda que permitirá al usuario encontrar fácilmente los proyectos específicos que necesita. Además, ofrecerá un modo oscuro para una mejor experiencia visual, especialmente en condiciones de poca luz o para usuarios que prefieren una interfaz más tenue.
 >
->A medida que el usuario realiza la búsqueda, el sistema mostrará la información del contenido utilizando un formato de lista de manera ordenada y concisa, facilitando la búsqueda y comparación de proyectos, permitiendo al usuario navegar de forma rápida y eficiente ajusatndose a sus necesidades.
+>A medida que el usuario realiza la búsqueda, el sistema mostrará la información del contenido utilizando un formato de lista de manera ordenada y concisa, facilitando la búsqueda y comparación de proyectos, permitiendo al usuario navegar de forma rápida y eficiente ajustandose a sus necesidades.
 
 ---
 <p align="center"><img src="Img_read/Img3.mov.png" alt="centered image" height="680" width="356"> </p>
@@ -57,28 +57,26 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 Son una herramienta fundamental para el desarrollo de software, ya que permite visualizar y comprender de manera gráfica los diferentes aspectos del sistema, facilitando la comunicación entre los miembros del equipo de desarrollo y evitando errores en las primeras etapas del proyecto.
 
 * Diagrama de Clases 
-  * [Diagr. Administrador](https://i.ibb.co/PhWxx1J/Diagrama-Clases-Admin-Tech-Next.png "Link")
-  * [Diagr. Usuario](https://i.ibb.co/d4PXkWQ/Diagrama-Clases-Usuar-Tech-Next.png "Link")
+  * [Diagr. Administrador](https://i.ibb.co/4ZWJWKY/D-Clases-Administrador.jpg "Link")
+  * [Diagr. Estudiante](https://i.ibb.co/QdzRGLS/D-Clases-Estudiante.jpg "Link")
   
 * Diagrama de Casos de Uso
-  * [Diagr. Buscar proyecto](https://i.ibb.co/Gp1Trh7/Diag-Ca-U.png "Link")
-  * [Diagr. Registrar proyecto](https://i.ibb.co/9syzqPt/Diagrama-Caso-Uso2-Tech-Next.png "Link")
+  * [Diagr. Administrador](https://i.ibb.co/3C0hznL/D-Caso-Uso-Admnistrador.jpg "Link")
+  * [Diagr. Usuario](https://i.ibb.co/x77TZFH/D-Caso-Uso-Usuario.jpg "Link")
  
 * Diagrama de Secuencia
-  * [Diagr. Administrador](https://i.ibb.co/c1TdLRg/Diagrama-Secuencia-Admin.png "Link")
-  * [Diagr. Usuario](https://i.ibb.co/yqHfTtc/Diagrama-Secuencia-Usuario.png "Link")
+  * [Diagr. Administrador](https://i.ibb.co/Cz5D0Pm/D-Secuencia-Administrador.jpg "Link")
+  * [Diagr. Usuario](https://i.ibb.co/T0n1txR/D-Secuencia-Usuario.jpg "Link")
 
 * Diagrama de actividad
-  * [Diagr. Administrador](https://i.ibb.co/khNJDXC/Diagrama-Actividad-Admin.pngg "Link")
-  * [Diagr. Usuario](https://i.ibb.co/tDkWq6x/Diagrama-Actividad-Usuario.png "Link")
+  * [Diagr. Administrador](https://i.ibb.co/8zs90Wp/D-Actividades-Administrador.jpg "Link")
+  * [Diagr. Estudiante](https://i.ibb.co/vzXLNGv/D-Actividades-Estudiante.jpg "Link")
   
 * Diagrama de estado
-  * [Diagr. Administrador]("Link")
-  * [Diagr. Usuario]("Link")
+  * [Diagr. Estado](https://i.ibb.co/HtTJVmR/D-Estado.jpg "Link")
   
 * Diagrama de despliegue
-  * [Diagr. Administrador]( "Link")
-  * [Diagr. Usuario]("Link")
+  * [Diagr. Despliegue](https://i.ibb.co/g30Sv78/D-Despliegue.jpg "Link")
   
 ## Tecnologías utilizadas
 Se usaran las siguientes tecnologías para el desarrollo del software.
@@ -242,7 +240,6 @@ Verficar si muestra la siguiente imagen
 
 ---
 
-
 ## Colaboradores del proyecto
 
 ### Analistas
@@ -268,5 +265,3 @@ Verficar si muestra la siguiente imagen
 * Kevin Vicente 
 * Kevin Castellon
 * Deanira Chambi 
-
-
