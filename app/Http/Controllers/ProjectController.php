@@ -31,18 +31,18 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title_project' => 'required|string|max:150',
-            'note' => 'required|string|max:15',
+            'title' => 'required|string|max:150',
+            'qualification' => 'required|integer',
             'year' => 'required|string|max:4',
-            'manager' => 'required|string|max:75',
+            'manager' => 'required|string|max:150',
             'person_id' => 'required|exists:persons,id',
             'career_id' => 'required|exists:careers,id',
         ]);
 
         // Crear un nuevo proyecto
         $project = new Project;
-        $project->title_project = $request->title_project;
-        $project->note = $request->note;
+        $project->title = $request->title;
+        $project->qualification = $request->qualification;
         $project->year = $request->year;
         $project->manager = $request->manager;
         $project->person_id = $request->person_id;
@@ -51,7 +51,6 @@ class ProjectController extends Controller
 
         return redirect('/projects')->with('success', 'Proyecto creado exitosamente.');
     }
-
     /**
      * Display the specified resource.
      */
@@ -76,18 +75,18 @@ class ProjectController extends Controller
     public function update(Request $request, string $id)
     {
         $validatedData = $request->validate([
-            'title_project' => 'required|string|max:150',
-            'note' => 'required|string|max:15',
+            'title' => 'required|string|max:150',
+            'qualification' => 'required|integer',
             'year' => 'required|string|max:4',
-            'manager' => 'required|string|max:75',
+            'manager' => 'required|string|max:150',
             'person_id' => 'required|exists:persons,id',
             'career_id' => 'required|exists:careers,id',
         ]);
 
         // Encuentra el proyecto por su ID y actualiza sus campos
         $project = Project::findOrFail($id);
-        $project->title_project = $request->title_project;
-        $project->note = $request->note;
+        $project->title = $request->title;
+        $project->qualification = $request->qualification;
         $project->year = $request->year;
         $project->manager = $request->manager;
         $project->person_id = $request->person_id;
