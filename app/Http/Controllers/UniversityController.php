@@ -69,7 +69,6 @@ class UniversityController extends Controller
 
     public function destroy(string $id)
     {
-        //
         try {
             $universities = University::findOrFail($id);
             $universities->delete();
