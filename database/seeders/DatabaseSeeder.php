@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Career;
 use App\Models\Person;
 use App\Models\Project;
+use App\Models\Score;
 use App\Models\University;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -24,19 +25,12 @@ class DatabaseSeeder extends Seeder
         $this->call(CareerSeeder::class);
         $this->call(ProjectSeeder::class);
         $this->call(ScoreSeeder::class);
-        
+
+        //llamando factory
         Career::factory(10)->create();
         Person::factory(10)->create();
         Project::factory(10)->create();
         University::factory(10)->create();
 
-        //llamando FActory
-
-        // User::factory(10)->create();
-
-        //User::factory()->create([
-          //  'name' => 'Test User',
-            //'email' => 'test@example.com',
-        //]);
     }
 }
