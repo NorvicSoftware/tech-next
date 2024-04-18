@@ -45,9 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
 
     //Excel
-    Route::get('/import', [ImportController::class, 'showImportForm'])->name('import.form');
-    Route::post('/import/projects', [ImportController::class, 'importProjects'])->name('import.projects');
-    Route::post('/import/persons', [ImportController::class, 'importPersons'])->name('import.persons');
+    Route::get('/import', [ImportController::class, 'index'])->name('imports.index');
 
 });
 
