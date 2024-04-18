@@ -15,8 +15,8 @@ export default function Index (auth){
     <div className="border-b justify-between items-center bg-gray-50 px-4 py-1">
         <p></p>
         <div className=" text-left">
-        <NavLink href= {route('persons.create')} active={route().current('persons.create')} className=" mx-5 px-6  my-2 py-2 border-transparent font-medium rounded-md text-white hover:bg-blue-700 bg-blue-800" >
-            <button className="text-center y-1 text-lg">
+        <NavLink href= {route('persons.create')} active={route().current('persons.create')} className=" mx-6 px-4 my-2 py-1 border-transparent font-medium rounded-md text-white hover:bg-blue-700 bg-blue-800" >
+            <button className="text-center text-ms">
             + Añadir nuevo
             </button>
        
