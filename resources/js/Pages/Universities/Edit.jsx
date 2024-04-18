@@ -3,21 +3,22 @@ import React from 'react';
 import { useForm } from "@inertiajs/react";
 
 const Edit = ({ auth, university }) => {
-  const { data, setData, put, errors } = useForm({
+  const { data, setData, put, errors, reset } = useForm({
     name: university.name,
     phone: university.phone,
-    address: university.address,
+    address: university.address.toString(),
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    put(route('universities.update', university.id));
+	put(route('universities.update', university.id), data);
   };
 
   return (
     <AuthenticatedLayout user={auth} Header="Universidad">
       <div className="max-w-3xl mx-auto p-6">
         <h1 className="text-3xl font-bold mb-6 text-white">Editar Universidad</h1>
+		
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block mb-1 text-white">Nombre:</label>

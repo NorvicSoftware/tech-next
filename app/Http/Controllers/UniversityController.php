@@ -42,7 +42,7 @@ class UniversityController extends Controller
     public function edit($id)
     {
         $university = University::findOrFail($id);
-        return Inertia::render('Universities/Create', ['universit'=>$university]);
+        return Inertia::render('Universities/Edit', ['university' => $university]);
     }
     
     public function show($id){
