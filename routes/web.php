@@ -7,6 +7,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ImportController; // Exel
+use App\Http\Controllers\UniversityController;
 
 
 Route::get('/', function () {
@@ -45,7 +46,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
 
 
-
+    //University Controller
+    Route::get('/universities', [UniversityController::class, 'index'])->name('universities.index');
+    //Route::get('/universities/create', [UniversityController::class, 'create'])->name('universities.create');
+    //Route::post('/universities', [UniversityController::class, 'store'])->name('universities.store');
+    //Route::get('/universities/{id}/edit', [UniversityController::class, 'edit'])->name('universities.edit');
+    //Route::put('/universities/{id}', [UniversityController::class, 'update'])->name('universities.update');
+    //Route::delete('/universities/{id}', [UniversityController::class, 'destroy'])->name('universities.destroy');
+    //Route::get('/universities/{id}', [UniversityController::class, 'show'])->name('universities.show');
 });
 
 //Excel
@@ -53,4 +61,4 @@ Route::get('/import', [ImportController::class, 'showImportForm'])->name('import
 Route::post('/import/projects', [ImportController::class, 'importProjects'])->name('import.projects');
 Route::post('/import/persons', [ImportController::class, 'importPersons'])->name('import.persons');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

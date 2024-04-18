@@ -8,12 +8,12 @@ use Inertia\Inertia;
 
 class UniversityController extends Controller
 {
- 
     public function index()
     {
         $universities = University::all();
-        return Inertia::render('Univesities/Index', ['univeristies' => $universities]);
+        return Inertia::render('Universities/Index', ['universities' => $universities]);
     }
+    
 
 
     public function create()
@@ -42,7 +42,7 @@ class UniversityController extends Controller
     public function edit($id)
     {
         $universities = University::findOrFail($id);
-        return Inertia::render('Universities/Create', ['university'=>$universities]);
+        return Inertia::render('Universities/Create', ['universit'=>$universities]);
     }
     
     public function show($id){
