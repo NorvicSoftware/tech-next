@@ -3,10 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PersonsController;
 use App\Http\Controllers\ScoreController;
+use App\Http\Controllers\CareerController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ImportController; // Exel
+
 
 
 Route::get('/', function () {
@@ -28,7 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //Persons Controller
-
     Route::get('/persons', [PersonsController::class, 'index'])->name('persons.index');
     Route::get('/persons/create', [PersonsController::class, 'create'])->name('persons.create');
     Route::post('/persons', [PersonsController::class, 'store'])->name('persons.store');
@@ -44,13 +45,21 @@ Route::middleware('auth')->group(function () {
     Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
     Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
 
+    //Careeer Controller 
+    Route::get('/careers', [CareerController::class, 'index'])->name('careers.index');
+    Route::get('/careers/create', [CareerController::class, 'create'])->name('careers.create');
+    Route::post('/careers', [CareerController::class, 'store'])->name('careers.store');
+    Route::get('/careers/{id}', [CareerController::class, 'show'])->name('careers.show');
+    Route::get('/careers/{id}/edit', [CareerController::class, 'edit'])->name('careers.edit');
+    Route::put('/careers/{id}', [CareerController::class, 'update'])->name('careers.update');
+    Route::delete('/careers/{id}', [CareerController::class, 'destroy'])->name('careers.destroy');
 
+
+    //Excel
+    Route::get('/import', [ImportController::class, 'showImportForm'])->name('import.form');
+    Route::post('/import/projects', [ImportController::class, 'importProjects'])->name('import.projects');
+    Route::post('/import/persons', [ImportController::class, 'importPersons'])->name('import.persons');
 
 });
-
-//Excel
-Route::get('/import', [ImportController::class, 'showImportForm'])->name('import.form');
-Route::post('/import/projects', [ImportController::class, 'importProjects'])->name('import.projects');
-Route::post('/import/persons', [ImportController::class, 'importPersons'])->name('import.persons');
 
 require __DIR__.'/auth.php';
