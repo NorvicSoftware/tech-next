@@ -20,10 +20,10 @@ const Create = ({ auth, persons, careers }) => {
   return (
     <AuthenticatedLayout user={auth} Header="Proyectos">
       <div className="max-w-3xl mx-auto p-6">
-        <h1 className="text-3xl font-bold mb-6 text-white">Create Project</h1>
+        <h1 className="text-3xl font-bold mb-6 text-white">Crear Proyecto</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block mb-1 text-white">Title:</label>
+            <label className="block mb-1 text-white">Título</label>
             <input
               type="text"
               className="w-full border rounded px-3 py-2"
@@ -35,7 +35,7 @@ const Create = ({ auth, persons, careers }) => {
             )}
           </div>
           <div>
-            <label className="block mb-1 text-white">Note:</label>
+            <label className="block mb-1 text-white">Calificación</label>
             <textarea
               className="w-full border rounded px-3 py-2"
               value={data.qualification}
@@ -46,7 +46,7 @@ const Create = ({ auth, persons, careers }) => {
             )}
           </div>
           <div>
-            <label className="block mb-1 text-white">Year:</label>
+            <label className="block mb-1 text-white">Año</label>
             <input
               type="text"
               className="w-full border rounded px-3 py-2"
@@ -58,7 +58,7 @@ const Create = ({ auth, persons, careers }) => {
             )}
           </div>
           <div>
-            <label className="block mb-1 text-white">Manager:</label>
+            <label className="block mb-1 text-white">Tutor</label>
             <input
               type="text"
               className="w-full border rounded px-3 py-2"
@@ -70,7 +70,7 @@ const Create = ({ auth, persons, careers }) => {
             )}
           </div>
           <div>
-            <label className="block mb-1 text-white">Person:</label>
+            <label className="block mb-1 text-white">Autor</label>
             <select
               className="w-full border rounded px-3 py-2"
               value={data.person_id}

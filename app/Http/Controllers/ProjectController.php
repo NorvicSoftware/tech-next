@@ -17,7 +17,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::with('person', 'career')->get();
-        return Inertia::render('projects/index', ['projects' => $projects]);  
+        return Inertia::render('Projects/Index', ['projects' => $projects]);  
     }
 
     /**
@@ -27,7 +27,7 @@ class ProjectController extends Controller
     {
         $persons = Person::all();
         $careers = Career::all();
-        return Inertia::render('projects/create', ['persons' => $persons, 'careers' => $careers]);
+        return Inertia::render('Projects/Create', ['persons' => $persons, 'careers' => $careers]);
     }
 
     /**
@@ -66,7 +66,7 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $persons = Person::all();
         $careers = Career::all();
-        return Inertia::render('projects/edit', ['project' => $project, 'persons' => $persons, 'careers' => $careers]);
+        return Inertia::render('Projects/Edit', ['project' => $project, 'persons' => $persons, 'careers' => $careers]);
     }
 
     /**
