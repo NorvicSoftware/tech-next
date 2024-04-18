@@ -8,6 +8,20 @@ import { Link } from '@inertiajs/react';
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
+    const handleImportExcel = () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.xlsx';
+        input.onchange = (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            console.log('Archivo seleccionado:', file.name);
+            // Aquí puedes implementar la lógica para procesar el archivo Excel
+            // Por ejemplo, puedes leer el archivo utilizando una biblioteca como 'xlsx'
+        };
+        input.click();
+    };
+
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
             <nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
@@ -119,7 +133,29 @@ export default function Authenticated({ user, header, children }) {
                 </header>
             )}
 
-            <main>{children}</main>
+            <main>
+                {/* Botón de Importar */}
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                    <h1 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+                        Importar Datos desde Excel
+                    </h1>
+                    <input
+                        type="file"
+                        accept=".xlsx"
+                        onChange={handleImportExcel}
+                        className="border-gray-300 dark:border-gray-600 focus:ring-indigo-500 dark:focus:ring-indigo-500 focus:border-indigo-500 dark:focus:border-indigo-500 rounded-md p-2"
+                    />
+                    <button
+                        onClick={handleImportExcel}
+                        className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md mt-4"
+                    >
+                        Importar
+                    </button>
+                </div>
+
+                {/* Renderizar el contenido de children (páginas) */}
+                {children}
+            </main>
         </div>
     );
 }
