@@ -18,8 +18,7 @@ export default function Index (auth){
         <NavLink href= {route('persons.create')} active={route().current('persons.create')} className=" mx-6 px-4 my-2 py-1 border-transparent font-medium rounded-md text-white hover:bg-blue-700 bg-blue-800" >
             <button className="text-center text-ms">
             + Añadir nuevo
-            </button>
-       
+            </button> 
         </NavLink>
         </div>
     </div>
