@@ -50,7 +50,7 @@ class PersonsController extends Controller
         return redirect()->route('persons.index')->with('success', 'Person updated successfully');
     }
 
-    public function destroy($id)
+    public function destroy(string $id)
     {
         $person = Person::findOrFail($id);
         $person->delete();
