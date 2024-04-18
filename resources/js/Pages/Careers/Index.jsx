@@ -2,7 +2,6 @@ import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { usePage } from "@inertiajs/react";
 import NavLink from "@/Components/NavLink";
-import Button from "@/Components/Button";
 
 export default function Index({ auth }) {
     const { careers } = usePage().props;
@@ -10,20 +9,22 @@ export default function Index({ auth }) {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    Carreras
-                </h2>
+                <div className="flex justify-between mx-10 items-center py-0">
+                    <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                        Carreras
+                    </h2>
+                    <div className="text-left">
+                        <NavLink
+                            href={route("careers.create")}
+                            active={route().current("careers.create")}
+                            className="flex items-center px-4 py-1 my-4 border border-transparent text-sm font-medium rounded-md text-white hover:bg-blue-800"
+                        >
+                            + Añadir nueva carrera
+                        </NavLink>
+                    </div>
+                </div>
             }
         >
-            <div className="flex space-x-2 justify-start bg-white">
-                <NavLink
-                    href={route("careers.create")}
-                    active={route().current("careers.create")}
-                    className="flex justify-center px-4 py-1 mx-2 my-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-900 hover:bg-black"
-                >
-                    Añadir Carrera
-                </NavLink>
-            </div>
             <table className="min-w-full m-0">
                 <thead className="border-b bg-gray-50">
                     <tr>
