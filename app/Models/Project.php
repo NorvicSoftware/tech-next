@@ -30,8 +30,8 @@ class Project extends Model
     }
 
     protected $fillable = [
-        'title_project',
-        'note',
+        'title',
+        'qualification',
         'year',
         'manager',
         'person_id',
