@@ -54,11 +54,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
     Route::delete('/projects/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
 
+    //ImportController
+    Route::get('/import', [ImportController::class, 'index'])->name('imports.index');
+
 });
 
-//Excel
-Route::get('/import', [ImportController::class, 'showImportForm'])->name('import.form');
-Route::post('/import/projects', [ImportController::class, 'importProjects'])->name('import.projects');
-Route::post('/import/persons', [ImportController::class, 'importPersons'])->name('import.persons');
 
 require __DIR__.'/auth.php';
