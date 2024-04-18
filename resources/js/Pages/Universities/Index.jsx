@@ -20,42 +20,56 @@ const Index = ({ auth }) => {
                         <h2 className="text-2xl font-bold mb-4">
                             Lista de Universidades
                         </h2>
-                        <ul>
-                            {universities.map((university) => (
-                                <li key={university.id}>
-                                    {university.name}
-                                    <NavLink
-                                        href={route("universities.edit", {
-                                            id: university.id,
-                                        })}
-                                        active={route().current(
-                                            "universities.edit"
-                                        )}
-                                    >
-                                        Editar
-                                    </NavLink>
-                                    <NavLink
-                                        href={route("universities.destroy", {
-                                            id: university.id,
-                                        })}
-                                        method="delete"
-                                        as="button"
-                                        className="ml-2 px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                                        onClick={(e) => {
-                                            if (
-                                                !confirm(
-                                                    "¿Estás seguro de que quieres eliminar esta universidad?"
-                                                )
-                                            ) {
-                                                e.preventDefault();
-                                            }
-                                        }}
-                                    >
-                                        Eliminar
-                                    </NavLink>
-                                </li>
-                            ))}
-                        </ul>
+                        <table className="min-w-full divide-y divide-gray-200">
+                            <thead className="bg-gray-50">
+                                <tr>
+                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Nombre
+                                    </th>
+                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Teléfono
+                                    </th>
+                                    <th className="px-6 py-3"></th>
+                                    <th className="px-6 py-3"></th>
+                                </tr>
+                            </thead>
+                            <tbody className="bg-white divide-y divide-gray-200">
+                                {universities.map((university) => (
+                                    <tr key={university.id}>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <div className="text-sm text-gray-900">{university.name}</div>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <div className="text-sm text-gray-900">{university.phone}</div>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <NavLink
+                                                href={route("universities.edit", { id: university.id })}
+                                                active={route().current("universities.edit")}
+                                                className="text-indigo-600 hover:text-indigo-900"
+                                            >
+                                                Editar
+                                            </NavLink>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <NavLink
+                                                href={route("universities.destroy", { id: university.id })}
+                                                method="delete"
+                                                as="button"
+                                                className="text-red-600 hover:text-red-900"
+                                                onClick={(e) => {
+                                                    if (!confirm("¿Estás seguro de que quieres eliminar esta universidad?")) {
+                                                        e.preventDefault();
+                                                    }
+                                                }}
+                                            >
+                                                Eliminar
+                                            </NavLink>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
