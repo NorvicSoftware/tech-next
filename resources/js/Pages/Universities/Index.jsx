@@ -12,10 +12,9 @@ const Index = ({ auth }) => {
                     href={route("universities.create")}
                     active={route().current("universities.create")}
                 >
-                    añade proyecto
+                    Añadir universidad
                 </NavLink>
 
-      
                 <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div className="p-6 bg-white border-b border-gray-200">
                         <h2 className="text-2xl font-bold mb-4">
@@ -23,7 +22,38 @@ const Index = ({ auth }) => {
                         </h2>
                         <ul>
                             {universities.map((university) => (
-                                <li key={university.id}>{university.name}</li>
+                                <li key={university.id}>
+                                    {university.name}
+                                    <NavLink
+                                        href={route("universities.edit", {
+                                            id: university.id,
+                                        })}
+                                        active={route().current(
+                                            "universities.edit"
+                                        )}
+                                    >
+                                        Editar
+                                    </NavLink>
+                                    <NavLink
+                                        href={route("universities.destroy", {
+                                            id: university.id,
+                                        })}
+                                        method="delete"
+                                        as="button"
+                                        className="ml-2 px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                                        onClick={(e) => {
+                                            if (
+                                                !confirm(
+                                                    "¿Estás seguro de que quieres eliminar esta universidad?"
+                                                )
+                                            ) {
+                                                e.preventDefault();
+                                            }
+                                        }}
+                                    >
+                                        Eliminar
+                                    </NavLink>
+                                </li>
                             ))}
                         </ul>
                     </div>
@@ -34,4 +64,3 @@ const Index = ({ auth }) => {
 };
 
 export default Index;
-``;

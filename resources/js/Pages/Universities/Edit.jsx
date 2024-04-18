@@ -3,7 +3,7 @@ import React from 'react';
 import { useForm } from "@inertiajs/react";
 
 const Edit = ({ auth, university }) => {
-  const { data, setData, put, errors, reset } = useForm({
+  const { data, setData, put, errors } = useForm({
     name: university.name,
     phone: university.phone,
     address: university.address,
@@ -15,7 +15,7 @@ const Edit = ({ auth, university }) => {
   };
 
   return (
-    <AuthenticatedLayout user={auth} Header="Editar Universidad">
+    <AuthenticatedLayout user={auth} Header="Universidad">
       <div className="max-w-3xl mx-auto p-6">
         <h1 className="text-3xl font-bold mb-6 text-white">Editar Universidad</h1>
         <form onSubmit={handleSubmit} className="space-y-4">

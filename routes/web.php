@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/universities/{id}/edit', [UniversityController::class, 'edit'])->name('universities.edit');
     Route::put('/universities/{id}', [UniversityController::class, 'update'])->name('universities.update');
     Route::delete('/universities/{id}', [UniversityController::class, 'destroy'])->name('universities.destroy');
-    Route::get('/universities/{id}', [UniversityController::class, 'show'])->name('universities.show');
+
 });
 
 //Excel
