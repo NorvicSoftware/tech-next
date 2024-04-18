@@ -22,7 +22,6 @@ class PersonsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'ci' => 'required|string|max:7',
             'first_name' => 'required|string|max:20',
             'last_name' => 'nullable|string|max:20',
         ]);
@@ -32,7 +31,7 @@ class PersonsController extends Controller
         return redirect()->route('persons.index')->with('success', 'Person created successfully');
     }
 
-    public function edit($id)
+    public function edit(string $id)
     {
         $person = Person::findOrFail($id);
         return Inertia::render('Persons/Edit', ['person' => $person]);
@@ -41,7 +40,6 @@ class PersonsController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'ci' => 'required|string|max:7',
             'first_name' => 'required|string|max:20',
             'last_name' => 'nullable|string|max:20',
         ]);
@@ -52,11 +50,17 @@ class PersonsController extends Controller
         return redirect()->route('persons.index')->with('success', 'Person updated successfully');
     }
 
-    public function destroy($id)
+    public function destroy(string $id)
     {
         $person = Person::findOrFail($id);
         $person->delete();
 
         return redirect()->route('persons.index')->with('success', 'Person deleted successfully');
+    }
+
+    public function show($id)
+    {
+        $person = Person::findOrFail($id);
+        return Inertia::render('Persons/Show', ['person' => $person]);
     }
 }
