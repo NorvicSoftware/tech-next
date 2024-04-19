@@ -12,8 +12,10 @@ const Index = ({ auth }) => {
                     <div className="p-6 bg-white border-b border-gray-200">
                         <h2 className="text-2xl font-bold mb-4">
                             Lista de Universidades
+							
                         </h2>
-                        <div className="flex justify-end">
+                       
+						<div className="flex justify-end">
                             <NavLink
                                 href={route("universities.create")}
                                 active={route().current("universities.create")}
@@ -22,7 +24,6 @@ const Index = ({ auth }) => {
                                 Añadir universidad
                             </NavLink>
                         </div>
-
                         <table className="min-w-full divide-y divide-gray-200">
                             <thead className="bg-gray-50">
                                 <tr>
