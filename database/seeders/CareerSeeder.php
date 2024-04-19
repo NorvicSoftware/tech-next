@@ -14,13 +14,13 @@ class CareerSeeder extends Seeder
     public function run(): void
     {
         $career1 = new Career;
-        $career1->name = "Marketing";
+        $career1->name = "Marketing y Publicidad";
         $career1->phone = "63919663";
         $career1->university_id = 1;
         $career1->save();
 
         $career2 = new Career;
-        $career2->name = "Mecánica";
+        $career2->name = "Mecánica Automotriz";
         $career2->university_id = 2;
         $career2->save();
 
@@ -31,9 +31,15 @@ class CareerSeeder extends Seeder
         $career3->save();
 
         $career4 = new Career;
-        $career4->name = "Administración";
+        $career4->name = "Administración de Empresas";
         $career4->phone = "63919663";
         $career4->university_id = 4;
+        $career4->save();
+
+        $career4 = new Career;
+        $career4->name = "Ingeniería de sistemas";
+        $career4->phone = "74787112";
+        $career4->university_id = 5;
         $career4->save();
     }
 }
