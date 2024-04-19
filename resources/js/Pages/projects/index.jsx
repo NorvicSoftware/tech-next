@@ -78,7 +78,7 @@ const Index = ({ auth }) => {
                                     {" "}
                                     {/* Agregado para acciones */}
                                     <div className="flex space-x-2">
-                                    <NavLink
+                                        <NavLink
                                             href={route(
                                                 "projects.show",
                                                 project.id

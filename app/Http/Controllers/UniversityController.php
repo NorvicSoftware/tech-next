@@ -45,9 +45,10 @@ class UniversityController extends Controller
     }
     
     public function show(string $id){
-        $universities= University::with("careers")->whereId($id)->first();
-        return Inertia::render('Universities/Show',['universities'=>$universities]);
+        $university = University::findOrFail($id);
+        return Inertia::render('Universities/Show', ['university' => $university]);
     }
+    
 
     public function update(Request $request,  $id)
     {

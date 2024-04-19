@@ -41,10 +41,7 @@ const Index = ({ auth }) => {
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                         {universities.map((university, id) => (
-                            <tr
-                                key={id}
-                                className="hover:bg-gray-50"
-                            >
+                            <tr key={id} className="hover:bg-gray-50">
                                 <td className="px-4 py-3 sm:px-6 sm:py-4 whitespace-nowrap">
                                     {university.name}
                                 </td>
@@ -56,6 +53,15 @@ const Index = ({ auth }) => {
                                 </td>
                                 <td className="px-4 py-3 sm:px-6 sm:py-4 whitespace-nowrap">
                                     <div className="flex space-x-2">
+									<NavLink
+                                            href={route(
+                                                "universities.show",
+                                                university.id
+                                            )}
+                                            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                                        >
+                                            Ver
+                                        </NavLink>
                                         <NavLink
                                             href={route(
                                                 "universities.edit",
