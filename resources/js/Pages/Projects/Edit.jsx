@@ -2,30 +2,30 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import React, { useState } from "react";
 import { useForm } from "@inertiajs/react";
 
-const Create = ({ auth, persons, careers }) => {
-    const { data, setData, post, errors, reset } = useForm({
-        title_project: "",
-        note: "",
-        year: "",
-        manager: "",
-        person_id: "",
-        career_id: "",
+const Edit = ({ auth, project, persons, careers }) => {
+    const { data, setData, put, errors, reset } = useForm({
+        title: project.title,
+        qualification: project.qualification,
+        year: project.year,
+        manager: project.manager,
+        person_id: project.person_id.toString(),
+        career_id: project.career_id.toString(),
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("projects.store"));
+        put(route("projects.update", project.id));
     };
 
     return (
         <AuthenticatedLayout user={auth} Header="Proyectos">
             <div className="max-w-3xl mx-auto p-6">
                 <h1 className="text-3xl font-bold mb-6 text-white">
-                    Crear Proyecto
+                    Editar Proyecto
                 </h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block mb-1 text-white">Título</label>
+                        <label className="block mb-1 text-white">Title:</label>
                         <input
                             type="text"
                             className="w-full border rounded px-3 py-2"
@@ -37,9 +37,7 @@ const Create = ({ auth, persons, careers }) => {
                         )}
                     </div>
                     <div>
-                        <label className="block mb-1 text-white">
-                            Calificación
-                        </label>
+                        <label className="block mb-1 text-white">Note:</label>
                         <textarea
                             className="w-full border rounded px-3 py-2"
                             value={data.qualification}
@@ -54,7 +52,7 @@ const Create = ({ auth, persons, careers }) => {
                         )}
                     </div>
                     <div>
-                        <label className="block mb-1 text-white">Año</label>
+                        <label className="block mb-1 text-white">Year:</label>
                         <input
                             type="text"
                             className="w-full border rounded px-3 py-2"
@@ -66,7 +64,9 @@ const Create = ({ auth, persons, careers }) => {
                         )}
                     </div>
                     <div>
-                        <label className="block mb-1 text-white">Tutor</label>
+                        <label className="block mb-1 text-white">
+                            Manager:
+                        </label>
                         <input
                             type="text"
                             className="w-full border rounded px-3 py-2"
@@ -80,7 +80,7 @@ const Create = ({ auth, persons, careers }) => {
                         )}
                     </div>
                     <div>
-                        <label className="block mb-1 text-white">Autor</label>
+                        <label className="block mb-1 text-white">Person:</label>
                         <select
                             className="w-full border rounded px-3 py-2"
                             value={data.person_id}
@@ -129,7 +129,7 @@ const Create = ({ auth, persons, careers }) => {
                             type="submit"
                             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                         >
-                            Crear
+                            Actualizar
                         </button>
                     </div>
                 </form>
@@ -138,4 +138,4 @@ const Create = ({ auth, persons, careers }) => {
     );
 };
 
-export default Create;
+export default Edit;
