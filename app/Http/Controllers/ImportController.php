@@ -23,12 +23,6 @@ class ImportController extends Controller
         ]);
     }
 
-    //public function importPersons(Request $request)
-    //{
-    //    Excel::import(new PersonsImport, 'persona.xlsx');
-    //    return Inertia::render('/Projects');
-    //}
-
     public function import(Request $request)
     {
         try {
