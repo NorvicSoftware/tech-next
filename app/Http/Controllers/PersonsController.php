@@ -4,58 +4,63 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Person;
+use Inertia\Inertia;
 
 class PersonsController extends Controller
 {
     public function index()
     {
         $persons = Person::all();
-        return view('persons.index', compact('persons'));
+        return Inertia::render('Persons/Index', ['persons' => $persons]);
     }
 
     public function create()
     {
-        return view('persons.create');
+        return Inertia::render('Persons/Create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'ci' => 'required|string|max:7',
+        $validatedData = $request->validate([
             'first_name' => 'required|string|max:20',
             'last_name' => 'nullable|string|max:20',
         ]);
 
-        Person::create($request->all());
+        Person::create($validatedData);
 
-        return redirect()->route('persons.index')->with('success', 'Successfully created Person');
+        return redirect()->route('persons.index')->with('success', 'Person created successfully');
     }
 
-    public function edit($id)
+    public function edit(string $id)
     {
         $person = Person::findOrFail($id);
-        return view('persons.edit', compact('person'));
+        return Inertia::render('Persons/Edit', ['person' => $person]);
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'ci' => 'required|string|max:7',
+        $validatedData = $request->validate([
             'first_name' => 'required|string|max:20',
             'last_name' => 'nullable|string|max:20',
         ]);
 
         $person = Person::findOrFail($id);
-        $person->update($request->all());
+        $person->update($validatedData);
 
-        return redirect()->route('persons.index')->with('success', 'Successfully updated Person');
+        return redirect()->route('persons.index')->with('success', 'Person updated successfully');
     }
 
-    public function destroy($id)
+    public function destroy(string $id)
     {
         $person = Person::findOrFail($id);
         $person->delete();
 
-        return redirect()->route('persons.index')->with('success', 'Successfully eliminated Person');
+        return redirect()->route('persons.index')->with('success', 'Person deleted successfully');
+    }
+
+    public function show($id)
+    {
+        $person = Person::findOrFail($id);
+        return Inertia::render('Persons/Show', ['person' => $person]);
     }
 }

@@ -4,92 +4,75 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\University;
+use Inertia\Inertia;
 
 class UniversityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
-        $university = University::all();
-        return view('universities.index', ['universities' => $university]);
+        $universities = University::all();
+        return Inertia::render('Universities/Index', ['universities' => $universities]);
     }
-    /**
-     * Show the form for creating a new resource.
-     */
+
+
     public function create()
     {
-        //
-        return view('universities.create');
+        return Inertia::render('Universities/Create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-        $university = new University($request->all());
-        $university->save();
-        return redirect()->action([UniversityController::class, 'index']);
+        try {
+            $validatedData = $request->validate([
+                'name'=> 'required|string|max:75',
+                'phone'=> 'nullable|string|max:15',
+                'address'=> 'nullable|string|max:75',
+            ]);
+            University::create($validatedData);
+            return redirect()->route( 'universities.index')->with('success','La universidad se ha creado correctamente');
+        }catch (\Exception $exc) {
+        return redirect()->back()->withInput()->with('error', 'Error al crear universidad: ' . $exc->getMessage());
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-        $university = University::findOrFail($id);
-        return view('universities.view', [
-            'university' => $university
-        ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(string $id)
     {
-        //
         $university = University::findOrFail($id);
-        return view("universities.edit", ["university" => $university]);
+        return Inertia::render('Universities/Edit', ['university'=>$university]);
+    }
+    
+    public function show(string $id){
+        $universities= University::with("careers")->whereId($id)->first();
+        return Inertia::render('Universities/Show',['universities'=>$universities]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
     {
-        //
-        $university = University::findOrFail($id);
-        $university->name = $request->name;
-        $university->phone = $request->phone;
-        $university->address = $request->address;
-        $university->save();
-        return redirect()->action([UniversityController::class, 'index']);
+        try{
+            $validatedData = $request->validate([
+                'name'=> 'required|string|max:75',
+                'phone'=> 'nullable|string|max:15',
+                'address'=> 'nullable|string|max:75',
+            ]);
+            $university= University::findOrFail($id);
+            $university->update($validatedData);
+            return  redirect()->route('universities.index')->with('success','La universidad se ha actualizado correctamente');
+        }catch(\Exception $exc){
+            return  redirect()->back()->withInput()->withErrors(['msg' => "Error al actualizar la universidad"]);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
         try {
-            // Encuentra la universidad por su ID
-            $university = University::findOrFail($id);
-            
-            // Elimina la universidad
-            $university->delete();
-            
-            // Redirige de vuelta con un mensaje de éxito
-            return redirect()->route('universities.index')->with('success', 'Universidad eliminada exitosamente.');
+            $universities = University::findOrFail($id);
+            $universities->delete();
+            return redirect()->route( "universities.index")->with('success','Registro eliminado correctamente'); 
+
         } catch (\Exception $e) {
-            // Maneja cualquier error que pueda ocurrir
-            return redirect()->route('universities.index')->with('error', 'No se pudo eliminar la universidad: ' . $e->getMessage());
+            return  redirect()->back()
+                ->withInput()->withErrors(['msg'=>'error al eliminar universidad']);
         }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +18,8 @@ class ScoreFactory extends Factory
     public function definition(): array
     {
         return [
-            'reaction' => $this->faker->randomElement(['1', '2', '3']),
-            'project_id' => $this->faker->randomElement([1, 2, 3, 4, 5]),
+            'reaction' => $this->faker->randomElement(['good', 'indifferent', 'bad']),
+            'project_id' => Project::all()->random()->id,
         ];
     }
 }
