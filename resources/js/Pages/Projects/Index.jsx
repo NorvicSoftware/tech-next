@@ -33,7 +33,9 @@ export default function Index({ auth }) {
                     </div>
                     {projects.map((project, id) => (
                         <div className="grid grid-cols-6 text-center text-gray-800 bg-gray-200 border-t-2 border-gray-300 rounded-md p-2 cursor-pointer justify-center items-center">
-                            <div className="text-left col-span-2">{project.title}</div>
+                            <div className="text-left col-span-2">
+                                {project.title}
+                            </div>
                             <div>
                                 {project.person
                                     ? `${project.person.first_name} ${project.person.last_name}`
@@ -44,6 +46,12 @@ export default function Index({ auth }) {
                             </div>
                             <div>{project.year}</div>
                             <div className="flex flex-col flex-shrink-0 items-center justify-center gap-2">
+                                <NavLink
+                                    href={route("projects.show", project.id)}
+                                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+                                >
+                                    Ver
+                                </NavLink>
                                 <NavLink
                                     href={route("projects.edit", project.id)}
                                     className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
