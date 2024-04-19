@@ -17,7 +17,7 @@ export default function Index({ auth }) {
                         <NavLink
                             href={route("careers.create")}
                             active={route().current("careers.create")}
-                            className="flex items-center px-4 py-1 my-4 border border-transparent text-sm font-medium rounded-md text-white hover:bg-blue-800"
+                            className="flex items-center px-4 py-1 my-4 border border-transparent text-sm font-medium rounded-md text-white hover:bg-blue-700"
                         >
                             + Añadir nueva carrera
                         </NavLink>
