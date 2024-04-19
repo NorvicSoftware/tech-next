@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
-use App\Models\Person;
-use App\Models\Career;
-use Inertia\Inertia;
-
 use Illuminate\Http\Request;
+use App\Models\Project;
 class ProjectController extends Controller
 {
     /**
@@ -15,8 +11,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with('person', 'career')->get();
-        return Inertia::render('Projects/Index', ['projects' => $projects]);  
+        $projects = Project::all(); // Obtener todos los proyectos
+        return view('projects.index', ['projects' => $projects]); // Renderizar la vista con los proyectos
     }
 
     /**
@@ -24,9 +20,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $persons = Person::all();
-        $careers = Career::all();
-        return Inertia::render('Projects/Create', ['persons' => $persons, 'careers' => $careers]);
+        return view('projects.create');
     }
 
     /**
@@ -36,16 +30,17 @@ class ProjectController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required',
-            'qualification' => 'required',
-            'year' => 'required',
-            'manager' => 'required',
-            'person_id' => 'required',
-            'career_id' => 'required',
+            'description' => 'required',
         ]);
 
-        Project::create($validatedData);
+        // Crear un nuevo proyecto
+        $project = new Project;
+        $project->title = $request->title;
+        $project->description = $request->description;
+        // capas ayan mas campos que asignar 
+        $project->save();
 
-        return redirect()->route('projects.index')->with('success', 'Proyecto creado exitosamente.');
+        return redirect('/projects')->with('success', 'Proyecto creado exitosamente.');
     }
 
     /**
@@ -53,8 +48,8 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-        $project = Project::findOrFail($id); 
-        return Inertia::render('projects.show', ['project' => $project]); 
+        $project = Project::findOrFail($id); // Encuentra el proyecto por su ID
+        return view('projects.show', ['project' => $project]); // Renderiza la vista del proyecto
     }
 
     /**
@@ -62,10 +57,8 @@ class ProjectController extends Controller
      */
     public function edit(string $id)
     {
-        $project = Project::findOrFail($id);
-        $persons = Person::all();
-        $careers = Career::all();
-        return Inertia::render('Projects/Edit', ['project' => $project, 'persons' => $persons, 'careers' => $careers]);
+        $project = Project::findOrFail($id); // Encuentra el proyecto por su ID
+        return view('projects.edit', ['project' => $project]); // Renderiza el formulario de edición
     }
 
     /**
@@ -73,20 +66,20 @@ class ProjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $project = Project::findOrFail($id);
-
         $validatedData = $request->validate([
             'title' => 'required',
-            'qualification' => 'required',
-            'year' => 'required',
-            'manager' => 'required',
-            'person_id' => 'required',
-            'career_id' => 'required',
+            'description' => 'required',
+            //validaciones
         ]);
 
-        $project->update($validatedData);
+        // Encuentra el proyecto por su ID y actualiza sus campos
+        $project = Project::findOrFail($id);
+        $project->title = $request->title;
+        $project->description = $request->description;
+        // capas ayan mas campos que asignar
+        $project->save();
 
-        return redirect()->route('projects.index')->with('success', 'Proyecto actualizado exitosamente.');
+        return redirect('/projects')->with('success', 'Proyecto actualizado exitosamente.');
     }
 
     /**
@@ -97,7 +90,7 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $project->delete();
 
-        return redirect()->route('projects.index')->with('success', 'Proyecto eliminado exitosamente.');
+        return redirect('/projects')->with('success', 'Proyecto eliminado exitosamente.');
     }
 
     public function generateReport()

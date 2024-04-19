@@ -8,12 +8,19 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ProjectsImport;
 use App\Imports\PersonsImport;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ImportController extends Controller
 {
-    public function showImportForm()
+    public function index()
     {
-        return view('import.form');
+        $projects = Project::all();
+        $persons = Person::all();
+
+        return Inertia::render('Imports/Index', [
+            'projects' => $projects,
+            'persons' => $persons,
+        ]);
     }
 
     public function importProjects(Request $request)

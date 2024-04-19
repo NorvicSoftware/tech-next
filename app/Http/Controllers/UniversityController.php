@@ -21,7 +21,6 @@ class UniversityController extends Controller
         return Inertia::render('Universities/Create');
     }
 
-
     public function store(Request $request)
     {
         try {
@@ -37,15 +36,15 @@ class UniversityController extends Controller
         }
     }
 
-
     
-    public function edit($id)
+    public function edit(string $id)
     {
         $university = University::findOrFail($id);
         return Inertia::render('Universities/Edit', ['university' => $university]);
+
     }
     
-    public function show($id){
+    public function show(string $id){
         $universities= University::with("careers")->whereId($id)->first();
         return Inertia::render('Universities/Show',['universities'=>$universities]);
     }
@@ -65,7 +64,6 @@ class UniversityController extends Controller
             return  redirect()->back()->withInput()->withErrors(['msg' => "Error al actualizar la universidad"]);
         }
     }
-
 
     public function destroy(string $id)
     {
