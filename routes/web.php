@@ -68,6 +68,7 @@ Route::middleware('auth')->group(function () {
 
     //Project Controller
     Route::get('/projects/generate-report', [ProjectController::class, 'generateReport'])->name('projects.generate-report');
+    
 });
 
 
