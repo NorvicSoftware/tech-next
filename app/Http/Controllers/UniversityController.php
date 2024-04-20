@@ -18,7 +18,8 @@ class UniversityController extends Controller
 
     public function create()
     {
-        return Inertia::render('Universities/Create');
+        $universities = University::all();
+        return Inertia::render('Universities/Form', ["universities"=>$universities, 'id'=>0]);
     }
 
     public function store(Request $request)
@@ -40,7 +41,7 @@ class UniversityController extends Controller
     public function edit(string $id)
     {
         $university = University::findOrFail($id);
-        return Inertia::render('Universities/Edit', ['university' => $university]);
+        return Inertia::render('Universities/Form', ['university' => $university, 'id'=>$id]);
 
     }
     
@@ -50,21 +51,23 @@ class UniversityController extends Controller
     }
     
 
-    public function update(Request $request,  $id)
-    {
-        try{
-            $validatedData = $request->validate([
-                'name'=> 'required|string|max:75',
-                'phone'=> 'nullable|string|max:15',
-                'address'=> 'nullable|string|max:75',
-            ]);
-            $university= University::findOrFail($id);
-            $university->update($validatedData);
-            return  redirect()->route('universities.index')->with('success','La universidad se ha actualizado correctamente');
-        }catch(\Exception $exc){
-            return  redirect()->back()->withInput()->withErrors(['msg' => "Error al actualizar la universidad"]);
-        }
+// UniversityController.php
+public function update(Request $request, $id)
+{
+    try {
+        $validatedData = $request->validate([
+            'name'=> 'required|string|max:75',
+            'phone'=> 'nullable|string|max:15',
+            'address'=> 'nullable|string|max:75',
+        ]);
+        $university = University::findOrFail($id);
+        $university->update($validatedData);
+        return redirect()->route('universities.index')->with('success','La universidad se ha actualizado correctamente');
+    } catch(\Exception $exc) {
+        return redirect()->back()->withInput()->withErrors(['msg' => "Error al actualizar la universidad"]);
     }
+}
+
 
     public function destroy(string $id)
     {
