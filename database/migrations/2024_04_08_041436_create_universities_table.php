@@ -11,9 +11,9 @@ return new class extends Migration
     {
         Schema::create('universities', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 75);
-            $table->string('phone', 15)->nullable();
-            $table->string('address', 75)->nullable();
+            $table->string('name', 250);
+            $table->string('phone', 15);
+            $table->string('address', 250);
             $table->timestamps();
         });
     }

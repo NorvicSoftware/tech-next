@@ -8,7 +8,7 @@ use App\Models\Project;
 use App\Models\Score;
 use App\Models\University;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,8 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
-        //llamando seeder
+        $this->call(UserSeeder::class);
         $this->call(PersonSeeder::class);
         $this->call(UniversitySeeder::class);
         $this->call(CareerSeeder::class);
@@ -31,5 +30,6 @@ class DatabaseSeeder extends Seeder
         Project::factory(10)->create();
         University::factory(10)->create();
         Score::factory(10)->create();
+
     }
 }

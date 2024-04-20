@@ -1,51 +1,48 @@
 # SOFTWARE TECH-NEXT
-<center><img src="Img_read/Log1.png" alt="centered image"> </center>
 
-## Descripción
-Este sistema adaptativo sera de gran ayuda para los estudiantes que se encuentran en los últimos semestres universitarios permitiendo facilitar ideas personalizadas para sus proyectos de grado. El sistema toma en cuenta sus intereses académicos, las tendencias del mercado y las necesidades sociales para ofrecer una variedad de opciones viables y relevantes. De esta manera, se facilita la selección del tema ideal para su proyecto final.
+<center><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Logo.png" alt="centered image"></center>
 
 ## Objetivo
-Facilitar a los estudiantes de últimos semestres universitarios la selección de un tema viable y relevante para su proyecto final, mediante un sistema que permita ofrecer una variedad de ideas personalizadas.
+Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de las diferentes universidades de último semestre una variedad de ideas personalizadas para proyectos de grado, basadas en sus intereses académicos, tendencias del mercado y necesidades sociales, facilitando así la selección de un tema viable y relevante para su proyecto final.
 
-## Caracteristicas principales
+## Características Principales
 
 ### Funcionalidad Usuario
 
 * Realizar busqueda del proyecto de grado
 * Selección de proyectos por medio de carreras.
 * Selecionar y visualizar proyecto 
-* Reaccionar al contenido encontrado
+* Reaccionar al proyecto.
 * Solicitar el proyecto.
 
 ### Funcionalidad Administrador
  
 * Iniciar sesión
 * Administrar los proyectos
-* Ingresar al sistema
-* Edición de datos
-* Eliminación de datos
-* Importar documentos
-* Actualizar datos
+* Editar proyectos.
+* Eliminar proyectos.
+* Importar proyectos.
+* Actualizar proyectos.
 
 ## Diseño del Sistema
 ### Mockups: Dispositivo Movil
 
-<p align="center"><a target="_blank"><img src="Img_read/New1.png""></a></p>
+<p align="center"><a target="_blank"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Opcion_carreras.png"></a></p>
 
 ---
 > El sistema presentará una serie de botones diferenciados por carreras universitarias.
 > 
 > El usuario al ingresar al sistema podrá seleccionar una carrera en específico, esto permitirá al sistema enfocar la búsqueda y ofrecer resultados más relevantes y precisos en cuanto al área de interés del usuario brindando una experiencia más personalizada y eficiente.
 ---
-<p align="center"><a target="_blank"><img src="Img_read/New2a.png""></a></p>
+<p align="center"><a target="_blank"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Lista_proyectos.png"></a></p>
 
 ---
 >El sistema tendrá una función de búsqueda que permitirá al usuario encontrar fácilmente los proyectos específicos que necesita. Además, ofrecerá un modo oscuro para una mejor experiencia visual, especialmente en condiciones de poca luz o para usuarios que prefieren una interfaz más tenue.
 >
->A medida que el usuario realiza la búsqueda, el sistema mostrará la información del contenido utilizando un formato de lista de manera ordenada y concisa, facilitando la búsqueda y comparación de proyectos, permitiendo al usuario navegar de forma rápida y eficiente ajusatndose a sus necesidades.
+>A medida que el usuario realiza la búsqueda, el sistema mostrará la información del contenido utilizando un formato de lista de manera ordenada y concisa, facilitando la búsqueda y comparación de proyectos, permitiendo al usuario navegar de forma rápida y eficiente ajustandose a sus necesidades.
 
 ---
-<p align="center"><img src="Img_read/Img3.mov.png" alt="centered image" height="680" width="356"> </p>
+<p align="center"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Descripcion_proyecto.png" alt="centered image" height="680" width="356"> </p>
 
 ---
 > El usuario podrá acceder a una descripción detallada del proyecto incluyendo el autor, carrera, año de realización, entre otros. No obstante, el usuario tendrá la posibilidad de interactuar con el contenido mediante tres reacciones específicas, lo cual ayudará a otros usuarios a tener una mejor idea del contenido.
@@ -54,34 +51,44 @@ Facilitar a los estudiantes de últimos semestres universitarios la selección d
 
 ## Modelo UML
 
-Son una herramienta fundamental para el desarrollo de software, ya que permite visualizar y comprender de manera gráfica los diferentes aspectos del sistema, facilitando la comunicación entre los miembros del equipo de desarrollo y evitando errores en las primeras etapas del proyecto.
+Es una herramienta fundamental para el desarrollo de software, ya que permite visualizar y comprender de manera gráfica los diferentes aspectos del sistema, facilitando la comunicación entre los miembros del equipo de desarrollo y evitar errores en las primeras etapas del proyecto.
 
 * Diagrama de Clases 
-  * [Diagr. Administrador](https://i.ibb.co/PhWxx1J/Diagrama-Clases-Admin-Tech-Next.png "Link")
-  * [Diagr. Usuario](https://i.ibb.co/d4PXkWQ/Diagrama-Clases-Usuar-Tech-Next.png "Link")
+  * [Diagr. Administrador](https://i.ibb.co/4ZWJWKY/D-Clases-Administrador.jpg "Link")
+  * [Diagr. Estudiante](https://i.ibb.co/QdzRGLS/D-Clases-Estudiante.jpg "Link")
   
 * Diagrama de Casos de Uso
-  * [Diagr. Buscar proyecto](https://i.ibb.co/Gp1Trh7/Diag-Ca-U.png "Link")
-  * [Diagr. Registrar proyecto](https://i.ibb.co/9syzqPt/Diagrama-Caso-Uso2-Tech-Next.png "Link")
+  * [Diagr. Administrador](https://i.ibb.co/3C0hznL/D-Caso-Uso-Admnistrador.jpg "Link")
+  * [Diagr. Usuario](https://i.ibb.co/x77TZFH/D-Caso-Uso-Usuario.jpg "Link")
  
 * Diagrama de Secuencia
-  * [Diagr. Administrador](https://i.ibb.co/c1TdLRg/Diagrama-Secuencia-Admin.png "Link")
-  * [Diagr. Usuario](https://i.ibb.co/yqHfTtc/Diagrama-Secuencia-Usuario.png "Link")
+  * [Diagr. Administrador](https://i.ibb.co/Cz5D0Pm/D-Secuencia-Administrador.jpg "Link")
+  * [Diagr. Usuario](https://i.ibb.co/T0n1txR/D-Secuencia-Usuario.jpg "Link")
 
+<<<<<<< HEAD
+* Diagrama de Actividad
+  * [Diagr. Administrador](https://i.ibb.co/8zs90Wp/D-Actividades-Administrador.jpg "Link")
+  * [Diagr. Estudiante](https://i.ibb.co/vzXLNGv/D-Actividades-Estudiante.jpg "Link")
+  
+* Diagrama de Estado
+  * [Diagr. Estado](https://i.ibb.co/HtTJVmR/D-Estado.jpg "Link")
+=======
 * Diagrama de actividad
-  * [Diagr. Administrador](https://i.ibb.co/khNJDXC/Diagrama-Actividad-Admin.pngg "Link")
-  * [Diagr. Usuario](https://i.ibb.co/tDkWq6x/Diagrama-Actividad-Usuario.png "Link")
+  * [Diagr. Administrador](https://i.ibb.co/8zs90Wp/D-Actividades-Administrador.jpg "Link")
+  * [Diagr. Estudiante](https://i.ibb.co/vzXLNGv/D-Actividades-Estudiante.jpg "Link")
   
 * Diagrama de estado
-  * [Diagr. Administrador]("Link")
-  * [Diagr. Usuario]("Link")
+  * [Diagr. Estado](https://i.ibb.co/HtTJVmR/D-Estado.jpg "Link")
   
 * Diagrama de despliegue
-  * [Diagr. Administrador]( "Link")
-  * [Diagr. Usuario]("Link")
+  * [Diagr. Despliegue](https://i.ibb.co/g30Sv78/D-Despliegue.jpg "Link")
+>>>>>>> 04fdab185d88cf7a6fe2ff80be574155bd413b79
   
+* Diagrama de Despliegue
+  * [Diagr. Despliegue](https://i.ibb.co/g30Sv78/D-Despliegue.jpg "Link")
+
 ## Tecnologías utilizadas
-Se usaran las siguientes tecnologías para el desarrollo del software.
+Se usarán las siguientes tecnologías para el desarrollo del software.
 
 * Lenguajes de programación
   * JavaScript (Frontend)
@@ -91,6 +98,7 @@ Se usaran las siguientes tecnologías para el desarrollo del software.
 * Frameworks
   * Laravel (Backend)
   * React (Frontend)
+  * Tailwind CSS (Frontend)
 
 * Base de Datos
   * MySql
@@ -108,16 +116,16 @@ Se usaran las siguientes tecnologías para el desarrollo del software.
   * Whatsapp (Herramienta de comunicación)
 
 ## Instalación
-Se seguiran una serie de pasos para realizar la intalación de las tecnologias para la creación del proyecto.
+Se seguirán una serie de pasos para realizar la intalación de las tecnologias para la creación del proyecto.
 
 **NOTA.-**
 
-> Tomar en cuentas la instalación de las ultimas versiones de PHP, NODE.JS, COMPOSER, REACT 
+> Tomar en cuenta la instalación de las ultimas versiones de PHP, NODE.JS, COMPOSER, REACT.
 
 ### Servidor 1
  ---
 
-1. Abrir la terminal Git Bash e ir a la ruta para abrir el proyecto
+1. Abrir la terminal Git Bash e ir a la ruta para abrir el proyecto.
 ```
 $ cd c:
 ```
@@ -131,28 +139,28 @@ $ cd xampp/htdocs/
 $ git clone https://github.com/NorvicSoftware/tech-next.git
 ```  
 
-3. Ingresar al proyecto en Git 
+3. Ingresar al proyecto en Git.
 ```
 $ cd tech-next/
 ```
 
-4. Actualizar los paquetes o dependencias 
+4. Actualizar los paquetes o dependencias.
 ```
 $ composer update
 ```
 **NOTA.-**
-> Verificar en el proyecto tech-next la carpeta | vendor
+> Verificar en el proyecto tech-next la carpeta | vendor.
 
-5. Para ingresar al proyecto *tech-next* desde Visaul Code introducir lo siguiente
+5. Para ingresar al proyecto **tech-next** desde Visual Code ingresar el siguiente comando.
 ```
 $ code .
 ```
 
-6. Crear un archivo con el nombre **.env** y copiar las siguientes variables 
+6. Crear un archivo con el nombre **.env** y copiar las siguientes variables.
 
    `<Link>` :[https://styde.net/variables-de-entorno-en-laravel/](https://styde.net/variables-de-entorno-en-laravel/ "Link")
 
-7. Crear la Base de Datos en phpMyAdmin desde xampp con el nombre **tech-next-db** y modificar en Visual Code la carpeta **.env** y guardar los cambios
+7. Crear la Base de Datos en phpMyAdmin desde xampp con el nombre **tech-next-db**, modificar en Visual Code la carpeta **.env** y guardar los cambios.
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -161,45 +169,36 @@ DB_DATABASE=tech-next-db
 DB_USERNAME=root
 DB_PASSWORD=
 ```
-8. En la terminal Git introducir lo siguiente:
+8. En la terminal Git ingresar el siguiente comando.
 ```
 $ php artisan migrate:fresh
 ```
 **NOTA.-**
->Esta acción permite actualizar la base de datos phpMyAdmin en el localhost, favor de verficar. 
+>Esta acción permite actualizar la base de datos phpMyAdmin en el localhost.
 
----
-
-<p align="center"><a target="_blank"><img src="Img_read/BD_modific.png""></a></p>
-
----
-9. En la terminal Git introducir lo siguiente 
+9. En la terminal Git introducir el siguiente comando.
 ```
 $ php artisan serve
 ```
 Seguidamente ir a un navegador y copiar | `<Enlace>` :[http://127.0.0.1:8000/](http://127.0.0.1:8000/ "Servidor Laravel").
 
-**IMPORTANTE.***
+**IMPORTANTE.-**
 
-Te pedira | GENERAR CLAVE DE APLICACIÓN, desde la terminal para 1ro la terminal (Ctrl+C) e introduce lo siguiente:
+Mostrará como opción | GENERAR CLAVE DE APLICACIÓN, para ello, ingresar el siguiente comando.
 
 ```
  $ php artisan key:generate
 ```
-Y verificar si apareció la siguiente clave en: Visaul Code/tech-next/.env
 
----
-<p align="center"><a target="_blank"><img src="Img_read/Clave_vs.png""></a></p>
-
----
-10. Por ultimo volver a levantar el servicio
+10. Por último volver a levantar el servidor ingresando el siguiente comando.
 ```
 $ php artisan serve
 ```
+
 ### Servidor 2
 
 ---
-1. Abrir el proyecto tech-next desde la terminal Git
+1. Abrir el proyecto **tech-next** desde la terminal Git.
 ```
 $ cd c:
 ```
@@ -207,21 +206,22 @@ $ cd c:
 $ cd xampp/htdocs/tech-next 
 ```
 1. Seguidamente ir: `<Link>` :[https://laravel.com/](https://laravel.com/ "Laravel")
-2. Ingresar a la opción | **DOCUMENTACIÓN** y después a la opción | **Starter Kits** que esta en la parte izquierda introducir el siguiente:
+2. Ingresar a la opción | **DOCUMENTACIÓN** y después a la opción | **Starter Kits** que se encuentra en el lado izquierdo e ingresar el siguiente comando.
 ```
 $ composer require laravel/breeze --dev
 ```
 Esta acción permite instalar el paquete **Laravel Brezee**
+
 3. Después ejecutar el siguiente comando.
 ```
 $ php artisan breeze:install
 ```
-4. Seguidamente escribir escoger la opción | `<React with Inertia ................................. react>`
+4. Seguidamente se debe escoger la opción | `<React with Inertia ................................. react>` 
 
 ```
  ❯ react
 ```
-5. Escoger la opción |`<Dark>`
+5. Seguidamente la opción |`<Dark>`
 ```
  ❯ Dark
 ```
@@ -229,44 +229,55 @@ $ php artisan breeze:install
 ```
  ❯ 1
 ```
-7. Ya estando en los últimos pasos ejecutar el siguiente comando
+7. Ya estando en los últimos pasos ejecutar el siguiente comando.
 ```
 $ npm install
 ```
 
-8. Y por último levantar el servicor de React
+8. Y por último levantar el servidor de React ingresando el siguiente comando.
 ```
 $ npm run dev
 ```
-Verficar si muestra la siguiente imagen
 
----
+<<<<<<< HEAD
 
-
+## Colaboradores del Proyecto
+=======
 ## Colaboradores del proyecto
+>>>>>>> 04fdab185d88cf7a6fe2ff80be574155bd413b79
 
 ### Analistas
-* Sharol Rojas 
-* Esteysi Guzman
-* Alcira Luque
-* Sara Herbas 
-* Jahaziel Arce 
+* Esteysi Arleth Guzman Sejas
+* Lorena Alcira Luque Monje
+* Sharol Melany Rojas Ramos
+* Sara Michelle Zurita Herbas
+* Josias Jahaziel Arce Morales
+  
 ### Desarrolladores 
-* Cristian Barrios 
-* Americo Alvarez 
-* Maide Mamani 
-* Marisol Herrera 
-* Bernardo Gutierrez
-* Alexander Flores 
-* Adrian Gomez 
-* Jhojan Coro
-* Angel Tibubay
-* Brian Cazorla
+* Cristian Reynaldo Barrios Flores
+* Bryan Cazorla Viscarra
+* Erick Angel Tibubay Quecaña
+* Jhojan Bruno Coro Torrico
+* Alexander Felix Flores Perez
+* Adrian Jesus Gomez Catacora
+* Bernardo Uriel Gutierrez Coca
+* Marisol Herrera Mamani
+* Maide Melania Mamani Arellano
+* Americo Julio Alvarez Tellez
+  
 ### Pruebas QUA
+<<<<<<< HEAD
+* Carlos Manuel Fuentes Arevalo
+* Alan Justin Colque Villanueva
+* Kevin Vicente Poma
+* Kevin Castellon Mamani
+* Deanira Lim Chambi
+
+
+=======
 * Manuel Arevalo 
 * Alan Colque 
 * Kevin Vicente 
 * Kevin Castellon
 * Deanira Chambi 
-
-
+>>>>>>> 04fdab185d88cf7a6fe2ff80be574155bd413b79

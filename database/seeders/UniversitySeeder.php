@@ -16,25 +16,25 @@ class UniversitySeeder extends Seeder
         $university1 = new University;
         $university1->name = "UCATEC";
         $university1->phone = "63919683";
-        $university1->address = "Cala Cala";
+        $university1->address = "Av. Cala Cala";
         $university1->save();
 
         $university2 = new University;
         $university2->name = "UNIVALLE";
         $university2->phone = "77788878";
-        $university2->address = "América";
+        $university2->address = "Av. América";
         $university2->save();
 
         $university3 = new University;
         $university3->name = "UNIFRANZ";
         $university3->phone = "74787546";
-        $university3->address = "América entre Santa Cruz";
+        $university3->address = "Av. América entre Santa Cruz";
         $university3->save();
 
         $university4 = new University;
         $university4->name = "San Simon";
         $university4->phone = "75414521";
-        $university4->address = "Quintanilla";
+        $university4->address = "Av. Quintanilla";
         $university4->save();
 
         $university5 = new University;

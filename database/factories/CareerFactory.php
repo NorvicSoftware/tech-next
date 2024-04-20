@@ -2,26 +2,23 @@
 
 namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Career;
+use App\Models\University;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Career>
  */
 class CareerFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+
     public function definition(): array
     {
+        $jobTitle = $this->faker->jobTitle();
+
         return [
-
-            'name' => $this->faker->words(3, true),
-            'phone' => $this->faker->unique()->regexify('[0-9]{1,10}'),
-            'university_id' => $this->faker->randomElement([1, 2, 3, 4, 5]),
-
+            'name' => Str::limit($jobTitle, 50),
+            'phone' => $this->faker->numberBetween(65000000, 75000000),
+            'university_id' => University::all()->random()->id,
         ];
     }
 }
