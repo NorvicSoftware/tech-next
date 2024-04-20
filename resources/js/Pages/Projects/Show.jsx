@@ -1,7 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import NavLink from "@/Components/NavLink";
 
-const Show = ({ auth, project, props }) => {
+const Show = ({ auth, project }) => {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -14,35 +14,35 @@ const Show = ({ auth, project, props }) => {
             <div className="max-w-3xl mx-auto p-6 grid justify-center my-5 border-4 rounded-xl">
                 <div className="space-y-4 text-center text-2xl">
                     <p className="text-white font-bold">
-                        {project.person ? project.person.first_name : "N/A"}{" "}
+                        {project.person ? project.person.first_name : "N/A"}
                         <h />
                         {project.person ? project.person.last_name : "N/A"}
                     </p>
 
                     <p className="text-white">
-                        <span className="text-gray-600">Carrera:</span>{" "}
+                        <span className="text-gray-600">Carrera:</span>
                         {project.career ? project.career.name : "N/A"}
                     </p>
 
                     <p className="text-white">
                         <span className="text-gray-600">
                             Titulo del Proyecto:
-                        </span>{" "}
+                        </span>
                         {project.title}
                     </p>
 
                     <p className="text-white">
-                        <span className="text-gray-600"> Docente/Tutor:</span>{" "}
+                        <span className="text-gray-600"> Docente/Tutor:</span>
                         {project.manager}
                     </p>
 
                     <p className="text-white">
-                        <span className="text-gray-600"> Calificación:</span>{" "}
+                        <span className="text-gray-600"> Calificación:</span>
                         {project.qualification}
                     </p>
 
                     <p className="text-white">
-                        <span className="text-gray-600"> Año:</span>{" "}
+                        <span className="text-gray-600"> Año:</span>
                         {project.year}
                     </p>
                 </div>
@@ -60,4 +60,4 @@ const Show = ({ auth, project, props }) => {
     );
 };
 
-export default Show;
+export default Show;
