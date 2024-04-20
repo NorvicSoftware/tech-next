@@ -1,12 +1,10 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import React, { useState } from "react";
-import { useForm, usePage } from "@inertiajs/react";
-import NavLink from "@/Components/NavLink";
+import { useForm, usePage, Head } from "@inertiajs/react";
 import InputLabel from "@/Components/InputLabel";
 import TextInput from "@/Components/TextInput";
-import Button from "@/Components/Button";
 import PrimaryButton from "@/Components/PrimaryButton";
-import DangerButton from "@/Components/DangerButton";
+import LinkButton from "@/Components/LinkButton";
 
 const Form = ({ auth, career, universities }) => {
     const { id } = usePage().props;
@@ -39,6 +37,7 @@ const Form = ({ auth, career, universities }) => {
                 </h2>
             }
         >
+            <Head title={textHeader} />
             <form
                 onSubmit={handleSubmit}
                 className=" space-y-4 grid justify-center my-4"
@@ -96,7 +95,9 @@ const Form = ({ auth, career, universities }) => {
                             ))}
                         </select>
                         {errors.university_id && (
-                            <span className="text-red-500">{errors.university_id}</span>
+                            <span className="text-red-500">
+                                {errors.university_id}
+                            </span>
                         )}
                     </div>
                 </div>
@@ -109,13 +110,11 @@ const Form = ({ auth, career, universities }) => {
                     >
                         {textHeader}
                     </PrimaryButton>
-                    <Button
+                    <LinkButton
+                        name="Cancelar"
                         className="dark:bg-red-600 dark:text-white bg-blue-600 dark:hover:text-black"
-                        href={route("careers.index")}
-                        active={route().current("careers.index")}
-                    >
-                        Cancelar
-                    </Button>
+                        url="/careers"
+                    />
                 </div>
             </form>
         </AuthenticatedLayout>

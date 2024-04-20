@@ -2,7 +2,8 @@ import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { usePage } from "@inertiajs/react";
 import NavLink from "@/Components/NavLink";
-import Button from "@/Components/Button";
+import { Head } from "@inertiajs/react";
+import LinkButton from "@/Components/LinkButton";
 
 export default function Index({ auth }) {
     const { careers } = usePage().props;
@@ -14,18 +15,17 @@ export default function Index({ auth }) {
                     <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                         Carreras
                     </h2>
-                    <div className="text-left">
-                        <Button
-                            className="hover:bg-cyan-400"
-                            href={route("careers.create")}
-                            active={route().current("careers.create")}
-                        >
-                            Añadir nueva carrera
-                        </Button>
+                    <div>
+                        <LinkButton
+                            name="Añadir nueva Carrera"
+                            url="careers/create"
+                            className=""
+                        />
                     </div>
                 </div>
             }
         >
+            <Head title="Carreras" />
             <main className="overflow-x-auto bg-gray-800">
                 <div className="grid grid-cols-4 text-gray-200 text-center p-4  bg-gray-900 mx-4 rounded-t-lg">
                     <h2>Carrera</h2>
