@@ -1,6 +1,20 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { usePage } from "@inertiajs/react";
+import { Link } from '@inertiajs/react';
+
+function ImportButton() {
+    return (
+        <Link
+            href="/import/excel" // Esta es la URL de la ruta en Laravel
+            as="button" // Renderizar como un botón
+            type="button" // Tipo de botón
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+            Import Projects
+        </Link>
+    );
+}
 
 export default function Index({ importProjectsRoute, auth }) {
     const { errors } = usePage().props;
@@ -27,6 +41,7 @@ export default function Index({ importProjectsRoute, auth }) {
             })
             .catch((error) => {
                 console.error("Error:", error);
+                alert('Se produjo un error al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.');
             });
     };
 
@@ -34,7 +49,7 @@ export default function Index({ importProjectsRoute, auth }) {
         setSelectedFile(e.target.files[0]);
         setFileError(null);
     };
-
+    
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -44,47 +59,7 @@ export default function Index({ importProjectsRoute, auth }) {
                 </h2>
             }
         >
-            <div className="flex flex-col bg-gray-800 m-auto justify-center items-center w-[50%] rounded-md mt-10 text-gray-200">
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
-                    <div className="mb-4 flex flex-col gap-8">
-                        <label
-                            htmlFor="file"
-                            className="block text-lg font-medium text-gray-200 mt-4"
-                        >
-                            Elija el archivo para importar proyectos:
-                        </label>
-                        <input
-                            type="file"
-                            name="file"
-                            id="file"
-                            className="mt-1 block w-full"
-                            onChange={handleFileChange}
-                        />
-                        {fileError && (
-                            <p className="text-red-500 text-sm mt-1">
-                                {fileError}
-                            </p>
-                        )}
-                        <div className="flex justify-center">
-                            <button
-                                type="submit"
-                                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            >
-                                Import Projects
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                {errors && (
-                    <div className="mt-4 text-sm text-red-600">
-                        <ul>
-                            {Object.values(errors).map((error, index) => (
-                                <li key={index}>{error}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-            </div>
+            <ImportButton />
         </AuthenticatedLayout>
     );
 }
