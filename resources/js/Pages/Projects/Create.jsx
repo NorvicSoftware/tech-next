@@ -4,7 +4,7 @@ import { useForm } from "@inertiajs/react";
 
 const Create = ({ auth, persons, careers }) => {
     const { data, setData, post, errors, reset } = useForm({
-        title_project: "",
+        title: "",
         note: "",
         year: "",
         manager: "",

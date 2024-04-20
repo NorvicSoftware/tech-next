@@ -2,7 +2,7 @@ import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { usePage } from "@inertiajs/react";
 
-const Index = ({ importProjectsRoute, auth }) => {
+export default function Index({ importProjectsRoute, auth }) {
     const { errors } = usePage().props;
     const [selectedFile, setSelectedFile] = React.useState(null);
     const [fileError, setFileError] = React.useState(null);
@@ -36,16 +36,20 @@ const Index = ({ importProjectsRoute, auth }) => {
     };
 
     return (
-        <AuthenticatedLayout user={auth} Header="Import Projects">
-            <h2 className="mx-10 py-4 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                Importar Proyectos
-            </h2>
-            <div className="flex flex-col bg-gray-300 m-auto justify-center items-center w-[50%] rounded-md">
+        <AuthenticatedLayout
+            user={auth.user}
+            header={
+                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    Proyectos
+                </h2>
+            }
+        >
+            <div className="flex flex-col bg-gray-800 m-auto justify-center items-center w-[50%] rounded-md mt-10 text-gray-200">
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <div className="mb-4 flex flex-col gap-8">
                         <label
                             htmlFor="file"
-                            className="block text-lg font-medium text-gray-800 mt-4"
+                            className="block text-lg font-medium text-gray-200 mt-4"
                         >
                             Elija el archivo para importar proyectos:
                         </label>
@@ -83,6 +87,4 @@ const Index = ({ importProjectsRoute, auth }) => {
             </div>
         </AuthenticatedLayout>
     );
-};
-
-export default Index;
+}
