@@ -4,15 +4,13 @@ import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
-
-export default function Authenticated({ user, header, children, a }) {
+export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
-
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
             <nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-                <div className="max-w-7xl mx-auto px-4 py-0 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
@@ -64,7 +62,10 @@ export default function Authenticated({ user, header, children, a }) {
                                 </NavLink>
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink href={route('careers.index')} active={route().current('careers.index')}>
+                                <NavLink
+                                    href={route("careers.index")}
+                                    active={route().current("careers.index")}
+                                >
                                     Carreras
                                 </NavLink>
                             </div>
@@ -80,7 +81,6 @@ export default function Authenticated({ user, header, children, a }) {
                                                 className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
                                             >
                                                 {user.name}
-
                                                 <svg
                                                     className="ms-2 -me-0.5 h-4 w-4"
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -96,25 +96,23 @@ export default function Authenticated({ user, header, children, a }) {
                                             </button>
                                         </span>
                                     </Dropdown.Trigger>
-
                                     <Dropdown.Content>
                                         <Dropdown.Link
                                             href={route("profile.edit")}
                                         >
-                                            Perfil
+                                            Profile
                                         </Dropdown.Link>
                                         <Dropdown.Link
                                             href={route("logout")}
                                             method="post"
                                             as="button"
                                         >
-                                            Cerrar Sesión
+                                            Log Out
                                         </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>
                             </div>
                         </div>
-
                         <div className="-me-2 flex items-center sm:hidden">
                             <button
                                 onClick={() =>
@@ -157,7 +155,6 @@ export default function Authenticated({ user, header, children, a }) {
                         </div>
                     </div>
                 </div>
-
                 <div
                     className={
                         (showingNavigationDropdown ? "block" : "hidden") +
@@ -172,7 +169,6 @@ export default function Authenticated({ user, header, children, a }) {
                             Dashboard
                         </ResponsiveNavLink>
                     </div>
-
                     <div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                         <div className="px-4">
                             <div className="font-medium text-base text-gray-800 dark:text-gray-200">
@@ -182,7 +178,6 @@ export default function Authenticated({ user, header, children, a }) {
                                 {user.email}
                             </div>
                         </div>
-
                         <div className="mt-3 space-y-1">
                             <ResponsiveNavLink href={route("profile.edit")}>
                                 Profile
@@ -198,27 +193,13 @@ export default function Authenticated({ user, header, children, a }) {
                     </div>
                 </div>
             </nav>
-
-            <div className=" dark:bg-gray-800">
-                <div className="flex justify-between mx-10 shadow">
-                    {header && (
-                        <header className="bg-white dark:bg-gray-800 shadow">
-                            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                                {header}
-                            </div>
-                        </header>
-                    )}
-
-                    {a && (
-                        <a className="bg-white dark:bg-gray-800 shadow">
-                            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                                {a}
-                            </div>
-                        </a>
-                    )}
-                </div>
-            </div>
-
+            {header && (
+                <header className="bg-white dark:bg-gray-800 shadow">
+                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {header}
+                    </div>
+                </header>
+            )}
             <main>{children}</main>
         </div>
     );
