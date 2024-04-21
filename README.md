@@ -1,6 +1,6 @@
 # SOFTWARE TECH-NEXT
 
-<center><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Logo.png" alt="centered image"></center>
+<center><img src="/public/images/Logo.png" alt="centered image"></center>
 
 ## Objetivo
 Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de las diferentes universidades de último semestre una variedad de ideas personalizadas para proyectos de grado, basadas en sus intereses académicos, tendencias del mercado y necesidades sociales, facilitando así la selección de un tema viable y relevante para su proyecto final.
@@ -9,9 +9,9 @@ Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de l
 
 ### Funcionalidad Usuario
 
-* Realizar busqueda del proyecto de grado
+* Realizar busqueda del proyecto de grado.
 * Selección de proyectos por medio de carreras.
-* Selecionar y visualizar proyecto 
+* Selecionar y visualizar proyecto.
 * Reaccionar al proyecto.
 * Solicitar el proyecto.
 
@@ -27,14 +27,14 @@ Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de l
 ## Diseño del Sistema
 ### Mockups: Dispositivo Movil
 
-<p align="center"><a target="_blank"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Opcion_carreras.png"></a></p>
+<p align="center"><a target="_blank"><img src="/public/images/Carreras.png"></a></p>
 
 ---
 > El sistema presentará una serie de botones diferenciados por carreras universitarias.
 > 
 > El usuario al ingresar al sistema podrá seleccionar una carrera en específico, esto permitirá al sistema enfocar la búsqueda y ofrecer resultados más relevantes y precisos en cuanto al área de interés del usuario brindando una experiencia más personalizada y eficiente.
 ---
-<p align="center"><a target="_blank"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Lista_proyectos.png"></a></p>
+<p align="center"><a target="_blank"><img src="/public/images/Lista.png"></a></p>
 
 ---
 >El sistema tendrá una función de búsqueda que permitirá al usuario encontrar fácilmente los proyectos específicos que necesita. Además, ofrecerá un modo oscuro para una mejor experiencia visual, especialmente en condiciones de poca luz o para usuarios que prefieren una interfaz más tenue.
@@ -42,9 +42,13 @@ Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de l
 >A medida que el usuario realiza la búsqueda, el sistema mostrará la información del contenido utilizando un formato de lista de manera ordenada y concisa, facilitando la búsqueda y comparación de proyectos, permitiendo al usuario navegar de forma rápida y eficiente ajustandose a sus necesidades.
 
 ---
-<p align="center"><img src="https://github.com/NorvicSoftware/tech-next/blob/main/public/images/Descripcion_proyecto.png" alt="centered image" height="680" width="356"> </p>
+<p> <img align="left"  src="/public/images/Projectos_1ro.png" alt="centered image" height="680" width="356"> 
+
+<img align="rigth" src="/public/images/Projectos_2do.png" alt="centered image" height="680" width="356"> </p>
+<p></p>
 
 ---
+<p></p>
 > El usuario podrá acceder a una descripción detallada del proyecto incluyendo el autor, carrera, año de realización, entre otros. No obstante, el usuario tendrá la posibilidad de interactuar con el contenido mediante tres reacciones específicas, lo cual ayudará a otros usuarios a tener una mejor idea del contenido.
 
 ---
@@ -65,24 +69,12 @@ Es una herramienta fundamental para el desarrollo de software, ya que permite vi
   * [Diagr. Administrador](https://i.ibb.co/Cz5D0Pm/D-Secuencia-Administrador.jpg "Link")
   * [Diagr. Usuario](https://i.ibb.co/T0n1txR/D-Secuencia-Usuario.jpg "Link")
 
-<<<<<<< HEAD
 * Diagrama de Actividad
   * [Diagr. Administrador](https://i.ibb.co/8zs90Wp/D-Actividades-Administrador.jpg "Link")
   * [Diagr. Estudiante](https://i.ibb.co/vzXLNGv/D-Actividades-Estudiante.jpg "Link")
   
 * Diagrama de Estado
   * [Diagr. Estado](https://i.ibb.co/HtTJVmR/D-Estado.jpg "Link")
-=======
-* Diagrama de actividad
-  * [Diagr. Administrador](https://i.ibb.co/8zs90Wp/D-Actividades-Administrador.jpg "Link")
-  * [Diagr. Estudiante](https://i.ibb.co/vzXLNGv/D-Actividades-Estudiante.jpg "Link")
-  
-* Diagrama de estado
-  * [Diagr. Estado](https://i.ibb.co/HtTJVmR/D-Estado.jpg "Link")
-  
-* Diagrama de despliegue
-  * [Diagr. Despliegue](https://i.ibb.co/g30Sv78/D-Despliegue.jpg "Link")
->>>>>>> 04fdab185d88cf7a6fe2ff80be574155bd413b79
   
 * Diagrama de Despliegue
   * [Diagr. Despliegue](https://i.ibb.co/g30Sv78/D-Despliegue.jpg "Link")
@@ -239,12 +231,8 @@ $ npm install
 $ npm run dev
 ```
 
-<<<<<<< HEAD
 
 ## Colaboradores del Proyecto
-=======
-## Colaboradores del proyecto
->>>>>>> 04fdab185d88cf7a6fe2ff80be574155bd413b79
 
 ### Analistas
 * Esteysi Arleth Guzman Sejas
@@ -266,7 +254,6 @@ $ npm run dev
 * Americo Julio Alvarez Tellez
   
 ### Pruebas QUA
-<<<<<<< HEAD
 * Carlos Manuel Fuentes Arevalo
 * Alan Justin Colque Villanueva
 * Kevin Vicente Poma
@@ -274,10 +261,3 @@ $ npm run dev
 * Deanira Lim Chambi
 
 
-=======
-* Manuel Arevalo 
-* Alan Colque 
-* Kevin Vicente 
-* Kevin Castellon
-* Deanira Chambi 
->>>>>>> 04fdab185d88cf7a6fe2ff80be574155bd413b79
