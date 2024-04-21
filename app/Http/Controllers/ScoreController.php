@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Score;
 use App\Models\Project;
-use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ScoreController extends Controller
 {
@@ -14,8 +14,10 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        // Obtiene todas las puntuaciones y carga el proyecto relacionado
+        // Obtener todas las puntuaciones con los proyectos relacionados
         $scores = Score::with('project')->get();
+
+        // Retornar la vista index con las puntuaciones
         return Inertia::render('Scores/Index', ['scores' => $scores]);
     }
 
@@ -24,8 +26,9 @@ class ScoreController extends Controller
      */
     public function create()
     {
-        // Obtiene todos los proyectos para mostrar en el formulario de creación de puntuación
+        // Obtener todos los proyectos para mostrar en el formulario de creación
         $projects = Project::all();
+
         return Inertia::render('Scores/Create', ['projects' => $projects]);
     }
 
@@ -34,61 +37,45 @@ class ScoreController extends Controller
      */
     public function store(Request $request)
     {
-        // Validar los datos de la solicitud
         $validatedData = $request->validate([
             'reaction' => 'required|in:good,indifferent,bad',
             'project_id' => 'required|exists:projects,id',
         ]);
-
-        // Crear una nueva puntuación
+    
         Score::create($validatedData);
-
-        // Redirigir con un mensaje de éxito
+    
         return redirect()->route('scores.index')->with('success', 'Puntuación creada exitosamente.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        // Encuentra la puntuación por ID y carga el proyecto relacionado
-        $score = Score::findOrFail($id)->load('project');
-        return Inertia::render('Scores/Show', ['score' => $score]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        // Encuentra la puntuación por ID
+        // Obtener la puntuación por su ID
         $score = Score::findOrFail($id);
         
-        // Obtiene todos los proyectos para mostrar en el formulario de edición de puntuación
+        // Obtener todos los proyectos para mostrar en el formulario de edición
         $projects = Project::all();
 
-        return Inertia::render('Scores/Edit', ['score' => $score, 'projects' => $projects]);
+        return Inertia::render('Scores/Form', ['score' => $score, 'projects' => $projects]);
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        // Encuentra la puntuación por ID
         $score = Score::findOrFail($id);
-
-        // Validar los datos de la solicitud
+    
         $validatedData = $request->validate([
             'reaction' => 'required|in:good,indifferent,bad',
             'project_id' => 'required|exists:projects,id',
         ]);
-
-        // Actualiza la puntuación con los datos validados
+    
         $score->update($validatedData);
-
-        // Redirigir con un mensaje de éxito
+    
         return redirect()->route('scores.index')->with('success', 'Puntuación actualizada exitosamente.');
     }
 
@@ -97,10 +84,12 @@ class ScoreController extends Controller
      */
     public function destroy($id)
     {
+        // Obtener la puntuación por su ID y eliminarla
         $score = Score::findOrFail($id);
         $score->delete();
-    
+
+        // Redirigir a la vista index con un mensaje de éxito
         return redirect()->route('scores.index')->with('success', 'Puntuación eliminada con éxito.');
     }
-    
+
 }

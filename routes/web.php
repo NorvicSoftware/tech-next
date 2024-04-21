@@ -37,34 +37,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/persons/{id}', [PersonsController::class, 'destroy'])->name('persons.destroy');
 
 
+    Route::get('/scores', [ScoreController::class, 'index'])->name('scores.index');
+    Route::get('/scores/create', [ScoreController::class, 'create'])->name('scores.create');
+    Route::post('/scores', [ScoreController::class, 'store'])->name('scores.store');
+    Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
+    Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
+    Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
+    
 
-    // Define rutas para ScoreController
-    Route::prefix('scores')->group(function() {
-        // Ruta para listar todas las puntuaciones
-        Route::get('/', [ScoreController::class, 'index'])->name('scores.index');
-    
-        // Ruta para mostrar el formulario de creación de una nueva puntuación
-        Route::get('/create', [ScoreController::class, 'create'])->name('scores.create');
-    
-        // Ruta para almacenar una nueva puntuación
-        Route::post('/', [ScoreController::class, 'store'])->name('scores.store');
-    
-        // Ruta para almacenar múltiples puntuaciones
-        Route::post('/multiple', [ScoreController::class, 'storeMultiple'])->name('scores.storeMultiple');
-    
-        // Ruta para mostrar una puntuación específica por ID
-        Route::get('/{id}', [ScoreController::class, 'show'])->name('scores.show');
-    
-        // Ruta para mostrar el formulario de edición de una puntuación específica
-        Route::get('/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
-    
-        // Ruta para actualizar una puntuación específica
-        Route::put('/{id}', [ScoreController::class, 'update'])->name('scores.update');
-    
-        // Ruta para eliminar una puntuación específica
-        Route::delete('/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
-    });
-    
+
+
+
+
+
 
 
 
