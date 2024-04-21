@@ -42,13 +42,13 @@ Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de l
 >A medida que el usuario realiza la búsqueda, el sistema mostrará la información del contenido utilizando un formato de lista de manera ordenada y concisa, facilitando la búsqueda y comparación de proyectos, permitiendo al usuario navegar de forma rápida y eficiente ajustandose a sus necesidades.
 
 ---
-<p> <img align="left"  src="/public/images/Projectos_1ro.png" alt="centered image" height="680" width="356"> 
-
-<img align="rigth" src="/public/images/Projectos_2do.png" alt="centered image" height="680" width="356"> </p>
-<p></p>
+<p align="center"><a target="_blank""><img class="centered-image " src="/public/images/Projectos_1ro.png"></a>
+    <span> </span>
+<a target="_blank"><img class="centered-image" src="/public/images/Projectos_2do.png"></a>
+</p>
 
 ---
-<p></p>
+
 > El usuario podrá acceder a una descripción detallada del proyecto incluyendo el autor, carrera, año de realización, entre otros. No obstante, el usuario tendrá la posibilidad de interactuar con el contenido mediante tres reacciones específicas, lo cual ayudará a otros usuarios a tener una mejor idea del contenido.
 
 ---
