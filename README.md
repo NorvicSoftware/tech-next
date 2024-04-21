@@ -65,12 +65,24 @@ Es una herramienta fundamental para el desarrollo de software, ya que permite vi
   * [Diagr. Administrador](https://i.ibb.co/Cz5D0Pm/D-Secuencia-Administrador.jpg "Link")
   * [Diagr. Usuario](https://i.ibb.co/T0n1txR/D-Secuencia-Usuario.jpg "Link")
 
+<<<<<<< HEAD
 * Diagrama de Actividad
   * [Diagr. Administrador](https://i.ibb.co/8zs90Wp/D-Actividades-Administrador.jpg "Link")
   * [Diagr. Estudiante](https://i.ibb.co/vzXLNGv/D-Actividades-Estudiante.jpg "Link")
   
 * Diagrama de Estado
   * [Diagr. Estado](https://i.ibb.co/HtTJVmR/D-Estado.jpg "Link")
+=======
+* Diagrama de actividad
+  * [Diagr. Administrador](https://i.ibb.co/8zs90Wp/D-Actividades-Administrador.jpg "Link")
+  * [Diagr. Estudiante](https://i.ibb.co/vzXLNGv/D-Actividades-Estudiante.jpg "Link")
+  
+* Diagrama de Estado
+  * [Diagr. Estado](https://i.ibb.co/HtTJVmR/D-Estado.jpg "Link")
+  
+* Diagrama de despliegue
+  * [Diagr. Despliegue](https://i.ibb.co/g30Sv78/D-Despliegue.jpg "Link")
+>>>>>>> 04fdab185d88cf7a6fe2ff80be574155bd413b79
   
 * Diagrama de Despliegue
   * [Diagr. Despliegue](https://i.ibb.co/g30Sv78/D-Despliegue.jpg "Link")
@@ -227,8 +239,12 @@ $ npm install
 $ npm run dev
 ```
 
+<<<<<<< HEAD
 
 ## Colaboradores del Proyecto
+=======
+## Colaboradores del proyecto
+>>>>>>> 04fdab185d88cf7a6fe2ff80be574155bd413b79
 
 ### Analistas
 * Esteysi Arleth Guzman Sejas
@@ -250,6 +266,7 @@ $ npm run dev
 * Americo Julio Alvarez Tellez
   
 ### Pruebas QUA
+<<<<<<< HEAD
 * Carlos Manuel Fuentes Arevalo
 * Alan Justin Colque Villanueva
 * Kevin Vicente Poma
@@ -257,3 +274,10 @@ $ npm run dev
 * Deanira Lim Chambi
 
 
+=======
+* Manuel Arevalo 
+* Alan Colque 
+* Kevin Vicente 
+* Kevin Castellon
+* Deanira Chambi 
+>>>>>>> 04fdab185d88cf7a6fe2ff80be574155bd413b79

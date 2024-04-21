@@ -13,9 +13,15 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 250);
+			$table->string('title', 150);
+            $table->integer('qualification');
             $table->string('year', 4);
+            $table->string('manager', 150);
+            $table->unsignedBigInteger('person_id');
+            $table->unsignedBigInteger('career_id');
             $table->timestamps();
+            $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade');
+            $table->foreign('career_id')->references('id')->on('careers')->onDelete('cascade');
         });
     }
 
