@@ -11,7 +11,6 @@ use Inertia\Inertia;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
 
-
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -46,15 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
     Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
 
-    //Careeer Controller 
-    Route::get('/careers', [CareerController::class, 'index'])->name('careers.index');
-    Route::get('/careers/create', [CareerController::class, 'create'])->name('careers.create');
-    Route::post('/careers', [CareerController::class, 'store'])->name('careers.store');
-    Route::get('/careers/{id}', [CareerController::class, 'show'])->name('careers.show');
-    Route::get('/careers/{id}/edit', [CareerController::class, 'edit'])->name('careers.edit');
-    Route::put('/careers/{id}', [CareerController::class, 'update'])->name('careers.update');
-    Route::delete('/careers/{id}', [CareerController::class, 'destroy'])->name('careers.destroy');
-    
     //Projects Controller
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
@@ -72,6 +62,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/universities/{id}/edit', [UniversityController::class, 'edit'])->name('universities.edit');
     Route::put('/universities/{id}', [UniversityController::class, 'update'])->name('universities.update');
     Route::delete('/universities/{id}', [UniversityController::class, 'destroy'])->name('universities.destroy');
+
+    //Careeer Controller 
+    Route::get('/careers', [CareerController::class, 'index'])->name('careers.index');
+    Route::get('/careers/create', [CareerController::class, 'create'])->name('careers.create');
+    Route::post('/careers', [CareerController::class, 'store'])->name('careers.store');
+    Route::get('/careers/{id}', [CareerController::class, 'show'])->name('careers.show');
+    Route::get('/careers/{id}/edit', [CareerController::class, 'edit'])->name('careers.edit');
+    Route::put('/careers/{id}', [CareerController::class, 'update'])->name('careers.update');
+    Route::delete('/careers/{id}', [CareerController::class, 'destroy'])->name('careers.destroy');
 
     //ImportController
     Route::get('/import', [ImportController::class, 'index'])->name('imports.index');

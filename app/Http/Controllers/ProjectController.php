@@ -87,12 +87,17 @@ class ProjectController extends Controller
     public function show(string $id)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         $project = Project::findOrFail($id); // Encuentra el proyecto por su ID
         return Inertia::render('Projects/Show', ['project' => $project]); // Renderiza la vista del proyecto
 =======
         $project = Project::findOrFail($id); 
         return Inertia::render('projects.show', ['project' => $project]); 
 >>>>>>> 77dc8ef904c6938a3d43f0a7badb93c553897f97
+=======
+        $project = Project::with('person', 'career')->findOrFail($id); 
+        return Inertia::render('Projects/Show', ['project' => $project]); 
+>>>>>>> abbd73297bde7cca27dd05b8f4e6575b14d6aec5
     }
 
     /**
