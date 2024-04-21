@@ -15,14 +15,14 @@ const Form = ({ auth }) => {
         address: university ? university.address : "",
     });
 
-    const textHeader = id == 0 ? "Crear Universidad" : "Editar Universidad";
+    const textHeader = id === 0 ? "Crear Universidad" : "Editar Universidad";
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (id === 0) {
             post(route("universities.store"));
         } else {
-            put(route("universities.update", university.id)); // Corregir la ruta y añadir university.id
+            put(route("universities.update", university.id)); 
         }
     };
 
@@ -75,7 +75,7 @@ const Form = ({ auth }) => {
                 <div className="flex justify-between">
                     <PrimaryButton
                         type="submit"
-                        disable={false}
+                        disabled={false}
                         className="dark:bg-blue-600 dark dark:text-white bg-blue-600 dark:hover:text-black"
                     >
                         {textHeader}
