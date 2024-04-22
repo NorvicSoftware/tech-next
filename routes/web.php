@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
+//use App\Http\Controllers\ReportController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -78,6 +79,7 @@ Route::middleware('auth')->group(function () {
     //Project Controller
     Route::get('/projects/generate-report', [ProjectController::class, 'generateReport'])->name('projects.generate-report');
     
+    //Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
 });
 
 

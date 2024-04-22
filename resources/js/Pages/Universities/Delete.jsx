@@ -1,18 +1,9 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { usePage } from "@inertiajs/react";
 import { useForm } from "@inertiajs/react";
 import { InertiaLink, Head } from "@inertiajs/inertia-react";
 
 const Delete = ({ auth, university }) => {
-    const {
-        data,
-        setData,
-        delete: destroy,
-        errors,
-        reset,
-    } = useForm({
-        _method: "delete",
-    });
+    const { delete: destroy } = useForm();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,7 +32,7 @@ const Delete = ({ auth, university }) => {
                             type="submit"
                             className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
                         >
-                            Delete
+                            Eliminar
                         </button>
                         <InertiaLink
                             href={route("universities.index")}
