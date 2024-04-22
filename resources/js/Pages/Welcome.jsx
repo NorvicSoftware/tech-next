@@ -19,11 +19,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
             <Head title="Welcome" />
             <Career />
 
-
-                <footer class="text-gray-600 text-center mt-8">
-                    <p>&copy; 2024 TechNex</p>
-                </footer>
-          
         </>
     );
 }
