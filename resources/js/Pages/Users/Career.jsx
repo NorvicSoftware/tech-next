@@ -3,7 +3,7 @@ import Header from "@/Components/Common/Header";
 
 const Career = () => {
     return (
-        <div className="bg-gray-900 text-white">
+        <div className="bg-gray-900 text-white min-h-screen">
             <Header />
             <div className="flex flex-col items-center mt-6">
                 <h1 className="text-4xl font-bold mb-2">TechNext</h1>
@@ -15,7 +15,7 @@ const Career = () => {
                 <div className="container mx-auto h-auto px-7 sm:p-16 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-14">
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                         <img
-                            src="/images/programmer.png"
+                            src="/images/Careers/programmer.png"
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
@@ -26,7 +26,7 @@ const Career = () => {
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                         <img
-                            src="/images/reporter.png"
+                            src="/images/Careers/reporter.png"
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
@@ -37,7 +37,7 @@ const Career = () => {
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                         <img
-                            src="/images/trade.png"
+                            src="/images/Careers/trade.png"
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
@@ -48,7 +48,7 @@ const Career = () => {
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                         <img
-                            src="/images/marketing.png"
+                            src="/images/Careers/marketing.png"
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
@@ -59,7 +59,7 @@ const Career = () => {
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                         <img
-                            src="/images/designer.png"
+                            src="/images/Careers/designer.png"
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
@@ -70,7 +70,7 @@ const Career = () => {
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                         <img
-                            src="/images/trade.png"
+                            src="/images/Careers/businessman.png"
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
@@ -81,7 +81,7 @@ const Career = () => {
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                         <img
-                            src="/images/robot.png"
+                            src="/images/Careers/robot.png"
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
@@ -92,7 +92,7 @@ const Career = () => {
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                         <img
-                            src="/images/travel.png"
+                            src="/images/Careers/travel.png"
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
@@ -100,6 +100,8 @@ const Career = () => {
                             Turismo
                         </h2>
                     </a>
+
+                    
                 </div>
             </div>
             <footer className="text-gray-600 text-center mt-8">
