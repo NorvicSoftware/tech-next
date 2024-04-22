@@ -1,7 +1,8 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import NavLink from "@/Components/NavLink";
 
-const Show = ({ auth, project }) => {
+const Show = ({ auth, project, image }) => {
+    console.log(image);
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -13,6 +14,14 @@ const Show = ({ auth, project }) => {
         >
             <div className="max-w-3xl mx-auto p-6 grid justify-center my-5 border-4 rounded-xl">
                 <div className="space-y-4 text-center text-2xl">
+                    {
+                        image === null ? (
+                            <img src="/img/anonymous.jpg" alt="" />
+                        ) : (
+                            <img src={`/storage/`+image} alt="" />
+                        )
+                    }
+                    {/* <img src="/storage/images/projects/project1.png" alt="" /> */}
                     <p className="text-white font-bold">
                         {project.person ? project.person.first_name : "N/A"}
                         <h />
@@ -26,7 +35,7 @@ const Show = ({ auth, project }) => {
 
                     <p className="text-white">
                         <span className="text-gray-600">
-                            Titulo del Proyecto:
+                            Titulo del Proyecto:asdasdasdas
                         </span>
                         {project.title}
                     </p>

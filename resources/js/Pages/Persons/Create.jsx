@@ -55,6 +55,21 @@ const Create = ({ auth }) => {
                             </span>
                         )}
                     </div>
+                    <div className="mb-3 xl:w-96">
+                        <label className="block mb-1 font-light text-white px-1 py-2">
+                            Imagen
+                        </label>
+                        <input
+                            type="file"
+                            className="w-full border rounded px-3 py-2"
+                            onChange={(e) =>
+                                setData("image", e.target.files[0])
+                            }
+                        />
+                        {errors.image && (
+                            <span className="text-red-500">{errors.image}</span>
+                        )}
+                    </div>
                     <div>
                         <button
                             type="submit"
@@ -67,6 +82,6 @@ const Create = ({ auth }) => {
             </div>
         </AuthenticatedLayout>
     );
-}
+};
 
 export default Create;

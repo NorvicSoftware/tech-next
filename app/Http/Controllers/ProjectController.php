@@ -8,6 +8,8 @@ use App\Models\Career;
 use Inertia\Inertia;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 class ProjectController extends Controller
 {
     /**
@@ -25,8 +27,7 @@ class ProjectController extends Controller
     public function create()
     {
         $persons = Person::all();
-        $careers = Career::all();
-        return Inertia::render('Projects/Create', ['persons' => $persons, 'careers' => $careers]);
+        return Inertia::render('Projects/Create', ['persons' => $persons]);
     }
 
     /**
@@ -34,16 +35,32 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'title' => 'required',
             'qualification' => 'required',
             'year' => 'required',
             'manager' => 'required',
             'person_id' => 'required',
             'career_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        Project::create($validatedData);
+        $project = Project::create([
+            'title' => $request->title,
+            'qualification' => $request->qualification,
+            'year' => $request->year,
+            'manager' => $request->manager,
+            'person_id' => $request->person_id,
+            'career_id' => $request->career_id,
+        ]);
+
+        $image = $request->file('image');
+        $imagePath = $image->store('images', 'public');
+
+        $imageName = $project->id . '_' . time() . '.' . $image->getClientOriginalExtension();
+        Storage::disk('public')->move($imagePath, 'images/' . $imageName);
+
+        $project->image()->create(['url' => 'storage/images/' . $imageName]);
 
         return redirect()->route('projects.index')->with('success', 'Proyecto creado exitosamente.');
     }
@@ -53,8 +70,12 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-        $project = Project::with('person', 'career')->findOrFail($id); 
-        return Inertia::render('Projects/Show', ['project' => $project]); 
+        $project = Project::with('person', 'career')->findOrFail($id);
+        $image = null;
+        if($project->image) {
+            $image = $project->image->url;
+        }
+        return Inertia::render('Projects/Show', ['project' => $project, 'image' => $image]); 
     }
 
     /**

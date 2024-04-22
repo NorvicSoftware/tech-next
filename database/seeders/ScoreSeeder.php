@@ -23,7 +23,7 @@ class ScoreSeeder extends Seeder
         $score2->project_id = 2;
         $score2->save();
 
-        $score3 = new Score;
+        /* $score3 = new Score;
         $score3->reaction = 'bad';
         $score3->project_id = 3;
         $score3->save();
@@ -36,6 +36,6 @@ class ScoreSeeder extends Seeder
         $score5 = new Score;
         $score5->reaction = 'indifferent';
         $score5->project_id = 5;
-        $score5->save();
+        $score5->save(); */
     }
 }
