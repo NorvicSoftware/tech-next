@@ -1,8 +1,11 @@
+import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { usePage } from "@inertiajs/react";
 import NavLink from "@/Components/NavLink";
+import { Head } from "@inertiajs/react";
+import LinkButton from "@/Components/LinkButton";
 
-const Index = ({ auth }) => {
+export default function Index ({ auth }) {
     const { scores } = usePage().props;
 
     const projectScores = scores.reduce((acc, score) => {
@@ -33,20 +36,21 @@ const Index = ({ auth }) => {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    Puntuaciones
-                </h2>
-            }
-            a={
-                <a
-                    href={route("scores.create")}
-                    active={route().current("scores.create")}
-                    className="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150"
-                >
-                    Calificar Proyecto
-                </a>
+                <div className="flex mx-10 items-center justify-between">
+                    <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                        Puntuaciones
+                    </h2>
+                    <div>
+                        <LinkButton
+                            name="Añadir Nueva Carrera"
+                            url="scores/create"
+                            className=""
+                        />
+                    </div>
+                </div>
             }
         >
+            <Head title="Puntuaciones" />
             <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead>
@@ -117,5 +121,3 @@ const Index = ({ auth }) => {
         </AuthenticatedLayout>
     );
 };
-
-export default Index;
