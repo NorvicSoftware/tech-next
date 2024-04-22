@@ -23,7 +23,7 @@ class ProjectFactory extends Factory
             'year' => $this->faker->numberBetween(2010, 2024),
             'manager' => $this->faker->name(),
             'person_id' => Person::all()->random()->id, 
-            'career_id' => Career::all()->random()->id, 
+            'career_id' => Career::all()->random()->id,
         ];
     }
 }
