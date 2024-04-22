@@ -45,7 +45,7 @@ export default function Index({ auth }) {
                                 {project.career ? project.career.name : "N/A"}
                             </div>
                             <div>{project.year}</div>
-                            <div className="flex flex-col flex-shrink-0 items-center justify-center gap-2">
+                            <div className="flex flex-shrink-0 items-center justify-center gap-2">
                                 <NavLink
                                     href={route("projects.show", project.id)}
                                     className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"

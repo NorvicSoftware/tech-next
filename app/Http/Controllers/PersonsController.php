@@ -39,7 +39,7 @@ class PersonsController extends Controller
         $request->validate([
             'first_name' => 'required|string|max:75',
             'last_name' => 'required|string|max:75',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $person = Person::create([
@@ -83,7 +83,7 @@ class PersonsController extends Controller
         return redirect()->route('persons.index')->with('success', 'Person updated successfully');
     } */
 
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
         $request->validate([
             'first_name' => 'required|string|max:255',

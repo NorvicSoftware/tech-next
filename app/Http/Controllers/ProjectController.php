@@ -17,7 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with('person', 'career')->get();
+        $projects = Project::with('person', 'career', 'image')->get();
         return Inertia::render('Projects/Index', ['projects' => $projects]);  
     }
 
@@ -27,7 +27,8 @@ class ProjectController extends Controller
     public function create()
     {
         $persons = Person::all();
-        return Inertia::render('Projects/Create', ['persons' => $persons]);
+        $careers = Career::all();
+        return Inertia::render('Projects/Create', ['persons' => $persons, 'careers' => $careers]);
     }
 
     /**
@@ -42,7 +43,7 @@ class ProjectController extends Controller
             'manager' => 'required',
             'person_id' => 'required',
             'career_id' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $project = Project::create([
@@ -54,15 +55,13 @@ class ProjectController extends Controller
             'career_id' => $request->career_id,
         ]);
 
-        $image = $request->file('image');
-        $imagePath = $image->store('images', 'public');
+        $imageName = $this->loadImage($request);
 
-        $imageName = $project->id . '_' . time() . '.' . $image->getClientOriginalExtension();
-        Storage::disk('public')->move($imagePath, 'images/' . $imageName);
+        if($imageName !== '') {
+            $project->image()->create(['url' => 'images/projects/'. $imageName]);
+        }
 
-        $project->image()->create(['url' => 'storage/images/' . $imageName]);
-
-        return redirect()->route('projects.index')->with('success', 'Proyecto creado exitosamente.');
+        return redirect()->route('projects.index')->with('succes', 'Proyecto agregado exitosamente');
     }
 
     /**
@@ -133,5 +132,16 @@ class ProjectController extends Controller
             ->get();
 
         return view('projects.report', ['goodProjects' => $goodProjects]);
+    }
+
+    public function loadImage($request){
+        $image_name = '';
+        if($request->hasFile('image')) {
+            $destination_path = 'public/images/projects';
+            $image = $request->file('image');
+            $image_name = time() . '_' . $image->getClientOriginalName();
+            $request->file('image')->storeAs($destination_path, $image_name);
+        }
+        return $image_name;
     }
 }

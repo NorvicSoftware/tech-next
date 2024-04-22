@@ -55,7 +55,7 @@ const Create = ({ auth }) => {
                             </span>
                         )}
                     </div>
-                    <div className="mb-3 xl:w-96">
+                    <div className="mb-3 xl:w-96 ">
                         <label className="block mb-1 font-light text-white px-1 py-2">
                             Imagen
                         </label>

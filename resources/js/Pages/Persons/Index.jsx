@@ -24,20 +24,19 @@ export default function Index({ auth }) {
         >
             <div className="overflow-x-auto bg-gray-800 flex justify-center">
                 <div className="mx-4 bg-gray-900 rounded-md w-[70%] m-auto">
-                    <div className="grid grid-cols-4 text-gray-200 text-center p-4">
+                    <div className="grid grid-cols-3 text-gray-200 text-center p-4">
                         <div>Nombres</div>
                         <div>Apellidos</div>
-                        <div>Foto</div>
                         <div>Acción</div>
                     </div>
                     {persons.map((person, id) => (
-                        <div className="grid grid-cols-4 text-center text-gray-800 bg-gray-200 border-t-2 border-gray-300 rounded-md p-2 justify-center items-center">
+                        <div className="grid grid-cols-3 text-center text-gray-800 bg-gray-200 border-t-2 border-gray-300 rounded-md p-2 justify-center items-center">
                             <div className="text-left">{person.first_name}</div>
                             <div className="text-left">{person.last_name}</div>
-                            <div className="flex justify-center">{person.image && (
+                            {/* <div className="flex justify-center">{person.image && (
                                 <img src={person.image.url} alt="Image de perfil" className="w-16 h-16 rounded-full"/>
-                            )}</div>
-                            <div className="flex flex-col flex-shrink-0 items-center justify-center gap-2">
+                            )}</div> */}
+                            <div className="flex flex-shrink-0 items-center justify-center gap-2">
                                 <NavLink
                                     href={route("persons.edit", person.id)}
                                     className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"

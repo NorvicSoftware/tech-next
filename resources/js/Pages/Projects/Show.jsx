@@ -1,7 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import NavLink from "@/Components/NavLink";
 
-const Show = ({ auth, project, image }) => {
+const Show = ({ auth, project, image, person }) => {
     console.log(image);
     return (
         <AuthenticatedLayout
@@ -13,47 +13,58 @@ const Show = ({ auth, project, image }) => {
             }
         >
             <div className="max-w-3xl mx-auto p-6 grid justify-center my-5 border-4 rounded-xl">
-                <div className="space-y-4 text-center text-2xl">
-                    {
+                <div className="space-y-4 text-center text-2xl text-gray-200">
+                    {/* {
                         image === null ? (
-                            <img src="/img/anonymous.jpg" alt="" />
+                            <img src="/storage/images/users/barrios.jpg" alt="" />
                         ) : (
                             <img src={`/storage/`+image} alt="" />
                         )
-                    }
+                    } */}
                     {/* <img src="/storage/images/projects/project1.png" alt="" /> */}
-                    <p className="text-white font-bold">
-                        {project.person ? project.person.first_name : "N/A"}
-                        <h />
+                    <div className="flex justify-center">
+                        <img className="rounded-full w-132 h-32" src="/img/anonymous.jpg" alt="" />
+                    </div>
+                    <p className="font-bold">
+                        {project.person
+                            ? project.person.first_name + " "
+                            : "N/A"}
                         {project.person ? project.person.last_name : "N/A"}
                     </p>
 
-                    <p className="text-white">
-                        <span className="text-gray-600">Carrera:</span>
+                    <p className="">
+                        <span className="">Carrera: </span>
                         {project.career ? project.career.name : "N/A"}
                     </p>
 
-                    <p className="text-white">
-                        <span className="text-gray-600">
-                            Titulo del Proyecto:asdasdasdas
+                    <p className="">
+                        <span className="">
+                            Titulo del Proyecto:
                         </span>
-                        {project.title}
+                        {' '+project.title}
                     </p>
 
-                    <p className="text-white">
-                        <span className="text-gray-600"> Docente/Tutor:</span>
+                    <p className="">
+                        <span className="">Tutor: </span>
                         {project.manager}
                     </p>
 
-                    <p className="text-white">
-                        <span className="text-gray-600"> Calificación:</span>
+                    <p className="">
+                        <span className="">Calificación: </span>
                         {project.qualification}
                     </p>
 
-                    <p className="text-white">
-                        <span className="text-gray-600"> Año:</span>
+                    <p className="">
+                        <span className="">Año: </span>
                         {project.year}
                     </p>
+                    {image === null ? (
+                        <p className="text-red-400">Imagen no disponible</p>
+                    ) : (
+                        <div className="flex justify-center">
+                            <img className="rounded-md" src={`/storage/` + image} alt="" />
+                        </div>
+                    )}
                 </div>
             </div>
 
