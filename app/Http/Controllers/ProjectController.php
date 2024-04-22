@@ -76,6 +76,7 @@ class ProjectController extends Controller
         }
         return Inertia::render('Projects/Show', ['project' => $project, 'image' => $image]); 
     }
+    
 
     /**
      * Show the form for editing the specified resource.

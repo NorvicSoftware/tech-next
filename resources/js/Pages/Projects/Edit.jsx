@@ -1,6 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import React, { useState } from "react";
 import { useForm } from "@inertiajs/react";
+import LinkButton from "@/Components/LinkButton";
 
 const Edit = ({ auth, project, persons, careers }) => {
     const { data, setData, put, errors, reset } = useForm({
@@ -132,6 +133,7 @@ const Edit = ({ auth, project, persons, careers }) => {
                         >
                             Actualizar
                         </button>
+    
                     </div>
                 </form>
             </div>
