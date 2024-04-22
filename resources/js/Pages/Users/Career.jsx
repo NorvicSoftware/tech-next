@@ -2,6 +2,7 @@ import React from "react";
 import Header from "@/Components/Common/Header";
 
 const Career = () => {
+    
     return (
         <div className="bg-gray-900 text-white min-h-screen">
             <Header />
@@ -13,7 +14,10 @@ const Career = () => {
             </div>
             <div className="container mx-auto">
                 <div className="container mx-auto h-auto px-7 sm:p-16 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-14">
-                    <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
+                    <a
+                      
+                        className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4"
+                    >
                         <img
                             src="/images/Careers/programmer.png"
                             alt=""
@@ -100,8 +104,6 @@ const Career = () => {
                             Turismo
                         </h2>
                     </a>
-
-                    
                 </div>
             </div>
             <footer className="text-gray-600 text-center mt-8">
