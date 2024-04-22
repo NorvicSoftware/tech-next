@@ -14,10 +14,7 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        // Obtener todas las puntuaciones con los proyectos relacionados
         $scores = Score::with('project')->get();
-
-        // Retornar la vista index con las puntuaciones
         return Inertia::render('Scores/Index', ['scores' => $scores]);
     }
 
@@ -26,10 +23,8 @@ class ScoreController extends Controller
      */
     public function create()
     {
-        // Obtener todos los proyectos para mostrar en el formulario de creación
         $projects = Project::all();
-
-        return Inertia::render('Scores/Create', ['projects' => $projects]);
+        return Inertia::render('Scores/Form', ['projects' => $projects, 'id' => 0]);
     }
 
     /**
@@ -52,13 +47,9 @@ class ScoreController extends Controller
      */
     public function edit($id)
     {
-        // Obtener la puntuación por su ID
         $score = Score::findOrFail($id);
-        
-        // Obtener todos los proyectos para mostrar en el formulario de edición
         $projects = Project::all();
-
-        return Inertia::render('Scores/Form', ['score' => $score, 'projects' => $projects]);
+        return Inertia::render('Scores/Form', ['score' => $score, 'projects' => $projects, 'id' => $id]);
     }
     
 
@@ -84,11 +75,8 @@ class ScoreController extends Controller
      */
     public function destroy($id)
     {
-        // Obtener la puntuación por su ID y eliminarla
         $score = Score::findOrFail($id);
         $score->delete();
-
-        // Redirigir a la vista index con un mensaje de éxito
         return redirect()->route('scores.index')->with('success', 'Puntuación eliminada con éxito.');
     }
 
