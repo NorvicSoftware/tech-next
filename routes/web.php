@@ -12,7 +12,7 @@ use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Users/Career', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
