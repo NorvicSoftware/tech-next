@@ -30,7 +30,7 @@ class CareerController extends Controller
     public function create()
     {
         $universities = University::all();
-        return Inertia::render('Careers/Create', ['universities' => $universities]);
+        return Inertia::render('Careers/Form', ['universities' => $universities, 'id' => 0]);
     }
 
     /**
@@ -74,7 +74,7 @@ class CareerController extends Controller
     {
         $career = Career::find($id);
         $universities = University::all();
-        return Inertia::render('Careers/Edit', ['career' => $career, 'universities' => $universities]);
+        return Inertia::render('Careers/Form', ['career' => $career, 'universities' => $universities, 'id' => $id]);
     }
 
     /**
@@ -114,7 +114,7 @@ class CareerController extends Controller
             $career = Career::findOrFail($id);
             $career->delete();
             DB::commit(); //Aplica los cambios realizados a la BD
-            return redirect()->route('careers.index')->with('success', 'La carrera ' . $request->career['name'] . ' fue eliminada exitosamente');
+            return redirect()->route('careers.index')->with('success', 'La carrera fue eliminada exitosamente');
         }catch (\Exception $exc){
             DB::rollback(); // Evita que se apliquen cambios parciales a l BD
             return redirect()->route('careers.index')->with('success', 'Error al eliminar la carrera');

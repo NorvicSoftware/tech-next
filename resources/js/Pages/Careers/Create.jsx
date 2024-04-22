@@ -19,20 +19,9 @@ const Create = ({ auth, universities }) => {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <div className="flex justify-between mx-10 items-center py-0">
-                    <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight py-0">
-                        Creación de Carrera
-                    </h2>
-                    <div className="text-left">
-                        <NavLink
-                            href={route("careers.index")}
-                            active={route().current("careers.index")}
-                            className="flex items-center px-4 py-1 my-4 border border-transparent text-sm font-medium rounded-md text-white hover:bg-red-700"
-                        >
-                            Retroceder
-                        </NavLink>
-                    </div>
-                </div>
+                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    Añadir Carrera
+                </h2>
             }
         >
             <form onSubmit={handleSubmit} className=" space-y-4 grid justify-center my-4">

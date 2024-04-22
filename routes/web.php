@@ -37,13 +37,21 @@ Route::middleware('auth')->group(function () {
     Route::put('/persons/{id}', [PersonsController::class, 'update'])->name('persons.update');
     Route::delete('/persons/{id}', [PersonsController::class, 'destroy'])->name('persons.destroy');
 
-    //Score Controller
+
     Route::get('/scores', [ScoreController::class, 'index'])->name('scores.index');
     Route::get('/scores/create', [ScoreController::class, 'create'])->name('scores.create');
     Route::post('/scores', [ScoreController::class, 'store'])->name('scores.store');
     Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
     Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
     Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
+    
+
+
+
+
+
+
+
 
     //Projects Controller
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
@@ -53,6 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
     Route::put('/projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
     Route::delete('/projects/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+    
 
     //University Controller
     Route::get('/universities', [UniversityController::class, 'index'])->name('universities.index');
@@ -78,6 +87,11 @@ Route::middleware('auth')->group(function () {
     //Project Controller
     Route::get('/projects/generate-report', [ProjectController::class, 'generateReport'])->name('projects.generate-report');
 });
+
+Route::get('/project', function () {
+    return Inertia::render('Users/Project');
+})->name('project');
+
 
 
 require __DIR__.'/auth.php';

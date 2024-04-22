@@ -8,6 +8,8 @@ use App\Models\Career;
 use Inertia\Inertia;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 class ProjectController extends Controller
 {
     /**
@@ -15,7 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with('person', 'career')->get();
+        $projects = Project::with('person', 'career', 'image')->get();
         return Inertia::render('Projects/Index', ['projects' => $projects]);  
     }
 
@@ -34,18 +36,32 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'title' => 'required',
             'qualification' => 'required',
             'year' => 'required',
             'manager' => 'required',
             'person_id' => 'required',
             'career_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        Project::create($validatedData);
+        $project = Project::create([
+            'title' => $request->title,
+            'qualification' => $request->qualification,
+            'year' => $request->year,
+            'manager' => $request->manager,
+            'person_id' => $request->person_id,
+            'career_id' => $request->career_id,
+        ]);
 
-        return redirect()->route('projects.index')->with('success', 'Proyecto creado exitosamente.');
+        $imageName = $this->loadImage($request);
+
+        if($imageName !== '') {
+            $project->image()->create(['url' => 'images/projects/'. $imageName]);
+        }
+
+        return redirect()->route('projects.index')->with('succes', 'Proyecto agregado exitosamente');
     }
 
     /**
@@ -53,9 +69,14 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-        $project = Project::with('person', 'career')->findOrFail($id); 
-        return Inertia::render('Projects/Show', ['project' => $project]); 
+        $project = Project::with('person', 'career')->findOrFail($id);
+        $image = null;
+        if($project->image) {
+            $image = $project->image->url;
+        }
+        return Inertia::render('Projects/Show', ['project' => $project, 'image' => $image]); 
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -112,5 +133,16 @@ class ProjectController extends Controller
             ->get();
 
         return view('projects.report', ['goodProjects' => $goodProjects]);
+    }
+
+    public function loadImage($request){
+        $image_name = '';
+        if($request->hasFile('image')) {
+            $destination_path = 'public/images/projects';
+            $image = $request->file('image');
+            $image_name = time() . '_' . $image->getClientOriginalName();
+            $request->file('image')->storeAs($destination_path, $image_name);
+        }
+        return $image_name;
     }
 }
