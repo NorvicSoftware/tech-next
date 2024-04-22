@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "@/Components/Common/Header";
+import CareerHeader from "@/Components/CareerHeader";
 
 const Career = () => {
     
@@ -23,9 +24,7 @@ const Career = () => {
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
-                        <h2 className="text-base md:text-lg font-bold text-center whitespace-nowrap overflow-hidden">
-                            Ing.Sistemas
-                        </h2>
+                        <CareerHeader name="Ing.Sistemas" />
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
