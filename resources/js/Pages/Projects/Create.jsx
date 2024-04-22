@@ -18,11 +18,12 @@ const Create = ({ auth, persons, careers }) => {
     };
 
     return (
-        <AuthenticatedLayout user={auth} header="Añadir Proyecto">
+        <AuthenticatedLayout user={auth.user} header={
+            <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                Añadir Proyecto
+            </h2>
+        }>
             <div className="max-w-3xl mx-auto p-6">
-                {/* <h1 className="text-3xl font-bold mb-6 text-white">
-                    Crear Proyecto
-                </h1> */}
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <label className="block mb-1 text-white">Título</label>
@@ -122,6 +123,21 @@ const Create = ({ auth, persons, careers }) => {
                             <span className="text-red-500">
                                 {errors.career_id}
                             </span>
+                        )}
+                    </div>
+                    <div className="mb-3 xl:w-96 ">
+                        <label className="block mb-1 font-light text-white px-1 py-2">
+                            Imagen
+                        </label>
+                        <input
+                            type="file"
+                            className="w-full border rounded px-3 py-2 text-gray-200"
+                            onChange={(e) =>
+                                setData("image", e.target.files[0])
+                            }
+                        />
+                        {errors.image && (
+                            <span className="text-red-500">{errors.image}</span>
                         )}
                     </div>
                     <div>

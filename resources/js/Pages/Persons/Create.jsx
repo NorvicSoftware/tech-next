@@ -13,11 +13,12 @@ const Create = ({ auth }) => {
     };
 
     return (
-        <AuthenticatedLayout user={auth} header="">
+        <AuthenticatedLayout user={auth} header={
+            <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                Añadir Autor
+            </h2>
+        }>
             <div className="w-[50%] mx-auto mt-10 flex flex-col justify-center items-center">
-                <h1 className="text-3xl font-bold mb-6 text-white">
-                    Añadir Autor
-                </h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="mb-3 xl:w-96">
                         <label className="block mb-1 font-light text-white px-1 py-2">
@@ -61,7 +62,7 @@ const Create = ({ auth }) => {
                         </label>
                         <input
                             type="file"
-                            className="w-full border rounded px-3 py-2"
+                            className="w-full border rounded px-3 py-2 text-gray-200"
                             onChange={(e) =>
                                 setData("image", e.target.files[0])
                             }

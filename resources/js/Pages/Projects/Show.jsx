@@ -7,21 +7,12 @@ const Show = ({ auth, project, image, person }) => {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight py-6">
-                    Detalles del Proyecto
+                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    Detalle del Proyecto
                 </h2>
-            }
-        >
+            }>
             <div className="max-w-3xl mx-auto p-6 grid justify-center my-5 border-4 rounded-xl">
                 <div className="space-y-4 text-center text-2xl text-gray-200">
-                    {/* {
-                        image === null ? (
-                            <img src="/storage/images/users/barrios.jpg" alt="" />
-                        ) : (
-                            <img src={`/storage/`+image} alt="" />
-                        )
-                    } */}
-                    {/* <img src="/storage/images/projects/project1.png" alt="" /> */}
                     <div className="flex justify-center">
                         <img className="rounded-full w-132 h-32" src="/img/anonymous.jpg" alt="" />
                     </div>
