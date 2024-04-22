@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PersonsController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ScoreController;
+use App\Http\Controllers\CareerController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,7 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //Persons Controller
-
     Route::get('/persons', [PersonsController::class, 'index'])->name('persons.index');
     Route::get('/persons/create', [PersonsController::class, 'create'])->name('persons.create');
     Route::post('/persons', [PersonsController::class, 'store'])->name('persons.store');
@@ -62,6 +62,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/universities/{id}/edit', [UniversityController::class, 'edit'])->name('universities.edit');
     Route::put('/universities/{id}', [UniversityController::class, 'update'])->name('universities.update');
     Route::delete('/universities/{id}', [UniversityController::class, 'destroy'])->name('universities.destroy');
+
+    //Careeer Controller 
+    Route::get('/careers', [CareerController::class, 'index'])->name('careers.index');
+    Route::get('/careers/create', [CareerController::class, 'create'])->name('careers.create');
+    Route::post('/careers', [CareerController::class, 'store'])->name('careers.store');
+    Route::get('/careers/{id}', [CareerController::class, 'show'])->name('careers.show');
+    Route::get('/careers/{id}/edit', [CareerController::class, 'edit'])->name('careers.edit');
+    Route::put('/careers/{id}', [CareerController::class, 'update'])->name('careers.update');
+    Route::delete('/careers/{id}', [CareerController::class, 'destroy'])->name('careers.destroy');
 
     //ImportController
     Route::get('/import', [ImportController::class, 'index'])->name('imports.index');
