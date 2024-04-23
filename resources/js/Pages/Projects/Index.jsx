@@ -1,6 +1,9 @@
+import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { usePage } from "@inertiajs/react";
 import NavLink from "@/Components/NavLink";
+import { Head } from "@inertiajs/react";
+import LinkButton from "@/Components/LinkButton";
 
 export default function Index({ auth }) {
     const { projects } = usePage().props;
@@ -8,31 +11,30 @@ export default function Index({ auth }) {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    Proyectos
-                </h2>
-            }
-            a={
-                <a
-                    href={route("projects.create")}
-                    active={route().current("projects.create")}
-                    className="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150"
-                >
-                    Añadir Nuevo Proyecto
-                </a>
-            }
+                <div className="flex mx-10 items-center justify-between">
+                    <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                        Proyectos
+                    </h2>
+                    <div>
+                        <LinkButton
+                            name="Añadir Nuevo Proyecto"
+                            url="projects/create"
+                            className=""
+                        />
+                    </div>
+                </div>}
         >
-            <div className="overflow-x-auto bg-gray-800">
-                <div className="mx-4 bg-gray-900 rounded-md">
-                    <div className="grid grid-cols-6 text-gray-200 text-center p-4">
+            <Head title="Proyectos" />
+                <main className="overflow-x-auto bg-gray-800">
+                    <div className="grid grid-cols-6 text-gray-200 text-center p-4 bg-gray-900 mx-4 rounded-t-lg">
                         <div className="col-span-2">Titulo Del Proyecto</div>
-                        <div>Autor</div>
-                        <div>Carrera</div>
-                        <div>Año</div>
-                        <div>Acción</div>
+                        <h2>Autor</h2>
+                        <h2>Carrera</h2>
+                        <h2>Año</h2>
+                        <h2>Acción</h2>
                     </div>
                     {projects.map((project, id) => (
-                        <div className="grid grid-cols-6 text-center text-gray-800 bg-gray-200 border-t-2 border-gray-300 rounded-md p-2 cursor-pointer justify-center items-center">
+                        <section className="grid grid-cols-6 text-center mx-4 text-gray-800 bg-gray-200 border-t-2 border-gray-300 p-2 items-center">
                             <div className="text-left col-span-2">
                                 {project.title}
                             </div>
@@ -45,7 +47,7 @@ export default function Index({ auth }) {
                                 {project.career ? project.career.name : "N/A"}
                             </div>
                             <div>{project.year}</div>
-                            <div className="flex flex-shrink-0 items-center justify-center gap-2">
+                            <div className="flex justify-center flex-shrink-0 items-center gap-1">
                                 <NavLink
                                     href={route("projects.show", project.id)}
                                     className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
@@ -67,10 +69,9 @@ export default function Index({ auth }) {
                                     Eliminar
                                 </NavLink>
                             </div>
-                        </div>
+                        </section>
                     ))}
-                </div>
-            </div>
+                </main>
         </AuthenticatedLayout>
     );
 }
