@@ -78,6 +78,8 @@ Route::middleware('auth')->group(function () {
     //Project Controller
     Route::get('/projects/generate-report', [ProjectController::class, 'generateReport'])->name('projects.generate-report');
 });
-
+Route::get('/Usuario', function () {
+    return Inertia::render('Users/Usuario');
+})->name('Usuario');
 
 require __DIR__.'/auth.php';
