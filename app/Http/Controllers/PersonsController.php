@@ -16,23 +16,12 @@ class PersonsController extends Controller
         return Inertia::render('Persons/Index', ['persons' => $persons]);
     }
 
+
     public function create()
     {
-        return Inertia::render('Persons/Create');
+        $persons = Person::all();
+        return Inertia::render('Persons/Form', ["Persons"=>$persons, 'id'=>0]);
     }
-
-    /* public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'first_name' => 'required|string|max:75',
-            'last_name' => 'required|string|max:75',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
-
-        Person::create($validatedData);
-
-        return redirect()->route('persons.index')->with('success', 'Person created successfully');
-    } */
 
     public function store(Request $request)
     {
@@ -47,13 +36,7 @@ class PersonsController extends Controller
             'last_name' => $request->last_name,
         ]);
 
-        /* $image = $request->file('image');
-        $imagePath = $image->store('images', 'public');
-
-        $imageName = $person->id . '_' . time() . '.' . $image->getClientOriginalExtension();
-        Storage::disk('public')->move($imagePath, 'images/' . $imageName); */
-
-        
+    
         $imageName = $this->loadImage($request);
 
         if($imageName !== '') {
@@ -68,20 +51,6 @@ class PersonsController extends Controller
         $person = Person::findOrFail($id);
         return Inertia::render('Persons/Edit', ['person' => $person]);
     }
-
-    /* public function update(Request $request, $id)
-    {
-        $request->validate([
-            'first_name' => 'required|string|max:75',
-            'last_name' => 'required|string|max:75',
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
-        ]);
-
-        $person = Person::findOrFail($id);
-        $person->update(['first_name' => $request->first_name, 'last_name' => $request->last_name]);
-
-        return redirect()->route('persons.index')->with('success', 'Person updated successfully');
-    } */
 
     public function update(Request $request, string $id)
     {
@@ -122,37 +91,6 @@ class PersonsController extends Controller
         return redirect()->route('persons.index')->with('success', 'Persona actualizada exitosamente.');
     }
 
-    /* public function update(Request $request, $id)
-    {
-        $request->validate([
-            'first_name' => 'required|string|max:75',
-            'last_name' => 'required|string|max:75',
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
-        ]);
-
-        $person = Person::findOrFail($id);
-
-        $person->update([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-        ]);
-
-        if($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imagePath = $image->store('images', 'public');
-
-            if($person->image) {
-                Storage::disk('public')->delete('images/' . $person->image->url);
-            }
-
-            $imageName = $person->id . '_' . time() . '.' . $image->getClientOriginalExtension();
-            Storage::disk('public')->move($imagePath, 'images/' . $imageName);
-
-            $person->image()->update(['url' => $imageName,]);
-        }
-
-        return redirect()->route('persons.index')->with('success', 'Persona actualizada exitosamente');
-    } */
 
     public function destroy(string $id)
     {

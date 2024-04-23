@@ -24,7 +24,7 @@ const Career = () => {
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
-                        <CareerHeader name="Ing.Sistemas" />
+                        <CareerHeader name="Ing.Sistemas"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
@@ -33,7 +33,7 @@ const Career = () => {
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
-                         <CareerHeader name="Cominucación" />
+                         <CareerHeader name="Cominucación"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
@@ -42,7 +42,7 @@ const Career = () => {
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
-                         <CareerHeader name="Ing. Comercial" />
+                         <CareerHeader name="Ing. Comercial"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
@@ -51,7 +51,7 @@ const Career = () => {
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
-                         <CareerHeader name="Marketing" />
+                         <CareerHeader name="Marketing"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
@@ -60,7 +60,7 @@ const Career = () => {
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
-                        <CareerHeader name="Diseño Grafico" />
+                        <CareerHeader name="Diseño Grafico"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
@@ -69,7 +69,7 @@ const Career = () => {
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
-                         <CareerHeader name="Adm. Empresas" />
+                         <CareerHeader name="Adm. Empresas"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
@@ -78,7 +78,7 @@ const Career = () => {
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
-                         <CareerHeader name="Mecatrónica" />
+                         <CareerHeader name="Mecatrónica"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
@@ -87,7 +87,7 @@ const Career = () => {
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
-                        <CareerHeader name="Turismo" />
+                        <CareerHeader name="Turismo"/>
                     </a>
                 </div>
             </div>
@@ -97,5 +97,4 @@ const Career = () => {
         </div>
     );
 };
-
 export default Career;
