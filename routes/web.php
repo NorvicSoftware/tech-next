@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PersonsController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectUserController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\CareerController;
 use Illuminate\Foundation\Application;
@@ -44,14 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
     Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
     Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
-    
-
-
-
-
-
-
-
 
     //Projects Controller
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
@@ -90,7 +83,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/project', function () {
     return Inertia::render('Users/Project');
-})->name('project');
+})->name('project.index');
 
 
 
