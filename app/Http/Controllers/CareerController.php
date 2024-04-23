@@ -12,19 +12,18 @@ use Inertia\Response;
 
 class CareerController extends Controller
 {
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
-    
+     */    
     public function index()
     {
         $careers = Career::with('university')->get();
         return Inertia::render('Careers/Index', ['careers' => $careers]);
     }
 
-     /**
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -67,7 +66,7 @@ class CareerController extends Controller
         return Inertia::render('careers.show', ['career' => $career]);
     }
 
-     /**
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)

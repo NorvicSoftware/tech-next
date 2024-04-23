@@ -1,25 +1,22 @@
-import React from 'react'
-import UserLayout from '@/Layouts/UserLayout'
+import React from "react";
+import UserLayout from "@/Layouts/UserLayout";
+import ScoreReaction from "@/Components/ScoreReaction";
 
-export default function Project() {
-  return (
-    <UserLayout>
-<head>
-<title>Listado de Carreras</title>
-</head>
-<body>
 
-<h1 className="text-base md:text-lg font-bold text-center whitespace-nowrap overflow-hidden">Listado de Carreras</h1>
+const Project = ({ project }) => {
+    return (
+        <UserLayout>
+            <div className="max-w-3xl mx-auto p-6 grid justify-center my-5 border-4 rounded-xl">
+                <div className="space-y-4 text-center text-2xl">
+                    <div className="flex gap-3">
+                        <ScoreReaction/>
+                        <ScoreReaction image="./images/face-angry-solid.svg" />
+                        <ScoreReaction image="./images/face-angry-solid.svg" />
+                    </div>
+                </div>
+            </div>
+        </UserLayout>
+    );
+};
 
-<ul>
-  <li ><label  for="career1" class="career-label">Ingeniería de Sistemas</label></li>
-  <li><label for="career2" class="career-label">Administración de Empresas</label></li>
-  <li><label for="career3" class="career-label">Diseño Gráfico</label></li>
-  <li><label for="career4" class="career-label">Turismo y Hotelería</label></li>
-</ul>
-
-</body>
-
-    </UserLayout>
-  );
-}
+export default Project;
