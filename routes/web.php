@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -94,5 +95,9 @@ Route::get('/project', function () {
 })->name('project');
 
 
+Route::get('/list', [UserController::class, 'index'])->name('list.index');
+
+Route::get('/careers', [UserController::class, 'showCareers'])->name('public.careers')->middleware('inertia');
+Route::get('/careers/{career}/projects', [UserController::class, 'showProjectsByCareer'])->name('public.projects.by.career')->middleware('inertia');
 
 require __DIR__.'/auth.php';
