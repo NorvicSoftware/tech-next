@@ -1,3 +1,4 @@
+
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import React, { useEffect } from "react";
 import { useForm, usePage, Head } from "@inertiajs/react";
@@ -8,27 +9,35 @@ import LinkButton from "@/Components/LinkButton";
 const Form = ({ auth, projects, initialData }) => {
   const { id } = usePage().props;
   const { data, setData, post, errors, put } = useForm({
-    reaction: initialData ? initialData.reaction : "",
     project_id: initialData ? initialData.project_id.toString() : "",
+    good: initialData ? initialData.good : "",
+    indifferent: initialData ? initialData.indifferent : "",
+    bad: initialData ? initialData.bad : "",
   });
 
   const textHeader = id === 0 ? "Crear Nueva Puntuación" : "Editar Puntuación";
 
   useEffect(() => {
     if (initialData) {
-      setData("reaction", initialData.reaction);
       setData("project_id", initialData.project_id.toString());
+      setData("good", initialData.good);
+      setData("indifferent", initialData.indifferent);
+      setData("bad", initialData.bad);
     }
   }, [initialData]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const newData = {
+      project_id: data.project_id,
+      good: data.good,
+      indifferent: data.indifferent,
+      bad: data.bad,
+    };
     if (id === 0) {
-
       post(route("scores.store"));
     } else {
-
-      put(route("scores.update", id));
+      put(route("scores.update", id), newData);
     }
   };
 
@@ -43,19 +52,6 @@ const Form = ({ auth, projects, initialData }) => {
     >
       <Head title={textHeader} />
       <form onSubmit={handleSubmit} className="space-y-4 mx-auto max-w-md">
-        <InputLabel>Reacción:</InputLabel>
-        <select
-          className="border rounded px-3 py-2 w-full"
-          value={data.reaction}
-          onChange={(e) => setData("reaction", e.target.value)}
-        >
-          <option value="">Seleccionar...</option>
-          <option value="good">Bueno</option>
-          <option value="indifferent">Indiferente</option>
-          <option value="bad">Malo</option>
-        </select>
-        {errors.reaction && <span className="text-red-500">{errors.reaction}</span>}
-
         <InputLabel>Proyecto:</InputLabel>
         <select
           className="border rounded px-3 py-2 w-full"
@@ -70,6 +66,33 @@ const Form = ({ auth, projects, initialData }) => {
           ))}
         </select>
         {errors.project_id && <span className="text-red-500">{errors.project_id}</span>}
+
+        <InputLabel>Bueno:</InputLabel>
+        <input
+          type="number"
+          className="border rounded px-3 py-2 w-full"
+          value={data.good}
+          onChange={(e) => setData("good", e.target.value)}
+        />
+        {errors.good && <span className="text-red-500">{errors.good}</span>}
+
+        <InputLabel>Indiferente:</InputLabel>
+        <input
+          type="number"
+          className="border rounded px-3 py-2 w-full"
+          value={data.indifferent}
+          onChange={(e) => setData("indifferent", e.target.value)}
+        />
+        {errors.indifferent && <span className="text-red-500">{errors.indifferent}</span>}
+
+        <InputLabel>Malo:</InputLabel>
+        <input
+          type="number"
+          className="border rounded px-3 py-2 w-full"
+          value={data.bad}
+          onChange={(e) => setData("bad", e.target.value)}
+        />
+        {errors.bad && <span className="text-red-500">{errors.bad}</span>}
 
         <div className="flex justify-between">
           <PrimaryButton type="submit">Guardar</PrimaryButton>
