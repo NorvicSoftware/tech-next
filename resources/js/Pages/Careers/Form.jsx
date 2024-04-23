@@ -32,7 +32,7 @@ const Form = ({ auth, career, universities }) => {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <h2 className="mx-10 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                <h2 className="sm:mx-10 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                     {textHeader}
                 </h2>
             }
@@ -40,15 +40,14 @@ const Form = ({ auth, career, universities }) => {
             <Head title={textHeader} />
             <form
                 onSubmit={handleSubmit}
-                className=" space-y-4 grid justify-center my-4"
+                className=" space-y-4 justify-center my-4 mx-2 grid"
             >
-                <div className="w-96 grid gap-3">
+                <div className="sm:w-96 grid gap-3">
                     <div>
                         <InputLabel>Carrera:</InputLabel>
                         <TextInput
                             type="text"
                             className="w-full border rounded px-3 py-2"
-                            isFocused={true}
                             value={data.name}
                             onChange={(e) => setData("name", e.target.value)}
                         />
@@ -62,7 +61,6 @@ const Form = ({ auth, career, universities }) => {
                         <TextInput
                             type="text"
                             className="w-full border rounded px-3 py-2"
-                            isFocused={true}
                             value={data.phone}
                             onChange={(e) => setData("phone", e.target.value)}
                         />
@@ -78,7 +76,6 @@ const Form = ({ auth, career, universities }) => {
                         <select
                             type="text"
                             className="w-full border px-3 py-2 'border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm "
-                            isFocused={true}
                             value={data.university_id}
                             onChange={(e) =>
                                 setData("university_id", e.target.value)
@@ -102,17 +99,17 @@ const Form = ({ auth, career, universities }) => {
                     </div>
                 </div>
 
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-3">
                     <PrimaryButton
-                        type="submit"
+                        className="font-semibold"
                         disable={false}
-                        className="dark:bg-blue-600 dark dark:text-white bg-blue-600 dark:hover:text-black"
+                        type="submit"
                     >
                         {textHeader}
                     </PrimaryButton>
                     <LinkButton
                         name="Cancelar"
-                        className="dark:bg-red-600 dark:text-white bg-blue-600 dark:hover:text-black"
+                        className="dark:bg-red-600 dark:text-white dark:hover:bg-red-900 dark:focus:bg-red-900 dark:active:bg-red-900"
                         url="/careers"
                     />
                 </div>

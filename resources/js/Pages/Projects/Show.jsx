@@ -1,5 +1,6 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import NavLink from "@/Components/NavLink";
+import ProjectData from "@/Components/ProjectData";
 
 const Show = ({ auth, project }) => {
     return (
@@ -11,43 +12,34 @@ const Show = ({ auth, project }) => {
                 </h2>
             }
         >
-            <div className="max-w-3xl mx-auto p-6 grid justify-center my-5 border-4 rounded-xl">
+            <div className="max-w-3xl mx-auto p-6 grid justify-center my-5 border-4 rounded-xl border-black dark:border-white">
                 <div className="space-y-4 text-center text-2xl">
-                    <p className="text-white font-bold">
-                        {project.person ? project.person.first_name : "N/A"}
-                        <h />
-                        {project.person ? project.person.last_name : "N/A"}
-                    </p>
-
-                    <p className="text-white">
-                        <span className="text-gray-600">Carrera:</span>
-                        {project.career ? project.career.name : "N/A"}
-                    </p>
-
-                    <p className="text-white">
-                        <span className="text-gray-600">
-                            Titulo del Proyecto:
-                        </span>
-                        {project.title}
-                    </p>
-
-                    <p className="text-white">
-                        <span className="text-gray-600"> Docente/Tutor:</span>
-                        {project.manager}
-                    </p>
-
-                    <p className="text-white">
-                        <span className="text-gray-600"> Calificación:</span>
-                        {project.qualification}
-                    </p>
-
-                    <p className="text-white">
-                        <span className="text-gray-600"> Año:</span>
-                        {project.year}
-                    </p>
+                    <ProjectData
+                        className="font-extrabold uppercase"
+                        data={
+                            project.person
+                                ? project.person.first_name +
+                                  " " +
+                                  project.person.last_name
+                                : "N/A"
+                        }
+                    />
+                    <ProjectData
+                        name="Carrera:"
+                        data={project.career ? project.career.name : "N/A"}
+                    />
+                    <ProjectData
+                        name="Titulo del Proyecto:"
+                        data={project.title}
+                    />
+                    <ProjectData name="Docente/Tutor:" data={project.manager} />
+                    <ProjectData
+                        name="Calificación:"
+                        data={project.qualification}
+                    />
+                    <ProjectData name="Año:" data={project.year} />
                 </div>
             </div>
-
             <div className="text-center">
                 <NavLink
                     href={route("projects.index")}
