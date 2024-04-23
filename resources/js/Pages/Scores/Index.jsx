@@ -13,6 +13,7 @@ const Index = ({ auth }) => {
                 bueno: 0,
                 indiferente: 0,
                 malo: 0,
+                id: null,
             };
         }
 
