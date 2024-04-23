@@ -10,30 +10,29 @@ use Inertia\Inertia;
 
 class PersonsController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $persons = Person::with('image')->get();
         return Inertia::render('Persons/Index', ['persons' => $persons]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        return Inertia::render('Persons/Create');
+        $persons = Person::all();
+        return Inertia::render('Persons/Form', ["Persons"=>$persons, 'id'=>0]);
     }
 
-    /* public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'first_name' => 'required|string|max:75',
-            'last_name' => 'required|string|max:75',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
-
-        Person::create($validatedData);
-
-        return redirect()->route('persons.index')->with('success', 'Person created successfully');
-    } */
-
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -47,13 +46,7 @@ class PersonsController extends Controller
             'last_name' => $request->last_name,
         ]);
 
-        /* $image = $request->file('image');
-        $imagePath = $image->store('images', 'public');
-
-        $imageName = $person->id . '_' . time() . '.' . $image->getClientOriginalExtension();
-        Storage::disk('public')->move($imagePath, 'images/' . $imageName); */
-
-        
+    
         $imageName = $this->loadImage($request);
 
         if($imageName !== '') {
@@ -63,26 +56,29 @@ class PersonsController extends Controller
         return redirect()->route('persons.index')->with('succes', 'Persona agregada exitosamente');
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit(string $id)
     {
         $person = Person::findOrFail($id);
         return Inertia::render('Persons/Edit', ['person' => $person]);
     }
 
-    /* public function update(Request $request, $id)
+    /**
+     * Display the specified resource.
+     */
+    public function show($id)
     {
-        $request->validate([
-            'first_name' => 'required|string|max:75',
-            'last_name' => 'required|string|max:75',
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
-        ]);
-
         $person = Person::findOrFail($id);
-        $person->update(['first_name' => $request->first_name, 'last_name' => $request->last_name]);
+        $image = $person->image()->url;
 
-        return redirect()->route('persons.index')->with('success', 'Person updated successfully');
-    } */
+        return Inertia::render('Persons/Show', ['person' => $person, 'image' => $image]);
+    }
 
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -93,27 +89,22 @@ class PersonsController extends Controller
 
         $person = Person::findOrFail($id);
 
-        // Actualizar los campos first_name y last_name
         $person->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
         ]);
 
-        // Si se proporciona una nueva imagen, actualizarla
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imagePath = $image->store('images', 'public');
 
-            // Eliminar la imagen anterior si existe
             if ($person->image) {
                 Storage::disk('public')->delete('images/' . $person->image->url);
             }
 
-            // Renombrar la imagen con el ID de la persona para evitar conflictos de nombre
             $imageName = $person->id . '_' . time() . '.' . $image->getClientOriginalExtension();
             Storage::disk('public')->move($imagePath, 'images/' . $imageName);
 
-            // Actualizar la URL de la imagen en la base de datos
             $person->image()->update([
                 'url' => 'storage/images/' . $imageName,
             ]);
@@ -122,38 +113,9 @@ class PersonsController extends Controller
         return redirect()->route('persons.index')->with('success', 'Persona actualizada exitosamente.');
     }
 
-    /* public function update(Request $request, $id)
-    {
-        $request->validate([
-            'first_name' => 'required|string|max:75',
-            'last_name' => 'required|string|max:75',
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
-        ]);
-
-        $person = Person::findOrFail($id);
-
-        $person->update([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-        ]);
-
-        if($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imagePath = $image->store('images', 'public');
-
-            if($person->image) {
-                Storage::disk('public')->delete('images/' . $person->image->url);
-            }
-
-            $imageName = $person->id . '_' . time() . '.' . $image->getClientOriginalExtension();
-            Storage::disk('public')->move($imagePath, 'images/' . $imageName);
-
-            $person->image()->update(['url' => $imageName,]);
-        }
-
-        return redirect()->route('persons.index')->with('success', 'Persona actualizada exitosamente');
-    } */
-
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(string $id)
     {
         $person = Person::findOrFail($id);
@@ -162,13 +124,10 @@ class PersonsController extends Controller
         return redirect()->route('persons.index')->with('success', 'Person deleted successfully');
     }
 
-    public function show($id)
-    {
-        /* $person = Person::findOrFail($id);
-        $image = $person->image()->url;
-
-        return Inertia::render('Persons/Show', ['person' => $person, 'image' => $image]); */
-    }
+    /**
+     * Este método se encarga de subir una imagen en el directorio "storage/app/public/images/users"
+     * @return return retorna el nombre de la imagen.
+     */
     public function loadImage($request){
         $image_name = '';
         if($request->hasFile('image')) {
