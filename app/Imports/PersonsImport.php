@@ -10,9 +10,8 @@ class PersonsImport implements ToModel
     public function model(array $row)
     {
         return new Person([
-            'ci' => $row[0],
-            'first_name' => $row[1],
-            'last_name' => $row[2],
+            'first_name' => $row[0],
+            'last_name' => $row[1],
         ]);
     }
 }

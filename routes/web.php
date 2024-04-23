@@ -83,6 +83,8 @@ Route::middleware('auth')->group(function () {
 
     //ImportController
     Route::get('/import', [ImportController::class, 'index'])->name('imports.index');
+    Route::get('/import/excel', [ImportController::class, 'import'])->name('projects.import');
+    //Route::get('/import/excel', [ImportController::class, 'importPersons'], [ImportController::class, 'import'])->name('projects.import');
 
     //Project Controller
     Route::get('/projects/generate-report', [ProjectController::class, 'generateReport'])->name('projects.generate-report');
