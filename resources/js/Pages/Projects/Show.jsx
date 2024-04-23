@@ -1,5 +1,6 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import NavLink from "@/Components/NavLink";
+import ProjectData from "@/Components/ProjectData";
 
 const Show = ({ auth, project, image, person }) => {
     console.log(image);
@@ -10,55 +11,36 @@ const Show = ({ auth, project, image, person }) => {
                 <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                     Detalle del Proyecto
                 </h2>
-            }>
-            <div className="max-w-3xl mx-auto p-6 grid justify-center my-5 border-4 rounded-xl">
-                <div className="space-y-4 text-center text-2xl text-gray-200">
-                    <div className="flex justify-center">
-                        <img className="rounded-full w-132 h-32" src="/img/anonymous.jpg" alt="" />
-                    </div>
-                    <p className="font-bold">
-                        {project.person
-                            ? project.person.first_name + " "
-                            : "N/A"}
-                        {project.person ? project.person.last_name : "N/A"}
-                    </p>
-
-                    <p className="">
-                        <span className="">Carrera: </span>
-                        {project.career ? project.career.name : "N/A"}
-                    </p>
-
-                    <p className="">
-                        <span className="">
-                            Titulo del Proyecto:
-                        </span>
-                        {' '+project.title}
-                    </p>
-
-                    <p className="">
-                        <span className="">Tutor: </span>
-                        {project.manager}
-                    </p>
-
-                    <p className="">
-                        <span className="">Calificación: </span>
-                        {project.qualification}
-                    </p>
-
-                    <p className="">
-                        <span className="">Año: </span>
-                        {project.year}
-                    </p>
-                    {image === null ? (
-                        <p className="text-red-400">Imagen no disponible</p>
-                    ) : (
-                        <div className="flex justify-center">
-                            <img className="rounded-md" src={`/storage/` + image} alt="" />
-                        </div>
-                    )}
+            }
+        >
+            <div className="max-w-3xl mx-auto p-6 grid justify-center my-5 border-4 rounded-xl border-black dark:border-white">
+                <div className="space-y-4 text-center text-2xl">
+                    <ProjectData
+                        className="font-extrabold uppercase"
+                        data={
+                            project.person
+                                ? project.person.first_name +
+                                  " " +
+                                  project.person.last_name
+                                : "N/A"
+                        }
+                    />
+                    <ProjectData
+                        name="Carrera:"
+                        data={project.career ? project.career.name : "N/A"}
+                    />
+                    <ProjectData
+                        name="Titulo del Proyecto:"
+                        data={project.title}
+                    />
+                    <ProjectData name="Docente/Tutor:" data={project.manager} />
+                    <ProjectData
+                        name="Calificación:"
+                        data={project.qualification}
+                    />
+                    <ProjectData name="Año:" data={project.year} />
                 </div>
             </div>
-
             <div className="text-center">
                 <NavLink
                     href={route("projects.index")}
