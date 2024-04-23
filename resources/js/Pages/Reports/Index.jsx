@@ -1,5 +1,3 @@
-// Reports.jsx
-
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
@@ -14,8 +12,8 @@ export default function Reports({ auth }) {
             }
         >
             <div className="max-w-3xl mx-auto p-6">
-                <h1 className="text-3xl font-bold mb-6 text-white">Página de Informes</h1>
-                {/* Aquí puedes agregar tu contenido de informes */}
+                <h1 className="text-3xl font-bold mb-6 text-white">Informes por Nota final</h1>
+                { }
             </div>
         </AuthenticatedLayout>
     );

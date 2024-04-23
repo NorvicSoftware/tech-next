@@ -13,10 +13,8 @@ class CareerFactory extends Factory
 
     public function definition(): array
     {
-        $jobTitle = $this->faker->jobTitle();
-
         return [
-            'name' => Str::limit($jobTitle, 50),
+            'name' => $this->faker->text(50), 
             'phone' => $this->faker->numberBetween(65000000, 75000000),
             'university_id' => University::all()->random()->id,
         ];
