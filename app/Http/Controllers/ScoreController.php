@@ -91,9 +91,9 @@ class ScoreController extends Controller
         ]);
     
         $score = Score::findOrFail($id);
-        // Eliminar las puntuaciones existentes para esta reacción
+
         $score->where('project_id', $score->project_id)->delete();
-        // Crear las nuevas puntuaciones con los valores actualizados
+
         for ($i = 0; $i < $request->good; $i++) {
             $score = new Score();
             $score->project_id = $request->project_id;
