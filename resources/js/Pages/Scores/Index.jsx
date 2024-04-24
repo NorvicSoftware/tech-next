@@ -1,8 +1,6 @@
 import React from "react";
 import { usePage, Head } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import NavLink from "@/Components/NavLink";
-import LinkButton from "@/Components/LinkButton";
 
 const Index = ({ auth }) => {
     const { scores } = usePage().props;
@@ -19,11 +17,11 @@ const Index = ({ auth }) => {
             };
         }
 
-        if (score.reaction === "good") {
+        if (score.reaction === "Bueno") {
             acc[projectTitle].bueno += 1;
-        } else if (score.reaction === "indifferent") {
+        } else if (score.reaction === "Indiferente") {
             acc[projectTitle].indiferente += 1;
-        } else if (score.reaction === "bad") {
+        } else if (score.reaction === "Malo") {
             acc[projectTitle].malo += 1;
         }
 
