@@ -11,15 +11,16 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\User\UserCareerController;
 
-Route::get('/', function () {
-    return Inertia::render('Users/Career', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -60,7 +61,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/universities', [UniversityController::class, 'index'])->name('universities.index');
     Route::get('/universities/create', [UniversityController::class, 'create'])->name('universities.create');
     Route::post('/universities', [UniversityController::class, 'store'])->name('universities.store');
-    Route::get('/universities/{id}', [UniversityController::class, 'show'])->name('universities.show');
     Route::get('/universities/{id}/edit', [UniversityController::class, 'edit'])->name('universities.edit');
     Route::put('/universities/{id}', [UniversityController::class, 'update'])->name('universities.update');
     Route::delete('/universities/{id}', [UniversityController::class, 'destroy'])->name('universities.destroy');
@@ -86,7 +86,7 @@ Route::middleware('auth')->group(function () {
 //Vista de Usuario - Proyecto
 Route::get('/project', function () {
     return Inertia::render('Users/Project');
-})->name('project.index');
+})->name('project');
 
 
 

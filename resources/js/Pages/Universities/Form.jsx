@@ -20,9 +20,23 @@ const Form = ({ auth }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (id === 0) {
-            post(route("universities.store"));
+            post(route("universities.store"), {
+                onSuccess: (res) => {
+                    console.log('OK');
+                },
+                onError: (error) => {
+                    console.log('error' + error);
+                }
+            });
         } else {
-            put(route("universities.update", university.id)); 
+            put(route("universities.update", university.id), {
+                onSuccess: (res) => {
+                    console.log('OK');
+                },
+                onError: (error) => {
+                    console.log('error' + error);
+                }
+            });
         }
     };
 
@@ -36,7 +50,46 @@ const Form = ({ auth }) => {
             }
         >
             <Head title={textHeader} />
-            <form onSubmit={handleSubmit} className="space-y-4 grid justify-center my-4">
+            <div className="py-12">
+                <div className="max-w-2xl mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 text-gray-900 dark:text-gray-100">
+                            <form onSubmit={handleSubmit}>
+                                <div>
+                                    <InputLabel className="text-lg">Universidad</InputLabel>
+                                    <TextInput
+                                        className="w-full border rounded px-3 py-2"
+                                        value={data.name}
+                                        onChange={(e) => setData("name", e.target.value)}
+                                    />
+                                </div>
+                                <div className="mt-4">
+                                    <InputLabel className="text-lg">Telefono</InputLabel>
+                                    <TextInput
+                                        className="w-full border rounded px-3 py-2"
+                                        value={data.phone}
+                                        onChange={(e) => setData("phone", e.target.value)}
+                                    />
+                                </div>
+                                <div className="mt-4">
+                                    <InputLabel className="text-lg">Direccion</InputLabel>
+                                    <TextInput
+                                        className="w-full border rounded px-3 py-2"
+                                        value={data.address}
+                                        onChange={(e) => setData("address", e.target.value)} />
+                                </div>
+                                <div className="flex justify-end mt-4">
+                                    <PrimaryButton>Guardar</PrimaryButton>
+                                    <LinkButton className="ml-2" name="Atras" url="/universities"/>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* <form onSubmit={handleSubmit} className="space-y-4 grid justify-center my-4">
                 <div className="w-96 grid gap-3">
                     <div>
                         <InputLabel>Nombre de la Universidad</InputLabel>
@@ -86,7 +139,7 @@ const Form = ({ auth }) => {
                         url="/universities"
                     />
                 </div>
-            </form>
+            </form> */}
         </AuthenticatedLayout>
     );
 };

@@ -1,10 +1,12 @@
 import React from "react";
 import Header from "@/Components/Common/Header";
 import CareerHeader from "@/Components/CareerHeader";
-import CareerImage from "@/Components/CareerImage";
-import NavLink from "@/Components/NavLink";
+import { usePage, Head } from "@inertiajs/react";
 
 const Career = () => {
+    const {careers} = usePage().props;
+    console.log(careers);
+    
     return (
         <div className="bg-gray-900 text-white min-h-screen">
             <Header />

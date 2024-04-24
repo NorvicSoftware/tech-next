@@ -10,8 +10,8 @@ class CreatePersonsTable extends Migration
     {
         Schema::create('persons', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name', 75);
-            $table->string('last_name', 75);
+            $table->string('first_name', 35);
+            $table->string('last_name', 35);
             $table->timestamps();
         });
     }
