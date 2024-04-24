@@ -2,7 +2,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import NavLink from "@/Components/NavLink";
 import ProjectData from "@/Components/ProjectData";
 
-const Show = ({ auth, project }) => {
+const Show = ({ auth, project, career }) => {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -12,10 +12,15 @@ const Show = ({ auth, project }) => {
                 </h2>
             }
         >
-            <div className="max-w-3xl mx-auto p-6 grid justify-center my-5 border-4 rounded-xl border-black dark:border-white">
-                <div className="space-y-4 text-center text-2xl">
+            <div className="flex gap-5 w-[90%] mx-auto p-6 justify-center my-5 border-4 rounded-xl border-none dark:bg-gray-800">
+                <div className="rounded-4 border-4 row-start-1"></div>
+                <div className="space-y-4 text-center justify-center ">
                     <ProjectData
                         className="font-extrabold uppercase"
+                        data={project.title}
+                    />
+                    <ProjectData
+                        name="Autor:"
                         data={
                             project.person
                                 ? project.person.first_name +
@@ -28,10 +33,6 @@ const Show = ({ auth, project }) => {
                         name="Carrera:"
                         data={project.career ? project.career.name : "N/A"}
                     />
-                    <ProjectData
-                        name="Titulo del Proyecto:"
-                        data={project.title}
-                    />
                     <ProjectData name="Docente/Tutor:" data={project.manager} />
                     <ProjectData
                         name="Calificación:"
@@ -39,8 +40,9 @@ const Show = ({ auth, project }) => {
                     />
                     <ProjectData name="Año:" data={project.year} />
                 </div>
+                <div className="rounded-4 border-4 "></div>
             </div>
-            <div className="text-center">
+            <div className="text-center pb-2">
                 <NavLink
                     href={route("projects.index")}
                     className="px-4 py-2 bg-red-700 text-white rounded hover:bg-red-900 text-2xl"

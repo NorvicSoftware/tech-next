@@ -10,7 +10,7 @@ export default function Authenticated({ user, header, children }) {
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
             <nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
@@ -19,7 +19,7 @@ export default function Authenticated({ user, header, children }) {
                                 </Link>
                             </div>
 
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 min-[852px]:flex">
                                 <NavLink
                                     href={route("dashboard")}
                                     active={route().current("dashboard")}
@@ -27,7 +27,7 @@ export default function Authenticated({ user, header, children }) {
                                     Dashboard
                                 </NavLink>
                             </div>
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 min-[852px]:flex">
                                 <NavLink
                                     href={route("projects.index")}
                                     active={route().current("projects.index")}
@@ -35,7 +35,7 @@ export default function Authenticated({ user, header, children }) {
                                     Proyectos
                                 </NavLink>
                             </div>
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 min-[852px]:flex">
                                 <NavLink
                                     href={route("imports.index")}
                                     active={route().current("imports.index")}
@@ -43,7 +43,7 @@ export default function Authenticated({ user, header, children }) {
                                     Importar
                                 </NavLink>
                             </div>
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 min-[852px]:flex">
                                 <NavLink
                                     href={route("persons.index")}
                                     active={route().current("persons.index")}
@@ -51,7 +51,7 @@ export default function Authenticated({ user, header, children }) {
                                     Autores
                                 </NavLink>
                             </div>
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 min-[852px]:flex">
                                 <NavLink
                                     href={route("universities.index")}
                                     active={route().current(
@@ -61,7 +61,7 @@ export default function Authenticated({ user, header, children }) {
                                     Universidades
                                 </NavLink>
                             </div>
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 min-[852px]:flex">
                                 <NavLink
                                     href={route("careers.index")}
                                     active={route().current("careers.index")}
@@ -71,7 +71,7 @@ export default function Authenticated({ user, header, children }) {
                             </div>
                         </div>
 
-                        <div className="hidden sm:flex sm:items-center sm:ms-6">
+                        <div className="hidden min-[852px]:flex sm:items-center sm:ms-6">
                             <div className="ms-3 relative">
                                 <Dropdown>
                                     <Dropdown.Trigger>
@@ -115,7 +115,7 @@ export default function Authenticated({ user, header, children }) {
                             </div>
                         </div>
 
-                        <div className="-me-2 flex items-center sm:hidden">
+                        <div className="-me-2 flex items-center min-[852px]:hidden">
                             <button
                                 onClick={() =>
                                     setShowingNavigationDropdown(
@@ -161,7 +161,7 @@ export default function Authenticated({ user, header, children }) {
                 <div
                     className={
                         (showingNavigationDropdown ? "block" : "hidden") +
-                        " sm:hidden"
+                        "   min-[852px]:hidden"
                     }
                 >
                     <div className="pt-2 pb-3 space-y-1">
@@ -170,6 +170,36 @@ export default function Authenticated({ user, header, children }) {
                             active={route().current("dashboard")}
                         >
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route("projects.index")}
+                            active={route().current("projects.index")}
+                        >
+                            Proyectos
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route("imports.index")}
+                            active={route().current("imports.index")}
+                        >
+                            Importar
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route("persons.index")}
+                            active={route().current("persons.index")}
+                        >
+                            Autores
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route("universities.index")}
+                            active={route().current("universities.index")}
+                        >
+                            Universidades
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route("careers.index")}
+                            active={route().current("careers.index")}
+                        >
+                            Carreras
                         </ResponsiveNavLink>
                     </div>
 
