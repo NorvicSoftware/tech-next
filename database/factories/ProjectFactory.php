@@ -18,12 +18,12 @@ class ProjectFactory extends Factory
     {
         return [
 
-            'title' => $this->faker->sentence(),
+            'title' => $this->faker->text(100),
             'qualification' => $this->faker->numberBetween(0, 100),
             'year' => $this->faker->numberBetween(2010, 2024),
             'manager' => $this->faker->name(),
             'person_id' => Person::all()->random()->id, 
-            'career_id' => Career::all()->random()->id, 
+            'career_id' => Career::all()->random()->id,
         ];
     }
 }

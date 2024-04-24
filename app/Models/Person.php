@@ -12,6 +12,11 @@ class Person extends Model
 
     protected $table = "persons";
 
+    protected $fillable = [
+        'first_name',
+        'last_name',
+    ];
+
     public function projects(): HasMany {
         return $this->hasMany(Project::class);
     }
@@ -20,8 +25,5 @@ class Person extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
-    protected $fillable = [
-        'first_name',
-        'last_name',
-    ];
+    
 }

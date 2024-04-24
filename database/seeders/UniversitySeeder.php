@@ -14,33 +14,27 @@ class UniversitySeeder extends Seeder
     public function run(): void
     {
         $university1 = new University;
-        $university1->name = "UCATEC";
-        $university1->phone = "63919683";
-        $university1->address = "Av. Cala Cala";
+        $university1->name = "Universidad UCATEC";
+        $university1->phone = "4200406";
+        $university1->address = "Cochabamaba";
         $university1->save();
 
         $university2 = new University;
-        $university2->name = "UNIVALLE";
-        $university2->phone = "77788878";
-        $university2->address = "Av. América";
+        $university2->name = "Universidad Mayor de San Simón";
+        $university2->phone = "77654321";
+        $university2->address = "Cochabamba";
         $university2->save();
 
-        $university3 = new University;
-        $university3->name = "UNIFRANZ";
-        $university3->phone = "74787546";
-        $university3->address = "Av. América entre Santa Cruz";
-        $university3->save();
+        $university7 = new University;
+        $university7->name = "Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca";
+        $university7->phone = "75555555";
+        $university7->address = "Sucre";
+        $university7->save();
 
-        $university4 = new University;
-        $university4->name = "San Simon";
-        $university4->phone = "75414521";
-        $university4->address = "Av. Quintanilla";
-        $university4->save();
-
-        $university5 = new University;
-        $university5->name = "UNO";
-        $university5->phone = "65251545";
-        $university5->address = "Av. Blanco Galindo";
-        $university5->save();
+        $university8 = new University;
+        $university8->name = "Universidad Privada del Valle";
+        $university8->phone = "76666666";
+        $university8->address = "Cochabamba";
+        $university8->save();
     }
 }

@@ -2,13 +2,15 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import NavLink from "@/Components/NavLink";
 import ProjectData from "@/Components/ProjectData";
 
-const Show = ({ auth, project, career }) => {
+
+const Show = ({ auth, project, image, person }) => {
+    console.log(image);
     return (
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight py-6">
-                    Detalles del Proyecto
+                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    Detalle del Proyecto
                 </h2>
             }
         >
