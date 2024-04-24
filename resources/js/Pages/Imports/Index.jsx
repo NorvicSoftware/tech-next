@@ -11,7 +11,7 @@ function ImportButton() {
             type="button" // Tipo de botón
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-            Import Projects
+            Importar Datos
         </Link>
     );
 }
@@ -23,11 +23,7 @@ export default function Index({ importProjectsRoute, auth }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!selectedFile) {
-            setFileError("Por favor seleccione un archivo.");
-            return;
-        }
-
+        
         const formData = new FormData();
         formData.append("file", selectedFile);
 
@@ -39,10 +35,7 @@ export default function Index({ importProjectsRoute, auth }) {
             .then((data) => {
                 console.log(data);
             })
-            .catch((error) => {
-                console.error("Error:", error);
-                alert('Se produjo un error al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.');
-            });
+            
     };
 
     const handleFileChange = (e) => {
@@ -55,7 +48,7 @@ export default function Index({ importProjectsRoute, auth }) {
             user={auth.user}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    Proyectos
+                    Importar
                 </h2>
             }
         >

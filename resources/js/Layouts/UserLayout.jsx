@@ -17,6 +17,7 @@ export default function UserLayout({ children }) {
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ms-6"></div>
+                        
                         <div className="-me-2 flex items-center sm:hidden"></div>
                     </div>
                 </div>

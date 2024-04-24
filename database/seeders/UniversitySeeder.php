@@ -14,7 +14,7 @@ class UniversitySeeder extends Seeder
     public function run(): void
     {
         $university1 = new University;
-        $university1->name = "Universidad Privada De Ciencias Administrativas y Tecnológicas";
+        $university1->name = "Universidad UCATEC";
         $university1->phone = "4200406";
         $university1->address = "Cochabamaba";
         $university1->save();

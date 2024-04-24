@@ -135,6 +135,10 @@ class ProjectController extends Controller
         return view('projects.report', ['goodProjects' => $goodProjects]);
     }
 
+    /**
+     * Este método se encarga de subir una imagen en el directorio "storage/app/public/images/projects"
+     * @return return retorna el nombre de la imagen.
+     */
     public function loadImage($request){
         $image_name = '';
         if($request->hasFile('image')) {
