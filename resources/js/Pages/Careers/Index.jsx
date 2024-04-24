@@ -10,6 +10,8 @@ export default function Index({ auth }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
+            name="Nueva Carrera"
+            url="/careers/create"
             header={
                 <div className="flex sm:mx-10 items-center justify-between">
                     <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -20,6 +22,7 @@ export default function Index({ auth }) {
                             name="Añadir Nueva Carrera"
                             url="careers/create"
                             className="text-[7px]"
+                            
                         />
                     </div>
                 </div>
