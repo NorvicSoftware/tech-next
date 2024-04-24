@@ -44,20 +44,22 @@ const Form = ({ auth, career, universities }) => {
                                     <InputLabel>Carrera:</InputLabel>
                                     <TextInput
                                         className="w-full border rounded px-3 py-2"
+                                        maxlength="125"
                                         value={data.name}
                                         onChange={(e) => setData("name", e.target.value)}
                                     />
-                                    {errors.name && <span className="text-red-500">{errors.name}</span>}
+                                    {errors.name && <span className="text-red-500">El campo de nombre es obligatorio.</span>}
                                 </div>
 
                                 <div className="mt-4">
                                     <InputLabel>Teléfono:</InputLabel>
                                     <TextInput
                                         className="w-full border rounded px-3 py-2"
+                                        maxlength="15"
                                         value={data.phone}
                                         onChange={(e) => setData("phone", e.target.value)}
                                     />
-                                    {errors.phone && <span className="text-red-500">{errors.phone}</span>}
+                                    {errors.phone && <span className="text-red-500">El campo de telefono es obligatorio.</span>}
                                 </div>
 
                                 <div className="mt-4">

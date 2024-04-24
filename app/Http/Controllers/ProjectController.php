@@ -17,9 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all(); 
-        return Inertia::render('Projects/Index', ['projects' => $projects]);
-        $projects = Project::with('person', 'career')->get();
+
 
         $projects = Project::with('person', 'career', 'image')->get();
         return Inertia::render('Projects/Index', ['projects' => $projects]);  
@@ -30,7 +28,6 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Projects/Create');
         $persons = Person::all();
         $careers = Career::all();
         return Inertia::render('Projects/Create', ['persons' => $persons, 'careers' => $careers]);
@@ -111,8 +108,6 @@ class ProjectController extends Controller
      */
     public function edit(string $id)
     {
-        $project = Project::findOrFail($id); // Encuentra el proyecto por su ID
-        return Inertia::render('Projects/Edit', ['project' => $project]); // Renderiza el formulario de edición
         $project = Project::findOrFail($id);
         $persons = Person::all();
         $careers = Career::all();
@@ -144,6 +139,8 @@ class ProjectController extends Controller
         $project->person_id = $request->person_id;
         $project->career_id = $request->career_id;
         $project->save();
+
+        $validatedData['button_disabled'] = true;
         
 
         $project->update($validatedData);
