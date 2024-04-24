@@ -14,12 +14,12 @@ class ScoreSeeder extends Seeder
     public function run(): void
     {
         $score1 = new Score;
-        $score1->reaction = 'bueno';
+        $score1->reaction = 'Bueno';
         $score1->project_id = 1;
         $score1->save();
 
         $score2 = new Score;
-        $score2->reaction = 'indiferente';
+        $score2->reaction = 'Indiferente';
         $score2->project_id = 2;
         $score2->save();
     }

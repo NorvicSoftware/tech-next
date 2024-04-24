@@ -4,7 +4,8 @@ import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
-export default function Authenticated({ user, header, children }) {
+import LinkButton from "@/Components/LinkButton";
+export default function Authenticated({ user, name= '', url, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
     return (
@@ -208,7 +209,12 @@ export default function Authenticated({ user, header, children }) {
             {header && (
                 <header className="bg-white dark:bg-gray-800 shadow">
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {header}
+                        <div className="flex justify-between">
+                            {header}
+                            { name && (
+                                <LinkButton name={name} url={url} />
+                            )}
+                        </div>
                     </div>
                 </header>
             )}
