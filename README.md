@@ -112,7 +112,7 @@ Se seguirán una serie de pasos para realizar la intalación de las tecnologias 
 
 **NOTA.-**
 
-> Tomar en cuenta la instalación de las ultimas versiones de PHP, NODE.JS, COMPOSER, REACT.
+> Tomar en cuenta la instalación de las ultimas versiones de PHP, NODE.JS y COMPOSER.
 
 ### Servidor 1
  ---
@@ -252,7 +252,7 @@ $ npm run dev
 * Marisol Herrera Mamani
 * Maide Melania Mamani Arellano
 * Americo Julio Alvarez Tellez
-  
+* Maicol Willian Arratia Velasco  
 ### Pruebas QUA
 * Carlos Manuel Fuentes Arevalo
 * Alan Justin Colque Villanueva

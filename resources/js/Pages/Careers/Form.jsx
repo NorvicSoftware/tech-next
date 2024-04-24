@@ -82,7 +82,7 @@ const Form = ({ auth, career, universities }) => {
                             </form>
                         </div>
                     </div>
-                </div>
+               </div>
             </div>
         </AuthenticatedLayout>
     );
