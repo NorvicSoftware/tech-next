@@ -16,81 +16,45 @@ const Career = () => {
             </div>
             <div className="container mx-auto">
                 <div className="container mx-auto h-auto px-7 sm:p-16 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-14">
-                    <a
-                      
-                        className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4"
-                    >
-                        <img
-                            src="/images/Careers/programmer.png"
-                            alt=""
-                            className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
-                        />
-                        <CareerHeader name="Ing.Sistemas"/>
+                    
+                    <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
+                         <CareerImage src="/images/Careers/programmer.png"/>
+                         <CareerHeader name="Ing.Sistemas"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
-                        <img
-                            src="/images/Careers/reporter.png"
-                            alt=""
-                            className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
-                        />
+                         <CareerImage src="/images/Careers/reporter.png"/>
                          <CareerHeader name="Cominucación"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
-                        <img
-                            src="/images/Careers/trade.png"
-                            alt=""
-                            className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
-                        />
+                         <CareerImage src="/images/Careers/trade.png"/>
                          <CareerHeader name="Ing. Comercial"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
-                        <img
-                            src="/images/Careers/marketing.png"
-                            alt=""
-                            className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
-                        />
+                         <CareerImage src="/images/Careers/marketing.png"/>
                          <CareerHeader name="Marketing"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
-                        <img
-                            src="/images/Careers/designer.png"
-                            alt=""
-                            className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
-                        />
-                        <CareerHeader name="Diseño Grafico"/>
+                         <CareerImage src="/images/Careers/designer.png"/>
+                         <CareerHeader name="Diseño Grafico"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
-                        <img
-                            src="/images/Careers/businessman.png"
-                            alt=""
-                            className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
-                        />
+                         <CareerImage src="/images/Careers/businessman.png"/>
                          <CareerHeader name="Adm. Empresas"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
-                        <img
-                            src="/images/Careers/robot.png"
-                            alt=""
-                            className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
-                        />
+                         <CareerImage src="/images/Careers/robot.png"/>
                          <CareerHeader name="Mecatrónica"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
-                        <img
-                            src="/images/Careers/travel.png"
-                            alt=""
-                            className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
-                        />
-                        <h2 className="text-base md:text-lg font-bold text-center whitespace-nowrap overflow-hidden">
-                            Turismo
-                        </h2>
+                            <CareerImage src="/images/Careers/travel.png"/>
+                            <CareerHeader name="Turismo"/>
                     </a>
                 </div>
             </div>

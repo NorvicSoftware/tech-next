@@ -1,8 +1,8 @@
-export default function CareerImage({src = '', alt = ''}) {
+export default function CareerImage({src = ''}) {
     return(
         <img
         src={src}
-        alt={alt}
+        alt= " "
         className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
         />
     );
