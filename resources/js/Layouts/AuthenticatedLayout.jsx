@@ -4,15 +4,14 @@ import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
-
-export default function Authenticated({ user, header, children, a }) {
+import LinkButton from "@/Components/LinkButton";
+export default function Authenticated({ user, name= '', url, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
-
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
             <nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-                <div className="max-w-7xl mx-auto px-4 py-0 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
@@ -66,7 +65,10 @@ export default function Authenticated({ user, header, children, a }) {
                                 </NavLink>
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink href={route('careers.index')} active={route().current('careers.index')}>
+                                <NavLink
+                                    href={route("careers.index")}
+                                    active={route().current("careers.index")}
+                                >
                                     Carreras
                                 </NavLink>
                             </div>
@@ -103,19 +105,18 @@ export default function Authenticated({ user, header, children, a }) {
                                             </button>
                                         </span>
                                     </Dropdown.Trigger>
-
                                     <Dropdown.Content>
                                         <Dropdown.Link
                                             href={route("profile.edit")}
                                         >
-                                            Perfil
+                                            Profile
                                         </Dropdown.Link>
                                         <Dropdown.Link
                                             href={route("logout")}
                                             method="post"
                                             as="button"
                                         >
-                                            Cerrar Sesión
+                                            Log Out
                                         </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>
@@ -205,27 +206,18 @@ export default function Authenticated({ user, header, children, a }) {
                     </div>
                 </div>
             </nav>
-
-            <div className=" dark:bg-gray-800">
-                <div className="flex justify-between mx-10 shadow">
-                    {header && (
-                        <header className="bg-white dark:bg-gray-800 shadow">
-                            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                                {header}
-                            </div>
-                        </header>
-                    )}
-
-                    {a && (
-                        <a className="bg-white dark:bg-gray-800 shadow">
-                            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                                {a}
-                            </div>
-                        </a>
-                    )}
-                </div>
-            </div>
-
+            {header && (
+                <header className="bg-white dark:bg-gray-800 shadow">
+                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        <div className="flex justify-between">
+                            {header}
+                            { name && (
+                                <LinkButton name={name} url={url} />
+                            )}
+                        </div>
+                    </div>
+                </header>
+            )}
             <main>{children}</main>
         </div>
     );
