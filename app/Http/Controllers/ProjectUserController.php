@@ -15,7 +15,7 @@ class ProjectUserController extends Controller
     public function index()
     {
         $projects = Project::with('person', 'career', 'image')->get();
-        return Inertia::render('Users/Project', ['project' => $projects]);  
+        return Inertia::render('Users/Project', ['projects' => $projects]);  
     }
 
 }
