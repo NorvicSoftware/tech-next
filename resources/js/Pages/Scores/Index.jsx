@@ -13,7 +13,6 @@ const Index = ({ auth }) => {
                 bueno: 0,
                 indiferente: 0,
                 malo: 0,
-                id: null,
             };
         }
 
@@ -38,15 +37,7 @@ const Index = ({ auth }) => {
                     Puntuaciones
                 </h2>
             }
-            a={
-                <a
-                    href={route("scores.create")}
-                    active={route().current("scores.create")}
-                    className="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150"
-                >
-                    Calificar Proyecto
-                </a>
-            }
+
         >
             <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
@@ -63,9 +54,6 @@ const Index = ({ auth }) => {
                             </th>
                             <th className="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
                                 Malo
-                            </th>
-                            <th className="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
-                                Acciones
                             </th>
                         </tr>
                     </thead>
@@ -87,26 +75,7 @@ const Index = ({ auth }) => {
                                     </td>
                                     <td className="px-4 py-3 text-sm text-gray-900">
                                         <div className="flex gap-2">
-                                            <NavLink
-                                                href={route(
-                                                    "scores.edit",
-                                                    scores.id
-                                                )}
-                                                className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-                                            >
-                                                Editar
-                                            </NavLink>
-                                            <NavLink
-                                                href={route(
-                                                    "scores.destroy",
-                                                    scores.id
-                                                )}
-                                                method="delete"
-                                                as="button"
-                                                className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                                            >
-                                                Eliminar
-                                            </NavLink>
+
                                         </div>
                                     </td>
                                 </tr>

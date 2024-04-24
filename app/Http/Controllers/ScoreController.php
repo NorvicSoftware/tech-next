@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Score;
 use App\Models\Project;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 
 class ScoreController extends Controller
 {
@@ -14,118 +14,86 @@ class ScoreController extends Controller
      */
     public function index()
     {
+
         $scores = Score::with('project')->get();
         return Inertia::render('Scores/Index', ['scores' => $scores]);
     }
 
     /**
-     * Show the form for creating a new resource.
+
      */
     public function create()
     {
-        $projects = Project::all();
-        return Inertia::render('Scores/Form', ['projects' => $projects, 'id' => 0]);
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
+    public function store(Request $request)
+    {
 
-     public function store(Request $request)
-     {
-         $request->validate([
-             'project_id' => 'required|exists:projects,id',
-             'good' => 'required|numeric|min:0',
-             'indifferent' => 'required|numeric|min:0',
-             'bad' => 'required|numeric|min:0',
-         ]);
-     
-         for ($i = 0; $i < $request->good; $i++) {
-             $score = new Score();
-             $score->project_id = $request->project_id;
-             $score->reaction = 'good';
-             $score->save();
-         }
-     
+        $validatedData = $request->validate([
+            'reaction' => 'required|in:good,indifferent,bad',
+            'project_id' => 'required|exists:projects,id',
+        ]);
 
-         for ($i = 0; $i < $request->indifferent; $i++) {
-             $score = new Score();
-             $score->project_id = $request->project_id;
-             $score->reaction = 'indifferent';
-             $score->save();
-         }
-     
 
-         for ($i = 0; $i < $request->bad; $i++) {
-             $score = new Score();
-             $score->project_id = $request->project_id;
-             $score->reaction = 'bad';
-             $score->save();
-         }
+        Score::create($validatedData);
 
-    return redirect()->route('scores.index')->with('success', 'Puntuación creada exitosamente.');
-}
+        return redirect()->route('scores.index')->with('success', 'Puntuación creada exitosamente.');
+    }
 
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+
+
+    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
+
         $score = Score::findOrFail($id);
+        
+
         $projects = Project::all();
-        return Inertia::render('Scores/Form', ['initialData' => $score, 'projects' => $projects, 'id' => $id]);
+
+        return Inertia::render('Scores/Edit', ['score' => $score, 'projects' => $projects]);
     }
-    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-        $request->validate([
-            'project_id' => 'required|exists:projects,id',
-            'good' => 'required|numeric|min:0',
-            'indifferent' => 'required|numeric|min:0',
-            'bad' => 'required|numeric|min:0',
-        ]);
-    
+
         $score = Score::findOrFail($id);
 
-        $score->where('project_id', $score->project_id)->delete();
 
-        for ($i = 0; $i < $request->good; $i++) {
-            $score = new Score();
-            $score->project_id = $request->project_id;
-            $score->reaction = 'good';
-            $score->save();
-        }
-    
-        for ($i = 0; $i < $request->indifferent; $i++) {
-            $score = new Score();
-            $score->project_id = $request->project_id;
-            $score->reaction = 'indifferent';
-            $score->save();
-        }
-    
-        for ($i = 0; $i < $request->bad; $i++) {
-            $score = new Score();
-            $score->project_id = $request->project_id;
-            $score->reaction = 'bad';
-            $score->save();
-        }
-    
+        $validatedData = $request->validate([
+            'reaction' => 'required|in:good,indifferent,bad',
+            'project_id' => 'required|exists:projects,id',
+        ]);
+
+
+        $score->update($validatedData);
+
+
         return redirect()->route('scores.index')->with('success', 'Puntuación actualizada exitosamente.');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
     {
-        $score = Score::findOrFail($id);
-        $score->delete();
-        return redirect()->route('scores.index')->with('success', 'Puntuación eliminada con éxito.');
-    }
 
+    }
+    
 }
