@@ -12,25 +12,24 @@ use Inertia\Response;
 
 class CareerController extends Controller
 {
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
-    
+     */    
     public function index()
     {
         $careers = Career::with('university')->get();
         return Inertia::render('Careers/Index', ['careers' => $careers]);
     }
 
-     /**
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         $universities = University::all();
-        return Inertia::render('Careers/Create', ['universities' => $universities]);
+        return Inertia::render('Careers/Form', ['universities' => $universities, 'id' => 0]);
     }
 
     /**
@@ -67,14 +66,14 @@ class CareerController extends Controller
         return Inertia::render('careers.show', ['career' => $career]);
     }
 
-     /**
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
         $career = Career::find($id);
         $universities = University::all();
-        return Inertia::render('Careers/Edit', ['career' => $career, 'universities' => $universities]);
+        return Inertia::render('Careers/Form', ['career' => $career, 'universities' => $universities, 'id' => $id]);
     }
 
     /**
@@ -114,7 +113,7 @@ class CareerController extends Controller
             $career = Career::findOrFail($id);
             $career->delete();
             DB::commit(); //Aplica los cambios realizados a la BD
-            return redirect()->route('careers.index')->with('success', 'La carrera ' . $request->career['name'] . ' fue eliminada exitosamente');
+            return redirect()->route('careers.index')->with('success', 'La carrera fue eliminada exitosamente');
         }catch (\Exception $exc){
             DB::rollback(); // Evita que se apliquen cambios parciales a l BD
             return redirect()->route('careers.index')->with('success', 'Error al eliminar la carrera');
