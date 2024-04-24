@@ -53,7 +53,7 @@ class CareerController extends Controller
             return redirect()->route('careers.index')->with('success', 'La carrera  fue creada exitosamente');
         }catch (\Exception $exc){
             DB::rollback(); // Evita que se apliquen cambios parciales a l BD
-            return redirect()->route('careers.index')->with('success', 'Error al crear la carrera ');
+            return redirect()->route('careers.index')->with('error', 'Error al crear la carrera ');
         }
     }
 
@@ -100,7 +100,7 @@ class CareerController extends Controller
             return redirect()->route('careers.index')->with('success', 'La carrera fue actualizada exitosamente');
         }catch (\Exception $exc){
             DB::rollback(); // Evita que se apliquen cambios parciales a l BD
-            return redirect()->route('careers.index')->with('success', 'Error al editar la carrera ');
+            return redirect()->route('careers.index')->with('error', 'Error al editar la carrera ');
         }
     }
 
@@ -116,7 +116,7 @@ class CareerController extends Controller
             return redirect()->route('careers.index')->with('success', 'La carrera fue eliminada exitosamente');
         }catch (\Exception $exc){
             DB::rollback(); // Evita que se apliquen cambios parciales a l BD
-            return redirect()->route('careers.index')->with('success', 'Error al eliminar la carrera');
+            return redirect()->route('careers.index')->with('error', 'Error al eliminar la carrera');
         }
     }
 }
