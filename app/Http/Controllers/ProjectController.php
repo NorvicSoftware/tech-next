@@ -28,7 +28,7 @@ class ProjectController extends Controller
     {
         $persons = Person::all();
         $careers = Career::all();
-        return Inertia::render('Projects/Create', ['persons' => $persons, 'careers' => $careers]);
+        return Inertia::render('Projects/Form', ['persons' => $persons, 'careers' => $careers, 'id' => 0]);
     }
 
     /**
@@ -86,7 +86,7 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $persons = Person::all();
         $careers = Career::all();
-        return Inertia::render('Projects/Edit', ['project' => $project, 'persons' => $persons, 'careers' => $careers]);
+        return Inertia::render('Projects/Form', ['project' => $project, 'persons' => $persons, 'careers' => $careers, 'id' => $id]);
     }
 
     /**
