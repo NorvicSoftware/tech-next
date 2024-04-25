@@ -216,6 +216,12 @@ export default function Authenticated({
                         >
                             Carreras
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route("scores.index")}
+                            active={route().current("scores.index")}
+                        >
+                            Puntuaciones
+                        </ResponsiveNavLink>
                     </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">

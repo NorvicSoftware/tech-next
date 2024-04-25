@@ -34,7 +34,7 @@ class ScoreController extends Controller
     {
 
         $validatedData = $request->validate([
-            'reaction' => 'required|in:good,indifferent,bad',
+            'reaction' => 'required|in:Bueno,Indiferente,Malo',
             'project_id' => 'required|exists:projects,id',
         ]);
 
@@ -77,7 +77,7 @@ class ScoreController extends Controller
 
 
         $validatedData = $request->validate([
-            'reaction' => 'required|in:good,indifferent,bad',
+            'reaction' => 'required|in:Bueno,Indiferente,Malo',
             'project_id' => 'required|exists:projects,id',
         ]);
 

@@ -114,7 +114,7 @@ const Form = ({ auth, persons, careers }) => {
                                         Seleccione un estudiante
                                     </InputLabel>
                                     <select
-                                        className="w-full border rounded px-3 py-2 text-black"
+                                        className="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm"
                                         value={data.person_id}
                                         onChange={(e) =>
                                             setData("person_id", e.target.value)
@@ -136,7 +136,7 @@ const Form = ({ auth, persons, careers }) => {
                                         Seleccione una carrera
                                     </InputLabel>
                                     <select
-                                        className="w-full border rounded px-3 py-2 text-black"
+                                        className="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm"
                                         value={data.career_id}
                                         onChange={(e) =>
                                             setData("career_id", e.target.value)
@@ -173,10 +173,12 @@ const Form = ({ auth, persons, careers }) => {
                                     )}
                                 </div>
                                 <div className="flex justify-end mt-4">
-                                    <PrimaryButton>Guardar</PrimaryButton>
+                                    <PrimaryButton className="dark:text-white dark:bg-blue-800 bg-blue-800  dark:hover:bg-blue-900 dark:hover:text-white dark:active:bg-blue-800 dark:focus:bg-blue-900 focus:bg-blue-900 text-white hover:text-white active:bg-blue-800 ">
+                                        {textHeader}
+                                    </PrimaryButton>
                                     <LinkButton
-                                        className="ml-2"
-                                        name="Atras"
+                                        className="ml-2 dark:bg-red-600 dark:hover:bg-red-900 dark:text-white  bg-red-600 hover:bg-red-900 text-white"
+                                        name="Cancelar"
                                         url="/projects"
                                     />
                                 </div>

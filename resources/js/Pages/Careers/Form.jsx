@@ -55,7 +55,7 @@ const Form = ({ auth, career, universities }) => {
                         <div className="p-6 text-gray-900 dark:text-gray-100">
                             <form onSubmit={handleSubmit}>
                                 <div>
-                                    <InputLabel>Carrera:</InputLabel>
+                                    <InputLabel className="text-lg">Carrera</InputLabel>
                                     <TextInput
                                         className="w-full border rounded px-3 py-2"
                                         maxlength={50}
@@ -72,7 +72,7 @@ const Form = ({ auth, career, universities }) => {
                                 </div>
 
                                 <div className="mt-4">
-                                    <InputLabel>Teléfono:</InputLabel>
+                                    <InputLabel className="text-lg">Teléfono</InputLabel>
                                     <TextInput
                                         className="w-full border rounded px-3 py-2"
                                         maxLength={15}
@@ -89,7 +89,7 @@ const Form = ({ auth, career, universities }) => {
                                 </div>
 
                                 <div className="mt-4">
-                                    <InputLabel>Universidad:</InputLabel>
+                                    <InputLabel className="text-lg">Universidad</InputLabel>
                                     <select
                                         className="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm"
                                         value={data.university_id}
@@ -120,11 +120,11 @@ const Form = ({ auth, career, universities }) => {
                                 </div>
 
                                 <div className="flex justify-end mt-4">
-                                    <PrimaryButton className="dark:text-white dark:bg-blue-800 bg-blue-800 hover:text-black dark:hover:bg-blue-900 dark:hover:text-white">
+                                    <PrimaryButton className="dark:text-white dark:bg-blue-800 bg-blue-800  dark:hover:bg-blue-900 dark:hover:text-white dark:active:bg-blue-800 dark:focus:bg-blue-900 focus:bg-blue-900 text-white hover:text-white active:bg-blue-800 ">
                                         {textHeader}
                                     </PrimaryButton>
                                     <LinkButton
-                                        className="ml-2 dark:bg-red-600 dark:hover:bg-red-900 dark:text-white"
+                                        className="ml-2 dark:bg-red-600 dark:hover:bg-red-900 dark:text-white  bg-red-600 hover:bg-red-900 text-white"
                                         name="Cancelar"
                                         url="/careers"
                                     />

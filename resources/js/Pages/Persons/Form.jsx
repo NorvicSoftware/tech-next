@@ -13,17 +13,31 @@ const Form = ({ auth }) => {
         last_name: person ? person.last_name : "",
     });
 
-    const textHeader = id === 0 ? "Crear Persona" : "Editar Persona";
-
+    const textHeader = id === 0 ? "Crear Autor" : "Editar Autor";
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (id === 0) {
-            post(route("persons.store"));
+            post(route("persons.store"), {
+                onSuccess: (res) => {
+                    console.log("OK");
+                },
+                onError: (error) => {
+                    console.log("error" + error);
+                },
+            });
         } else {
-            put(route("persons.update", person.id)); 
+            put(route("persons.update", person.id), {
+                onSuccess: (res) => {
+                    console.log("OK");
+                },
+                onError: (error) => {
+                    console.log("error" + error);
+                },
+            });
         }
     };
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -34,48 +48,54 @@ const Form = ({ auth }) => {
             }
         >
             <Head title={textHeader} />
-            <form onSubmit={handleSubmit} className="space-y-4 grid justify-center my-4">
-                <div className="w-96 grid gap-3">
-                    <div>
-                        <InputLabel>Nombre del Autor</InputLabel>
-                        <TextInput
-                            type="text"
-                            className="w-full border rounded px-3 py-2"
-                            isFocused={true}
-                            value={data.first_name}
-                            onChange={(e) => setData("first_name", e.target.value)}
-                        />
-                        {errors && errors.first_name && <span className="text-red-500">{errors.first_name}</span>}
+            <div className="py-12">
+                <div className="max-w-2xl mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 text-gray-900 dark:text-gray-100">
+                            <form onSubmit={handleSubmit}>
+                                <div>
+                                    <InputLabel className="text-lg">
+                                        Nombres
+                                    </InputLabel>
+                                    <TextInput
+                                        className="w-full border rounded px-3 py-2"
+                                        value={data.first_name}
+                                        onChange={(e) =>
+                                            setData(
+                                                "first_name",
+                                                e.target.value
+                                            )
+                                        }
+                                    />
+                                </div>
+                                <div className="mt-4">
+                                    <InputLabel className="text-lg">
+                                        Apellidos
+                                    </InputLabel>
+                                    <TextInput
+                                        className="w-full border rounded px-3 py-2"
+                                        value={data.last_name}
+                                        onChange={(e) =>
+                                            setData("last_name", e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div className="flex justify-end mt-4">
+                                    <PrimaryButton className="dark:text-white dark:bg-blue-800 bg-blue-800  dark:hover:bg-blue-900 dark:hover:text-white dark:active:bg-blue-800 dark:focus:bg-blue-900 focus:bg-blue-900 text-white hover:text-white active:bg-blue-800 ">
+                                        {textHeader}
+                                    </PrimaryButton>
+                                    <LinkButton
+                                        className="ml-2 dark:bg-red-600 dark:hover:bg-red-900 dark:text-white  bg-red-600 hover:bg-red-900 text-white"
+                                        name="Cancelar"
+                                        url="/persons"
+                                    />
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div>
-                        <InputLabel>Apellidos</InputLabel>
-                        <TextInput
-                            type="text"
-                            className="w-full border rounded px-3 py-2"
-                            isFocused={true}
-                            value={data.last_name}
-                            onChange={(e) => setData("last_name", e.target.value)}
-                        />
-                        {errors && errors.last_name && <span className="text-red-500">{errors.last_name}</span>}
-                    </div>
-                    </div>
-                <div className="flex justify-between">
-                    <PrimaryButton
-                        type="submit"
-                        disabled={false}
-                        className="dark:bg-blue-600 dark dark:text-white bg-blue-600 dark:hover:text-black"
-                    >
-                        {textHeader}
-                    </PrimaryButton>
-                    <LinkButton
-                        name="Cancelar"
-                        className="dark:bg-red-600 dark:text-white bg-blue-600 dark:hover:text-black"
-                        url="/persons"
-                    />
                 </div>
-            </form>
+            </div>
         </AuthenticatedLayout>
     );
 };
-
 export default Form;
