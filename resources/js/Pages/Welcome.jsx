@@ -16,7 +16,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
     return (
         <>
-            <Career/>
+            <Head title="Welcome" />
+            <Career  />
         </>
     );
 }

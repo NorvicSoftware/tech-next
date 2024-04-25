@@ -12,19 +12,18 @@ use Inertia\Response;
 
 class CareerController extends Controller
 {
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
-    
+     */    
     public function index()
     {
         $careers = Career::with('university')->get();
         return Inertia::render('Careers/Index', ['careers' => $careers]);
     }
 
-     /**
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -40,21 +39,21 @@ class CareerController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:50',
-            'phone' => 'nullable|regex:/^[0-9]+$/|max:15',
+            'phone' => 'nullable|regex:/^[0-9]+$/|min:5|max:15',
             'university_id' => 'required|Integer|exists:universities,id'
         ]);
         Career::create($validated);
-        DB::beginTransaction(); //Iniciar transacciones
+        DB::beginTransaction();
         try {
             $career = new Career();
             $career->name = $request->name;
             $career->phone = $request->phone;
             $career->university_id = $request->university['id'];
-            DB::commit(); //Aplica los cambios realizados a la BD
+            DB::commit();
             return redirect()->route('careers.index')->with('success', 'La carrera  fue creada exitosamente');
         }catch (\Exception $exc){
-            DB::rollback(); // Evita que se apliquen cambios parciales a l BD
-            return redirect()->route('careers.index')->with('success', 'Error al crear la carrera ');
+            DB::rollback();
+            return redirect()->route('careers.index')->with('error', 'Error al crear la carrera ');
         }
     }
 
@@ -67,7 +66,7 @@ class CareerController extends Controller
         return Inertia::render('careers.show', ['career' => $career]);
     }
 
-     /**
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
@@ -85,23 +84,23 @@ class CareerController extends Controller
         $career = Career::findOrFail($id);
         $validated = $request->validate([
             'name' => 'required|max:50',
-            'phone' => 'nullable|regex:/^[0-9]+$/|max:15',
+            'phone' => 'nullable|regex:/^[0-9]+$/|min:5|max:15',
             'university_id' => 'required|Integer|exists:universities,id'
         ]);
 
         $career->update($validated);
-        DB::beginTransaction(); //Iniciar transacciones
+        DB::beginTransaction();
         try {
             $career = Career::findOrFail($id);
             $career->name = $request->name;
             $career->phone = $request->phone;
             $career->university_id = $request->university['id'];
             $career->update($validated);
-            DB::commit(); //Aplica los cambios realizados a la BD
+            DB::commit();
             return redirect()->route('careers.index')->with('success', 'La carrera fue actualizada exitosamente');
         }catch (\Exception $exc){
-            DB::rollback(); // Evita que se apliquen cambios parciales a l BD
-            return redirect()->route('careers.index')->with('success', 'Error al editar la carrera ');
+            DB::rollback();
+            return redirect()->route('careers.index')->with('error', 'Error al editar la carrera ');
         }
     }
 
@@ -113,11 +112,11 @@ class CareerController extends Controller
         try{
             $career = Career::findOrFail($id);
             $career->delete();
-            DB::commit(); //Aplica los cambios realizados a la BD
+            DB::commit();
             return redirect()->route('careers.index')->with('success', 'La carrera fue eliminada exitosamente');
         }catch (\Exception $exc){
-            DB::rollback(); // Evita que se apliquen cambios parciales a l BD
-            return redirect()->route('careers.index')->with('success', 'Error al eliminar la carrera');
+            DB::rollback();
+            return redirect()->route('careers.index')->with('error', 'Error al eliminar la carrera');
         }
     }
 }

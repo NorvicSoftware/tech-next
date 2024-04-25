@@ -1,90 +1,191 @@
 import React from "react";
+import { useForm, usePage, Head } from "@inertiajs/react";
+import InputLabel from "@/Components/InputLabel";
+import TextInput from "@/Components/TextInput";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { usePage } from "@inertiajs/react";
+import PrimaryButton from "@/Components/PrimaryButton";
+import LinkButton from "@/Components/LinkButton";
 
-export default function Index({ importProjectsRoute, auth }) {
-    const { errors } = usePage().props;
-    const [selectedFile, setSelectedFile] = React.useState(null);
-    const [fileError, setFileError] = React.useState(null);
+const Form = ({ auth, persons, careers }) => {
+    const { id, project, errors } = usePage().props;
+    const { data, setData, post, put } = useForm({
+        title: project ? project.title : "",
+        qualification: project ? project.qualification : "",
+        year: project ? project.year : "",
+        manager: project ? project.manager : "",
+        person_id: project ? project.person_id : "",
+        career_id: project ? project.career_id : "",
+    });
+
+    const textHeader = id === 0 ? "Crear Proyecto" : "Editar Proyecto";
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!selectedFile) {
-            setFileError("Por favor seleccione un archivo.");
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append("file", selectedFile);
-
-        fetch(importProjectsRoute, {
-            method: "POST",
-            body: formData,
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
+        if (id === 0) {
+            post(route("projects.store"), {
+                onSuccess: (res) => {
+                    console.log("OK");
+                },
+                onError: (error) => {
+                    console.log("error" + error);
+                },
             });
-    };
-
-    const handleFileChange = (e) => {
-        setSelectedFile(e.target.files[0]);
-        setFileError(null);
+        } else {
+            put(route("projects.update", project.id), {
+                onSuccess: (res) => {
+                    console.log("OK");
+                },
+                onError: (error) => {
+                    console.log("error" + error);
+                },
+            });
+        }
     };
 
     return (
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    Proyectos
+                <h2 className="mx-10 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    {textHeader}
                 </h2>
             }
         >
-            <div className="flex flex-col bg-gray-800 m-auto justify-center items-center w-[50%] rounded-md mt-10 text-gray-200">
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
-                    <div className="mb-4 flex flex-col gap-8">
-                        <label
-                            htmlFor="file"
-                            className="block text-lg font-medium text-gray-200 mt-4"
-                        >
-                            Elija el archivo para importar proyectos:
-                        </label>
-                        <input
-                            type="file"
-                            name="file"
-                            id="file"
-                            className="mt-1 block w-full"
-                            onChange={handleFileChange}
-                        />
-                        {fileError && (
-                            <p className="text-red-500 text-sm mt-1">
-                                {fileError}
-                            </p>
-                        )}
-                        <div className="flex justify-center">
-                            <button
-                                type="submit"
-                                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            >
-                                Import Projects
-                            </button>
+            <Head title={textHeader} />
+            <div className="py-12">
+                <div className="max-w-2xl mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 text-gray-900 dark:text-gray-100">
+                            <form onSubmit={handleSubmit}>
+                                <div>
+                                    <InputLabel className="text-lg">
+                                        Titulo
+                                    </InputLabel>
+                                    <TextInput
+                                        className="w-full border rounded px-3 py-2"
+                                        value={data.title}
+                                        onChange={(e) =>
+                                            setData("title", e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div className="mt-4">
+                                    <InputLabel className="text-lg">
+                                        Calificación
+                                    </InputLabel>
+                                    <TextInput
+                                        className="w-full border rounded px-3 py-2"
+                                        value={data.qualification}
+                                        onChange={(e) =>
+                                            setData(
+                                                "qualification",
+                                                e.target.value
+                                            )
+                                        }
+                                    />
+                                </div>
+                                <div className="mt-4">
+                                    <InputLabel className="text-lg">
+                                        Año
+                                    </InputLabel>
+                                    <TextInput
+                                        className="w-full border rounded px-3 py-2"
+                                        value={data.year}
+                                        onChange={(e) =>
+                                            setData("year", e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div className="mt-4">
+                                    <InputLabel className="text-lg">
+                                        Tutor
+                                    </InputLabel>
+                                    <TextInput
+                                        className="w-full border rounded px-3 py-2"
+                                        value={data.manager}
+                                        onChange={(e) =>
+                                            setData("manager", e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div className="mt-4">
+                                    <InputLabel className="text-lg">
+                                        Seleccione un estudiante
+                                    </InputLabel>
+                                    <select
+                                        className="w-full border rounded px-3 py-2 text-black"
+                                        value={data.person_id}
+                                        onChange={(e) =>
+                                            setData("person_id", e.target.value)
+                                        }
+                                    >
+                                        <option value="">
+                                            Seleccione un estudiante
+                                        </option>
+                                        {persons.map((person) => (
+                                            <option
+                                                key={person.id}
+                                                value={person.id}
+                                            >{`${person.first_name} ${person.last_name}`}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="mt-4">
+                                    <InputLabel className="text-lg">
+                                        Seleccione una carrera
+                                    </InputLabel>
+                                    <select
+                                        className="w-full border rounded px-3 py-2 text-black"
+                                        value={data.career_id}
+                                        onChange={(e) =>
+                                            setData("career_id", e.target.value)
+                                        }
+                                    >
+                                        <option value="">
+                                            Seleccione una carrera
+                                        </option>
+                                        {careers.map((career) => (
+                                            <option
+                                                key={career.id}
+                                                value={career.id}
+                                            >
+                                                {career.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="mt-4">
+                                    <InputLabel className="text-lg">
+                                        Imagen
+                                    </InputLabel>
+                                    <input
+                                        type="file"
+                                        className="w-full border rounded px-3 py-2 text-gray-200"
+                                        onChange={(e) =>
+                                            setData("image", e.target.files[0])
+                                        }
+                                    />
+                                    {errors.image && (
+                                        <span className="text-red-500">
+                                            {errors.image}
+                                        </span>
+                                    )}
+                                </div>
+                                <div className="flex justify-end mt-4">
+                                    <PrimaryButton>Guardar</PrimaryButton>
+                                    <LinkButton
+                                        className="ml-2"
+                                        name="Atras"
+                                        url="/projects"
+                                    />
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </form>
-                {errors && (
-                    <div className="mt-4 text-sm text-red-600">
-                        <ul>
-                            {Object.values(errors).map((error, index) => (
-                                <li key={index}>{error}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
+                </div>
             </div>
         </AuthenticatedLayout>
     );
-}
+};
+
+export default Form;

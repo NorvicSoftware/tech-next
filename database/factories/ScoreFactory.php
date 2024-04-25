@@ -18,7 +18,7 @@ class ScoreFactory extends Factory
     public function definition(): array
     {
         return [
-            'reaction' => $this->faker->randomElement(['good', 'indifferent', 'bad']),
+            'reaction' => $this->faker->randomElement(['Bueno' , 'Indiferente', 'Malo']),
             'project_id' => Project::all()->random()->id,
         ];
     }

@@ -18,7 +18,7 @@ class ProjectFactory extends Factory
     {
         return [
 
-            'title' => $this->faker->sentence(),
+            'title' => $this->faker->text(100),
             'qualification' => $this->faker->numberBetween(0, 100),
             'year' => $this->faker->numberBetween(2010, 2024),
             'manager' => $this->faker->name(),
