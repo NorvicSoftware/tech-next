@@ -26,14 +26,13 @@ class ImportController extends Controller
     public function import(Request $request)
     {
         try {
-        Excel::import(new PersonsImport, 'persona.xlsx');
-        Excel::import(new ProjectsImport, 'proyectos.xlsx');
-        return response()->json(['success' => 'La importación fue exitosa!'], 200);
-    } catch (\Throwable $e) {
-        // Manejar el error
-        return response()->json(['error' => $e->getMessage()], 500);
+            Excel::import(new PersonsImport, 'persona.xlsx');
+            Excel::import(new ProjectsImport, 'proyectos.xlsx');
+            // Devolver una respuesta JSON con un mensaje de éxito
+            return response()->json(['success' => 'La importación fue exitosa!'], 200);
+        } catch (\Throwable $e) {
+            // Manejar el error
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
-    }
-
-    
 }
