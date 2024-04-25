@@ -47,12 +47,6 @@ Route::middleware('auth')->group(function () {
     
 
 
-
-
-
-
-
-
     //Projects Controller
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
@@ -93,5 +87,8 @@ Route::get('/project', function () {
 })->name('project');
 
 
+Route::get('/list', function () {
+    return Inertia::render('Users/List');
+})->name('list');
 
 require __DIR__.'/auth.php';
