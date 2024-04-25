@@ -1,6 +1,6 @@
 import React from "react";
 import CareerHeader from "@/Components/CareerHeader";
-import { usePage, Head } from "@inertiajs/react";
+import { usePage} from "@inertiajs/react";
 
 const Career = () => {
     const {careers} = usePage().props;

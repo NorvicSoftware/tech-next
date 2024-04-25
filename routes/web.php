@@ -11,6 +11,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\User\UserCareerController;
+use App\Http\Controllers\User\UserShowController;
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -83,10 +84,13 @@ Route::middleware('auth')->group(function () {
 });
 
 //Vista de Usuario - Proyecto
-Route::get('/', function () {
-    return Inertia::render('Users/Project');
-})->name('project');
-Route::get('/', [UserCareerController::class, 'getCareers']);
+// Route::get('/project', function () {
+//     return Inertia::render('Users/Project');
+// })->name('project');
+
+Route::get('/show/{id}', [UserShowController::class, 'getShow'])->name('show.getShow');
+
+// Route::get('/', [UserCareerController::class, 'getCareers']);
 
 
 
