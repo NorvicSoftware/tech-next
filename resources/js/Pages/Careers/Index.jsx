@@ -74,7 +74,7 @@ export default function Index({ auth }) {
                                                     )}
                                                     method="delete"
                                                     as="button"
-                                                    className="bg-red-600 text-white rounded-md tracking-widest hover:bg-red-900 w-16 flex justify-center items-center text-xs  hover:border-red-900 dark:hover:border-red-900 pb-2 sm:pb-1"
+                                                    className="bg-red-600 text-white rounded-md tracking-widest hover:bg-red-900 w-16 flex justify-center items-center text-xs hover:border-red-900 dark:hover:border-red-900 pb-2 sm:pb-1"
                                                 />
                                             </td>
                                         </tr>

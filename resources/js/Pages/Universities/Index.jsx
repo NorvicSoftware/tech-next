@@ -9,7 +9,7 @@ export default function Index({ auth }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            name="Nueva Universidad"
+            name="Añadir Nueva Universidad"
             url="/universities/create"
             header={
                 <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -22,9 +22,6 @@ export default function Index({ auth }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900 dark:text-gray-100">
-                            {/* <div>
-                                <LinkButton name="Nueva Universidad" url="/universities/create" />
-                            </div> */}
                             <table className="min-w-full">
                                 <thead className="text-lg">
                                     <tr>
@@ -48,22 +45,21 @@ export default function Index({ auth }) {
                                             <td className="px-4 py-2">
                                                 {university.name}
                                             </td>
-                                            <td className="px-4 py-2">
+                                            <td className="px-4 py-2 text-center">
                                                 {university.phone}
                                             </td>
                                             <td className="px-4 py-2">
                                                 {university.address}
                                             </td>
-                                            <td className="px-4 py-2">
-                                                <NavLink
-                                                    href={route(
+                                            <td className="sm:flex justify-center grid gap-2 sm:p-3 py-4 h-[100%]">
+                                                <LinkButton
+                                                    name="Editar"
+                                                    className="dark:text-white dark:bg-blue-800 bg-blue-800 dark:hover:bg-blue-900 rounded 0 w-16 flex justify-center normal-case p-1"
+                                                    url={route(
                                                         "universities.edit",
                                                         university.id
                                                     )}
-                                                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-                                                >
-                                                    Editar
-                                                </NavLink>
+                                                />
                                                 <NavLink
                                                     href={route(
                                                         "universities.destroy",
@@ -71,7 +67,7 @@ export default function Index({ auth }) {
                                                     )}
                                                     method="delete"
                                                     as="button"
-                                                    className="ml-2 px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                                                    className="bg-red-600 text-white rounded-md tracking-widest hover:bg-red-900 w-16 flex justify-center items-center text-xs hover:border-red-900 dark:hover:border-red-900 pb-2 sm:pb-1"
                                                 >
                                                     Eliminar
                                                 </NavLink>

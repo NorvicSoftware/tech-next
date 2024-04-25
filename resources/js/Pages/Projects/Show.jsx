@@ -2,9 +2,9 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import NavLink from "@/Components/NavLink";
 import ProjectData from "@/Components/ProjectData";
 
-
 const Show = ({ auth, project, image, person }) => {
     console.log(image);
+
     return (
         <AuthenticatedLayout
             user={auth.user}

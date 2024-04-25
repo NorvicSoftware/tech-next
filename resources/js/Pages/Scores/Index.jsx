@@ -1,11 +1,10 @@
 import React from "react";
+import { usePage, Head } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { usePage } from "@inertiajs/react";
 import NavLink from "@/Components/NavLink";
-import { Head } from "@inertiajs/react";
 import LinkButton from "@/Components/LinkButton";
 
-export default function Index ({ auth }) {
+const Index = ({ auth }) => {
     const { scores } = usePage().props;
 
     const projectScores = scores.reduce((acc, score) => {
@@ -16,6 +15,7 @@ export default function Index ({ auth }) {
                 bueno: 0,
                 indiferente: 0,
                 malo: 0,
+                id: null,
             };
         }
 
@@ -36,88 +36,42 @@ export default function Index ({ auth }) {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <div className="flex mx-10 items-center justify-between">
-                    <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                        Puntuaciones
-                    </h2>
-                    <div>
-                        <LinkButton
-                            name="Añadir Nueva Carrera"
-                            url="scores/create"
-                            className=""
-                        />
-                    </div>
-                </div>
+                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    Puntuaciones
+                </h2>
             }
         >
             <Head title="Puntuaciones" />
-            <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                    <thead>
-                        <tr className="bg-gray-100">
-                            <th className="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
-                                Proyecto
-                            </th>
-                            <th className="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
-                                Bueno
-                            </th>
-                            <th className="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
-                                Indiferente
-                            </th>
-                            <th className="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
-                                Malo
-                            </th>
-                            <th className="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
-                                Acciones
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
-                        {Object.entries(projectScores).map(
-                            ([project, scores], id) => (
-                                <tr key={id} className="hover:bg-gray-50">
-                                    <td className="px-4 py-3 text-sm text-gray-900">
-                                        {project}
-                                    </td>
-                                    <td className="px-4 py-3 text-sm text-gray-900">
-                                        {scores.bueno}
-                                    </td>
-                                    <td className="px-4 py-3 text-sm text-gray-900">
-                                        {scores.indiferente}
-                                    </td>
-                                    <td className="px-4 py-3 text-sm text-gray-900">
-                                        {scores.malo}
-                                    </td>
-                                    <td className="px-4 py-3 text-sm text-gray-900">
-                                        <div className="flex gap-2">
-                                            <NavLink
-                                                href={route(
-                                                    "scores.edit",
-                                                    scores.id
-                                                )}
-                                                className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-                                            >
-                                                Editar
-                                            </NavLink>
-                                            <NavLink
-                                                href={route(
-                                                    "scores.destroy",
-                                                    scores.id
-                                                )}
-                                                method="delete"
-                                                as="button"
-                                                className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                                            >
-                                                Eliminar
-                                            </NavLink>
-                                        </div>
-                                    </td>
-                                </tr>
-                            )
-                        )}
-                    </tbody>
-                </table>
+            <div className="py-12">
+                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 text-gray-900 dark:text-gray-100">
+                            <table className="min-w-full">
+                                <thead className="text-lg">
+                                    <tr>
+                                        <th className="px-4 py-4 border-b border-gray-500 font-semibold">Proyecto</th>
+                                        <th className="px-4 py-4 border-b border-gray-500 font-semibold">Bueno</th>
+                                        <th className="px-4 py-4 border-b border-gray-500 font-semibold">Indiferente</th>
+                                        <th className="px-4 py-4 border-b border-gray-500 font-semibold">Malo</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="text-center">
+                                    {Object.entries(projectScores).map(([project, scores], id) => (
+                                        <tr key={id}>
+                                            <td className="px-4 py-4 text-left">{project}</td>
+                                            <td className="px-4 py-4">{scores.bueno}</td>
+                                            <td className="px-4 py-4">{scores.indiferente}</td>
+                                            <td className="px-4 py-4">{scores.malo}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </AuthenticatedLayout>
     );
 };
+
+export default Index;
