@@ -89,7 +89,7 @@ const Create = ({ auth, persons, careers }) => {
                                 setData("person_id", e.target.value)
                             }
                         >
-                            <option value="">Select Person</option>
+                            <option value="">Seleccionar Persona</option>
                             {persons.map((person) => (
                                 <option
                                     key={person.id}
@@ -104,7 +104,7 @@ const Create = ({ auth, persons, careers }) => {
                         )}
                     </div>
                     <div>
-                        <label className="block mb-1 text-white">Career:</label>
+                        <label className="block mb-1 text-white">Carrera</label>
                         <select
                             className="w-full border rounded px-3 py-2"
                             value={data.career_id}
@@ -112,7 +112,7 @@ const Create = ({ auth, persons, careers }) => {
                                 setData("career_id", e.target.value)
                             }
                         >
-                            <option value="">Select Career</option>
+                            <option value="">Seleccionar Carrera</option>
                             {careers.map((career) => (
                                 <option key={career.id} value={career.id}>
                                     {career.name}

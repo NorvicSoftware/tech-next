@@ -11,7 +11,7 @@ const Career = () => {
         <div className="bg-gray-900 text-white min-h-screen">
             <Header />
             <div className="flex flex-col items-center mt-6">
-                <h1 className="text-4xl font-bold mb-2">TechNext</h1>
+                <h1 className="text-4xl font-bold mb-2">Startproyect</h1>
                 <p className="text-gray-300 text-lg mb-4 md:mb-0 font-bold">
                     Inspirate y crea nuevas ideas
                 </p>
@@ -36,7 +36,7 @@ const Career = () => {
                             alt=""
                             className="w-16 h-16 md:w-24 md:h-24 mb-2 md:mb-4"
                         />
-                         <CareerHeader name="Cominucación"/>
+                         <CareerHeader name="Comunicación"/>
                     </a>
 
                     <a className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
@@ -95,7 +95,7 @@ const Career = () => {
                 </div>
             </div>
             <footer className="text-gray-600 text-center mt-8">
-                <p>&copy; 2024 TechNex</p>
+                <p>&copy; 2024 Startproyect</p>
             </footer>
         </div>
     );

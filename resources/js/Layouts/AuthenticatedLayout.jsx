@@ -25,7 +25,7 @@ export default function Authenticated({ user, name= '', url, header, children })
                                     href={route("dashboard")}
                                     active={route().current("dashboard")}
                                 >
-                                    Dashboard
+                                    Panel
                                 </NavLink>
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -107,14 +107,14 @@ export default function Authenticated({ user, name= '', url, header, children })
                                         <Dropdown.Link
                                             href={route("profile.edit")}
                                         >
-                                            Profile
+                                            Perfil
                                         </Dropdown.Link>
                                         <Dropdown.Link
                                             href={route("logout")}
                                             method="post"
                                             as="button"
                                         >
-                                            Log Out
+                                            Cerrar Sesion
                                         </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>

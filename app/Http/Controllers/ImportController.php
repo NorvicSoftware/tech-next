@@ -28,7 +28,7 @@ class ImportController extends Controller
         try {
         Excel::import(new PersonsImport, 'persona.xlsx');
         Excel::import(new ProjectsImport, 'proyectos.xlsx');
-        return Inertia::render('/Projects');
+        return response()->json(['success' => 'La importación fue exitosa!'], 200);
     } catch (\Throwable $e) {
         // Manejar el error
         return response()->json(['error' => $e->getMessage()], 500);

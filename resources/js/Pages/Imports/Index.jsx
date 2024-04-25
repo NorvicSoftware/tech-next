@@ -1,59 +1,22 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { usePage } from "@inertiajs/react";
-import { Link } from '@inertiajs/react';
+import { Head } from "@inertiajs/react";
+import { Link } from "@inertiajs/react";
 
 function ImportButton() {
     return (
         <Link
-            href="/import/excel" // Esta es la URL de la ruta en Laravel
-            as="button" // Renderizar como un botón
-            type="button" // Tipo de botón
+            href="/import/excel"
+            as="button"
+            type="button"
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-<<<<<<< HEAD
-            Importar
-=======
             Importar Datos
->>>>>>> 48595cc70c4e7f11be45ac9f7334a92ab8c091ff
         </Link>
     );
 }
 
-export default function Index({ importProjectsRoute, auth }) {
-    const { errors } = usePage().props;
-    const [selectedFile, setSelectedFile] = React.useState(null);
-    const [fileError, setFileError] = React.useState(null);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-        const formData = new FormData();
-        formData.append("file", selectedFile);
-
-        fetch(importProjectsRoute, {
-            method: "POST",
-            body: formData,
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-            })
-<<<<<<< HEAD
-            .catch((error) => {
-                console.error("Error:", error);
-                alert('Se produjo un error al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.');
-            });
-=======
-            
->>>>>>> 48595cc70c4e7f11be45ac9f7334a92ab8c091ff
-    };
-
-    const handleFileChange = (e) => {
-        setSelectedFile(e.target.files[0]);
-        setFileError(null);
-    };
-    
+export default function Index({ auth }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -63,7 +26,17 @@ export default function Index({ importProjectsRoute, auth }) {
                 </h2>
             }
         >
-            <ImportButton />
+            <Head title="Importar" />
+            <div className="py-12">
+                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 text-gray-900 dark:text-gray-100">
+                            <p className="mb-4">Haz click en el botón de abajo para importar tus datos:</p>
+                            <ImportButton />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </AuthenticatedLayout>
-    );
+    );
 }
