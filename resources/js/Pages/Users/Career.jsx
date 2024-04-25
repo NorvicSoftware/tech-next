@@ -1,7 +1,9 @@
 import React from "react";
 import Header from "@/Components/Common/Header";
+import CareerImage from "@/Components/CareerImage";
 import CareerHeader from "@/Components/CareerHeader";
 import { usePage, Head } from "@inertiajs/react";
+import NavLink from "@/Components/NavLink";
 
 const Career = () => {
     const {careers} = usePage().props;
@@ -18,45 +20,49 @@ const Career = () => {
             </div>
             <div className="container mx-auto">
                 <div className="container mx-auto h-auto px-7 sm:p-16 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-14">
-                    
-                    <NavLink href={route("project.index")} active={route().current("project.index")} className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
-                         <CareerImage src="/images/Careers/programmer.png"/>
-                         <CareerHeader name="Ing.Sistemas"/>
+                    <NavLink className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
+                        <CareerImage src="/images/Careers/programmer.png"/>
+                        <CareerHeader name="Ing.Sistemas"/>
                     </NavLink>
 
-                    <NavLink href={route("project.index")} active={route().current("project.index")} className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
+                    <NavLink className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                          <CareerImage src="/images/Careers/reporter.png"/>
                          <CareerHeader name="Cominucación"/>
                     </NavLink>
 
-                    <NavLink href={route("project.index")} active={route().current("project.index")} className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
+                    <NavLink className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                          <CareerImage src="/images/Careers/trade.png"/>
+
                          <CareerHeader name="Ing. Comercial"/>
                     </NavLink>
 
-                    <NavLink href={route("project.index")} active={route().current("project.index")} className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
+                    <NavLink className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                          <CareerImage src="/images/Careers/marketing.png"/>
+
                          <CareerHeader name="Marketing"/>
                     </NavLink>
 
-                    <NavLink href={route("project.index")} active={route().current("project.index")} className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
-                         <CareerImage src="/images/Careers/designer.png"/>
-                         <CareerHeader name="Diseño Grafico"/>
+                    <NavLink className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
+                        <CareerImage src="/images/Careers/designer.png"/>
+                        <CareerHeader name="Diseño Grafico"/>
                     </NavLink>
 
-                    <NavLink href={route("project.index")} active={route().current("project.index")} className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
+                    <NavLink className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                          <CareerImage src="/images/Careers/businessman.png"/>
+
                          <CareerHeader name="Adm. Empresas"/>
                     </NavLink>
 
-                    <NavLink href={route("project.index")} active={route().current("project.index")} className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
+                    <NavLink className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
                          <CareerImage src="/images/Careers/robot.png"/>
+
                          <CareerHeader name="Mecatrónica"/>
                     </NavLink>
 
-                    <NavLink href={route("project.index")} active={route().current("project.index")} className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
-                            <CareerImage src="/images/Careers/travel.png"/>
-                            <CareerHeader name="Turismo"/>
+                    <NavLink className="flex flex-col items-center bg-gray-800 border-4 border-white rounded-xl p-7 md:p-4 mx-4">
+                        <CareerImage src="/images/Careers/travel.png"/>
+
+                        <CareerHeader name="Turismo"/>
                     </NavLink>
                 </div>
             </div>
@@ -66,4 +72,4 @@ const Career = () => {
         </div>
     );
 };
-export default Career;
+export default Career;

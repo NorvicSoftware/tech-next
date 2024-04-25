@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PersonsController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ProjectUserController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\CareerController;
 use Illuminate\Foundation\Application;
@@ -84,9 +83,10 @@ Route::middleware('auth')->group(function () {
 });
 
 //Vista de Usuario - Proyecto
-Route::get('/project', function () {
-    return Inertia::render('Users/Project');
-})->name('project');
+// Route::get('/', function () {
+//     return Inertia::render('Users/Project');
+// })->name('project');
+Route::get('/', [UserCareerController::class, 'getCareers']);
 
 
 
