@@ -1,6 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import NavLink from "@/Components/NavLink";
 import ProjectData from "@/Components/ProjectData";
+import LinkButton from "@/Components/LinkButton";
 
 const Show = ({ auth, project, career }) => {
     return (
@@ -12,43 +13,53 @@ const Show = ({ auth, project, career }) => {
                 </h2>
             }
         >
-            <div className="flex gap-5 w-[90%] mx-auto p-6 justify-center my-5 border-4 rounded-xl border-none dark:bg-gray-800">
-                <div className="rounded-4 border-4 row-start-1"></div>
-                <div className="space-y-4 text-center justify-center ">
-                    <ProjectData
-                        className="font-extrabold uppercase"
-                        data={project.title}
-                    />
-                    <ProjectData
-                        name="Autor:"
-                        data={
-                            project.person
-                                ? project.person.first_name +
-                                  " " +
-                                  project.person.last_name
-                                : "N/A"
-                        }
-                    />
-                    <ProjectData
-                        name="Carrera:"
-                        data={project.career ? project.career.name : "N/A"}
-                    />
-                    <ProjectData name="Docente/Tutor:" data={project.manager} />
-                    <ProjectData
-                        name="Calificación:"
-                        data={project.qualification}
-                    />
-                    <ProjectData name="Año:" data={project.year} />
+            <div className="py-12">
+                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 text-gray-900 dark:text-gray-100">
+                            <div className="space-y-4 text-center justify-center ">
+                                <ProjectData
+                                    className="font-extrabold uppercase"
+                                    data={project.title}
+                                />
+                                <ProjectData
+                                    name="Autor:"
+                                    data={
+                                        project.person
+                                            ? project.person.first_name +
+                                              " " +
+                                              project.person.last_name
+                                            : "N/A"
+                                    }
+                                />
+                                <ProjectData
+                                    name="Carrera:"
+                                    data={
+                                        project.career
+                                            ? project.career.name
+                                            : "N/A"
+                                    }
+                                />
+                                <ProjectData
+                                    name="Docente/Tutor:"
+                                    data={project.manager}
+                                />
+                                <ProjectData
+                                    name="Calificación:"
+                                    data={project.qualification}
+                                />
+                                <ProjectData name="Año:" data={project.year} />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="rounded-4 border-4 "></div>
-            </div>
-            <div className="text-center pb-2">
-                <NavLink
-                    href={route("projects.index")}
-                    className="px-4 py-2 bg-red-700 text-white rounded hover:bg-red-900 text-2xl"
-                >
-                    Volver
-                </NavLink>
+                <div className="text-center">
+                    <LinkButton
+                        name="Volver"
+                        url={route("projects.index")}
+                        className="mt-2 dark:bg-red-600 dark:hover:bg-red-900 dark:text-white  bg-red-600 hover:bg-red-900 text-white"
+                    />
+                </div>
             </div>
         </AuthenticatedLayout>
     );

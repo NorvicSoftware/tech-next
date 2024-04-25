@@ -19,9 +19,23 @@ const Form = ({ auth, career, universities }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (id === 0) {
-            post(route("careers.store"));
+            post(route("careers.store"), {
+                onSuccess: () => {
+                    alert("Carrera creada correctamente");
+                },
+                onError: (error) => {
+                    alert("Error al crear nueva carrera");
+                },
+            });
         } else {
-            put(route("careers.update", career.id));
+            put(route("careers.update", career.id), {
+                onSuccess: () => {
+                    alert("Carrera editada correctamente");
+                },
+                onError: (error) => {
+                    alert("Error al editar la carrera");
+                },
+            });
         }
     };
 
@@ -41,50 +55,84 @@ const Form = ({ auth, career, universities }) => {
                         <div className="p-6 text-gray-900 dark:text-gray-100">
                             <form onSubmit={handleSubmit}>
                                 <div>
-                                    <InputLabel>Carrera:</InputLabel>
+                                    <InputLabel className="text-lg">Carrera</InputLabel>
                                     <TextInput
                                         className="w-full border rounded px-3 py-2"
-                                        maxlength="125"
+                                        maxlength={50}
                                         value={data.name}
-                                        onChange={(e) => setData("name", e.target.value)}
+                                        onChange={(e) =>
+                                            setData("name", e.target.value)
+                                        }
                                     />
-                                    {errors.name && <span className="text-red-500">El campo de nombre es obligatorio.</span>}
+                                    {errors.name && (
+                                        <span className="text-red-500">
+                                            El campo de nombre es obligatorio.
+                                        </span>
+                                    )}
                                 </div>
 
                                 <div className="mt-4">
-                                    <InputLabel>Teléfono:</InputLabel>
+                                    <InputLabel className="text-lg">Teléfono</InputLabel>
                                     <TextInput
                                         className="w-full border rounded px-3 py-2"
-                                        maxlength="15"
+                                        maxLength={15}
                                         value={data.phone}
-                                        onChange={(e) => setData("phone", e.target.value)}
+                                        onChange={(e) =>
+                                            setData("phone", e.target.value)
+                                        }
                                     />
-                                    {errors.phone && <span className="text-red-500">El campo de telefono es obligatorio.</span>}
+                                    {errors.phone && (
+                                        <span className="text-red-500">
+                                            El campo solo acepta números.
+                                        </span>
+                                    )}
                                 </div>
 
                                 <div className="mt-4">
-                                    <InputLabel>Universidad:</InputLabel>
+                                    <InputLabel className="text-lg">Universidad</InputLabel>
                                     <select
-                                        className="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
+                                        className="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm"
                                         value={data.university_id}
-                                        onChange={(e) => setData("university_id", e.target.value)}
+                                        onChange={(e) =>
+                                            setData(
+                                                "university_id",
+                                                e.target.value
+                                            )
+                                        }
                                     >
-                                        <option value="">Selecciona la Universidad</option>
+                                        <option value="">
+                                            Selecciona la Universidad
+                                        </option>
                                         {universities.map((university) => (
-                                            <option key={university.id} value={university.id}>{university.name}</option>
+                                            <option
+                                                key={university.id}
+                                                value={university.id}
+                                            >
+                                                {university.name}
+                                            </option>
                                         ))}
                                     </select>
-                                    {errors.university_id && <span className="text-red-500">{errors.university_id}</span>}
+                                    {errors.university_id && (
+                                        <span className="text-red-500">
+                                            {errors.university_id}
+                                        </span>
+                                    )}
                                 </div>
 
                                 <div className="flex justify-end mt-4">
-                                    <PrimaryButton>{textHeader}</PrimaryButton>
-                                    <LinkButton className="ml-2 dark:bg-red-600 dark:text-white"  name="Cancelar" url="/careers" />
+                                    <PrimaryButton className="dark:text-white dark:bg-blue-800 bg-blue-800  dark:hover:bg-blue-900 dark:hover:text-white dark:active:bg-blue-800 dark:focus:bg-blue-900 focus:bg-blue-900 text-white hover:text-white active:bg-blue-800 ">
+                                        {textHeader}
+                                    </PrimaryButton>
+                                    <LinkButton
+                                        className="ml-2 dark:bg-red-600 dark:hover:bg-red-900 dark:text-white  bg-red-600 hover:bg-red-900 text-white"
+                                        name="Cancelar"
+                                        url="/careers"
+                                    />
                                 </div>
                             </form>
                         </div>
                     </div>
-               </div>
+                </div>
             </div>
         </AuthenticatedLayout>
     );

@@ -273,5 +273,6 @@ return [
         'manager'                  => 'tutor',
         'person_id'                => 'autor',
         'career_id'                => 'carrera',
+        'university_id'            => 'universidad',
     ],
 ];

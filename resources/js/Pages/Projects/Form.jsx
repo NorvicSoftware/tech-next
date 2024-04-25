@@ -25,20 +25,20 @@ const Form = ({ auth, persons, careers }) => {
         if (id === 0) {
             post(route("projects.store"), {
                 onSuccess: (res) => {
-                    console.log('OK');
+                    console.log("OK");
                 },
                 onError: (error) => {
-                    console.log('error' + error);
-                }
+                    console.log("error" + error);
+                },
             });
         } else {
             put(route("projects.update", project.id), {
                 onSuccess: (res) => {
-                    console.log('OK');
+                    console.log("OK");
                 },
                 onError: (error) => {
-                    console.log('error' + error);
-                }
+                    console.log("error" + error);
+                },
             });
         }
     };
@@ -59,11 +59,15 @@ const Form = ({ auth, persons, careers }) => {
                         <div className="p-6 text-gray-900 dark:text-gray-100">
                             <form onSubmit={handleSubmit}>
                                 <div>
-                                    <InputLabel className="text-lg">Titulo</InputLabel>
+                                    <InputLabel className="text-lg">
+                                        Titulo
+                                    </InputLabel>
                                     <TextInput
                                         className="w-full border rounded px-3 py-2"
                                         value={data.title}
-                                        onChange={(e) => setData("title", e.target.value)}
+                                        onChange={(e) =>
+                                            setData("title", e.target.value)
+                                        }
                                     />
                                     {errors.title && (
                                             <span className="text-red-500">
@@ -72,13 +76,20 @@ const Form = ({ auth, persons, careers }) => {
                                         )}
                                 </div>
                                 <div className="mt-4">
-                                    <InputLabel className="text-lg">Calificación</InputLabel>
+                                    <InputLabel className="text-lg">
+                                        Calificación
+                                    </InputLabel>
                                     <TextInput
                                         type="number"
                                         maxlength="100"
                                         className="w-full border rounded px-3 py-2"
                                         value={data.qualification}
-                                        onChange={(e) => setData("qualification", e.target.value)}
+                                        onChange={(e) =>
+                                            setData(
+                                                "qualification",
+                                                e.target.value
+                                            )
+                                        }
                                     />
                                     {errors.qualification && (
                                             <span className="text-red-500">
@@ -87,7 +98,9 @@ const Form = ({ auth, persons, careers }) => {
                                         )}
                                 </div>
                                 <div className="mt-4">
-                                    <InputLabel className="text-lg">Año</InputLabel>
+                                    <InputLabel className="text-lg">
+                                        Año
+                                    </InputLabel>
                                     <TextInput
                                     type="number"
                                         className="w-full border rounded px-3 py-2"
@@ -100,7 +113,9 @@ const Form = ({ auth, persons, careers }) => {
                                         )}
                                 </div>
                                 <div className="mt-4">
-                                    <InputLabel className="text-lg">Tutor</InputLabel>
+                                    <InputLabel className="text-lg">
+                                        Tutor
+                                    </InputLabel>
                                     <TextInput
                                         className="w-full border rounded px-3 py-2"
                                         value={data.manager}
@@ -112,15 +127,19 @@ const Form = ({ auth, persons, careers }) => {
                                         )}
                                 </div>
                                 <div className="mt-4">
-                                    <InputLabel className="text-lg">Seleccione un estudiante</InputLabel>
+                                    <InputLabel className="text-lg">
+                                        Seleccione un estudiante
+                                    </InputLabel>
                                     <select
-                                        className="w-full border rounded px-3 py-2 text-black"
+                                        className="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm"
                                         value={data.person_id}
                                         onChange={(e) =>
                                             setData("person_id", e.target.value)
                                         }
                                     >
-                                        <option value="">Seleccione un estudiante</option>
+                                        <option value="">
+                                            Seleccione un estudiante
+                                        </option>
                                         {persons.map((person) => (
                                             <option
                                                 key={person.id}
@@ -135,20 +154,27 @@ const Form = ({ auth, persons, careers }) => {
                                         )}
                                 </div>
                                 <div className="mt-4">
-                                    <InputLabel className="text-lg">Seleccione una carrera</InputLabel>
+                                    <InputLabel className="text-lg">
+                                        Seleccione una carrera
+                                    </InputLabel>
                                     <select
-                                        className="w-full border rounded px-3 py-2 text-black"
+                                        className="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm"
                                         value={data.career_id}
                                         onChange={(e) =>
                                             setData("career_id", e.target.value)
                                         }
                                     >
-                                    <option value="">Seleccione una carrera</option>
+                                        <option value="">
+                                            Seleccione una carrera
+                                        </option>
                                         {careers.map((career) => (
-                                            <option key={career.id} value={career.id}>
+                                            <option
+                                                key={career.id}
+                                                value={career.id}
+                                            >
                                                 {career.name}
                                             </option>
-                                    ))}
+                                        ))}
                                     </select>
                                     {errors.career_id && (
                                             <span className="text-red-500">
@@ -157,7 +183,9 @@ const Form = ({ auth, persons, careers }) => {
                                         )}
                                 </div>
                                 <div className="mt-4">
-                                    <InputLabel className="text-lg">Imagen</InputLabel>
+                                    <InputLabel className="text-lg">
+                                        Imagen
+                                    </InputLabel>
                                     <input
                                         type="file"
                                         className="w-full border rounded px-3 py-2 text-gray-200"
@@ -166,15 +194,22 @@ const Form = ({ auth, persons, careers }) => {
                                         }
                                     />
                                     {errors.image && (
-                                        <span className="text-red-500">{errors.image}</span>
+                                        <span className="text-red-500">
+                                            {errors.image}
+                                        </span>
                                     )}
                                 </div>
                                 <div className="flex justify-end mt-4">
-                                    <PrimaryButton>Guardar</PrimaryButton>
-                                    <LinkButton className="ml-2" name="Atras" url="/projects"/>
+                                    <PrimaryButton className="dark:text-white dark:bg-blue-800 bg-blue-800  dark:hover:bg-blue-900 dark:hover:text-white dark:active:bg-blue-800 dark:focus:bg-blue-900 focus:bg-blue-900 text-white hover:text-white active:bg-blue-800 ">
+                                        {textHeader}
+                                    </PrimaryButton>
+                                    <LinkButton
+                                        className="ml-2 dark:bg-red-600 dark:hover:bg-red-900 dark:text-white  bg-red-600 hover:bg-red-900 text-white"
+                                        name="Cancelar"
+                                        url="/projects"
+                                    />
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
