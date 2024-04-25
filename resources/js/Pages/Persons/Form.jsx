@@ -60,6 +60,11 @@ const Form = ({ auth }) => {
                                         value={data.first_name}
                                         onChange={(e) => setData("first_name", e.target.value)}
                                     />
+                                    {errors.first_name && (
+                                            <span className="text-red-500">
+                                                {errors.first_name}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">Apellidos</InputLabel>
@@ -68,6 +73,11 @@ const Form = ({ auth }) => {
                                         value={data.last_name}
                                         onChange={(e) => setData("last_name", e.target.value)}
                                     />
+                                    {errors.last_name && (
+                                            <span className="text-red-500">
+                                                {errors.last_name}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="flex justify-end mt-4">
                                     <PrimaryButton>Guardar</PrimaryButton>
