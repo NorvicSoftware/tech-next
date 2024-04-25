@@ -65,6 +65,11 @@ const Form = ({ auth, persons, careers }) => {
                                         value={data.title}
                                         onChange={(e) => setData("title", e.target.value)}
                                     />
+                                    {errors.title && (
+                                            <span className="text-red-500">
+                                                {errors.title}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">Calificación</InputLabel>
@@ -73,6 +78,11 @@ const Form = ({ auth, persons, careers }) => {
                                         value={data.qualification}
                                         onChange={(e) => setData("qualification", e.target.value)}
                                     />
+                                    {errors.qualification && (
+                                            <span className="text-red-500">
+                                                {errors.qualification}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">Año</InputLabel>
@@ -80,6 +90,11 @@ const Form = ({ auth, persons, careers }) => {
                                         className="w-full border rounded px-3 py-2"
                                         value={data.year}
                                         onChange={(e) => setData("year", e.target.value)} />
+                                    {errors.year && (
+                                            <span className="text-red-500">
+                                                {errors.year}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">Tutor</InputLabel>
@@ -87,6 +102,11 @@ const Form = ({ auth, persons, careers }) => {
                                         className="w-full border rounded px-3 py-2"
                                         value={data.manager}
                                         onChange={(e) => setData("manager", e.target.value)} />
+                                    {errors.manager && (
+                                            <span className="text-red-500">
+                                                {errors.manager}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">Seleccione un estudiante</InputLabel>
@@ -105,6 +125,11 @@ const Form = ({ auth, persons, careers }) => {
                                             >{`${person.first_name} ${person.last_name}`}</option>
                                         ))}
                                     </select>
+                                    {errors.person_id && (
+                                            <span className="text-red-500">
+                                                {errors.person_id}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">Seleccione una carrera</InputLabel>
@@ -122,6 +147,11 @@ const Form = ({ auth, persons, careers }) => {
                                             </option>
                                     ))}
                                     </select>
+                                    {errors.career_id && (
+                                            <span className="text-red-500">
+                                                {errors.career_id}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">Imagen</InputLabel>
