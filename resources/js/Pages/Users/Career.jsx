@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "@/Components/Common/Header";
 import CareerHeader from "@/Components/CareerHeader";
 import { usePage, Head } from "@inertiajs/react";
 

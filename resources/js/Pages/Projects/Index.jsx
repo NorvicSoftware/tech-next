@@ -74,7 +74,7 @@ export default function Index({ auth }) {
                                                 />
                                                 <LinkButton
                                                     name="Editar"
-                                                    className="dark:text-white dark:bg-blue-800 bg-blue-800 dark:hover:bg-blue-900 rounded 0 w-16 flex justify-center normal-case p-1"
+                                                    className="dark:text-white dark:bg-blue-800 bg-blue-800 dark:hover:bg-blue-900 hover:bg-blue-900 rounded 0 w-16 flex justify-center normal-case p-1"
                                                     url={route(
                                                         "projects.edit",
                                                         project.id
