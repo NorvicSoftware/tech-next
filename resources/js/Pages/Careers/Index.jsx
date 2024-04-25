@@ -60,7 +60,7 @@ export default function Index({ auth }) {
                                             <td className="sm:flex justify-center grid gap-2 sm:p-3 py-4 h-[100%]">
                                                 <LinkButton
                                                     name="Editar"
-                                                    className="dark:bg-blue-700 bg-blue-700 dark:hover:bg-blue-900 rounded 0 w-16 flex justify-center normal-case p-1"
+                                                    className="dark:text-white dark:bg-blue-800 bg-blue-800 dark:hover:bg-blue-900 rounded 0 w-16 flex justify-center normal-case p-1"
                                                     url={route(
                                                         "careers.edit",
                                                         career.id

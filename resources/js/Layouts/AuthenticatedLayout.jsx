@@ -248,7 +248,13 @@ export default function Authenticated({
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between">
                             {header}
-                            {name && <LinkButton name={name} url={url} />}
+                            {name && (
+                                <LinkButton
+                                    name={name}
+                                    url={url}
+                                    className="hover:bg-white dark:text-black"
+                                />
+                            )}
                         </div>
                     </div>
                 </header>
