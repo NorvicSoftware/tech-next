@@ -83,7 +83,7 @@ const Form = ({ auth, career, universities }) => {
                                     />
                                     {errors.phone && (
                                         <span className="text-red-500">
-                                            El campo de telefono es obligatorio.
+                                            El campo solo acepta números.
                                         </span>
                                     )}
                                 </div>
