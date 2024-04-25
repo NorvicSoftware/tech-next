@@ -47,16 +47,16 @@ const Index = ({ auth }) => {
                             <table className="min-w-full">
                                 <thead className="text-gray-20 text-xs sm:text-lg">
                                     <tr>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 ">
                                             Proyecto
                                         </th>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500">
                                             Bueno
                                         </th>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500">
                                             Indiferente
                                         </th>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500">
                                             Malo
                                         </th>
                                     </tr>
@@ -68,7 +68,7 @@ const Index = ({ auth }) => {
                                                 className="text-xs sm:text-base text-black dark:text-white "
                                                 key={id}
                                             >
-                                                <td className="px-4 py-4 ">
+                                                <td className="px-4 py-4 text-left">
                                                     {project}
                                                 </td>
                                                 <td className="px-4 py-4">
