@@ -31,7 +31,9 @@ class UniversityController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:3|max:250',
+            'phone' => 'required|min:7|max:15',
+            'address' => 'required|min:3|max:250'
         ]);
         
         $university = new University();
@@ -67,7 +69,9 @@ class UniversityController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:3|max:250',
+            'phone' => 'required|min:7|max:15',
+            'address' => 'required|min:3|max:250'
         ]);
 
         $university = University::find($id);
