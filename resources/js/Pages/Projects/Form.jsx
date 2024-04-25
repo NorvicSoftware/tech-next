@@ -74,6 +74,8 @@ const Form = ({ auth, persons, careers }) => {
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">Calificación</InputLabel>
                                     <TextInput
+                                        type="number"
+                                        maxlength="100"
                                         className="w-full border rounded px-3 py-2"
                                         value={data.qualification}
                                         onChange={(e) => setData("qualification", e.target.value)}
@@ -87,6 +89,7 @@ const Form = ({ auth, persons, careers }) => {
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">Año</InputLabel>
                                     <TextInput
+                                    type="number"
                                         className="w-full border rounded px-3 py-2"
                                         value={data.year}
                                         onChange={(e) => setData("year", e.target.value)} />

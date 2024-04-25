@@ -38,33 +38,14 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-
-            'title' => 'required|string|max:150',
-            'qualification' => 'required|integer',
-            'year' => 'required|string|max:4',
-            'manager' => 'required|string|max:150',
-            'person_id' => 'required|exists:persons,id',
-            'career_id' => 'required|exists:careers,id',
-        ]);
-
-        // Crear un nuevo proyecto
-        $project = new Project;
-        $project->title = $request->title;
-        $project->qualification = $request->qualification;
-        $project->year = $request->year;
-        $project->manager = $request->manager;
-        $project->person_id = $request->person_id;
-        $project->career_id = $request->career_id;
-        $project->save();
 
         $request->validate([
-            'title' => 'required',
-            'qualification' => 'required',
-            'year' => 'required',
-            'manager' => 'required',
-            'person_id' => 'required',
-            'career_id' => 'required',
+            'title' => 'required|min:8|max:150',
+            'qualification' => 'required|min:1|max:100',
+            'year' => 'required|min:3|max:4',
+            'manager' => 'required|min:8|max:150',
+            'person_id' => 'required|exists:persons,id',
+            'career_id' => 'required|exists:careers,id',
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -122,12 +103,13 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
 
         $validatedData = $request->validate([
-            'title' => 'required|string|max:150',
-            'qualification' => 'required|integer',
-            'year' => 'required|string|max:4',
-            'manager' => 'required|string|max:150',
+            'title' => 'required|min:8|max:150',
+            'qualification' => 'required|min:1|max:100|regex:/^[0-9]+$/',
+            'year' => 'required|min:3|max:4',
+            'manager' => 'required|min:8|max:150',
             'person_id' => 'required|exists:persons,id',
             'career_id' => 'required|exists:careers,id',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         // Encuentra el proyecto por su ID y actualiza sus campos
