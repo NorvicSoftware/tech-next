@@ -1,3 +1,4 @@
+// Form.jsx
 import React from "react";
 import { useForm, usePage, Head } from "@inertiajs/react";
 import InputLabel from "@/Components/InputLabel";
@@ -68,12 +69,19 @@ const Form = ({ auth, persons, careers }) => {
                                             setData("title", e.target.value)
                                         }
                                     />
+                                    {errors.title && (
+                                            <span className="text-red-500">
+                                                {errors.title}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
                                         Calificación
                                     </InputLabel>
                                     <TextInput
+                                        type="number"
+                                        maxlength="100"
                                         className="w-full border rounded px-3 py-2"
                                         value={data.qualification}
                                         onChange={(e) =>
@@ -83,18 +91,26 @@ const Form = ({ auth, persons, careers }) => {
                                             )
                                         }
                                     />
+                                    {errors.qualification && (
+                                            <span className="text-red-500">
+                                                {errors.qualification}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
                                         Año
                                     </InputLabel>
                                     <TextInput
+                                    type="number"
                                         className="w-full border rounded px-3 py-2"
                                         value={data.year}
-                                        onChange={(e) =>
-                                            setData("year", e.target.value)
-                                        }
-                                    />
+                                        onChange={(e) => setData("year", e.target.value)} />
+                                    {errors.year && (
+                                            <span className="text-red-500">
+                                                {errors.year}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
@@ -103,17 +119,19 @@ const Form = ({ auth, persons, careers }) => {
                                     <TextInput
                                         className="w-full border rounded px-3 py-2"
                                         value={data.manager}
-                                        onChange={(e) =>
-                                            setData("manager", e.target.value)
-                                        }
-                                    />
+                                        onChange={(e) => setData("manager", e.target.value)} />
+                                    {errors.manager && (
+                                            <span className="text-red-500">
+                                                {errors.manager}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
                                         Seleccione un estudiante
                                     </InputLabel>
                                     <select
-                                        className="w-full border rounded px-3 py-2 text-black"
+                                        className="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm"
                                         value={data.person_id}
                                         onChange={(e) =>
                                             setData("person_id", e.target.value)
@@ -129,13 +147,18 @@ const Form = ({ auth, persons, careers }) => {
                                             >{`${person.first_name} ${person.last_name}`}</option>
                                         ))}
                                     </select>
+                                    {errors.person_id && (
+                                            <span className="text-red-500">
+                                                {errors.person_id}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
                                         Seleccione una carrera
                                     </InputLabel>
                                     <select
-                                        className="w-full border rounded px-3 py-2 text-black"
+                                        className="w-full border rounded px-3 py-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm"
                                         value={data.career_id}
                                         onChange={(e) =>
                                             setData("career_id", e.target.value)
@@ -153,6 +176,11 @@ const Form = ({ auth, persons, careers }) => {
                                             </option>
                                         ))}
                                     </select>
+                                    {errors.career_id && (
+                                            <span className="text-red-500">
+                                                {errors.career_id}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
@@ -172,10 +200,12 @@ const Form = ({ auth, persons, careers }) => {
                                     )}
                                 </div>
                                 <div className="flex justify-end mt-4">
-                                    <PrimaryButton>Guardar</PrimaryButton>
+                                    <PrimaryButton className="dark:text-white dark:bg-blue-800 bg-blue-800  dark:hover:bg-blue-900 dark:hover:text-white dark:active:bg-blue-800 dark:focus:bg-blue-900 focus:bg-blue-900 text-white hover:text-white active:bg-blue-800 ">
+                                        {textHeader}
+                                    </PrimaryButton>
                                     <LinkButton
-                                        className="ml-2"
-                                        name="Atras"
+                                        className="ml-2 dark:bg-red-600 dark:hover:bg-red-900 dark:text-white  bg-red-600 hover:bg-red-900 text-white"
+                                        name="Cancelar"
                                         url="/projects"
                                     />
                                 </div>
