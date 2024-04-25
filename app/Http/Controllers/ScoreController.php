@@ -2,62 +2,98 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Score;
 use App\Models\Project;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 
 class ScoreController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
+
         $scores = Score::with('project')->get();
         return Inertia::render('Scores/Index', ['scores' => $scores]);
     }
 
+    /**
+
+     */
     public function create()
     {
-        $projects = Project::all();
-        return Inertia::render('Scores/Create', ['projects' => $projects]);
+
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
-            'reaction' => 'required|in:1,2,3',
+            'reaction' => 'required|in:good,indifferent,bad',
             'project_id' => 'required|exists:projects,id',
         ]);
+
 
         Score::create($validatedData);
 
-        return redirect()->route('scores.index')->with('success', 'Score created successfully');
+        return redirect()->route('scores.index')->with('success', 'Puntuación creada exitosamente.');
     }
 
-    public function edit($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
+
+
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+
         $score = Score::findOrFail($id);
+        
+
         $projects = Project::all();
+
         return Inertia::render('Scores/Edit', ['score' => $score, 'projects' => $projects]);
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
+
+        $score = Score::findOrFail($id);
+
+
         $validatedData = $request->validate([
-            'reaction' => 'required|in:1,2,3',
+            'reaction' => 'required|in:good,indifferent,bad',
             'project_id' => 'required|exists:projects,id',
         ]);
 
-        $score = Score::findOrFail($id);
+
         $score->update($validatedData);
 
-        return redirect()->route('scores.index')->with('success', 'Score updated successfully');
+
+        return redirect()->route('scores.index')->with('success', 'Puntuación actualizada exitosamente.');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy($id)
     {
-        $score = Score::findOrFail($id);
-        $score->delete();
 
-        return redirect()->route('scores.index')->with('success', 'Score deleted successfully');
     }
+    
 }
