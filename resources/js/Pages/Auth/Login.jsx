@@ -73,7 +73,7 @@ export default function Login({ status, canResetPassword }) {
                             checked={data.remember}
                             onChange={(e) => setData('remember', e.target.checked)}
                         />
-                        <span className="ms-2 text-sm text-gray-600 dark:text-gray-400">Recordarme</span>
+                        <span className="ms-2 text-sm text-gray-600 dark:text-gray-400">Recuerdame</span>
                     </label>
                 </div>
 
@@ -89,6 +89,7 @@ export default function Login({ status, canResetPassword }) {
 
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Ingresar
+                        Iniciar Sesión
                     </PrimaryButton>
                 </div>
             </form>

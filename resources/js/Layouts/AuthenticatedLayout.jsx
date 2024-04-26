@@ -5,7 +5,13 @@ import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 import LinkButton from "@/Components/LinkButton";
-export default function Authenticated({ user, name= '', url, header, children }) {
+export default function Authenticated({
+    user,
+    name = "",
+    url,
+    header,
+    children,
+}) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
     return (
@@ -28,7 +34,7 @@ export default function Authenticated({ user, name= '', url, header, children })
                                     Panel
                                 </NavLink>
                             </div>
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 min-[852px]:flex">
                                 <NavLink
                                     href={route("projects.index")}
                                     active={route().current("projects.index")}
@@ -71,7 +77,10 @@ export default function Authenticated({ user, name= '', url, header, children })
                                 </NavLink>
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink href={route('scores.index')} active={route().current('scores.index')}>
+                                <NavLink
+                                    href={route("scores.index")}
+                                    active={route().current("scores.index")}
+                                >
                                     Puntuaciones
                                 </NavLink>
                             </div>
@@ -207,6 +216,12 @@ export default function Authenticated({ user, name= '', url, header, children })
                         >
                             Carreras
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route("scores.index")}
+                            active={route().current("scores.index")}
+                        >
+                            Puntuaciones
+                        </ResponsiveNavLink>
                     </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
@@ -239,8 +254,12 @@ export default function Authenticated({ user, name= '', url, header, children })
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between">
                             {header}
-                            { name && (
-                                <LinkButton name={name} url={url} />
+                            {name && (
+                                <LinkButton
+                                    name={name}
+                                    url={url}
+                                    className="hover:bg-white dark:text-black"
+                                />
                             )}
                         </div>
                     </div>

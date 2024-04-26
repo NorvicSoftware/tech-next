@@ -1,8 +1,6 @@
 import React from "react";
 import { usePage, Head } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import NavLink from "@/Components/NavLink";
-import LinkButton from "@/Components/LinkButton";
 
 const Index = ({ auth }) => {
     const { scores } = usePage().props;
@@ -19,11 +17,11 @@ const Index = ({ auth }) => {
             };
         }
 
-        if (score.reaction === "good") {
+        if (score.reaction === "Bueno") {
             acc[projectTitle].bueno += 1;
-        } else if (score.reaction === "indifferent") {
+        } else if (score.reaction === "Indiferente") {
             acc[projectTitle].indiferente += 1;
-        } else if (score.reaction === "bad") {
+        } else if (score.reaction === "Malo") {
             acc[projectTitle].malo += 1;
         }
 
@@ -45,25 +43,46 @@ const Index = ({ auth }) => {
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900 dark:text-gray-100">
+                        <div className="p-3 sm:p-6 text-gray-900 dark:text-gray-100">
                             <table className="min-w-full">
-                                <thead className="text-lg">
+                                <thead className="text-gray-20 text-xs sm:text-lg">
                                     <tr>
-                                        <th className="px-4 py-4 border-b border-gray-500 font-semibold">Proyecto</th>
-                                        <th className="px-4 py-4 border-b border-gray-500 font-semibold">Bueno</th>
-                                        <th className="px-4 py-4 border-b border-gray-500 font-semibold">Indiferente</th>
-                                        <th className="px-4 py-4 border-b border-gray-500 font-semibold">Malo</th>
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                            Proyecto
+                                        </th>
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                            Bueno
+                                        </th>
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                            Indiferente
+                                        </th>
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                            Malo
+                                        </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    {Object.entries(projectScores).map(([project, scores], id) => (
-                                        <tr key={id}>
-                                            <td className="px-4 py-4">{project}</td>
-                                            <td className="px-4 py-4">{scores.bueno}</td>
-                                            <td className="px-4 py-4">{scores.indiferente}</td>
-                                            <td className="px-4 py-4">{scores.malo}</td>
-                                        </tr>
-                                    ))}
+                                <tbody className="text-center">
+                                    {Object.entries(projectScores).map(
+                                        ([project, scores], id) => (
+                                            <tr
+                                                className="text-xs sm:text-base text-black dark:text-white "
+                                                key={id}
+                                            >
+                                                <td className="px-4 py-4 ">
+                                                    {project}
+                                                </td>
+                                                <td className="px-4 py-4">
+                                                    {scores.bueno}
+                                                </td>
+                                                <td className="px-4 py-4">
+                                                    {scores.indiferente}
+                                                </td>
+                                                <td className="px-4 py-4">
+                                                    {scores.malo}
+                                                </td>
+                                            </tr>
+                                        )
+                                    )}
                                 </tbody>
                             </table>
                         </div>
