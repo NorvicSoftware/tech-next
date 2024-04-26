@@ -29,8 +29,8 @@ class PersonsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'first_name' => 'required|min:3|max:35',
+            'last_name' => 'required|min:3|max:35',
             ]);
 
         $person = new Person();
@@ -64,8 +64,8 @@ class PersonsController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'first_name' => 'required|min:3|max:35',
+            'last_name' => 'required|min:3|max:35',
             ]);
 
         $person = Person::find($id);

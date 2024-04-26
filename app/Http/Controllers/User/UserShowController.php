@@ -11,9 +11,9 @@ use Inertia\Inertia;
 
 class UserShowController extends Controller
 {
-    public function getShow(string $id)
+    public function getShow()
     {
-        $project = Project::with('person', 'career')->findOrFail($id); 
+        $project = Project::with('person', 'career'); 
         return Inertia::render('User/Show', ['project' => $project]); 
     }
 }

@@ -69,12 +69,19 @@ const Form = ({ auth, persons, careers }) => {
                                             setData("title", e.target.value)
                                         }
                                     />
+                                    {errors.title && (
+                                            <span className="text-red-500">
+                                                {errors.title}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
                                         Calificación
                                     </InputLabel>
                                     <TextInput
+                                        type="number"
+                                        maxlength="100"
                                         className="w-full border rounded px-3 py-2"
                                         value={data.qualification}
                                         onChange={(e) =>
@@ -84,18 +91,26 @@ const Form = ({ auth, persons, careers }) => {
                                             )
                                         }
                                     />
+                                    {errors.qualification && (
+                                            <span className="text-red-500">
+                                                {errors.qualification}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
                                         Año
                                     </InputLabel>
                                     <TextInput
+                                    type="number"
                                         className="w-full border rounded px-3 py-2"
                                         value={data.year}
-                                        onChange={(e) =>
-                                            setData("year", e.target.value)
-                                        }
-                                    />
+                                        onChange={(e) => setData("year", e.target.value)} />
+                                    {errors.year && (
+                                            <span className="text-red-500">
+                                                {errors.year}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
@@ -104,10 +119,12 @@ const Form = ({ auth, persons, careers }) => {
                                     <TextInput
                                         className="w-full border rounded px-3 py-2"
                                         value={data.manager}
-                                        onChange={(e) =>
-                                            setData("manager", e.target.value)
-                                        }
-                                    />
+                                        onChange={(e) => setData("manager", e.target.value)} />
+                                    {errors.manager && (
+                                            <span className="text-red-500">
+                                                {errors.manager}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
@@ -130,6 +147,11 @@ const Form = ({ auth, persons, careers }) => {
                                             >{`${person.first_name} ${person.last_name}`}</option>
                                         ))}
                                     </select>
+                                    {errors.person_id && (
+                                            <span className="text-red-500">
+                                                {errors.person_id}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
@@ -154,6 +176,11 @@ const Form = ({ auth, persons, careers }) => {
                                             </option>
                                         ))}
                                     </select>
+                                    {errors.career_id && (
+                                            <span className="text-red-500">
+                                                {errors.career_id}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">

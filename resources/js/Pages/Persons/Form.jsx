@@ -68,6 +68,11 @@ const Form = ({ auth }) => {
                                             )
                                         }
                                     />
+                                    {errors.first_name && (
+                                            <span className="text-red-500">
+                                                {errors.first_name}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
@@ -80,6 +85,11 @@ const Form = ({ auth }) => {
                                             setData("last_name", e.target.value)
                                         }
                                     />
+                                    {errors.last_name && (
+                                            <span className="text-red-500">
+                                                {errors.last_name}
+                                            </span>
+                                        )}
                                 </div>
                                 <div className="flex justify-end mt-4">
                                     <SecondaryButton className="dark:text-white dark:bg-blue-800 bg-blue-800  dark:hover:bg-blue-900 dark:hover:text-white dark:active:bg-blue-800 dark:focus:bg-blue-900 focus:bg-blue-900 text-white hover:text-white active:bg-blue-800 ">
