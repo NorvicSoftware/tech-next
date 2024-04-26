@@ -89,5 +89,4 @@ Route::get('/', function () {
 Route::get('/', [UserCareerController::class, 'getCareers']);
 
 
-
 require __DIR__.'/auth.php';

@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "@/Components/Common/Header";
 import CareerHeader from "@/Components/CareerHeader";
 import { usePage, Head } from "@inertiajs/react";
 
@@ -9,7 +8,7 @@ const Career = () => {
     
     return (
         <div className="bg-gray-900 text-white min-h-screen">
-            <Header />
+           
             <div className="flex flex-col items-center mt-6">
                 <h1 className="text-4xl font-bold mb-2">TechNext</h1>
                 <p className="text-gray-300 text-lg mb-4 md:mb-0 font-bold">
