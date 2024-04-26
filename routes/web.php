@@ -5,13 +5,13 @@ use App\Http\Controllers\PersonsController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\CareerController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\User\UserCareerController;
 use App\Http\Controllers\User\UserShowController;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -84,11 +84,9 @@ Route::middleware('auth')->group(function () {
 });
 
 //Vista de Usuario - Proyecto
-// Route::get('/project', function () {
-//     return Inertia::render('Users/Project');
-// })->name('project');
-
 Route::get('/show/{id}', [UserShowController::class, 'getShow'])->name('show.getShow');
+
+
 
 // Route::get('/', [UserCareerController::class, 'getCareers']);
 
