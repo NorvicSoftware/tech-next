@@ -83,10 +83,10 @@ Route::middleware('auth')->group(function () {
 });
 
 //Vista de Usuario - Proyecto
-Route::get('/', function () {
-    return Inertia::render('Users/Project');
-})->name('project');
-Route::get('/', [UserCareerController::class, 'getCareers']);
+//Route::get('/', function () {
+//    return Inertia::render('Users/Project');
+//})->name('project');
+Route::get(uri:'/', action: [UserCareerController::class, 'getCareers']);
 
 
 
