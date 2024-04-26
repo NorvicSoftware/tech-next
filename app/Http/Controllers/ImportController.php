@@ -23,25 +23,16 @@ class ImportController extends Controller
         ]);
     }
 
-    public function importProjects(Request $request)
+    public function import(Request $request)
     {
-        $request->validate([
-            'file' => 'required|file|mimes:xlsx,xls',
-        ]);
-
-        Excel::import(new ProjectsImport, $request->file('file'));
-
-        return redirect()->back()->with('success', 'Projects imported successfully.');
-    }
-
-    public function importPersons(Request $request)
-    {
-        $request->validate([
-            'file' => 'required|file|mimes:xlsx,xls',
-        ]);
-
-        Excel::import(new PersonsImport, $request->file('file'));
-
-        return redirect()->back()->with('success', 'Persons imported successfully.');
+        try {
+            Excel::import(new PersonsImport, 'persona.xlsx');
+            Excel::import(new ProjectsImport, 'proyectos.xlsx');
+            // Devolver una respuesta JSON con un mensaje de éxito
+            return response()->json(['success' => 'La importación fue exitosa!'], 200);
+        } catch (\Throwable $e) {
+            // Manejar el error
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }

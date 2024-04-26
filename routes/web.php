@@ -10,16 +10,22 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\User\UserCareerController;
+use App\Http\Controllers\User\UserSearchController;
 use App\Http\Controllers\UserController;
+use App\Models\Career;
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+    $careers = Career::all();
+    return "$careers";
+}); */
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -45,14 +51,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
     Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
     Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
-    
-
-
-
-
-
-
-
 
     //Projects Controller
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
@@ -68,7 +66,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/universities', [UniversityController::class, 'index'])->name('universities.index');
     Route::get('/universities/create', [UniversityController::class, 'create'])->name('universities.create');
     Route::post('/universities', [UniversityController::class, 'store'])->name('universities.store');
-    Route::get('/universities/{id}', [UniversityController::class, 'show'])->name('universities.show');
     Route::get('/universities/{id}/edit', [UniversityController::class, 'edit'])->name('universities.edit');
     Route::put('/universities/{id}', [UniversityController::class, 'update'])->name('universities.update');
     Route::delete('/universities/{id}', [UniversityController::class, 'destroy'])->name('universities.destroy');
@@ -84,20 +81,27 @@ Route::middleware('auth')->group(function () {
 
     //ImportController
     Route::get('/import', [ImportController::class, 'index'])->name('imports.index');
+    Route::get('/import/excel', [ImportController::class, 'import'])->name('projects.import');
+    //Route::get('/import/excel', [ImportController::class, 'importPersons'], [ImportController::class, 'import'])->name('projects.import');
 
     //Project Controller
     Route::get('/projects/generate-report', [ProjectController::class, 'generateReport'])->name('projects.generate-report');
 });
 
+Route::get('/', [UserCareerController::class, 'getCareers']);
+
+Route::get('/projects', [UserSearchController::class, 'getProject'])->name('projects.getProject');
+
 //Vista de Usuario - Proyecto
-Route::get('/project', function () {
+/* Route::get('/', function () {
     return Inertia::render('Users/Project');
 })->name('project');
+//Route::get('/', [UserCareerController::class, 'getCareers']);
 
 
 Route::get('/list', [UserController::class, 'index'])->name('list.index');
 
 Route::get('/careers', [UserController::class, 'showCareers'])->name('public.careers')->middleware('inertia');
-Route::get('/careers/{career}/projects', [UserController::class, 'showProjectsByCareer'])->name('public.projects.by.career')->middleware('inertia');
+Route::get('/careers/{career}/projects', [UserController::class, 'showProjectsByCareer'])->name('public.projects.by.career')->middleware('inertia'); */
 
 require __DIR__.'/auth.php';

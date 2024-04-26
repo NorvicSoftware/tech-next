@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Project;
 use App\Models\Person;
 use App\Models\Career;
 use Inertia\Inertia;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -17,6 +17,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
+
+
         $projects = Project::with('person', 'career', 'image')->get();
         return Inertia::render('Projects/Index', ['projects' => $projects]);  
     }
@@ -28,7 +30,7 @@ class ProjectController extends Controller
     {
         $persons = Person::all();
         $careers = Career::all();
-        return Inertia::render('Projects/Create', ['persons' => $persons, 'careers' => $careers]);
+        return Inertia::render('Projects/Form', ['persons' => $persons, 'careers' => $careers, 'id' => 0]);
     }
 
     /**
@@ -36,13 +38,14 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
-            'title' => 'required',
-            'qualification' => 'required',
-            'year' => 'required',
-            'manager' => 'required',
-            'person_id' => 'required',
-            'career_id' => 'required',
+            'title' => 'required|min:8|max:150',
+            'qualification' => 'required|min:1|max:100',
+            'year' => 'required|min:3|max:4',
+            'manager' => 'required|min:8|max:150',
+            'person_id' => 'required|exists:persons,id',
+            'career_id' => 'required|exists:careers,id',
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -63,12 +66,15 @@ class ProjectController extends Controller
 
         return redirect()->route('projects.index')->with('succes', 'Proyecto agregado exitosamente');
     }
-
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
+
+        $project = Project::with('person', 'career')->findOrFail($id); 
+        return Inertia::render('Projects/Show', ['project' => $project]); 
+
         $project = Project::with('person', 'career')->findOrFail($id);
         $image = null;
         if($project->image) {
@@ -86,7 +92,7 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $persons = Person::all();
         $careers = Career::all();
-        return Inertia::render('Projects/Edit', ['project' => $project, 'persons' => $persons, 'careers' => $careers]);
+        return Inertia::render('Projects/Form', ['project' => $project, 'persons' => $persons, 'careers' => $careers, 'id' => $id]);
     }
 
     /**
@@ -97,13 +103,27 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
 
         $validatedData = $request->validate([
-            'title' => 'required',
-            'qualification' => 'required',
-            'year' => 'required',
-            'manager' => 'required',
-            'person_id' => 'required',
-            'career_id' => 'required',
+            'title' => 'required|min:8|max:150',
+            'qualification' => 'required|min:1|max:100|regex:/^[0-9]+$/',
+            'year' => 'required|min:3|max:4',
+            'manager' => 'required|min:8|max:150',
+            'person_id' => 'required|exists:persons,id',
+            'career_id' => 'required|exists:careers,id',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
+
+        // Encuentra el proyecto por su ID y actualiza sus campos
+        $project = Project::findOrFail($id);
+        $project->title = $request->title;
+        $project->qualification = $request->qualification;
+        $project->year = $request->year;
+        $project->manager = $request->manager;
+        $project->person_id = $request->person_id;
+        $project->career_id = $request->career_id;
+        $project->save();
+
+        $validatedData['button_disabled'] = true;
+        
 
         $project->update($validatedData);
 
@@ -135,6 +155,10 @@ class ProjectController extends Controller
         return view('projects.report', ['goodProjects' => $goodProjects]);
     }
 
+    /**
+     * Este método se encarga de subir una imagen en el directorio "storage/app/public/images/projects"
+     * @return return retorna el nombre de la imagen.
+     */
     public function loadImage($request){
         $image_name = '';
         if($request->hasFile('image')) {
