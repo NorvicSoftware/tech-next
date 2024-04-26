@@ -39,20 +39,20 @@ class CareerController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:50',
-            'phone' => 'nullable|regex:/^[0-9]+$/|max:15',
+            'phone' => 'nullable|regex:/^[0-9]+$/|min:5|max:15',
             'university_id' => 'required|Integer|exists:universities,id'
         ]);
         Career::create($validated);
-        DB::beginTransaction(); //Iniciar transacciones
+        DB::beginTransaction();
         try {
             $career = new Career();
             $career->name = $request->name;
             $career->phone = $request->phone;
             $career->university_id = $request->university['id'];
-            DB::commit(); //Aplica los cambios realizados a la BD
+            DB::commit();
             return redirect()->route('careers.index')->with('success', 'La carrera  fue creada exitosamente');
         }catch (\Exception $exc){
-            DB::rollback(); // Evita que se apliquen cambios parciales a l BD
+            DB::rollback();
             return redirect()->route('careers.index')->with('error', 'Error al crear la carrera ');
         }
     }
@@ -84,22 +84,22 @@ class CareerController extends Controller
         $career = Career::findOrFail($id);
         $validated = $request->validate([
             'name' => 'required|max:50',
-            'phone' => 'nullable|regex:/^[0-9]+$/|max:15',
+            'phone' => 'nullable|regex:/^[0-9]+$/|min:5|max:15',
             'university_id' => 'required|Integer|exists:universities,id'
         ]);
 
         $career->update($validated);
-        DB::beginTransaction(); //Iniciar transacciones
+        DB::beginTransaction();
         try {
             $career = Career::findOrFail($id);
             $career->name = $request->name;
             $career->phone = $request->phone;
             $career->university_id = $request->university['id'];
             $career->update($validated);
-            DB::commit(); //Aplica los cambios realizados a la BD
+            DB::commit();
             return redirect()->route('careers.index')->with('success', 'La carrera fue actualizada exitosamente');
         }catch (\Exception $exc){
-            DB::rollback(); // Evita que se apliquen cambios parciales a l BD
+            DB::rollback();
             return redirect()->route('careers.index')->with('error', 'Error al editar la carrera ');
         }
     }
@@ -112,10 +112,10 @@ class CareerController extends Controller
         try{
             $career = Career::findOrFail($id);
             $career->delete();
-            DB::commit(); //Aplica los cambios realizados a la BD
+            DB::commit();
             return redirect()->route('careers.index')->with('success', 'La carrera fue eliminada exitosamente');
         }catch (\Exception $exc){
-            DB::rollback(); // Evita que se apliquen cambios parciales a l BD
+            DB::rollback();
             return redirect()->route('careers.index')->with('error', 'Error al eliminar la carrera');
         }
     }
