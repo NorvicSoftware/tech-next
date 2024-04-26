@@ -19,27 +19,47 @@ export default Careers;
  */
 
 import { usePage } from "@inertiajs/react";
-import NavLink from "@/Components/NavLink";
 import React from "react";
 import LinkButton from "@/Components/LinkButton";
-export default function Career () {
+export default function Career() {
     const { careers } = usePage().props;
+
+    const getImagePath = (careerId) => {
+        return `/img/careers/img${careerId}.png`;
+    };
+
     return (
         <div>
-            <h2>Lista de Carreras</h2>
-            <div>
+            <nav className="bg-slate-900 flex justify-between p-4">
+            <h2 className="text-2xl font-bold text-gray-200">TechNext</h2>
+            <img src="img/icons/sun.svg" alt="" />
+            </nav>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-slate-800">
                 {careers.map((career) => (
-                    <div key={career.id}>
-                        <h3>{career.name}</h3>
-                        <LinkButton
-                            name="Ver Projectos"
-                            url={route('projects.by.career', {careerId: career.id})}
-                            className="mt-2" />
+                    <div key={career.id} className="">
+                        <div className="flex" key={career.id}>
+                            
+                            <LinkButton
+                                name={
+                                <div className="text-center">
+                                    <img
+                                    className="w-32"
+                                    src={getImagePath(career.id)}
+                                    alt={career.name}/>
+                                    <span className="text-gray-800 mt-4 inline-block">{career.name}</span>
+                                </div>
+                                
+                                }
+                                url={route("projects.by.career", {
+                                    careerId: career.id,
+                                })}
+                                className="block bg-slate-800"
+                            />
+                            
+                        </div>
                     </div>
                 ))}
             </div>
-            
-            
         </div>
-    )
+    );
 }

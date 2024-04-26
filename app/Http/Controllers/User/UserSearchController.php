@@ -40,6 +40,15 @@ class UserSearchController extends Controller
         return Inertia::render('Users/Projects', ['projects' => $projects, 'career' => $career]);
     }
 
+    public function searchProjects(Request $request)
+    {
+        $search = $request->input('search');
+
+        $projects = Project::where('title', 'like', "%$search%")->get();
+
+        return Inertia::render('Users/Projects', ['projects' => $projects]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */

@@ -1,5 +1,6 @@
 import { usePage } from "@inertiajs/react";
 import React from "react";
+
 export default function Project () {
     const { projects, career } = usePage().props;
     return (
