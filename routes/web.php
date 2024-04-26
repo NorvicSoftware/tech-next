@@ -5,21 +5,22 @@ use App\Http\Controllers\PersonsController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\CareerController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\User\UserCareerController;
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
+
+
+//Route::get('/', function () {
+//  return Inertia::render('Welcome', [
+//    'canLogin' => Route::has('login'),
+//  'canRegister' => Route::has('register'),
+//'laravelVersion' => Application::VERSION,
+//'phpVersion' => PHP_VERSION,
+//]);
+//});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -54,7 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
     Route::put('/projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
     Route::delete('/projects/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
-    
+
 
     //University Controller
     Route::get('/universities', [UniversityController::class, 'index'])->name('universities.index');
@@ -82,15 +83,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/generate-report', [ProjectController::class, 'generateReport'])->name('projects.generate-report');
 });
 
-//Vista de Usuario - Proyecto
-Route::get('/', function () {
-    return Inertia::render('Users/Project');
-})->name('project');
-Route::get('/', [UserCareerController::class, 'getCareers']);
 
 
-Route::get('/list', function () {
-    return Inertia::render('Users/List');
-})->name('list');
+Route::get('/ ', [UserCareerController::class, 'getCareers']);
 
-require __DIR__.'/auth.php';
+
+
+
+
+require __DIR__ . '/auth.php';
+ //TENGOQUE HACER DIRECTO LA PRIMERA PANTALLA SEA EL CAREER 
