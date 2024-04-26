@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Project;
 use App\Models\Career;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -28,6 +28,23 @@ class UserSearchController extends Controller
         $projects = Project::whereHas('career', function ($query) {
             $query->whereBetween('id', [1, 10]);
         })->get();
+
+        return Inertia::render('Users/Projects', ['projects' => $projects]);
+    }
+
+    public function getProjectsByCareer($careerId)
+    {
+        $career = Career::findOrFail($careerId);
+        $projects = $career->projects;
+        
+        return Inertia::render('Users/Projects', ['projects' => $projects, 'career' => $career]);
+    }
+
+    public function searchProjects(Request $request)
+    {
+        $search = $request->input('search');
+
+        $projects = Project::where('title', 'like', "%$search%")->get();
 
         return Inertia::render('Users/Projects', ['projects' => $projects]);
     }

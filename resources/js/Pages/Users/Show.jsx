@@ -4,6 +4,7 @@ import ProjectData from "@/Components/ProjectData";
 import ScoreReaction from "@/Components/ScoreReaction";
 import LinkButton from "@/Components/LinkButton";
 
+
 const Show = ({ project }) => {
     return (
         <UserLayout>
@@ -43,7 +44,6 @@ const Show = ({ project }) => {
                                     data={project.manager}
                                 />
                                 <ProjectData name="Año:" data={project.year} />
-
                                 <ProjectData
                                     name="Proyecto:"
                                     data={project.qualification}
