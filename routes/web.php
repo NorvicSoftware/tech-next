@@ -90,7 +90,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', [UserCareerController::class, 'getCareers']);
 
-Route::get('/projects', [UserSearchController::class, 'getProject'])->name('projects.getProject');
+Route::get('/listprojects', [UserSearchController::class, 'getProject'])->name('projects.getProject');
 
 //Vista de Usuario - Proyecto
 /* Route::get('/', function () {

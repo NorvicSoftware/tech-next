@@ -29,7 +29,7 @@ export default function Career () {
             <h2>Bienvenido</h2>
             <div>
                 {careers.map((career, id) => (
-                    <a href="/projects" className="block">{career.name}</a>
+                    <a href="/listprojects" className="block">{career.name}</a>
                 ))}
             </div>
             <LinkButton 
