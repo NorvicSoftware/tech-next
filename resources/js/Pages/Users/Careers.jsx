@@ -32,7 +32,7 @@ export default function Career() {
                                         url={route("projects.by.career", {
                                             careerId: career.id,
                                         })}
-                                        className="block bg-slate-800"
+                                        className="block bg-slate-800 text-center bg-transparent"
                                     />
                                 </div>
                             ))}

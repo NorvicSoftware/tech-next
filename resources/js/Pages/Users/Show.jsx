@@ -4,7 +4,6 @@ import ProjectData from "@/Components/ProjectData";
 import ScoreReaction from "@/Components/ScoreReaction";
 import LinkButton from "@/Components/LinkButton";
 
-
 const Show = ({ project }) => {
     return (
         <UserLayout>
@@ -49,9 +48,6 @@ const Show = ({ project }) => {
                                     data={project.qualification}
                                 />
                                 <div className="flex gap-7">
-                                    <ScoreReaction />
-                                    <ScoreReaction />
-                                    <ScoreReaction />
                                 </div>
                             </div>
                         </div>
