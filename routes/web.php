@@ -88,9 +88,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/generate-report', [ProjectController::class, 'generateReport'])->name('projects.generate-report');
 });
 
-Route::get('/', [UserCareerController::class, 'getCareers']);
+Route::get('/', [UserCareerController::class, 'getCareers'])->name('careers');
 
-Route::get('/listprojects', [UserSearchController::class, 'getProject'])->name('projects.getProject');
+Route::get('/proyectos', [UserSearchController::class, 'getProject'])->name('projects.getProject');
+
+Route::get('/carrera/{careerId}', [UserSearchController::class, 'getProjectsByCareer'])->name('projects.by.career');
 
 //Vista de Usuario - Proyecto
 /* Route::get('/', function () {

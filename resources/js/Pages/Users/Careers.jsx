@@ -26,17 +26,19 @@ export default function Career () {
     const { careers } = usePage().props;
     return (
         <div>
-            <h2>Bienvenido</h2>
+            <h2>Lista de Carreras</h2>
             <div>
-                {careers.map((career, id) => (
-                    <a href="/listprojects" className="block">{career.name}</a>
+                {careers.map((career) => (
+                    <div key={career.id}>
+                        <h3>{career.name}</h3>
+                        <LinkButton
+                            name="Ver Projectos"
+                            url={route('projects.by.career', {careerId: career.id})}
+                            className="mt-2" />
+                    </div>
                 ))}
             </div>
-            <LinkButton 
-                name="Ver mas"
-                className="text-blue-500 border-b-2 border-blue-500 cursor-pointer"
-                url={route("projects.getProject")}
-            />
+            
             
         </div>
     )
