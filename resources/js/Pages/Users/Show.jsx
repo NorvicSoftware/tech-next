@@ -1,11 +1,26 @@
 import React from "react";
+import { useForm } from "@inertiajs/react";
 import UserLayout from "@/Layouts/UserLayout";
 import ProjectData from "@/Components/ProjectData";
-import ScoreReaction from "@/Components/ScoreReaction";
 import LinkButton from "@/Components/LinkButton";
-
+import InputError from "@/Components/InputError";
+import InputLabel from "@/Components/InputLabel";
 
 const Show = ({ project }) => {
+    const { data, setData, post, errors } = useForm({
+        reaction: "",
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        post(route("scores.store", { project_id: project.id }), { data });
+    };
+
+    const handleReaction = (reaction) => {
+        setData("reaction", reaction);
+    };
+
+
     return (
         <UserLayout>
             <section className="px-4">
@@ -48,11 +63,51 @@ const Show = ({ project }) => {
                                     name="Proyecto:"
                                     data={project.qualification}
                                 />
-                                <div className="flex gap-7">
-                                    <ScoreReaction />
-                                    <ScoreReaction />
-                                    <ScoreReaction />
-                                </div>
+
+
+                                <form onSubmit={handleSubmit} className="space-y-4">
+                                    <div>
+                                        <InputLabel label="Reacción">
+                                            <div className="flex gap-7">
+                                                <button
+                                                    className={`border rounded px-3 py-2 text-white ${
+                                                        data.reaction === "Bueno"
+                                                            ? "bg-green-500"
+                                                            : ""
+                                                    }`}
+                                                    onClick={() => handleReaction("Bueno")}
+                                                >
+                                                    Bueno
+                                                </button>
+                                                <button
+                                                    className={`border rounded px-3 py-2 text-white ${
+                                                        data.reaction === "Indiferente"
+                                                            ? "bg-yellow-500"
+                                                            : ""
+                                                    }`}
+                                                    onClick={() =>
+                                                        handleReaction("Indiferente")
+                                                    }
+                                                >
+                                                    Indiferente
+                                                </button>
+                                                <button
+                                                    className={`border rounded px-3 py-2 text-white ${
+                                                        data.reaction === "Malo"
+                                                            ? "bg-red-500"
+                                                            : ""
+                                                    }`}
+                                                    onClick={() => handleReaction("Malo")}
+                                                >
+                                                    Malo
+                                                </button>
+                                            </div>
+                                            {errors.reaction && (
+                                                <InputError>{errors.reaction}</InputError>
+                                            )}
+                                        </InputLabel>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

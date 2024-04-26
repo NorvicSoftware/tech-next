@@ -24,16 +24,23 @@ class ScoreController extends Controller
 
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'reaction' => 'required|in:Bueno,Indiferente,Malo',
             'project_id' => 'required|exists:projects,id',
         ]);
-
+    
         Score::create($validatedData);
-        return redirect()->route('scores.index')->with('success', 'Puntuación creada exitosamente.');
-    }
 
+        $projects = Project::all();
+        $scores = Score::with('project')->get();
+        
+        return Inertia::render('', [
+            'projects' => $projects,
+            'scores' => $scores,
+            'success' => 'Puntuación creada exitosamente.'
+        ]);
+    }
+    
     public function show(string $id)
     {
         $score = Score::findOrFail($id)->load('project');
@@ -43,18 +50,28 @@ class ScoreController extends Controller
     {
         $score = Score::findOrFail($id);
         $projects = Project::all();
+
         return Inertia::render('Scores/Edit', ['score' => $score, 'projects' => $projects]);
     }
+
     public function update(Request $request, string $id)
     {
+
         $score = Score::findOrFail($id);
+
+
         $validatedData = $request->validate([
             'reaction' => 'required|in:Bueno,Indiferente,Malo',
             'project_id' => 'required|exists:projects,id',
         ]);
+
+
         $score->update($validatedData);
+
+
         return redirect()->route('scores.index')->with('success', 'Puntuación actualizada exitosamente.');
     }
+
     public function destroy($id)
     {
         $score = Score::findOrFail($id);
