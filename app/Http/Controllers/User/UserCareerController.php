@@ -12,6 +12,6 @@ class UserCareerController extends Controller
     public function getCareers(){
         //$careers = Career::where('university_id', '=', 1);
         $careers = Career::take(8)->get();
-        return Inertia::render(component: 'Users/Careers', props: ['careers' => $careers]);
+        return Inertia::render('Users/Careers', ['careers' => $careers]);
     }
 }

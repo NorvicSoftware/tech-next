@@ -26,16 +26,16 @@ export default function Index({ auth }) {
                             <table className="min-w-full">
                                 <thead className="text-gray-20 text-xs sm:text-lg">
                                     <tr>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[32%]">
                                             Carrera
                                         </th>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[32%]">
                                             Universidad
                                         </th>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[10%]">
                                             Teléfono
                                         </th>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[15%]">
                                             Acciones
                                         </th>
                                     </tr>

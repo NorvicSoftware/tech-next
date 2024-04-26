@@ -25,19 +25,19 @@ export default function Index({ auth }) {
                             <table className="min-w-full">
                                 <thead className="text-gray-20 text-xs sm:text-lg">
                                     <tr>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[40%]">
                                             Titulo del proyecto
                                         </th>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[15%]">
                                             Autor
                                         </th>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[15%]">
                                             Carrera
                                         </th>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[15%]">
                                             Año
                                         </th>
-                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[15%]">
                                             Acciones
                                         </th>
                                     </tr>
@@ -74,7 +74,7 @@ export default function Index({ auth }) {
                                                 />
                                                 <LinkButton
                                                     name="Editar"
-                                                    className="dark:text-white dark:bg-blue-800 bg-blue-800 dark:hover:bg-blue-900 rounded 0 w-16 flex justify-center normal-case p-1"
+                                                    className="dark:text-white dark:bg-blue-800 bg-blue-800 dark:hover:bg-blue-900 hover:bg-blue-900 rounded 0 w-16 flex justify-center normal-case p-1"
                                                     url={route(
                                                         "projects.edit",
                                                         project.id
