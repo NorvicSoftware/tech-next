@@ -26,7 +26,7 @@ class UserSearchController extends Controller
         /* $projects = Project::all();
         return Inertia::render('Users/Projects', ['projects' => $projects]); */
         $projects = Project::whereHas('career', function ($query) {
-            $query->whereBetween('id', [1, 8]);
+            $query->whereBetween('id', [1, 10]);
         })->get();
 
         return Inertia::render('Users/Projects', ['projects' => $projects]);
@@ -62,7 +62,8 @@ class UserSearchController extends Controller
      */
     public function show(string $id)
     {
-        
+        $project = Project::with('person', 'career')->findOrfail($id); 
+        return Inertia::render('Users/Show', ['project' => $project]); 
     }
 
     /**
@@ -88,4 +89,10 @@ class UserSearchController extends Controller
     {
         //
     }
+    public function obtenerProyecto($id) {
+        $proyecto = Proyecto::findOrFail($id);
+        $qualifications = $proyecto->qualification; // Suponiendo que 'calificacion' es el campo donde está la nota del proyecto
+        return Inertia::render(['proyecto' => $proyecto, 'calificacion' => $calificacion]);
+    }
+    
 }

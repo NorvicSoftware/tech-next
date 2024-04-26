@@ -1,9 +1,8 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import NavLink from "@/Components/NavLink";
 import ProjectData from "@/Components/ProjectData";
 import LinkButton from "@/Components/LinkButton";
 
-const Show = ({ auth, project, career }) => {
+const Show = ({ auth, project }) => {
     return (
         <AuthenticatedLayout
             user={auth.user}

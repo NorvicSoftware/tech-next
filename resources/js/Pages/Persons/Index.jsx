@@ -19,7 +19,7 @@ export default function Index({ auth }) {
         >
             <Head title="Autores" />
             <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div className="max-w-4xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-3 sm:p-6 text-gray-900 dark:text-gray-100">
                             <table className="min-w-full">
@@ -39,7 +39,7 @@ export default function Index({ auth }) {
                                 <tbody className="text-white">
                                     {persons.map((person, id) => (
                                         <tr
-                                            className="text-xs sm:text-base text-black dark:text-white text-center"
+                                            className="text-xs sm:text-base text-black dark:text-white text-center sm:text-left"
                                             key={person.id}
                                         >
                                             <td className="sm:p-4 py-2">

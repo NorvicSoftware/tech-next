@@ -5,12 +5,10 @@ use App\Http\Controllers\PersonsController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\CareerController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\User\UserCareerController;
+use App\Http\Controllers\User\UserShowController;
 use App\Http\Controllers\User\UserSearchController;
 use App\Http\Controllers\UserController;
 use App\Models\Career;
@@ -78,6 +76,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/generate-report', [ProjectController::class, 'generateReport'])->name('projects.generate-report');
 });
 
+//Vista de Usuario - Proyecto
+Route::get('/show/{id}', [UserSearchController::class, 'show'])->name('usershow.show');
+
+Route::get('/', [UserCareerController::class, 'getCareers']);
 Route::get('/', [UserCareerController::class, 'getCareers'])->name('careers');
 
 Route::get('/proyectos', [UserSearchController::class, 'getProject'])->name('projects.getProject');
