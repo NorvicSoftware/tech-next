@@ -83,13 +83,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/generate-report', [ProjectController::class, 'generateReport'])->name('projects.generate-report');
 });
 
+//Vista de Usuario - Proyecto
+//Route::get('/', function () {
+//    return Inertia::render('Users/Project');
+//})->name('project');
+Route::get(uri:'/', action: [UserCareerController::class, 'getCareers']);
 
 
-Route::get('/ ', [UserCareerController::class, 'getCareers']);
 
-
-
-
-
-require __DIR__ . '/auth.php';
- //TENGOQUE HACER DIRECTO LA PRIMERA PANTALLA SEA EL CAREER 
+require __DIR__.'/auth.php';
