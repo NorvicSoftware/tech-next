@@ -11,15 +11,21 @@ use Inertia\Inertia;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\User\UserCareerController;
+use App\Http\Controllers\User\UserSearchController;
+use App\Http\Controllers\UserController;
+use App\Models\Career;
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
+/* Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+    $careers = Career::all();
+    return "$careers";
+}); */
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -83,11 +89,27 @@ Route::middleware('auth')->group(function () {
 });
 
 //Vista de Usuario - Proyecto
-Route::get('/', function () {
+Route::get('/show/{id}', [UserSearchController::class, 'show'])->name('usershow.show');
+
+Route::get('/', [UserCareerController::class, 'getCareers']);
+Route::get('/', [UserCareerController::class, 'getCareers'])->name('careers');
+
+Route::get('/proyectos', [UserSearchController::class, 'getProject'])->name('projects.getProject');
+
+Route::get('/carrera/{careerId}', [UserSearchController::class, 'getProjectsByCareer'])->name('projects.by.career');
+
+Route::get('/projects/search', [UserSearchController::class, 'searchProjects'])->name('projects.search');
+
+//Vista de Usuario - Proyecto
+/* Route::get('/', function () {
     return Inertia::render('Users/Project');
 })->name('project');
-Route::get('/', [UserCareerController::class, 'getCareers']);
+//Route::get('/', [UserCareerController::class, 'getCareers']);
 
 
+Route::get('/list', [UserController::class, 'index'])->name('list.index');
+
+Route::get('/careers', [UserController::class, 'showCareers'])->name('public.careers')->middleware('inertia');
+Route::get('/careers/{career}/projects', [UserController::class, 'showProjectsByCareer'])->name('public.projects.by.career')->middleware('inertia'); */
 
 require __DIR__.'/auth.php';

@@ -17,8 +17,6 @@ class ProjectController extends Controller
      */
     public function index()
     {
-
-
         $projects = Project::with('person', 'career', 'image')->get();
         return Inertia::render('Projects/Index', ['projects' => $projects]);  
     }
@@ -71,16 +69,8 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-
         $project = Project::with('person', 'career')->findOrFail($id); 
         return Inertia::render('Projects/Show', ['project' => $project]); 
-
-        $project = Project::with('person', 'career')->findOrFail($id);
-        $image = null;
-        if($project->image) {
-            $image = $project->image->url;
-        }
-        return Inertia::render('Projects/Show', ['project' => $project, 'image' => $image]); 
     }
     
 

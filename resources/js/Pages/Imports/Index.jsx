@@ -38,5 +38,5 @@ export default function Index({ auth }) {
                 </div>
             </div>
         </AuthenticatedLayout>
-    );
+    );
 }
