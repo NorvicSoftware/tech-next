@@ -8,18 +8,17 @@ export default function UserLayout({ children }) {
                     <div className="flex justify-between h-16">
                         <div className="flex">
                             <div className="shrink-0 flex items-center gap-4">
-                                <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                                </Link>
+                                <img
+                                    className="w-12"
+                                    src="img/LogoC.png"
+                                    alt=""
+                                />
                                 <h2 className="text-2xl font-bold dark:text-gray-200 text-gray-700">
-                                    TechNext
+                                    Start Project
                                 </h2>
-                                <img src="../../../public/img/icons/sun.svg" alt="" />
                             </div>
                         </div>
-
                         <div className="hidden sm:flex sm:items-center sm:ms-6"></div>
-
                         <div className="-me-2 flex items-center sm:hidden"></div>
                     </div>
                 </div>

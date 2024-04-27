@@ -10,9 +10,14 @@ export default function Career() {
     };
 
     return (
+        
         <UserLayout>
-            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div className="max-w-7xl mx-auto sm:px- px-66 lg:px-8">
+                <p className="py-4 pb-2 text-gray-300 text-center text-xl md:mb-0 font-bold">
+                    Inspirate y crea nuevas ideas </p>
+                    <p className="pb-4  text-gray-300 text-center md:mb-0 font-bold">
+                    Selecciona una carrera:</p>
+                <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
                     <div className="p-6 text-gray-900 dark:text-gray-100">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-slate-800">
                             {careers.map((career) => (
