@@ -1,5 +1,6 @@
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import { Link } from "@inertiajs/react";
+import ApplicationSun from "@/Components/ApplicationSun";
 export default function UserLayout({ children }) {
     return (
         <div className="min-h-screen bg-gray-300 dark:bg-gray-900">
@@ -9,18 +10,17 @@ export default function UserLayout({ children }) {
                         <div className="flex">
                             <div className="shrink-0 flex items-center gap-4">
                                 <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                                    <img src="/img/logo-project.png" className="w-12 h-8" />
                                 </Link>
-                                <h2 className="text-2xl font-bold dark:text-gray-200 text-gray-700">
-                                    TechNext
+                                <h2 className="text-1xl font-bold dark:text-gray-200 text-gray-700">
+                                    START PROJECT
                                 </h2>
-                                <img src="../../../public/img/icons/sun.svg" alt="" />
                             </div>
                         </div>
 
-                        <div className="hidden sm:flex sm:items-center sm:ms-6"></div>
-
-                        <div className="-me-2 flex items-center sm:hidden"></div>
+                        <div className="flex items-center ms-6">
+                            <ApplicationSun className="block h-9 w-auto fill-current text-gr0ay-800 dark:text-gray-20" />
+                        </div>
                     </div>
                 </div>
             </nav>

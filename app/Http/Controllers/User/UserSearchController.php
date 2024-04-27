@@ -62,8 +62,8 @@ class UserSearchController extends Controller
      */
     public function show(string $id)
     {
-        $project = Project::with('person', 'career')->findOrfail($id); 
-        return Inertia::render('Users/Show', ['project' => $project]); 
+        // $project = Project::with('person', 'career')->findOrfail($id); 
+        // return Inertia::render('Users/Show', ['project' => $project]); 
     }
 
     /**
