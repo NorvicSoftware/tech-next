@@ -100,7 +100,7 @@ Route::get('/proyectos', [UserSearchController::class, 'getProject'])->name('pro
 
 Route::get('/carrera/{careerId}', [UserSearchController::class, 'getProjectsByCareer'])->name('projects.by.career');
 
-Route::get('/projects/search', [UserSearchController::class, 'searchProjects'])->name('projects.search');
+Route::post('/projects/search', [UserSearchController::class, 'searchProjects'])->name('projects.search');
 
 //Vista de Usuario - Proyecto
 /* Route::get('/', function () {

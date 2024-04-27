@@ -42,11 +42,17 @@ class UserSearchController extends Controller
 
     public function searchProjects(Request $request)
     {
-        $search = $request->input('search');
-
-        $projects = Project::where('title', 'like', "%$search%")->get();
-
-        return Inertia::render('Users/Projects', ['projects' => $projects]);
+        try {
+            $title = $request->input('title');
+            $projects = Project::where('title', 'like', '%'. $title . '%')->get();
+    
+            // Devolver los resultados de búsqueda
+            //return response()->json(['projects' => $projects]);
+            return Inertia::render('Users/Projects', ['projects' => $projects]);
+        } catch (\Exception $e) {
+            // Manejar cualquier error y devolver una respuesta adecuada
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**
