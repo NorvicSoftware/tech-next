@@ -1,25 +1,20 @@
 import React from "react";
-import { useForm } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 import UserLayout from "@/Layouts/UserLayout";
 import ProjectData from "@/Components/ProjectData";
 import LinkButton from "@/Components/LinkButton";
-import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 
-const Show = ({ project }) => {
-    const { data, setData, post, errors } = useForm({
+const Show = () => {
+    const { id, project } = usePage().props;
+    const { data, setData, post } = useForm({
         reaction: "",
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("scores.store", { project_id: project.id }), { data });
+        post(route("usershow.store", id), { data });
     };
-
-    const handleReaction = (reaction) => {
-        setData("reaction", reaction);
-    };
-
 
     return (
         <UserLayout>
@@ -36,8 +31,8 @@ const Show = ({ project }) => {
                                     data={
                                         project.person
                                             ? project.person.first_name +
-                                              " " +
-                                              project.person.last_name
+                                            " " +
+                                            project.person.last_name
                                             : "N/A"
                                     }
                                 />
@@ -64,48 +59,37 @@ const Show = ({ project }) => {
                                     data={project.qualification}
                                 />
 
-
                                 <form onSubmit={handleSubmit} className="space-y-4">
-                                    <div>
-                                        <InputLabel label="Reacción">
-                                            <div className="flex gap-7">
-                                                <button
-                                                    className={`border rounded px-3 py-2 text-white ${
-                                                        data.reaction === "Bueno"
-                                                            ? "bg-green-500"
-                                                            : ""
-                                                    }`}
-                                                    onClick={() => handleReaction("Bueno")}
-                                                >
-                                                    Bueno
-                                                </button>
-                                                <button
-                                                    className={`border rounded px-3 py-2 text-white ${
-                                                        data.reaction === "Indiferente"
-                                                            ? "bg-yellow-500"
-                                                            : ""
-                                                    }`}
-                                                    onClick={() =>
-                                                        handleReaction("Indiferente")
-                                                    }
-                                                >
-                                                    Indiferente
-                                                </button>
-                                                <button
-                                                    className={`border rounded px-3 py-2 text-white ${
-                                                        data.reaction === "Malo"
-                                                            ? "bg-red-500"
-                                                            : ""
-                                                    }`}
-                                                    onClick={() => handleReaction("Malo")}
-                                                >
-                                                    Malo
-                                                </button>
-                                            </div>
-                                            {errors.reaction && (
-                                                <InputError>{errors.reaction}</InputError>
-                                            )}
-                                        </InputLabel>
+                                    <div className="flex gap-7">
+                                        <button
+                                            className={`border rounded px-3 py-2 text-white ${data.reaction === "Bueno"
+                                                    ? "bg-green-500"
+                                                    : ""
+                                                }`}
+                                            onClick={() => setData("reaction", "Bueno")}
+                                        >
+                                            Bueno
+                                        </button>
+                                        <button
+                                            className={`border rounded px-3 py-2 text-white ${data.reaction === "Indiferente"
+                                                    ? "bg-yellow-500"
+                                                    : ""
+                                                }`}
+                                            onClick={() =>
+                                                setData("reaction", "Indiferente")
+                                            }
+                                        >
+                                            Indiferente
+                                        </button>
+                                        <button
+                                            className={`border rounded px-3 py-2 text-white ${data.reaction === "Malo"
+                                                    ? "bg-red-500"
+                                                    : ""
+                                                }`}
+                                            onClick={() => setData("reaction", "Malo")}
+                                        >
+                                            Malo
+                                        </button>
                                     </div>
                                 </form>
                             </div>

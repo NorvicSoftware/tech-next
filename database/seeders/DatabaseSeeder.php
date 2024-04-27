@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         Person::factory(100)->create();
         Career::factory(50)->create();
         Project::factory(100)->create();
-        Score::factory(100)->create();
+        Score::factory(2)->create();
 
     }
 }

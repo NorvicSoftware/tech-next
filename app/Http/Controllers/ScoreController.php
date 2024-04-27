@@ -31,14 +31,14 @@ class ScoreController extends Controller
     
         Score::create($validatedData);
 
-        $projects = Project::all();
-        $scores = Score::with('project')->get();
+        // $projects = Project::all();
+        // $scores = Score::with('project')->get();
         
-        return Inertia::render('', [
-            'projects' => $projects,
-            'scores' => $scores,
-            'success' => 'Puntuación creada exitosamente.'
-        ]);
+        // return Inertia::render('', [
+        //     'projects' => $projects,
+        //     'scores' => $scores,
+        //     'success' => 'Puntuación creada exitosamente.'
+        // ]);
     }
     
     public function show(string $id)
