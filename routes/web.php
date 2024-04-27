@@ -98,9 +98,9 @@ Route::get('/', [UserCareerController::class, 'getCareers'])->name('careers');
 
 Route::get('/proyectos', [UserSearchController::class, 'getProject'])->name('projects.getProject');
 
-Route::get('/carrera/{careerId}', [UserSearchController::class, 'getProjectsByCareer'])->name('projects.by.career');
+Route::get('/carrera/{careerId}/{searchValue}', [UserSearchController::class, 'getProjectsByCareer'])->name('projects.by.career');
 
-Route::get('/projects/search', [UserSearchController::class, 'searchProjects'])->name('projects.search');
+//Route::get('/projects/search', [UserSearchController::class, 'searchProjects'])->name('projects.search');
 
 //Vista de Usuario - Proyecto
 /* Route::get('/', function () {

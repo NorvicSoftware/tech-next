@@ -31,6 +31,7 @@ export default function Career() {
                                         name={career.name}
                                         url={route("projects.by.career", {
                                             careerId: career.id,
+                                            searchValue: 0
                                         })}
                                         className="block bg-slate-800"
                                     />
