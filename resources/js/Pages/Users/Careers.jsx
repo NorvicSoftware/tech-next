@@ -15,7 +15,7 @@ export default function Career() {
                 <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div className="p-6 text-gray-900 dark:text-gray-100">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-slate-800">
-                            {careers.map((career) => (
+                            {careers.map((career, index) => (
                                 <div
                                     className="grid justify-items-center border rounded-xl border-white"
                                     key={career.id}
@@ -23,7 +23,7 @@ export default function Career() {
                                     <div className="text-center pt-3">
                                         <img
                                             className="w-32"
-                                            src={getImagePath(career.id)}
+                                            src={getImagePath(index +1)}
                                             alt={career.name}
                                         />
                                     </div>

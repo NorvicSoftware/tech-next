@@ -1,10 +1,24 @@
 import React from "react";
+import { useForm, usePage } from "@inertiajs/react";
 import UserLayout from "@/Layouts/UserLayout";
 import ProjectData from "@/Components/ProjectData";
-import ScoreReaction from "@/Components/ScoreReaction";
 import LinkButton from "@/Components/LinkButton";
+import ScoreReaction from "@/Components/ScoreReaction";
+import FaceRegular from "@/Components/FaceRegular";
+import FaceSimle from "@/Components/FaceSmile";
+import FaceSad from "@/Components/FaceSad";
 
-const Show = ({ project }) => {
+const Show = () => {
+    const { id, project, scores } = usePage().props;
+    const { data, setData, post } = useForm({
+        reaction: "",
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        post(route("usershow.store", id), { data });
+    };
+
     return (
         <UserLayout>
             <section className="px-4">
@@ -18,20 +32,14 @@ const Show = ({ project }) => {
                                 <ProjectData
                                     className="text-xl font-bold"
                                     data={
-                                        project.person
-                                            ? project.person.first_name +
-                                              " " +
-                                              project.person.last_name
-                                            : "N/A"
+                                        project.person.first_name +
+                                        " " +
+                                        project.person.last_name
                                     }
                                 />
                                 <ProjectData
                                     name="Carrera:"
-                                    data={
-                                        project.career
-                                            ? project.career.name
-                                            : "N/A"
-                                    }
+                                    data={project.career.name}
                                 />
                                 <ProjectData
                                     name="Proyecto de Grado"
@@ -47,8 +55,34 @@ const Show = ({ project }) => {
                                     name="Proyecto:"
                                     data={project.qualification}
                                 />
-                                <div className="flex gap-7">
-                                </div>
+                                <form onSubmit={handleSubmit}>
+                                    <div className="flex flex-row gap-3">
+                                        <ScoreReaction
+                                            onClick={() =>
+                                                setData("reaction", "Bueno")
+                                            }
+                                        >
+                                            <FaceSimle />
+                                        </ScoreReaction>
+                                        <ScoreReaction
+                                            onClick={() =>
+                                                setData(
+                                                    "reaction",
+                                                    "Indiferente"
+                                                )
+                                            }
+                                        >
+                                            <FaceRegular />
+                                        </ScoreReaction>
+                                        <ScoreReaction
+                                            onClick={() =>
+                                                setData("reaction", "Malo")
+                                            }
+                                        >
+                                            <FaceSad />
+                                        </ScoreReaction>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
