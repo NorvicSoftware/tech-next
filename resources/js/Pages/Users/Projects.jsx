@@ -1,31 +1,5 @@
-/* import { usePage } from "@inertiajs/react";
-import React from "react";
-
-export default function Project () {
-    const { projects, career } = usePage().props;
-    function search(event) {
-        event.preventDefault(); // Evita que el formulario se envíe automáticamente
-    
-        const formData = new FormData(event.target); // Obtiene los datos del formulario
-        const search = formData.get('search'); // Obtiene el valor del campo de búsqueda
-    
-        // Realiza una solicitud al controlador con los datos de búsqueda
-        Inertia.post(route('projects.by.career', { careerId: career.id, search }));
-    }
-    return (
-        <div>
-            <h1>{career.name}</h1>
-            <hr></hr>
-            <div>
-                {projects.map((project, id) => (
-                    <p key={project.id}>{project.title}</p>
-                ))}
-            </div>
-        </div>
-    );
-}
- */
 import LinkButton from "@/Components/LinkButton";
+import LinkProject from "@/Components/LinkProject";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import UserLayout from "@/Layouts/UserLayout";
@@ -107,14 +81,20 @@ export default function Project() {
                                 </div>
                                 <div className="flex flex-col ml-auto">
                                     {project.qualification < 75 && (
-                                        <p className="ml-auto text-green-500">Bueno</p>
+                                        <p className="ml-auto text-green-500">
+                                            Bueno
+                                        </p>
                                     )}
                                     {project.qualification >= 75 &&
                                         project.qualification < 90 && (
-                                            <p className="ml-auto text-lime-500">Muy Bueno</p>
+                                            <p className="ml-auto text-lime-500">
+                                                Muy Bueno
+                                            </p>
                                         )}
                                     {project.qualification >= 90 && (
-                                        <p className="ml-auto text-orange-500">Excelente</p>
+                                        <p className="ml-auto text-orange-500">
+                                            Excelente
+                                        </p>
                                     )}
                                     <p className="ml-auto">
                                         Año: {project.year}
@@ -125,83 +105,66 @@ export default function Project() {
                                 {project.title}
                             </p>
                             <div className="flex justify-between">
-                                <a href={route(
-                                            "usershow.showProjectById",
-                                            project.id)} className="py-1  gap-2 font-bold items-center bg-gray-200 inline-flex rounded-full text-slate-800 justify-center px-4 ">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="rgb(17, 24, 39)"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="1.5"
-                                        stroke="rgb(229, 231, 235)"
-                                        class="w-6 h-6"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
-                                        />
-                                    </svg>
-                                    
-                                Ver Proyecto</a>
+                                <LinkProject name="Ver Proyecto" url={route("usershow.showProjectById", project.id)}>
+                                </LinkProject>
                                 <div className="flex gap-4">
-                                <ul>
-                                {project.scores.map((score, index) => (
-                                    <li key={index}></li>
-                                ))}
-                            </ul>
-                            <div>
-                                <div className="flex gap-6 text-center">
-                                    <div className="flex items-center gap-2">
-                                        <img
-                                            className="w-5"
-                                            src="/img/reactions/bueno.svg"
-                                            alt="bueno"
-                                        />
-                                        <p>
-                                            {
-                                                project.scores.filter(
-                                                    (score) =>
-                                                        score.reaction ===
-                                                        "Bueno"
-                                                ).length
-                                            }
-                                        </p>
+                                    <ul>
+                                        {project.scores.map((score, index) => (
+                                            <li key={index}></li>
+                                        ))}
+                                    </ul>
+                                    <div>
+                                        <div className="flex gap-6 text-center">
+                                            <div className="flex items-center gap-2">
+                                                <img
+                                                    className="w-5"
+                                                    src="/img/reactions/bueno.svg"
+                                                    alt="bueno"
+                                                />
+                                                <p>
+                                                    {
+                                                        project.scores.filter(
+                                                            (score) =>
+                                                                score.reaction ===
+                                                                "Bueno"
+                                                        ).length
+                                                    }
+                                                </p>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <img
+                                                    className="w-5"
+                                                    src="/img/reactions/indiferente.svg"
+                                                    alt="indiferente"
+                                                />
+                                                <p>
+                                                    {
+                                                        project.scores.filter(
+                                                            (score) =>
+                                                                score.reaction ===
+                                                                "Indiferente"
+                                                        ).length
+                                                    }
+                                                </p>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <img
+                                                    className="w-5"
+                                                    src="/img/reactions/malo.svg"
+                                                    alt="malo"
+                                                />
+                                                <p>
+                                                    {
+                                                        project.scores.filter(
+                                                            (score) =>
+                                                                score.reaction ===
+                                                                "Malo"
+                                                        ).length
+                                                    }
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center gap-2">
-                                        <img
-                                            className="w-5"
-                                            src="/img/reactions/indiferente.svg"
-                                            alt="indiferente"
-                                        />
-                                        <p>
-                                            {
-                                                project.scores.filter(
-                                                    (score) =>
-                                                        score.reaction ===
-                                                        "Indiferente"
-                                                ).length
-                                            }
-                                        </p>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <img
-                                            className="w-5"
-                                            src="/img/reactions/malo.svg"
-                                            alt="malo"
-                                        />
-                                        <p>
-                                            {
-                                                project.scores.filter(
-                                                    (score) =>
-                                                        score.reaction ===
-                                                        "Malo"
-                                                ).length
-                                            }
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
                                 </div>
                             </div>
                         </div>
