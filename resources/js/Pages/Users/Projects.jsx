@@ -3,23 +3,25 @@ import LinkProject from "@/Components/LinkProject";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import UserLayout from "@/Layouts/UserLayout";
-import { usePage } from "@inertiajs/react";
+import { usePage, useForm } from "@inertiajs/react";
+import Search from "@/Components/Icons/Search";
+import Qualification from "@/Components/Qualification";
+import ScoreProject from "@/Components/ScoreProject";
+import ReactionProject from "@/Components/ReactionProject";
 import React from "react";
 
 export default function Project() {
-    const { projects, career } = usePage().props;
+    const { projects, career, career_id } = usePage().props;
+    const { data, setData, post } = useForm({
+        search: "",
+    });
 
-    function search(event, career_id, searchValue) {
-        if (searchValue === "") {
-            searchValue = 0;
-        }
+    function search(event, searchValue) {
         event.preventDefault();
-        data.post(
-            route("projects.by.career", {
-                careerId: career_id,
-                searchValue: searchValue,
-            })
-        );
+        post(route('projects.searchProjectsByCareer', career_id), {
+            onSuccess: () => console.log('OK'),
+            onError: () => console.log('ERROR'),
+        })
     }
 
     return (
@@ -31,29 +33,19 @@ export default function Project() {
                 >
                     <TextInput
                         className="w-full bg-gray-200 border-4 "
-                        type="text"
                         placeholder="Buscar proyecto"
+                        value={data.search}
+                        onChange={(e) =>
+                            setData("search", e.target.value)
+                        }
                     />
                     <PrimaryButton className="">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="rgb(17, 24, 39)"
-                            class="w-6 h-6"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                            />
-                        </svg>
+                        <Search />
                     </PrimaryButton>
                 </form>
                 <div className="px-4">
                     {projects.map((project, id) => (
-                        <div className="text-gray-200  mb-4">
+                        <div key={project.id} className="text-gray-200  mb-4">
                             <div className="flex border-t-4 border-indigo-500 items-center gap-4 p-2">
                                 <img
                                     className="w-10 h-10 rounded-full"
@@ -67,88 +59,32 @@ export default function Project() {
                                     <p>Carrera: {career.name}</p>
                                 </div>
                                 <div className="flex flex-col ml-auto">
-                                    {project.qualification < 75 && (
-                                        <p className="ml-auto text-green-500">
-                                            Bueno
-                                        </p>
-                                    )}
-                                    {project.qualification >= 75 &&
-                                        project.qualification < 90 && (
-                                            <p className="ml-auto text-lime-500">
-                                                Muy Bueno
-                                            </p>
-                                        )}
-                                    {project.qualification >= 90 && (
-                                        <p className="ml-auto text-orange-500">
-                                            Excelente
-                                        </p>
-                                    )}
+                                    <Qualification qualification={project.qualification} />
                                     <p className="ml-auto">
                                         Año: {project.year}
                                     </p>
                                 </div>
                             </div>
-                            <p className="text-center my-4" key={project.id}>
+                            <p className="text-center my-4 uppercase" key={project.id}>
                                 {project.title}
                             </p>
                             <div className="flex justify-between">
                                 <LinkProject name="Ver Proyecto" url={route("usershow.showProjectById", project.id)}>
                                 </LinkProject>
                                 <div className="flex gap-4">
-                                    <ul>
-                                        {project.scores.map((score, index) => (
-                                            <li key={index}></li>
-                                        ))}
-                                    </ul>
                                     <div>
                                         <div className="flex gap-6 text-center">
                                             <div className="flex items-center gap-2">
-                                                <img
-                                                    className="w-5"
-                                                    src="/img/reactions/bueno.svg"
-                                                    alt="bueno"
-                                                />
-                                                <p>
-                                                    {
-                                                        project.scores.filter(
-                                                            (score) =>
-                                                                score.reaction ===
-                                                                "Bueno"
-                                                        ).length
-                                                    }
-                                                </p>
+                                                <ReactionProject reaction="Bueno"/>
+                                                <ScoreProject reaction="Bueno" scores={project.scores}/>
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <img
-                                                    className="w-5"
-                                                    src="/img/reactions/indiferente.svg"
-                                                    alt="indiferente"
-                                                />
-                                                <p>
-                                                    {
-                                                        project.scores.filter(
-                                                            (score) =>
-                                                                score.reaction ===
-                                                                "Indiferente"
-                                                        ).length
-                                                    }
-                                                </p>
+                                                <ReactionProject reaction="Indiferente"/>
+                                                <ScoreProject reaction="Indiferente" scores={project.scores}/>
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <img
-                                                    className="w-5"
-                                                    src="/img/reactions/malo.svg"
-                                                    alt="malo"
-                                                />
-                                                <p>
-                                                    {
-                                                        project.scores.filter(
-                                                            (score) =>
-                                                                score.reaction ===
-                                                                "Malo"
-                                                        ).length
-                                                    }
-                                                </p>
+                                                <ReactionProject reaction="Malo"/>
+                                                <ScoreProject reaction="Malo" scores={project.scores}/>
                                             </div>
                                         </div>
                                     </div>

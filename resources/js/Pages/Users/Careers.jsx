@@ -29,11 +29,10 @@ export default function Career() {
                                     </div>
                                     <LinkButton
                                         name={career.name}
-                                        url={route("projects.by.career", {
+                                        url={route("projects.getProjectsByCareer", {
                                             careerId: career.id,
-                                            searchValue: 0
                                         })}
-                                        className="block bg-slate-800"
+                                        className="block bg-slate-800 text-center bg-transparent"
                                     />
                                 </div>
                             ))}

@@ -1,7 +1,6 @@
-import ApplicationLogo from "@/Components/ApplicationLogo";
 import { Link } from "@inertiajs/react";
-import ApplicationSun from "@/Components/ApplicationSun";
-import ApplicationMoon from "@/Components/ApplicationMoon";
+import ApplicationSun from "@/Components/Icons/Sun";
+import ApplicationMoon from "@/Components/Icons/Moon";
 export default function UserLayout({ children }) {
     return (
         <div className="min-h-screen bg-gray-300 dark:bg-gray-900">

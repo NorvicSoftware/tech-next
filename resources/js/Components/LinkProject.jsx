@@ -1,5 +1,5 @@
-import ApplicationMoon from "./ApplicationMoon";
-import ApplicationPDF from "./ApplicationPDF";
+import ApplicationMoon from "./Icons/Moon";
+import ApplicationPDF from "./Icons/Pdf";
 
 export default function LinkProject({
     name,

@@ -1,4 +1,4 @@
-export default function ApplicationSun(props) {
+export default function Sun(props) {
     return (
         <svg
         {...props}

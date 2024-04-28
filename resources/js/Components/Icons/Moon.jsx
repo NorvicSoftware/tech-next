@@ -1,4 +1,4 @@
-export default function ApplicationMoon(props) {
+export default function Moon(props) {
     return (
         <svg
             {...props}
