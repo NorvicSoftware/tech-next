@@ -27,13 +27,13 @@ class CareerSeeder extends Seeder
         $career3 = new Career;
         $career3->name = "Ing. Comercial";
         $career3->phone = "63919663";
-        $career3->university_id = 2;
+        $career3->university_id = 1;
         $career3->save();
 
         $career4 = new Career;
         $career4->name = "Marketing";
         $career4->phone = "63919663";
-        $career4->university_id = 3;
+        $career4->university_id = 1;
         $career4->save();
 
         $career5 = new Career;
@@ -45,13 +45,13 @@ class CareerSeeder extends Seeder
         $career6 = new Career;
         $career6->name = "Adm. Empresas";
         $career6->phone = "74787112";
-        $career6->university_id = 4;
+        $career6->university_id = 1;
         $career6->save();
 
         $career7 = new Career;
         $career7->name = "Mecatrónica";
         $career7->phone = "74787112";
-        $career7->university_id = 3;
+        $career7->university_id = 1;
         $career7->save();
 
         $career8 = new Career;

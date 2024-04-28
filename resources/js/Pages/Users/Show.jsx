@@ -11,7 +11,7 @@ import ScoreProject from "@/Components/ScoreProject";
 import Qualification from "@/Components/Qualification";
 
 export default function Show() {
-    const { id, project, scores } = usePage().props;
+    const { id, project, person } = usePage().props;
     // let count = 0;
     const { children, setData, post } = useForm({
         reaction: "",
@@ -55,7 +55,7 @@ export default function Show() {
                                     children={project.career.name}
                                 />
                                 <ProjectData
-                                    name="Proyecto de Grado"
+                                    name="Proyecto de Grado:"
                                     className=""
                                     children={project.title}
                                 />
@@ -77,41 +77,37 @@ export default function Show() {
                                 </ProjectData>
 
                                 <form onSubmit={handleSubmit}>
-                                    <div className="grid ">
-                                        <div className="flex flex-row gap-3">
+                                    <div className="flex flex-row gap-4">
+                                        <div>
                                             <ScoreButton
-                                                onClick={() =>
-                                                    setData("reaction", "Bueno")
-                                                }
-                                            >
-                                                <FaceSimle />
-                                            </ScoreButton>
-                                            <ScoreButton
-                                                onClick={() =>
-                                                    setData(
-                                                        "reaction",
-                                                        "Indiferente"
-                                                    )
-                                                }
-                                            >
-                                                <FaceRegular />
-                                            </ScoreButton>
-                                            <ScoreButton
-                                                onClick={() =>
-                                                    setData("reaction", "Malo")
-                                                }
-                                            >
-                                                <FaceSad />
-                                            </ScoreButton>
-                                        </div>
-                                        <div className="flex justify-around gap-3">
+                                                onClick={() => setData("reaction", "Bueno")}
+                                                children={<FaceSimle />}
+                                            />
                                             <ScoreProject
                                                 reaction="Bueno"
                                                 scores={project.scores}
                                             />
+                                        </div>
+
+                                        <div>
+                                            <ScoreButton
+                                                onClick={() => setData("reaction", "Indiferente")}
+                                                children={<FaceRegular />}
+                                                
+                                            />
                                             <ScoreProject
                                                 reaction="Indiferente"
                                                 scores={project.scores}
+                                            />
+                                            
+                                        </div>
+
+                                        <div>
+                                            <ScoreButton
+                                                onClick={() =>
+                                                    setData("reaction", "Malo")
+                                                }
+                                                children={<FaceSad />}
                                             />
                                             <ScoreProject
                                                 reaction="Malo"
@@ -128,7 +124,15 @@ export default function Show() {
                 <div className="py-2">
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-2xl">
-                            <div className="p-6 text-gray-900 dark:text-gray-100"></div>
+                            <div className="p-2 text-gray-900 dark:text-gray-100 grid justify-center">
+                                {project.image && (
+                                    <img
+                                        src={`${window.location.origin}/${project.image.url}`}
+                                        alt="Imagen del proyecto"
+                                        className="rounded-lg"
+                                    />
+                                )}
+                            </div>
                         </div>
                         <div className="flex justify-center rouded-full my-4">
                             <LinkButton

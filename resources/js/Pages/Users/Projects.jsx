@@ -51,6 +51,15 @@ export default function Project() {
                                     className="w-10 h-10 rounded-full"
                                     src="/img/anonymous.jpg"
                                 ></img>
+                                {<div className="w-250 h-250 bg-white">
+                                    {project.person.image && (
+                                        <img
+                                            src={`${window.location.origin}/${project.person.image.url}`}
+                                            alt="Imagen de perfil"
+                                            className="rounded-lg"
+                                        />
+                                    )}
+                                </div>}
                                 <div className="flex flex-col">
                                     <p className="font-bold text-[1.1rem]">
                                         {project.person.first_name}{" "}

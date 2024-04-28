@@ -24,7 +24,7 @@ class UserSearchController extends Controller
     {
         if($request->search == ''){
             $career = Career::findOrFail($career_id);
-            $projects = $career->projects()->with('person', 'scores')->get();
+            $projects = $career->projects()->with('person', 'scores', 'image')->get();
         }
         else {
             $career = Career::findOrFail($career_id);
