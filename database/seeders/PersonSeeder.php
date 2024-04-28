@@ -19,7 +19,7 @@ class PersonSeeder extends Seeder
         $person1->last_name = "Barrios";
         $person1->save();
         $image1 = new Image();
-        $image1->url = 'img/users/barrios.jpg';
+        $image1->url = 'img/users/user1.jpg';
         $image1->imageable()->associate($person1);
         $image1->save();
 
@@ -27,11 +27,19 @@ class PersonSeeder extends Seeder
         $person2->first_name = "Americo";
         $person2->last_name = "Alvarez";
         $person2->save();
+        $image1 = new Image();
+        $image1->url = 'img/users/user2.jpg';
+        $image1->imageable()->associate($person2);
+        $image1->save();
 
         $person3 = new Person;
         $person3->first_name = "Sara";
         $person3->last_name = "Zurita";
         $person3->save();
+        $image1 = new Image();
+        $image1->url = 'img/users/user3.jpg';
+        $image1->imageable()->associate($person3);
+        $image1->save();
 
         $person4 = new Person;
         $person4->first_name = "Angel";
