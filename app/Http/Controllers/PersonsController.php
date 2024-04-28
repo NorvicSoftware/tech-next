@@ -11,8 +11,8 @@ class PersonsController extends Controller
 
     public function index()
     {
-        $Persons = Person::all();
-        return Inertia::render('Persons/Index', ['persons' => $Persons]);
+        $persons = Person::with('image')->get();
+        return Inertia::render('Persons/Index', ['persons' => $persons]);
     }
 
     /**

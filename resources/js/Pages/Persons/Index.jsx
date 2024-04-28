@@ -49,7 +49,15 @@ export default function Index({ auth }) {
                                             <td className="sm:p-4 py-2">
                                                 {person.last_name}
                                             </td>
-                                            <td>{person.image}</td>
+                                            <td>
+                                                {person.image && (
+                                                    <img
+                                                        src={person.image.url}
+                                                        alt="Image de perfil"
+                                                        className="rounded-full"
+                                                    />
+                                                )}
+                                            </td>
                                             <td className="sm:flex justify-center grid gap-2 sm:p-3 py-4 h-[100%]">
                                                 <LinkButton
                                                     name="Editar"
