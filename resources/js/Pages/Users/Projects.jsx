@@ -39,11 +39,11 @@ export default function Project() {
                             setData("search", e.target.value)
                         }
                     />
-                    <PrimaryButton className="">
+                    <PrimaryButton>
                         <Search />
                     </PrimaryButton>
                 </form>
-                <div className="px-4">
+                <div className="px-4 pb-3">
                     {projects.map((project, id) => (
                         <div key={project.id} className="text-gray-200  mb-4">
                             <div className="flex border-t-4 border-indigo-500 items-center gap-4 p-2">
