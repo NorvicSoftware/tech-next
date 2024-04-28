@@ -17,7 +17,6 @@ export default function Career() {
                         <div>
                             <h2 className="p-3 text-center text-4xl font-bold mb-6">Inspirate y crea nuevas ideas</h2>
                         </div>
-
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-slate-800">
                             {careers.map((career, index) => (
                                 <a
@@ -34,7 +33,6 @@ export default function Career() {
                                         <p className="text-white mb-4 font-bold">{career.name}</p>
                                     </div>
                                 </a>
-
                             ))}
                         </div>
                     </div>
