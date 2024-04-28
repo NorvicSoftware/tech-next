@@ -72,13 +72,8 @@ export default function Authenticated({ user, header, children }) {
                                 </NavLink>
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-<<<<<<< HEAD
                                 <NavLink href={route('reports.index')} active={route().current('reports.index')}>
                                     Reportes
-=======
-                                <NavLink href={route('scores.index')} active={route().current('scores.index')}>
-                                    Puntuaciones
->>>>>>> dfc4d9c4e99f83fcc5d758c1f28b822fe3aeb335
                                 </NavLink>
                             </div>
                         </div>
