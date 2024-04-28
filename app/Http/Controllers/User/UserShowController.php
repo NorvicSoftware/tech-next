@@ -12,7 +12,7 @@ class UserShowController extends Controller
 {
     public function showProjectById($id)
     {
-        $project = Project::with('person', 'career', 'scores')->findOrfail($id); 
+        $project = Project::with('person', 'career', 'scores', 'image')->findOrfail($id); 
         return Inertia::render('Users/Show', ['project' => $project, 'id' => $id]); 
     }
 
