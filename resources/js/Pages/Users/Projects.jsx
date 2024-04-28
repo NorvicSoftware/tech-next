@@ -22,19 +22,6 @@ export default function Project() {
         );
     }
 
-    const getReactionImage = (reaction) => {
-        switch (reaction) {
-            case "Bueno":
-                return "/img/reactions/bueno.svg";
-            case "Indiferente":
-                return "/img/reactions/indiferente.svg";
-            case "Malo":
-                return "/img/reactions/malo.svg";
-            default:
-                return "";
-        }
-    };
-
     return (
         <UserLayout>
             <div>
