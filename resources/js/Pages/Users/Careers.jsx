@@ -9,7 +9,6 @@ export default function Career() {
         return `/img/careers/img${careerId}.png`;
     };
 
-
     return (
         <UserLayout>
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -17,6 +16,7 @@ export default function Career() {
                     <div className="p-6 text-gray-900 dark:text-gray-100">
                         <div>
                             <h2 className="p-3 text-center text-4xl font-bold mb-6">Inspirate y crea nuevas ideas</h2>
+                            <h3 className="p-3 text-center text-2xl font-bold mb-6">Elige una carrera:</h3>
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-slate-800">
                             {careers.map((career, index) => (
