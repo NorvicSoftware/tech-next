@@ -14,7 +14,7 @@ export default function UserLayout({ children }) {
                                     <img src="/img/logo-project.png" className="w-11 h-8" />
                                 </Link>
                                 <h2 className="text-1xl font-bold dark:text-gray-200 text-gray-700">
-                                    START PROJECT
+                                    START PROJECT xxx
                                 </h2>
                             </div>
                         </div>

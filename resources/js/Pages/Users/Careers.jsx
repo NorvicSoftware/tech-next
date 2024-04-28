@@ -10,36 +10,37 @@ export default function Career() {
     };
 
     return (
-        <UserLayout>
-            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div className="p-6 text-gray-900 dark:text-gray-100">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-slate-800">
-                            {careers.map((career, index) => (
-                                <div
-                                    className="grid justify-items-center border rounded-xl border-white"
-                                    key={career.id}
-                                >
-                                    <div className="text-center pt-3">
-                                        <img
-                                            className="w-32"
-                                            src={getImagePath(index +1)}
-                                            alt={career.name}
-                                        />
-                                    </div>
-                                    <LinkButton
-                                        name={career.name}
-                                        url={route("projects.getProjectsByCareer", {
-                                            careerId: career.id,
-                                        })}
-                                        className="block bg-slate-800"
-                                    />
+        <div>
+            <nav className="bg-slate-900 flex justify-between p-4">
+            <h2 className="text-2xl font-bold text-gray-200">TechasasasNext</h2>
+            <img src="img/icons/sun.svg" alt="" />
+            </nav>
+            <div><p>dasdasdas</p></div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-slate-800">
+                {careers.map((career) => (
+                    <div key={career.id} className="">
+                        <div className="flex" key={career.id}>
+                            <div><p>asas</p></div>
+                            <LinkButton
+                                name={
+                                <div className="text-center">
+                                    <img
+                                    className="w-32"
+                                    src={getImagePath(career.id)}
+                                    alt={career.name}/>
+                                    <span className="text-gray-800 mt-4 inline-block">{career.name}</span>
                                 </div>
-                            ))}
+                                
+                                }
+                                url={route("projects.by.career", {
+                                    careerId: career.id,
+                                })}
+                                className="block bg-slate-800"
+                            />
                         </div>
                     </div>
-                </div>
+                ))}
             </div>
-        </UserLayout>
+        </div>
     );
 }
