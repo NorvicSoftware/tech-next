@@ -96,22 +96,8 @@ Route::post('/show/{id}', [UserShowController::class, 'store'])->name('usershow.
 Route::get('/', [UserCareerController::class, 'getCareers']);
 Route::get('/', [UserCareerController::class, 'getCareers'])->name('careers');
 
-Route::get('/proyectos', [UserSearchController::class, 'getProject'])->name('projects.getProject');
+Route::get('/projects/search/{careerId}', [UserSearchController::class, 'getProjectsByCareer'])->name('projects.getProjectsByCareer');
+Route::post('/projects/search/{careerId}', [UserSearchController::class, 'searchProjectsByCareer'])->name('projects.searchProjectsByCareer');
 
-Route::get('/carrera/{careerId}', [UserSearchController::class, 'getProjectsByCareer'])->name('projects.by.career');
-
-Route::get('/projects/search', [UserSearchController::class, 'searchProjects'])->name('projects.search');
-
-//Vista de Usuario - Proyecto
-/* Route::get('/', function () {
-    return Inertia::render('Users/Project');
-})->name('project');
-//Route::get('/', [UserCareerController::class, 'getCareers']);
-
-
-Route::get('/list', [UserController::class, 'index'])->name('list.index');
-
-Route::get('/careers', [UserController::class, 'showCareers'])->name('public.careers')->middleware('inertia');
-Route::get('/careers/{career}/projects', [UserController::class, 'showProjectsByCareer'])->name('public.projects.by.career')->middleware('inertia'); */
 
 require __DIR__.'/auth.php';
