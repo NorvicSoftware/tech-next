@@ -3,17 +3,32 @@ import { useForm, usePage } from "@inertiajs/react";
 import UserLayout from "@/Layouts/UserLayout";
 import ProjectData from "@/Components/ProjectData";
 import LinkButton from "@/Components/LinkButton";
-import InputLabel from "@/Components/InputLabel";
+import ScoreButton from "@/Components/ScoreButton";
+import FaceRegular from "@/Components/Icons/FaceRegular";
+import FaceSimle from "@/Components/Icons/FaceSmile";
+import FaceSad from "@/Components/Icons/FaceSad";
+import ScoreProject from "@/Components/ScoreProject";
 
-const Show = () => {
-    const { id, project } = usePage().props;
+export default function Show() {
+    const { id, project, scores } = usePage().props;
+    // let count = 0;
     const { data, setData, post } = useForm({
         reaction: "",
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("usershow.store", id), { data });
+        post(route("usershow.store", id), { 
+            preserveScroll: true
+        });
+        
+        // if(count === 0){
+        //     post(route("usershow.store", id), { 
+        //         preserveScroll: true
+        //     });
+        // }
+        // count++;
+        // console.log('count', count);
     };
 
     return (
@@ -29,20 +44,14 @@ const Show = () => {
                                 <ProjectData
                                     className="text-xl font-bold"
                                     data={
-                                        project.person
-                                            ? project.person.first_name +
-                                            " " +
-                                            project.person.last_name
-                                            : "N/A"
+                                        project.person.first_name +
+                                        " " +
+                                        project.person.last_name
                                     }
                                 />
                                 <ProjectData
                                     name="Carrera:"
-                                    data={
-                                        project.career
-                                            ? project.career.name
-                                            : "N/A"
-                                    }
+                                    data={project.career.name}
                                 />
                                 <ProjectData
                                     name="Proyecto de Grado"
@@ -58,38 +67,39 @@ const Show = () => {
                                     name="Proyecto:"
                                     data={project.qualification}
                                 />
-
-                                <form onSubmit={handleSubmit} className="space-y-4">
-                                    <div className="flex gap-7">
-                                        <button
-                                            className={`border rounded px-3 py-2 text-white ${data.reaction === "Bueno"
-                                                    ? "bg-green-500"
-                                                    : ""
-                                                }`}
-                                            onClick={() => setData("reaction", "Bueno")}
-                                        >
-                                            Bueno
-                                        </button>
-                                        <button
-                                            className={`border rounded px-3 py-2 text-white ${data.reaction === "Indiferente"
-                                                    ? "bg-yellow-500"
-                                                    : ""
-                                                }`}
-                                            onClick={() =>
-                                                setData("reaction", "Indiferente")
-                                            }
-                                        >
-                                            Indiferente
-                                        </button>
-                                        <button
-                                            className={`border rounded px-3 py-2 text-white ${data.reaction === "Malo"
-                                                    ? "bg-red-500"
-                                                    : ""
-                                                }`}
-                                            onClick={() => setData("reaction", "Malo")}
-                                        >
-                                            Malo
-                                        </button>
+                                <form onSubmit={handleSubmit}>
+                                    <div className="flex gap-3">
+                                        <div className="flex flex-row">
+                                            <ScoreButton
+                                                onClick={() =>
+                                                    setData("reaction", "Bueno")
+                                                }
+                                            >
+                                                <FaceSimle />
+                                            </ScoreButton>
+                                            <ScoreButton
+                                                onClick={() =>
+                                                    setData(
+                                                        "reaction",
+                                                        "Indiferente"
+                                                    )
+                                                }
+                                            >
+                                                <FaceRegular />
+                                            </ScoreButton>
+                                            <ScoreButton
+                                                onClick={() =>
+                                                    setData("reaction", "Malo")
+                                                }
+                                            >
+                                                <FaceSad />
+                                            </ScoreButton>
+                                        </div>
+                                        <div className="flex flex-row">
+                                            <ScoreProject reaction="Bueno" scores={project.scores} />
+                                            <ScoreProject reaction="Indiferente" scores={project.scores} />
+                                            <ScoreProject reaction="Malo" scores={project.scores} />
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -114,6 +124,4 @@ const Show = () => {
             </section>
         </UserLayout>
     );
-};
-
-export default Show;
+}

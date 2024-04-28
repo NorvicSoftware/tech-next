@@ -25,7 +25,7 @@ class ScoreController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'reaction' => 'required|in:Bueno,Indiferente,Malo',
+            'reaction' => 'required|in:Bueno, Indiferente, Malo',
             'project_id' => 'required|exists:projects,id',
         ]);
     
@@ -56,19 +56,19 @@ class ScoreController extends Controller
 
     public function update(Request $request, string $id)
     {
-
+        // Encuentra la puntuación por ID
         $score = Score::findOrFail($id);
 
-
+        // Validar los datos de la solicitud
         $validatedData = $request->validate([
-            'reaction' => 'required|in:Bueno,Indiferente,Malo',
+            'reaction' => 'required|in:good,indifferent,bad',
             'project_id' => 'required|exists:projects,id',
         ]);
 
-
+        // Actualiza la puntuación con los datos validados
         $score->update($validatedData);
 
-
+        // Redirigir con un mensaje de éxito
         return redirect()->route('scores.index')->with('success', 'Puntuación actualizada exitosamente.');
     }
 
