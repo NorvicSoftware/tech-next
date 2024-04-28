@@ -19,7 +19,7 @@ class PersonSeeder extends Seeder
         $person1->last_name = "Barrios";
         $person1->save();
         $image1 = new Image();
-        $image1->url = 'images/users/barrios.jpg';
+        $image1->url = 'img/users/barrios.jpg';
         $image1->imageable()->associate($person1);
         $image1->save();
 
