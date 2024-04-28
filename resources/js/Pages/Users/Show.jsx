@@ -8,22 +8,23 @@ import FaceRegular from "@/Components/Icons/FaceRegular";
 import FaceSimle from "@/Components/Icons/FaceSmile";
 import FaceSad from "@/Components/Icons/FaceSad";
 import ScoreProject from "@/Components/ScoreProject";
+import Qualification from "@/Components/Qualification";
 
 export default function Show() {
     const { id, project, scores } = usePage().props;
     // let count = 0;
-    const { data, setData, post } = useForm({
+    const { children, setData, post } = useForm({
         reaction: "",
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("usershow.store", id), { 
-            preserveScroll: true
+        post(route("usershow.store", id), {
+            preserveScroll: true,
         });
-        
+
         // if(count === 0){
-        //     post(route("usershow.store", id), { 
+        //     post(route("usershow.store", id), {
         //         preserveScroll: true
         //     });
         // }
@@ -43,7 +44,7 @@ export default function Show() {
                                 </div>
                                 <ProjectData
                                     className="text-xl font-bold"
-                                    data={
+                                    children={
                                         project.person.first_name +
                                         " " +
                                         project.person.last_name
@@ -51,25 +52,33 @@ export default function Show() {
                                 />
                                 <ProjectData
                                     name="Carrera:"
-                                    data={project.career.name}
+                                    children={project.career.name}
                                 />
                                 <ProjectData
                                     name="Proyecto de Grado"
                                     className=""
-                                    data={project.title}
+                                    children={project.title}
                                 />
                                 <ProjectData
                                     name="Docente/Tutor:"
-                                    data={project.manager}
+                                    children={project.manager}
                                 />
-                                <ProjectData name="Año:" data={project.year} />
+                                <ProjectData
+                                    name="Año:"
+                                    children={project.year}
+                                />
                                 <ProjectData
                                     name="Proyecto:"
-                                    data={project.qualification}
-                                />
+                                    className="flex gap-1"
+                                >
+                                    <Qualification
+                                        qualification={project.qualification}
+                                    />
+                                </ProjectData>
+
                                 <form onSubmit={handleSubmit}>
-                                    <div className="flex gap-3">
-                                        <div className="flex flex-row">
+                                    <div className="grid ">
+                                        <div className="flex flex-row gap-3">
                                             <ScoreButton
                                                 onClick={() =>
                                                     setData("reaction", "Bueno")
@@ -95,10 +104,19 @@ export default function Show() {
                                                 <FaceSad />
                                             </ScoreButton>
                                         </div>
-                                        <div className="flex flex-row">
-                                            <ScoreProject reaction="Bueno" scores={project.scores} />
-                                            <ScoreProject reaction="Indiferente" scores={project.scores} />
-                                            <ScoreProject reaction="Malo" scores={project.scores} />
+                                        <div className="flex justify-around gap-3">
+                                            <ScoreProject
+                                                reaction="Bueno"
+                                                scores={project.scores}
+                                            />
+                                            <ScoreProject
+                                                reaction="Indiferente"
+                                                scores={project.scores}
+                                            />
+                                            <ScoreProject
+                                                reaction="Malo"
+                                                scores={project.scores}
+                                            />
                                         </div>
                                     </div>
                                 </form>
