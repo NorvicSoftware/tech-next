@@ -10,8 +10,8 @@ use Inertia\Inertia;
 class UserCareerController extends Controller
 {
     public function getCareers(){
-        //$careers = Career::where('university_id', '=', 1);
-        $careers = Career::take(8)->get();
+        $careers = Career::where('university_id', '=', 1)->get();
+        //$careers = Career::take(8)->get();
         return Inertia::render('Users/Careers', ['careers' => $careers]);
     }
 }

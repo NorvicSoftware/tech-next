@@ -12,7 +12,7 @@ use App\Http\Controllers\User\UserShowController;
 use App\Http\Controllers\User\UserSearchController;
 use App\Http\Controllers\UserController;
 use App\Models\Career;
-
+use Inertia\Inertia;
 
 
 Route::get('/dashboard', function () {
