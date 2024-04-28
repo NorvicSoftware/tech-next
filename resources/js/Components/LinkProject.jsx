@@ -1,4 +1,3 @@
-import ApplicationMoon from "./Icons/Moon";
 import ApplicationPDF from "./Icons/Pdf";
 
 export default function LinkProject({
@@ -9,7 +8,7 @@ export default function LinkProject({
     return (
         <a
             href={url}
-            className={"py-1  gap-2 font-bold items-center bg-gray-200 inline-flex rounded-full text-slate-800 justify-center px-4"}
+            className={"py-1 gap-1 font-bold items-center bg-gray-200 inline-flex rounded-full text-slate-800 justify-center px-4" + className}
         >
             <ApplicationPDF></ApplicationPDF>
             {name}

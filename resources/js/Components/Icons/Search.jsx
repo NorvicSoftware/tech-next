@@ -5,7 +5,7 @@ export default function Search() {
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke="rgb(17, 24, 39)"
+            stroke="rgb(255, 255, 255)"
             className="w-6 h-6"
         >
             <path
