@@ -8,7 +8,7 @@ import FaceRegular from "@/Components/FaceRegular";
 import FaceSimle from "@/Components/FaceSmile";
 import FaceSad from "@/Components/FaceSad";
 
-const Show = () => {
+export default function Show() {
     const { id, project, scores } = usePage().props;
     const { data, setData, post } = useForm({
         reaction: "",
@@ -81,6 +81,40 @@ const Show = () => {
                                         >
                                             <FaceSad />
                                         </ScoreReaction>
+                                        <div>
+                                            <ul>
+                                                {project.scores.map((index) => (
+                                                    <li key={index}></li>
+                                                ))}
+                                            </ul>
+                                            <p>
+                                                {
+                                                    project.scores.filter(
+                                                        (score) =>
+                                                            score.reaction ===
+                                                            "Bueno"
+                                                    ).length
+                                                }
+                                            </p>
+                                            <p>
+                                                {
+                                                    project.scores.filter(
+                                                        (score) =>
+                                                            score.reaction ===
+                                                            "Indiferente"
+                                                    ).length
+                                                }
+                                            </p>
+                                            <p>
+                                                {
+                                                    project.scores.filter(
+                                                        (score) =>
+                                                            score.reaction ===
+                                                            "Malo"
+                                                    ).length
+                                                }
+                                            </p>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -105,6 +139,4 @@ const Show = () => {
             </section>
         </UserLayout>
     );
-};
-
-export default Show;
+}

@@ -12,7 +12,7 @@ class UserShowController extends Controller
 {
     public function showProjectById($id)
     {
-        $project = Project::with('person', 'career')->findOrfail($id); 
+        $project = Project::with('person', 'career', 'scores')->findOrfail($id); 
         return Inertia::render('Users/Show', ['project' => $project, 'id' => $id]); 
     }
 
@@ -26,5 +26,13 @@ class UserShowController extends Controller
         $score->reaction = $request->reaction;
         $score->project_id = $id;
         $score->save();
+    }
+
+    public function getProjectsByCareer($careerId)
+    {
+        $career = Career::findOrFail($careerId);
+        $projects = $career->projects()->with('person', 'scores')->get();
+        
+        return Inertia::render('Users/Show', ['projects' => $projects, 'career' => $career]);
     }
 }
