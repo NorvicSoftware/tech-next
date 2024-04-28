@@ -9,6 +9,7 @@ export default function Career() {
         return `/img/careers/img${careerId}.png`;
     };
 
+
     return (
         <UserLayout>
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
