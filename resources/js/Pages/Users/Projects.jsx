@@ -7,6 +7,7 @@ import { usePage, useForm } from "@inertiajs/react";
 import Search from "@/Components/Icons/Search";
 import Qualification from "@/Components/Qualification";
 import ScoreProject from "@/Components/ScoreProject";
+import ReactionProject from "@/Components/ReactionProject";
 import React from "react";
 
 export default function Project() {
@@ -71,16 +72,20 @@ export default function Project() {
                                 <LinkProject name="Ver Proyecto" url={route("usershow.showProjectById", project.id)}>
                                 </LinkProject>
                                 <div className="flex gap-4">
-                                    <ul>
-                                        {project.scores.map((score, index) => (
-                                            <li key={index}></li>
-                                        ))}
-                                    </ul>
                                     <div>
                                         <div className="flex gap-6 text-center">
-                                            <ScoreProject reaction="Bueno" scores={project.scores}/>
-                                            <ScoreProject reaction="Indiferente" scores={project.scores}/>
-                                            <ScoreProject reaction="Malo" scores={project.scores}/>
+                                            <div className="flex items-center gap-2">
+                                                <ReactionProject reaction="Bueno"/>
+                                                <ScoreProject reaction="Bueno" scores={project.scores}/>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <ReactionProject reaction="Indiferente"/>
+                                                <ScoreProject reaction="Indiferente" scores={project.scores}/>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <ReactionProject reaction="Malo"/>
+                                                <ScoreProject reaction="Malo" scores={project.scores}/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
