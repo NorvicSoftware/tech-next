@@ -3,20 +3,6 @@ import ApplicationSun from "@/Components/Icons/Sun";
 import ApplicationMoon from "@/Components/Icons/Moon";
 export default function UserLayout({ children }) {
 
-    const [theme, setTheme] = useState("light")
-
-    useEffect(() => {
-        if (theme == "dark") {
-            document.querySelector("html").classList.add('dark')
-        } else {
-            document.querySelector("html").classList.remove('dark')
-            
-        }
-    }, [theme])
-
-    const handleChangeTheme = () => {
-        setTheme(prevTheme => prevTheme == "light" ? "dark" : "light")
-    }
  
     return (
         <div class="" className="min-h-screen bg-gray-300 dark:bg-gray-900">

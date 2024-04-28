@@ -24,7 +24,7 @@ export default function Career() {
                                 <a href={route("projects.getProjectsByCareer", {
                                     careerId: career.id,
                                 })}> 
-                                     <div
+                                    <div
                                     className="grid justify-items-center border rounded-xl border-white"
                                     key={career.id}
                                 >
