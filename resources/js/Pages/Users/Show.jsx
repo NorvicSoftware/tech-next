@@ -1,11 +1,21 @@
 import React from "react";
+import { useForm, usePage } from "@inertiajs/react";
 import UserLayout from "@/Layouts/UserLayout";
 import ProjectData from "@/Components/ProjectData";
-import ScoreReaction from "@/Components/ScoreReaction";
 import LinkButton from "@/Components/LinkButton";
+import InputLabel from "@/Components/InputLabel";
 
+const Show = () => {
+    const { id, project } = usePage().props;
+    const { data, setData, post } = useForm({
+        reaction: "",
+    });
 
-const Show = ({ project }) => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        post(route("usershow.store", id), { data });
+    };
+
     return (
         <UserLayout>
             <section className="px-4">
@@ -21,8 +31,8 @@ const Show = ({ project }) => {
                                     data={
                                         project.person
                                             ? project.person.first_name +
-                                              " " +
-                                              project.person.last_name
+                                            " " +
+                                            project.person.last_name
                                             : "N/A"
                                     }
                                 />
@@ -48,11 +58,40 @@ const Show = ({ project }) => {
                                     name="Proyecto:"
                                     data={project.qualification}
                                 />
-                                <div className="flex gap-7">
-                                    <ScoreReaction />
-                                    <ScoreReaction />
-                                    <ScoreReaction />
-                                </div>
+
+                                <form onSubmit={handleSubmit} className="space-y-4">
+                                    <div className="flex gap-7">
+                                        <button
+                                            className={`border rounded px-3 py-2 text-white ${data.reaction === "Bueno"
+                                                    ? "bg-green-500"
+                                                    : ""
+                                                }`}
+                                            onClick={() => setData("reaction", "Bueno")}
+                                        >
+                                            Bueno
+                                        </button>
+                                        <button
+                                            className={`border rounded px-3 py-2 text-white ${data.reaction === "Indiferente"
+                                                    ? "bg-yellow-500"
+                                                    : ""
+                                                }`}
+                                            onClick={() =>
+                                                setData("reaction", "Indiferente")
+                                            }
+                                        >
+                                            Indiferente
+                                        </button>
+                                        <button
+                                            className={`border rounded px-3 py-2 text-white ${data.reaction === "Malo"
+                                                    ? "bg-red-500"
+                                                    : ""
+                                                }`}
+                                            onClick={() => setData("reaction", "Malo")}
+                                        >
+                                            Malo
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

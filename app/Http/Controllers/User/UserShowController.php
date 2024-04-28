@@ -4,16 +4,27 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
-use App\Models\Career;
-use App\Models\Person;
+use App\Models\Score;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class UserShowController extends Controller
 {
-    public function getShow()
+    public function showProjectById($id)
     {
-        $project = Project::with('person', 'career'); 
-        return Inertia::render('User/Show', ['project' => $project]); 
+        $project = Project::with('person', 'career')->findOrfail($id); 
+        return Inertia::render('Users/Show', ['project' => $project, 'id' => $id]); 
+    }
+
+    public function store(Request $request, $id){
+        $request->validate([
+            'reaction' => 'required|in:Bueno,Indiferente,Malo',
+            // 'project_id' => 'required|exists:projects,id',
+        ]);
+        
+        $score = new Score();
+        $score->reaction = $request->reaction;
+        $score->project_id = $id;
+        $score->save();
     }
 }
