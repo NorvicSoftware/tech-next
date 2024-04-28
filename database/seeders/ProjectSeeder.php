@@ -23,7 +23,7 @@ class ProjectSeeder extends Seeder
         $project1->career_id = 1;
         $project1->save();
         $image1 = new Image();
-        $image1->url = 'images/projects/project1.jpg';
+        $image1->url = 'img/projects/project1.jpg';
         $image1->imageable()->associate($project1);
         $image1->save();
 
@@ -36,7 +36,7 @@ class ProjectSeeder extends Seeder
         $project2->career_id = 2;
         $project2->save();
         $image2 = new Image();
-        $image2->url = 'images/projects/project2.jpg';
+        $image2->url = 'img/projects/project2.jpg';
         $image2->imageable()->associate($project2);
         $image2->save();
 
@@ -47,11 +47,6 @@ class ProjectSeeder extends Seeder
         $project3->manager = "Eduardo Fernández";
         $project3->person_id = 3;
         $project3->career_id = 3;
-        $project3->save();
-        $image3 = new Image();
-        $image3->url = 'images/projects/project3.jpg';
-        $image3->imageable()->associate($project3);
-        $image3->save();
 
         $project4 = new Project;
         $project4->title = "Desarrollo de una estrategia de marketing digital para una empresa de turismo";

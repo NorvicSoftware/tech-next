@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Person;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class PersonsController extends Controller
@@ -11,8 +12,8 @@ class PersonsController extends Controller
 
     public function index()
     {
-        $Persons = Person::all();
-        return Inertia::render('Persons/Index', ['persons' => $Persons]);
+        $persons = Person::with('image')->get();
+        return Inertia::render('Persons/Index', ['persons' => $persons]);
     }
 
     /**
@@ -20,7 +21,7 @@ class PersonsController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Persons/Form', ['id'=> 0]);
+        return Inertia::render('Persons/Form', ['id' => 0]);
     }
 
     /**
@@ -31,14 +32,21 @@ class PersonsController extends Controller
         $request->validate([
             'first_name' => 'required|min:3|max:35',
             'last_name' => 'required|min:3|max:35',
-            ]);
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
 
         $person = new Person();
         $person->first_name = $request->first_name;
         $person->last_name = $request->last_name;
         $person->save();
 
-        return redirect()->route('persons.index')->with('succes', 'Los datos de persona se han creado correctamente');
+        $imageName = $this->loadImage($request);
+
+        if ($imageName !== '') {
+            $person->image()->create(['url' => 'img/users/' . $imageName]);
+        }
+
+        return redirect()->route('persons.index')->with('success', 'Los datos de persona se han creado correctamente');
     }
 
     /**
@@ -63,18 +71,35 @@ class PersonsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'first_name' => 'required|min:3|max:35',
-            'last_name' => 'required|min:3|max:35',
-            ]);
-
         $person = Person::find($id);
-        $person->first_name = $request->first_name;
-        $person->last_name = $request->last_name;
+
+        $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        if ($request->filled('first_name')) {
+            $person->first_name = $request->first_name;
+        }
+        if ($request->filled('last_name')) {
+            $person->last_name = $request->last_name;
+        }
+
+        if ($request->hasFile('image')) {
+            $imageName = $this->loadImage($request);
+            if ($imageName !== '') {
+                if ($person->image) {
+                    Storage::delete('public/' . $person->image->url);
+                    $person->image()->delete();
+                }
+                $person->image()->create(['url' => 'img/users/' . $imageName]); // Guarda la ruta relativa de la nueva imagen
+            }
+        }
+
         $person->save();
 
-        return redirect()->route('persons.index')->with('succes', 'Los datos de persona se han creado correctamente');
+        return redirect()->route('persons.index')->with('success', 'Los datos de la persona se han actualizado correctamente');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -85,4 +110,19 @@ class PersonsController extends Controller
         $person->delete();
     }
 
+    /**
+     * Este método se encarga de subir una imagen en el directorio "storage/app/public/img/users"
+     * @return return retorna el nombre de la imagen.
+     */
+    public function loadImage($request)
+    {
+        $image_name = '';
+        if ($request->hasFile('image')) {
+            $destination_path = public_path('img/users');
+            $image = $request->file('image');
+            $image_name = time() . '_' . $image->getClientOriginalName();
+            $image->move($destination_path, $image_name);
+        }
+        return $image_name;
+    }
 }

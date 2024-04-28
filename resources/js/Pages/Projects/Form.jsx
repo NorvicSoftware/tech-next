@@ -1,4 +1,3 @@
-// Form.jsx
 import React from "react";
 import { useForm, usePage, Head } from "@inertiajs/react";
 import InputLabel from "@/Components/InputLabel";
