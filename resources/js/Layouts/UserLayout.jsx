@@ -1,6 +1,7 @@
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import { Link } from "@inertiajs/react";
 import ApplicationSun from "@/Components/ApplicationSun";
+import ApplicationMoon from "@/Components/ApplicationMoon";
 import { useEffect, useState } from "react";
 export default function UserLayout({ children }) {
 
@@ -11,6 +12,7 @@ export default function UserLayout({ children }) {
             document.querySelector("html").classList.add('dark')
         } else {
             document.querySelector("html").classList.remove('dark')
+            
         }
     }, [theme])
 
@@ -35,8 +37,8 @@ export default function UserLayout({ children }) {
                         </div>
 
                         <div className="flex items-center ms-6">
-                            <button onClick={handleChangeTheme} ><ApplicationSun className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-20"  /></button>
-                            
+                            <button onClick={handleChangeTheme} ><ApplicationSun className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-20"  /> </button>
+                            <button onClick={handleChangeTheme} ><ApplicationMoon className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-20"  /> </button>                            
                         </div>
                     </div>
                 </div>
