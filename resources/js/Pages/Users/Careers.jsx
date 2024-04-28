@@ -20,21 +20,21 @@ export default function Career() {
 
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-slate-800">
                             {careers.map((career, index) => (
-                               <a
-                               href={route("projects.getProjectsByCareer", { careerId: career.id })}
-                               key={career.id}
-                               className="grid justify-items-center border rounded-xl border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:bg-gray-700"
-                           >
-                               <div className="text-center pt-3 ">
-                                   <img
-                                       className="w-32 mb-2"
-                                       src={getImagePath(index + 1)}
-                                       alt={career.name}
-                                   />
-                                   <p className="text-white mb-4">{career.name}</p>
-                               </div>
-                           </a>
-                           
+                                <a
+                                    href={route("projects.getProjectsByCareer", { careerId: career.id })}
+                                    key={career.id}
+                                    className="grid justify-items-center border rounded-xl border-white transition duration-300 ease-in-out transform hover:shadow-lg hover:bg-gray-700"
+                                >
+                                    <div className="text-center pt-3 ">
+                                        <img
+                                            className="w-32 mb-2"
+                                            src={getImagePath(index + 1)}
+                                            alt={career.name}
+                                        />
+                                        <p className="text-white mb-4 font-bold">{career.name}</p>
+                                    </div>
+                                </a>
+
                             ))}
                         </div>
                     </div>
