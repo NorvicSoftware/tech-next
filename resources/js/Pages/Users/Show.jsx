@@ -3,33 +3,17 @@ import { useForm, usePage } from "@inertiajs/react";
 import UserLayout from "@/Layouts/UserLayout";
 import ProjectData from "@/Components/ProjectData";
 import LinkButton from "@/Components/LinkButton";
-import ScoreButton from "@/Components/ScoreButton";
-import FaceRegular from "@/Components/Icons/FaceRegular";
-import FaceSimle from "@/Components/Icons/FaceSmile";
-import FaceSad from "@/Components/Icons/FaceSad";
-import ScoreProject from "@/Components/ScoreProject";
-import Qualification from "@/Components/Qualification";
+import InputLabel from "@/Components/InputLabel";
 
-export default function Show() {
-    const { id, project, person } = usePage().props;
-    // let count = 0;
-    const { children, setData, post } = useForm({
+const Show = () => {
+    const { id, project } = usePage().props;
+    const { data, setData, post } = useForm({
         reaction: "",
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("usershow.store", id), {
-            preserveScroll: true,
-        });
-
-        // if(count === 0){
-        //     post(route("usershow.store", id), {
-        //         preserveScroll: true
-        //     });
-        // }
-        // count++;
-        // console.log('count', count);
+        post(route("usershow.store", id), { data });
     };
 
     return (
@@ -44,76 +28,68 @@ export default function Show() {
                                 </div>
                                 <ProjectData
                                     className="text-xl font-bold"
-                                    children={
-                                        project.person.first_name +
-                                        " " +
-                                        project.person.last_name
+                                    data={
+                                        project.person
+                                            ? project.person.first_name +
+                                            " " +
+                                            project.person.last_name
+                                            : "N/A"
                                     }
                                 />
                                 <ProjectData
                                     name="Carrera:"
-                                    children={project.career.name}
+                                    data={
+                                        project.career
+                                            ? project.career.name
+                                            : "N/A"
+                                    }
                                 />
                                 <ProjectData
-                                    name="Proyecto de Grado:"
+                                    name="Proyecto de Grado"
                                     className=""
-                                    children={project.title}
+                                    data={project.title}
                                 />
                                 <ProjectData
                                     name="Docente/Tutor:"
-                                    children={project.manager}
+                                    data={project.manager}
                                 />
-                                <ProjectData
-                                    name="Año:"
-                                    children={project.year}
-                                />
+                                <ProjectData name="Año:" data={project.year} />
                                 <ProjectData
                                     name="Proyecto:"
-                                    className="flex gap-1"
-                                >
-                                    <Qualification
-                                        qualification={project.qualification}
-                                    />
-                                </ProjectData>
+                                    data={project.qualification}
+                                />
 
-                                <form onSubmit={handleSubmit}>
-                                    <div className="flex flex-row gap-4">
-                                        <div>
-                                            <ScoreButton
-                                                onClick={() => setData("reaction", "Bueno")}
-                                                children={<FaceSimle />}
-                                            />
-                                            <ScoreProject
-                                                reaction="Bueno"
-                                                scores={project.scores}
-                                            />
-                                        </div>
-
-                                        <div>
-                                            <ScoreButton
-                                                onClick={() => setData("reaction", "Indiferente")}
-                                                children={<FaceRegular />}
-                                                
-                                            />
-                                            <ScoreProject
-                                                reaction="Indiferente"
-                                                scores={project.scores}
-                                            />
-                                            
-                                        </div>
-
-                                        <div>
-                                            <ScoreButton
-                                                onClick={() =>
-                                                    setData("reaction", "Malo")
-                                                }
-                                                children={<FaceSad />}
-                                            />
-                                            <ScoreProject
-                                                reaction="Malo"
-                                                scores={project.scores}
-                                            />
-                                        </div>
+                                <form onSubmit={handleSubmit} className="space-y-4">
+                                    <div className="flex gap-7">
+                                        <button
+                                            className={`border rounded px-3 py-2 text-white ${data.reaction === "Bueno"
+                                                    ? "bg-green-500"
+                                                    : ""
+                                                }`}
+                                            onClick={() => setData("reaction", "Bueno")}
+                                        >
+                                            Bueno
+                                        </button>
+                                        <button
+                                            className={`border rounded px-3 py-2 text-white ${data.reaction === "Indiferente"
+                                                    ? "bg-yellow-500"
+                                                    : ""
+                                                }`}
+                                            onClick={() =>
+                                                setData("reaction", "Indiferente")
+                                            }
+                                        >
+                                            Indiferente
+                                        </button>
+                                        <button
+                                            className={`border rounded px-3 py-2 text-white ${data.reaction === "Malo"
+                                                    ? "bg-red-500"
+                                                    : ""
+                                                }`}
+                                            onClick={() => setData("reaction", "Malo")}
+                                        >
+                                            Malo
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -124,15 +100,7 @@ export default function Show() {
                 <div className="py-2">
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-2xl">
-                            <div className="p-2 text-gray-900 dark:text-gray-100 grid justify-center">
-                                {project.image && (
-                                    <img
-                                        src={`${window.location.origin}/${project.image.url}`}
-                                        alt="Imagen del proyecto"
-                                        className="rounded-lg"
-                                    />
-                                )}
-                            </div>
+                            <div className="p-6 text-gray-900 dark:text-gray-100"></div>
                         </div>
                         <div className="flex justify-center rouded-full my-4">
                             <LinkButton
@@ -146,4 +114,6 @@ export default function Show() {
             </section>
         </UserLayout>
     );
-}
+};
+
+export default Show;
