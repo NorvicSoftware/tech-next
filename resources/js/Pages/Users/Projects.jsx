@@ -3,7 +3,7 @@ import LinkProject from "@/Components/LinkProject";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import UserLayout from "@/Layouts/UserLayout";
-import { usePage, useForm } from "@inertiajs/react";
+import { usePage, useForm, Head } from "@inertiajs/react";
 import Search from "@/Components/Icons/Search";
 import Qualification from "@/Components/Qualification";
 import ScoreProject from "@/Components/ScoreProject";
@@ -26,6 +26,7 @@ export default function Project() {
 
     return (
         <UserLayout>
+            <Head title="Proyectos" />
             <div>
                 <form
                     onSubmit={search}
@@ -37,7 +38,10 @@ export default function Project() {
                         value={data.search}
                         onChange={(e) => setData("search", e.target.value)}
                     />
-                    <PrimaryButton children={<Search />} className="dark:bg-gray-800"/>
+                    <PrimaryButton
+                        children={<Search />}
+                        className="dark:bg-gray-800"
+                    />
                 </form>
                 <div className="px-1 pb-3">
                     {projects.map((project, id) => (
@@ -47,9 +51,10 @@ export default function Project() {
                         >
                             <div className="flex border-t-4 border-indigo-500 items-center gap-4 p-2 ">
                                 <img
-                                    className="w-10 h-10 rounded-full"
-                                    src="/img/anonymous.jpg"
-                                ></img>
+                                    src={`/img/users/user${project.person.id}.jpg`}
+                                    alt={`foto de ${project.person.first_name}`}
+                                    className="rounded-full object-cover w-10 h-10"
+                                />
                                 {
                                     <div className="w-250 h-250 bg-white">
                                         {project.person.image && (
