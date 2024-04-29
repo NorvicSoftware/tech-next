@@ -1,6 +1,7 @@
 export default function LinkButton({
     active = false,
     name,
+    children,
     url,
     className = "",
 }) {

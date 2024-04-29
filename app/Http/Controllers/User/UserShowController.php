@@ -19,7 +19,6 @@ class UserShowController extends Controller
     public function store(Request $request, $id){
         $request->validate([
             'reaction' => 'required|in:Bueno,Indiferente,Malo',
-            // 'project_id' => 'required|exists:projects,id',
         ]);
         
         $score = new Score();
