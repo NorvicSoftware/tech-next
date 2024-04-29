@@ -1,6 +1,6 @@
 # START PROJECT
 
-<center><img src="/public/img/logo-project.png" alt="centered image"></center>
+<p align="center"><a target="_blank"><img src="/public/img/logo-project.png"></a></p>
 
 ## Objetivo
 Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de las diferentes universidades de último semestre una variedad de ideas personalizadas para proyectos de grado, basadas en sus intereses académicos, tendencias del mercado y necesidades sociales, facilitando así la selección de un tema viable y relevante para su proyecto final.
