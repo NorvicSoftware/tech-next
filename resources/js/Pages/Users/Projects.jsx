@@ -23,6 +23,11 @@ export default function Project() {
             onError: () => console.log("ERROR"),
         });
     }
+    const defaultImageUrl = "/img/users/imgDefault.jpg";
+    const handleImageError = (event) => {
+        event.target.onerror = null; 
+        event.target.src = defaultImageUrl; 
+    };
 
     return (
         <UserLayout>
@@ -49,12 +54,13 @@ export default function Project() {
                             key={project.id}
                             className="dark:text-gray-200  mb-4 bg-white dark:bg-transparent p-3 text-gray-900 m-2"
                         >
-                            <div className="flex border-t-4 border-indigo-500 items-center gap-4 p-2 ">
-                                <img
-                                    src={`/img/users/user${project.person.id}.jpg`}
-                                    alt={`foto de ${project.person.first_name}`}
-                                    className="rounded-full object-cover w-10 h-10"
-                                />
+                            <div className="flex border-t-4 border-indigo-500 items-center gap-1 p-2 ">
+                               <img
+                                        src={`/img/users/user${project.person.id}.jpg`}
+                                        alt={`foto de ${project.person.first_name}`}
+                                        className="rounded-full object-cover w-10 h-10"
+                                        onError={handleImageError}
+                                    />
                                 {
                                     <div className="w-250 h-250 bg-white">
                                         {project.person.image && (

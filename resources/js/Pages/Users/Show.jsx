@@ -25,6 +25,12 @@ export default function Show() {
         });
         setBotonPresionado(true);
     };
+    const defaultImageUrl = "/img/users/imgDefault.jpg";
+    const handleImageError = (event) => {
+        event.target.onerror = null;
+        event.target.src = defaultImageUrl;
+    };
+
     return (
         <UserLayout>
             <Head title={project.person.first_name} />
@@ -38,6 +44,7 @@ export default function Show() {
                                         src={`/img/users/user${project.person.id}.jpg`}
                                         alt={`foto de ${project.person.first_name}`}
                                         className="rounded-full object-cover w-full h-full"
+                                        onError={handleImageError}
                                     />
                                 </div>
                                 <ProjectData
