@@ -9,7 +9,6 @@ export default function Career() {
         return `/img/careers/img${careerId}.png`;
     };
 
-
     return (
         <UserLayout>
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -21,10 +20,9 @@ export default function Career() {
                     </div>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {careers.map((career, index) => (
-                                <a href={route("projects.by.career", {
-                                            careerId: career.id,
-                                        })}
-                                        >
+                                <a href={route("projects.getProjectsByCareer", {
+                                    careerId: career.id,
+                                })} >
                                 <div
                                     className="grid justify-items-center border rounded-xl border-emerald-500"
                                     key={career.id}
