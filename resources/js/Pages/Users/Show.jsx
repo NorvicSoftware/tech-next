@@ -64,7 +64,7 @@ export default function Show() {
                                 />
                                 <ProjectData name="Año:" data={project.year} />
                                 <ProjectData
-                                    name="Proyecto:"
+                                    name="Calificación:"
                                     data={project.qualification}
                                 />
                                 <form onSubmit={handleSubmit}>

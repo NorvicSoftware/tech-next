@@ -44,8 +44,9 @@ export default function Project() {
                     </PrimaryButton>
                 </form>
                 <div className="px-4">
+                <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-2xl">
                     {projects.map((project, id) => (
-                        <div key={project.id} className="text-gray-200  mb-4">
+                        <div key={project.id} className="text-gray-900 dark:text-gray-100 mb-4">
                             <div className="flex border-t-4 border-indigo-500 items-center gap-4 p-2">
                                 <img
                                     className="w-10 h-10 rounded-full"
@@ -102,6 +103,7 @@ export default function Project() {
                         </div>
                     ))}
                 </div>
+            </div>
             </div>
         </UserLayout>
     );
