@@ -25,11 +25,11 @@ class DatabaseSeeder extends Seeder
         $this->call(ProjectSeeder::class);
         $this->call(ScoreSeeder::class);
 
-        Career::factory(10)->create();
-        Person::factory(10)->create();
-        Project::factory(10)->create();
-        University::factory(10)->create();
-        Score::factory(10)->create();
+        // University::factory(5)->create();
+        // Person::factory(100)->create();
+        // Career::factory(50)->create();
+        // Project::factory(100)->create();
+        // Score::factory(2)->create();
 
     }
 }

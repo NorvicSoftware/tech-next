@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 namespace App\Http\Controllers\Report;
+=======
+namespace App\Http\Controllers\Reports;
+>>>>>>> 0b5701f8a70e7e7cdc2eb8d9baf6a8a2616259fe
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

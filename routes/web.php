@@ -10,16 +10,23 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
-//use App\Http\Controllers\ReportController;
+use App\Http\Controllers\User\UserCareerController;
+use App\Http\Controllers\User\UserSearchController;
+use App\Http\Controllers\User\UserShowController;
+use App\Http\Controllers\UserController;
+use App\Models\Career;
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+    $careers = Career::all();
+    return "$careers";
+}); */
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -40,19 +47,11 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/scores', [ScoreController::class, 'index'])->name('scores.index');
-    Route::get('/scores/create', [ScoreController::class, 'create'])->name('scores.create');
-    Route::post('/scores', [ScoreController::class, 'store'])->name('scores.store');
-    Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
-    Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
-    Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
-    
-
-
-
-
-
-
-
+    // Route::get('/scores/create', [ScoreController::class, 'create'])->name('scores.create');
+    // Route::post('/scores', [ScoreController::class, 'store'])->name('scores.store');
+    // Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
+    // Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
+    // Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
 
     //Projects Controller
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
@@ -68,7 +67,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/universities', [UniversityController::class, 'index'])->name('universities.index');
     Route::get('/universities/create', [UniversityController::class, 'create'])->name('universities.create');
     Route::post('/universities', [UniversityController::class, 'store'])->name('universities.store');
-    Route::get('/universities/{id}', [UniversityController::class, 'show'])->name('universities.show');
     Route::get('/universities/{id}/edit', [UniversityController::class, 'edit'])->name('universities.edit');
     Route::put('/universities/{id}', [UniversityController::class, 'update'])->name('universities.update');
     Route::delete('/universities/{id}', [UniversityController::class, 'destroy'])->name('universities.destroy');
@@ -90,14 +88,17 @@ Route::middleware('auth')->group(function () {
     //Project Controller
     Route::get('/projects/generate-report', [ProjectController::class, 'generateReport'])->name('projects.generate-report');
     
-    //Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
 });
 
 //Vista de Usuario - Proyecto
-Route::get('/project', function () {
-    return Inertia::render('Users/Project');
-})->name('project');
+Route::get('/show/{id}', [UserShowController::class, 'showProjectById'])->name('usershow.showProjectById');
+Route::post('/show/{id}', [UserShowController::class, 'store'])->name('usershow.store');
 
+Route::get('/', [UserCareerController::class, 'getCareers']);
+Route::get('/', [UserCareerController::class, 'getCareers'])->name('careers');
+
+Route::get('/projects/search/{careerId}', [UserSearchController::class, 'getProjectsByCareer'])->name('projects.getProjectsByCareer');
+Route::post('/projects/search/{careerId}', [UserSearchController::class, 'searchProjectsByCareer'])->name('projects.searchProjectsByCareer');
 
 
 require __DIR__.'/auth.php';

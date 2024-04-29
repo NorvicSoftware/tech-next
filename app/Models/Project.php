@@ -13,6 +13,15 @@ class Project extends Model
 
     protected $table = "projects";
 
+    protected $fillable = [
+        'title',
+        'qualification',
+        'year',
+        'manager',
+        'person_id',
+        'career_id',
+    ];
+
     public function scores(): HasMany {
         return $this->hasMany(Score::class);
     }
@@ -28,13 +37,4 @@ class Project extends Model
     public function image() {
         return $this->morphOne(Image::class, 'imageable');
     }
-
-    protected $fillable = [
-        'title',
-        'qualification',
-        'year',
-        'manager',
-        'person_id',
-        'career_id',
-    ];
 }

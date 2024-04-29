@@ -1,7 +1,7 @@
+import React from "react";
+import { usePage, Head } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { usePage } from "@inertiajs/react";
 import NavLink from "@/Components/NavLink";
-import { Head } from "@inertiajs/react";
 import LinkButton from "@/Components/LinkButton";
 
 export default function Index({ auth }) {
@@ -9,52 +9,73 @@ export default function Index({ auth }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
+            name="Añadir Nuevo Autor"
+            url="/persons/create"
             header={
-                <div className="flex mx-10 items-center justify-between">
                 <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                     Autores
                 </h2>
-                <div>
-                    <LinkButton
-                        name="Añadir Nuevo Autor"
-                        url="persons/create"
-                        className=""
-                    />
-                </div>
-            </div>
             }
         >
             <Head title="Autores" />
-            
-                <main className="overflow-x-auto bg-gray-800">
-                    <div className="grid grid-cols-3 text-gray-200 text-center p-4 bg-gray-900 mx-4 rounded-t-lg">
-                        <h2>Nombres</h2>
-                        <h2>Apellidos</h2>
-                        <h2>Acción</h2>
+            <div className="py-12">
+                <div className="max-w-4xl mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-3 sm:p-6 text-gray-900 dark:text-gray-100">
+                            <table className="min-w-full">
+                                <thead className="text-gray-20 text-xs sm:text-lg">
+                                    <tr>
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                            Nombres
+                                        </th>
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                            Apellidos
+                                        </th>
+                                        <th className="sm:p-4 py-4 border-b border-gray-500 w-[33%]">
+                                            Acciones
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody className="text-white">
+                                    {persons.map((person, id) => (
+                                        <tr
+                                            className="text-xs sm:text-base text-black dark:text-white text-center sm:text-left"
+                                            key={person.id}
+                                        >
+                                            <td className="sm:p-4 py-2">
+                                                {person.first_name}
+                                            </td>
+                                            <td className="sm:p-4 py-2">
+                                                {person.last_name}
+                                            </td>
+                                            <td className="sm:flex justify-center grid gap-2 sm:p-3 py-4 h-[100%]">
+                                                <LinkButton
+                                                    name="Editar"
+                                                    className="dark:text-white dark:bg-blue-800 bg-blue-800 dark:hover:bg-blue-900 rounded 0 w-16 flex justify-center normal-case p-1"
+                                                    url={route(
+                                                        "persons.edit",
+                                                        person.id
+                                                    )}
+                                                />
+                                                <NavLink
+                                                    children="Eliminar"
+                                                    href={route(
+                                                        "persons.destroy",
+                                                        person.id
+                                                    )}
+                                                    method="delete"
+                                                    as="button"
+                                                    className="bg-red-600 text-white rounded-md tracking-widest hover:bg-red-900 w-16 flex justify-center items-center text-xs hover:border-red-900 dark:hover:border-red-900 pb-2 sm:pb-1"
+                                                />
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    {persons.map((person, id) => (
-                        <section className="grid grid-cols-3 text-center mx-4 text-gray-800 bg-gray-200 border-t-2 border-gray-300 p-2 items-center">
-                            <div className="text-left">{person.first_name}</div>
-                            <div className="text-left">{person.last_name}</div>
-                            <div className="flex justify-center flex-shrink-0 items-center gap-1">
-                                <NavLink
-                                    href={route("persons.edit", person.id)}
-                                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-                                >
-                                    Editar
-                                </NavLink>
-                                <NavLink
-                                    href={route("persons.destroy", person.id)}
-                                    method="delete"
-                                    as="button"
-                                    className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                                >
-                                    Eliminar
-                                </NavLink>
-                            </div>
-                        </section>
-                    ))}
-                </main>
+                </div>
+            </div>
         </AuthenticatedLayout>
     );
 }

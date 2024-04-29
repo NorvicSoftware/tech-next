@@ -11,10 +11,12 @@ class University extends Model
     use HasFactory;
     protected $table = 'universities';
 
-    public function careers(): HasMany{
-        return $this->hasMany(Career::class);
-    }
     protected $fillable = [
         'name', 'phone', 'address'
     ];
+
+    public function careers(): HasMany{
+        return $this->hasMany(Career::class);
+    }
+    
 }
