@@ -2,6 +2,7 @@ import { Link } from "@inertiajs/react";
 import Sun from "@/Components/Icons/Sun";
 import Moon from "@/Components/Icons/Moon";
 export default function UserLayout({ children }) {
+    
     return (
         <div className="min-h-screen bg-gray-300 dark:bg-gray-900">
             <nav className="bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-gray-700">
@@ -11,7 +12,7 @@ export default function UserLayout({ children }) {
                             <Link href="/">
                                 <img
                                     src="/img/logo-project.png"
-                                    className="w-11 h-8"
+                                    className="w-14 h-10"
                                 />
                             </Link>
                             <h2 className="text-1xl font-bold dark:text-gray-200 text-gray-700">
@@ -20,7 +21,7 @@ export default function UserLayout({ children }) {
                         </div>
 
                         <div className="flex items-center ms-6">
-                            <Sun />
+                            
                         </div>
                         <div className="flex items-center ms-6">
                             <Moon />
