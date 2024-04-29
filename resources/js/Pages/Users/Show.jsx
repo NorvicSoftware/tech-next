@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm, usePage } from "@inertiajs/react";
+import { useForm, usePage, Head } from "@inertiajs/react";
 import UserLayout from "@/Layouts/UserLayout";
 import ProjectData from "@/Components/ProjectData";
 import LinkButton from "@/Components/LinkButton";
@@ -8,11 +8,13 @@ import FaceRegular from "@/Components/Icons/FaceRegular";
 import FaceSimle from "@/Components/Icons/FaceSmile";
 import FaceSad from "@/Components/Icons/FaceSad";
 import ScoreProject from "@/Components/ScoreProject";
+import Qualification from "@/Components/Qualification";
+import { useState } from "react";
 
 export default function Show() {
-    const { id, project, scores, person } = usePage().props;
-    // let count = 0;
-    const { data, setData, post } = useForm({
+    const { id, project, person } = usePage().props;
+    const [botonPresionado, setBotonPresionado] = useState(false);
+    const { setData, post } = useForm({
         reaction: "",
     });
 
@@ -21,29 +23,33 @@ export default function Show() {
         post(route("usershow.store", id), {
             preserveScroll: true,
         });
-
-        // if(count === 0){
-        //     post(route("usershow.store", id), {
-        //         preserveScroll: true
-        //     });
-        // }
-        // count++;
-        // console.log('count', count);
+        setBotonPresionado(true);
+    };
+    const defaultImageUrl = "/img/users/imgDefault.jpg";
+    const handleImageError = (event) => {
+        event.target.onerror = null;
+        event.target.src = defaultImageUrl;
     };
 
     return (
         <UserLayout>
+            <Head title={project.person.first_name} />
             <section className="px-4">
                 <div className="py-3">
                     <div className="min-w-full mx-auto sm:px-6 lg:px-8">
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-2xl">
                             <div className="p-6 text-gray-900 dark:text-gray-100 grid justify-items-center gap-4 text-center">
-                                <div className="dark:bg-white bg-gray-800 rounded-full border-gray-800 dark:text-black text-white text-center w-[100px] h-[100px] grid items-center">
-                                    FOTO
+                                <div className="w-[100px] h-[100px]">
+                                    <img
+                                        src={`/img/users/user${project.person.id}.jpg`}
+                                        alt={`foto de ${project.person.first_name}`}
+                                        className="rounded-full object-cover w-full h-full"
+                                        onError={handleImageError}
+                                    />
                                 </div>
                                 <ProjectData
                                     className="text-xl font-bold"
-                                    data={
+                                    children={
                                         project.person.first_name +
                                         " " +
                                         project.person.last_name
@@ -51,32 +57,46 @@ export default function Show() {
                                 />
                                 <ProjectData
                                     name="Carrera:"
-                                    data={project.career.name}
+                                    children={project.career.name}
                                 />
                                 <ProjectData
-                                    name="Proyecto de Grado"
+                                    name="Proyecto de Grado:"
                                     className=""
-                                    data={project.title}
+                                    children={project.title}
                                 />
                                 <ProjectData
                                     name="Docente/Tutor:"
-                                    data={project.manager}
+                                    children={project.manager}
                                 />
-                                <ProjectData name="Año:" data={project.year} />
+                                <ProjectData
+                                    name="Año:"
+                                    children={project.year}
+                                />
                                 <ProjectData
                                     name="Proyecto:"
-                                    data={project.qualification}
-                                />
+                                    className="flex gap-1"
+                                >
+                                    <Qualification
+                                        qualification={project.qualification}
+                                    />
+                                </ProjectData>
+
                                 <form onSubmit={handleSubmit}>
-                                    <div className="flex gap-3">
-                                        <div className="flex flex-row">
+                                    <div className="flex flex-row gap-4">
+                                        <div>
                                             <ScoreButton
                                                 onClick={() =>
                                                     setData("reaction", "Bueno")
                                                 }
-                                            >
-                                                <FaceSimle />
-                                            </ScoreButton>
+                                                children={<FaceSimle />}
+                                                disabled={botonPresionado}
+                                            />
+                                            <ScoreProject
+                                                reaction="Bueno"
+                                                scores={project.scores}
+                                            />
+                                        </div>
+                                        <div>
                                             <ScoreButton
                                                 onClick={() =>
                                                     setData(
@@ -84,25 +104,21 @@ export default function Show() {
                                                         "Indiferente"
                                                     )
                                                 }
-                                            >
-                                                <FaceRegular />
-                                            </ScoreButton>
-                                            <ScoreButton
-                                                onClick={() =>
-                                                    setData("reaction", "Malo")
-                                                }
-                                            >
-                                                <FaceSad />
-                                            </ScoreButton>
-                                        </div>
-                                        <div className="flex flex-row">
-                                            <ScoreProject
-                                                reaction="Bueno"
-                                                scores={project.scores}
+                                                children={<FaceRegular />}
+                                                disabled={botonPresionado}
                                             />
                                             <ScoreProject
                                                 reaction="Indiferente"
                                                 scores={project.scores}
+                                            />
+                                        </div>
+                                        <div>
+                                            <ScoreButton
+                                                onClick={() =>
+                                                    setData("reaction", "Malo")
+                                                }
+                                                children={<FaceSad />}
+                                                disabled={botonPresionado}
                                             />
                                             <ScoreProject
                                                 reaction="Malo"
@@ -115,11 +131,10 @@ export default function Show() {
                         </div>
                     </div>
                 </div>
-
                 <div className="py-2">
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-2xl">
-                            <div className="p-6 text-gray-900 dark:text-gray-100">
+                            <div className="p-2 text-gray-900 dark:text-gray-100 grid justify-center">
                                 {project.image && (
                                     <img
                                         src={`${window.location.origin}/${project.image.url}`}
