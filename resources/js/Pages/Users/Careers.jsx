@@ -30,7 +30,7 @@ export default function Career() {
                                         <img
                                             className="w-32 mb-2"
                                             src={getImagePath(index + 1)}
-                                            alt={career.name}
+                                            alt={career.name} 
                                         />
                                         <p className="text-black dark:text-white mb-4 font-bold">{career.name}</p>
                                     </div>
