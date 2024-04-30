@@ -4,44 +4,25 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Career;
+use App\Models\Person;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class UserSearchController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
-    public function search($search)
-    {
-        $project = Project::where('title', 'like', '%'. $search . '%');
-    }
+{   
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function getProject()
+    public function getProjectsByCareer($career_id)
     {
-        /* $projects = Project::all();
-        return Inertia::render('Users/Projects', ['projects' => $projects]); */
-        $projects = Project::whereHas('career', function ($query) {
-            $query->whereBetween('id', [1, 10]);
-        })->get();
-
-        return Inertia::render('Users/Projects', ['projects' => $projects]);
-    }
-
-    public function getProjectsByCareer($careerId)
-    {
-        $career = Career::findOrFail($careerId);
-        $projects = $career->projects;
+        $career = Career::findOrFail($career_id);
+        $projects = $career->projects()->with('person', 'scores')->get();
         
-        return Inertia::render('Users/Projects', ['projects' => $projects, 'career' => $career]);
+        return Inertia::render('Users/Projects', ['projects' => $projects, 'career' => $career, 'career_id' => $career_id ]);
     }
 
-    public function searchProjects(Request $request)
+    public function searchProjectsByCareer(Request $request, string $career_id)
     {
+<<<<<<< HEAD
         try {
             $title = $request->input('title');
             $projects = Project::where('title', 'like', '%'. $title . '%')->get();
@@ -99,6 +80,18 @@ class UserSearchController extends Controller
         $proyecto = Proyecto::findOrFail($id);
         $qualifications = $proyecto->qualification; // Suponiendo que 'calificacion' es el campo donde está la nota del proyecto
         return Inertia::render(['proyecto' => $proyecto, 'calificacion' => $calificacion]);
+=======
+        if($request->search == ''){
+            $career = Career::findOrFail($career_id);
+            $projects = $career->projects()->with('person', 'scores', 'image')->get();
+        }
+        else {
+            $career = Career::findOrFail($career_id);
+            $projects = $career->projects()->with('person', 'scores')->where('title', 'like', '%'. $request->search . '%')->get();
+        }
+        
+        return Inertia::render('Users/Projects', ['projects' => $projects, 'career' => $career, 'career_id' => $career_id]);
+>>>>>>> 0f17ebe4e41810436b2f4c9e0eb79e5bac44716a
     }
     
 }

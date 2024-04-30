@@ -37,6 +37,4 @@ class Project extends Model
     public function image() {
         return $this->morphOne(Image::class, 'imageable');
     }
-
-    
 }

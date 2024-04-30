@@ -69,10 +69,10 @@ const Form = ({ auth }) => {
                                         }
                                     />
                                     {errors.first_name && (
-                                            <span className="text-red-500">
-                                                {errors.first_name}
-                                            </span>
-                                        )}
+                                        <span className="text-red-500">
+                                            {errors.first_name}
+                                        </span>
+                                    )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
@@ -86,10 +86,27 @@ const Form = ({ auth }) => {
                                         }
                                     />
                                     {errors.last_name && (
-                                            <span className="text-red-500">
-                                                {errors.last_name}
-                                            </span>
-                                        )}
+                                        <span className="text-red-500">
+                                            {errors.last_name}
+                                        </span>
+                                    )}
+                                </div>
+                                <div className="mb-3 xl:w-96 ">
+                                    <label className="block mb-1 font-light text-white px-1 py-2">
+                                        Imagen
+                                    </label>
+                                    <input
+                                        type="file"
+                                        className="w-full border rounded px-3 py-2 text-gray-200"
+                                        onChange={(e) =>
+                                            setData("image", e.target.files[0])
+                                        }
+                                    />
+                                    {errors.image && (
+                                        <span className="text-red-500">
+                                            {errors.image}
+                                        </span>
+                                    )}
                                 </div>
                                 <div className="flex justify-end mt-4">
                                     <SecondaryButton className="dark:text-white dark:bg-blue-800 bg-blue-800  dark:hover:bg-blue-900 dark:hover:text-white dark:active:bg-blue-800 dark:focus:bg-blue-900 focus:bg-blue-900 text-white hover:text-white active:bg-blue-800 ">
