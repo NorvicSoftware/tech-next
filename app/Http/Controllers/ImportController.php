@@ -35,8 +35,5 @@ class ImportController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4ecf9d4ece8c1eed10e3392f5e15a60755ad0933
+
