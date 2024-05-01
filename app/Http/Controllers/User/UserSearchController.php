@@ -22,7 +22,6 @@ class UserSearchController extends Controller
 
     public function searchProjectsByCareer(Request $request, string $career_id)
     {
-<<<<<<< HEAD
         try {
             $title = $request->input('title');
             $projects = Project::where('title', 'like', '%'. $title . '%')->get();
@@ -80,7 +79,6 @@ class UserSearchController extends Controller
         $proyecto = Proyecto::findOrFail($id);
         $qualifications = $proyecto->qualification; // Suponiendo que 'calificacion' es el campo donde está la nota del proyecto
         return Inertia::render(['proyecto' => $proyecto, 'calificacion' => $calificacion]);
-=======
         if($request->search == ''){
             $career = Career::findOrFail($career_id);
             $projects = $career->projects()->with('person', 'scores', 'image')->get();
@@ -91,7 +89,6 @@ class UserSearchController extends Controller
         }
         
         return Inertia::render('Users/Projects', ['projects' => $projects, 'career' => $career, 'career_id' => $career_id]);
->>>>>>> 0f17ebe4e41810436b2f4c9e0eb79e5bac44716a
     }
     
 }

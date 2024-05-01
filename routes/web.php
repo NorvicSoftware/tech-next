@@ -96,7 +96,6 @@ Route::get('/', [UserCareerController::class, 'getCareers'])->name('careers');
 Route::get('/projects/search/{careerId}', [UserSearchController::class, 'getProjectsByCareer'])->name('projects.getProjectsByCareer');
 Route::post('/projects/search/{careerId}', [UserSearchController::class, 'searchProjectsByCareer'])->name('projects.searchProjectsByCareer');
 
-<<<<<<< HEAD
 Route::get('/carrera/{careerId}', [UserSearchController::class, 'getProjectsByCareer'])->name('projects.by.career');
 
 Route::post('/projects/search', [UserSearchController::class, 'searchProjects'])->name('projects.search');
@@ -112,7 +111,5 @@ Route::get('/list', [UserController::class, 'index'])->name('list.index');
 
 Route::get('/careers', [UserController::class, 'showCareers'])->name('public.careers')->middleware('inertia');
 Route::get('/careers/{career}/projects', [UserController::class, 'showProjectsByCareer'])->name('public.projects.by.career')->middleware('inertia'); */
-=======
->>>>>>> 0f17ebe4e41810436b2f4c9e0eb79e5bac44716a
 
 require __DIR__.'/auth.php';
