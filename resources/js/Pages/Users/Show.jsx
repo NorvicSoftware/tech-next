@@ -34,7 +34,7 @@ export default function Show() {
     return (
         <UserLayout>
             <Head title={project.person.first_name} />
-            <section className="px-4">
+            <section className="px-4 max-w-screen-2xl dark:bg-gray-800">
                 <div className="py-3">
                     <div className="min-w-full mx-auto sm:px-6 lg:px-8">
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-2xl">

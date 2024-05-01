@@ -25,42 +25,42 @@ export default function Project() {
     }
     const defaultImageUrl = "/img/users/imgDefault.jpg";
     const handleImageError = (event) => {
-        event.target.onerror = null; 
-        event.target.src = defaultImageUrl; 
+        event.target.onerror = null;
+        event.target.src = defaultImageUrl;
     };
 
     return (
-        <UserLayout>
-            <Head title="Proyectos" />
-            <div>
+        <UserLayout className="w-full max-w-screen-2xl ">
+            <div className=" dark:bg-white-800">
                 <form
                     onSubmit={search}
-                    className="flex gap-2 w-[90%] m-auto mt-4 mb-4"
+                    className="max-w-screen-2xl flex gap-2 w-[90%] m-auto mt-4 mb-4 dark:text-white text-black"
                 >
                     <TextInput
-                        className="w-full bg-gray-200  border-4 "
+                        className="w-full bg-gray-200 border-4 "
                         placeholder="Buscar proyecto"
                         value={data.search}
                         onChange={(e) => setData("search", e.target.value)}
                     />
                     <PrimaryButton
                         children={<Search />}
-                        className="dark:bg-gray-800"
+                        className="dark:bg-gray-800 max-w-screen-2xl dark:bg-gray-800"
                     />
                 </form>
-                <div className="px-1 pb-3">
+
+                <div className="px-1 pb-3 dark:bg-gray-800 ">
                     {projects.map((project, id) => (
                         <div
                             key={project.id}
                             className="dark:text-gray-200  mb-4 bg-white dark:bg-transparent p-3 text-gray-900 m-2"
                         >
                             <div className="flex border-t-4 border-indigo-500 items-center gap-1 p-2 ">
-                               <img
-                                        src={`/img/users/user${project.person.id}.jpg`}
-                                        alt={`foto de ${project.person.first_name}`}
-                                        className="rounded-full object-cover w-10 h-10"
-                                        onError={handleImageError}
-                                    />
+                                <img
+                                    src={`/img/users/user${project.person.id}.jpg`}
+                                    alt={`foto de ${project.person.first_name}`}
+                                    className="rounded-full object-cover w-10 h-10"
+                                    onError={handleImageError}
+                                />
                                 {
                                     <div className="w-250 h-250 bg-white">
                                         {project.person.image && (
