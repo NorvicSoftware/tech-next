@@ -7,10 +7,11 @@ export default function Career() {
     const { careers } = usePage().props;
 
     const getImagePath = (careerId) => {
-        return `/img/careers/img${careerId}.png`;
+      return `/img/careers/img${careerId}.png`;
     };
 
     return (
+        
         <UserLayout>
             <Head title="Start Project"></Head>
             <div className="dark:bg-gray-800 w-full mx-auto sm:px-6 lg:px-8 md:mt-0 px-4">

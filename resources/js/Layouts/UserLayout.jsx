@@ -24,7 +24,10 @@ export default function UserLayout({ children }) {
                         <div className="flex">
                             <div className="shrink-0 flex items-center gap-4">
                                 <Link href="/">
-                                    <img src="/img/logo-project.png" className="w-11 h-8" />
+                                    <img
+                                        src="/img/logo-project.png"
+                                        className="w-11 h-8"
+                                    />
                                 </Link>
                                 <h2 className={`text-xl font-bold text-gray-200 ${darkMode ? 'dark:text-gray-200' : ''}`}>
                                     Start Project
