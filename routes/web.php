@@ -11,15 +11,22 @@ use Inertia\Inertia;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\User\UserCareerController;
+use App\Http\Controllers\User\UserSearchController;
+use App\Http\Controllers\User\UserShowController;
+use App\Http\Controllers\UserController;
+use App\Models\Career;
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
+/* Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+    $careers = Career::all();
+    return "$careers";
+}); */
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -40,11 +47,6 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/scores', [ScoreController::class, 'index'])->name('scores.index');
-    Route::get('/scores/create', [ScoreController::class, 'create'])->name('scores.create');
-    Route::post('/scores', [ScoreController::class, 'store'])->name('scores.store');
-    Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
-    Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
-    Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
 
     //Projects Controller
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
@@ -83,11 +85,16 @@ Route::middleware('auth')->group(function () {
 });
 
 //Vista de Usuario - Proyecto
-Route::get('/', function () {
-    return Inertia::render('Users/Project');
-})->name('project');
-Route::get('/', [UserCareerController::class, 'getCareers']);
+Route::get('/show/{id}', [UserShowController::class, 'showProjectById'])->name('usershow.showProjectById');
+Route::post('/show/{id}', [UserShowController::class, 'store'])->name('usershow.store');
 
+//Vista de Usuario - Carreras
+Route::get('/', [UserCareerController::class, 'getCareers']);
+Route::get('/', [UserCareerController::class, 'getCareers'])->name('careers');
+
+//Vista de Usuario - Buscar
+Route::get('/projects/search/{careerId}', [UserSearchController::class, 'getProjectsByCareer'])->name('projects.getProjectsByCareer');
+Route::post('/projects/search/{careerId}', [UserSearchController::class, 'searchProjectsByCareer'])->name('projects.searchProjectsByCareer');
 
 
 require __DIR__.'/auth.php';

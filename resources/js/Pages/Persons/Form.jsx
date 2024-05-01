@@ -5,6 +5,7 @@ import TextInput from "@/Components/TextInput";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import PrimaryButton from "@/Components/PrimaryButton";
 import LinkButton from "@/Components/LinkButton";
+import SecondaryButton from "@/Components/SecondaryButton";
 
 const Form = ({ auth }) => {
     const { id, person, errors } = usePage().props;
@@ -68,10 +69,10 @@ const Form = ({ auth }) => {
                                         }
                                     />
                                     {errors.first_name && (
-                                            <span className="text-red-500">
-                                                {errors.first_name}
-                                            </span>
-                                        )}
+                                        <span className="text-red-500">
+                                            {errors.first_name}
+                                        </span>
+                                    )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
@@ -85,15 +86,32 @@ const Form = ({ auth }) => {
                                         }
                                     />
                                     {errors.last_name && (
-                                            <span className="text-red-500">
-                                                {errors.last_name}
-                                            </span>
-                                        )}
+                                        <span className="text-red-500">
+                                            {errors.last_name}
+                                        </span>
+                                    )}
+                                </div>
+                                <div className="mb-3 xl:w-96 ">
+                                    <label className="block mb-1 font-light text-white px-1 py-2">
+                                        Imagen
+                                    </label>
+                                    <input
+                                        type="file"
+                                        className="w-full border rounded px-3 py-2 text-gray-200"
+                                        onChange={(e) =>
+                                            setData("image", e.target.files[0])
+                                        }
+                                    />
+                                    {errors.image && (
+                                        <span className="text-red-500">
+                                            {errors.image}
+                                        </span>
+                                    )}
                                 </div>
                                 <div className="flex justify-end mt-4">
-                                    <PrimaryButton className="dark:text-white dark:bg-blue-800 bg-blue-800  dark:hover:bg-blue-900 dark:hover:text-white dark:active:bg-blue-800 dark:focus:bg-blue-900 focus:bg-blue-900 text-white hover:text-white active:bg-blue-800 ">
+                                    <SecondaryButton className="dark:text-white dark:bg-blue-800 bg-blue-800  dark:hover:bg-blue-900 dark:hover:text-white dark:active:bg-blue-800 dark:focus:bg-blue-900 focus:bg-blue-900 text-white hover:text-white active:bg-blue-800 ">
                                         {textHeader}
-                                    </PrimaryButton>
+                                    </SecondaryButton>
                                     <LinkButton
                                         className="ml-2 dark:bg-red-600 dark:hover:bg-red-900 dark:text-white  bg-red-600 hover:bg-red-900 text-white"
                                         name="Cancelar"

@@ -258,7 +258,7 @@ export default function Authenticated({
                                 <LinkButton
                                     name={name}
                                     url={url}
-                                    className="hover:bg-white dark:text-black"
+                                    active={true}
                                 />
                             )}
                         </div>

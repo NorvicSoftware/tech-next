@@ -1,8 +1,8 @@
-export default function ProjectData({ data, name = "", className = "" }) {
+export default function ProjectData({ children, name = "", className = "" }) {
     return (
-        <h2 className={"dark:text-white text-xl " + className}>
-            <span className="text-gray-600">{name} </span>
-            {data}
+        <h2 className={"dark:text-black text-black sm:text-xl  " + className}>
+            <span className="dark:text-black text-black">{name} </span>
+            {children}
         </h2>
     );
 }

@@ -1,9 +1,8 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import NavLink from "@/Components/NavLink";
 import ProjectData from "@/Components/ProjectData";
 import LinkButton from "@/Components/LinkButton";
 
-const Show = ({ auth, project, career }) => {
+const Show = ({ auth, project }) => {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -17,7 +16,7 @@ const Show = ({ auth, project, career }) => {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900 dark:text-gray-100">
-                            <div className="space-y-4 text-center justify-center ">
+                            <div className="space-y-4 text-center justify-center flex flex-col items-center">
                                 <ProjectData
                                     className="font-extrabold uppercase"
                                     data={project.title}
@@ -49,6 +48,15 @@ const Show = ({ auth, project, career }) => {
                                     data={project.qualification}
                                 />
                                 <ProjectData name="Año:" data={project.year} />
+                                <div className="">
+                                    {project.image && (
+                                        <img
+                                            src={`${window.location.origin}/${project.image.url}`}
+                                            alt="Imagen del proyecto"
+                                            className="rounded-lg"
+                                        />
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
