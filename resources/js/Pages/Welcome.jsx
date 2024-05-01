@@ -1,5 +1,5 @@
 import { Link, Head } from "@inertiajs/react";
-import Career from "./Users/Career";
+import Career from "./Users/Careers";
 import Checkbox from "@/Components/Checkbox";
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
@@ -17,7 +17,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
             <Head title="Welcome" />
-            <Career  />
         </>
     );
 }
