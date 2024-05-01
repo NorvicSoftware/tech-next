@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 import LinkButton from "@/Components/LinkButton";
+import Sun from "@/Components/Icons/Sun";
+import Moon from "@/Components/Icons/Moon";
 export default function Authenticated({
     user,
     name = "",
@@ -14,8 +16,19 @@ export default function Authenticated({
 }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
+    const [darkMode, setDarkMode] = useState(
+        localStorage.getItem("darkMode") === "true"
+    );
+
+    useEffect(() => {
+        localStorage.setItem("darkMode", darkMode);
+    }, [darkMode]);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
     return (
-        <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div className={`min-h-screen bg-slate-900  ${darkMode ? "dark" : ""}`}>
             <nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
                 <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
@@ -88,6 +101,18 @@ export default function Authenticated({
                         </div>
 
                         <div className="hidden min-[852px]:flex sm:items-center sm:ms-6">
+                            <div className="flex items-center ms-6">
+                                {!darkMode && (
+                                    <button onClick={toggleDarkMode}>
+                                        <Sun className="block h-9 w-auto fill-current text-yellow-500 dark:text-yellow-500" />
+                                    </button>
+                                )}
+                                {darkMode && (
+                                    <button onClick={toggleDarkMode}>
+                                        <Moon className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-20" />
+                                    </button>
+                                )}
+                            </div>
                             <div className="ms-3 relative">
                                 <Dropdown>
                                     <Dropdown.Trigger>
