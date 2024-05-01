@@ -30,14 +30,16 @@ export default function Project() {
     };
 
     return (
-        <UserLayout className="w-full max-w-screen-2xl ">
-            <div className=" dark:bg-white-800">
+        
+        <UserLayout>
+            <Head title="Proyectos" />
+            <div className="bg-white dark:bg-slate-800 h-screen">
                 <form
                     onSubmit={search}
-                    className="max-w-screen-2xl flex gap-2 w-[90%] m-auto mt-4 mb-4 dark:text-white text-black"
+                    className="flex gap-2 w-[90%] m-auto py-4"
                 >
                     <TextInput
-                        className="w-full bg-gray-200 border-4 "
+                        className="w-full bg-white border-4 "
                         placeholder="Buscar proyecto"
                         value={data.search}
                         onChange={(e) => setData("search", e.target.value)}
@@ -52,15 +54,15 @@ export default function Project() {
                     {projects.map((project, id) => (
                         <div
                             key={project.id}
-                            className="dark:text-gray-200  mb-4 bg-white dark:bg-transparent p-3 text-gray-900 m-2"
+                            className="dark:text-gray-200  mb-4 bg-white dark:bg-transparent text-gray-900 mx-2"
                         >
-                            <div className="flex border-t-4 border-indigo-500 items-center gap-1 p-2 ">
-                                <img
-                                    src={`/img/users/user${project.person.id}.jpg`}
-                                    alt={`foto de ${project.person.first_name}`}
-                                    className="rounded-full object-cover w-10 h-10"
-                                    onError={handleImageError}
-                                />
+                            <div className="flex border-t-4 border-indigo-500 items-center gap-1 p-2">
+                               <img
+                                        src={`/img/users/user${project.person.id}.jpg`}
+                                        alt={`foto de ${project.person.first_name}`}
+                                        className="rounded-full object-cover w-10 h-10"
+                                        onError={handleImageError}
+                                    />
                                 {
                                     <div className="w-250 h-250 bg-white">
                                         {project.person.image && (
@@ -94,7 +96,7 @@ export default function Project() {
                             >
                                 {project.title}
                             </p>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between items-center">
                                 <LinkProject
                                     name="Ver Proyecto"
                                     url={route(
