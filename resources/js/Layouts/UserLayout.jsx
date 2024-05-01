@@ -31,7 +31,7 @@ export default function UserLayout({ children }) {
                                 </h2>
                             </div>
                         </div>
-                        <div className="flex items-center ms-6  dark:bg-gray-800">
+                        <div className="flex items-center ms-6 ">
                             {!darkMode && (
                                 <button onClick={toggleDarkMode}>
                                     <Sun className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-20" />
@@ -39,7 +39,6 @@ export default function UserLayout({ children }) {
                             )}
                             {darkMode && (
                                 <button onClick={toggleDarkMode}>
-                                    
                                     <Moon className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-20" />
                                 </button>
                             )}
