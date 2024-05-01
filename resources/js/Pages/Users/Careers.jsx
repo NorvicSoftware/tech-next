@@ -12,7 +12,7 @@ export default function Career() {
 
     return (
         <UserLayout>
-            <div className="dark:bg-gray-800 w-full mx-auto sm:px-6 lg:px-8 md:mt-0 px-4">
+            <div className="dark:bg-gray-800 w-full mx-auto h-screen sm:px-6 lg:px-8 md:mt-0 px-4">
                 <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div className="text-gray-900 dark:text-gray-100">
                         <h4 className="pt-3 text-center text-xl font-bold mb-0">
