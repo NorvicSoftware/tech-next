@@ -38,7 +38,7 @@ export default function Login({ status, canResetPassword }) {
 
                 <form onSubmit={submit} className="w-2/5 ml-0 blue-box rounded-corners">
                     <img src="/img/logo-project.png" className="logo-image" />
-                    <div className="project-title">StartProject</div>
+                    <div className="project-title">Start Project</div>
                     <div className="input-field">
                         <InputLabel htmlFor="email" value="Correo:" className="input-label white-text" />
 

@@ -22,19 +22,19 @@ const Form = ({ auth, career, universities }) => {
         if (id === 0) {
             post(route("careers.store"), {
                 onSuccess: () => {
-                    alert("Carrera creada correctamente");
+                    console.log("Carrera creada correctamente");
                 },
                 onError: (error) => {
-                    alert("Error al crear nueva carrera");
+                    console.log("Error al crear nueva carrera");
                 },
             });
         } else {
             put(route("careers.update", career.id), {
                 onSuccess: () => {
-                    alert("Carrera editada correctamente");
+                    console.log("Carrera editada correctamente");
                 },
                 onError: (error) => {
-                    alert("Error al editar la carrera");
+                    console.log("Error al editar la carrera");
                 },
             });
         }
@@ -67,7 +67,7 @@ const Form = ({ auth, career, universities }) => {
                                     />
                                     {errors.name && (
                                         <span className="text-red-500">
-                                            El campo de nombre es obligatorio.
+                                            {errors.name}
                                         </span>
                                     )}
                                 </div>
@@ -84,7 +84,7 @@ const Form = ({ auth, career, universities }) => {
                                     />
                                     {errors.phone && (
                                         <span className="text-red-500">
-                                            El campo solo acepta números.
+                                            {errors.phone}
                                         </span>
                                     )}
                                 </div>

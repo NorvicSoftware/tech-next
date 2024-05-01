@@ -17,7 +17,7 @@ export default function UserLayout({ children }) {
     };
 
     return (
-        <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
+        <div className={`min-h-screen bg-white  ${darkMode ? 'dark' : ''}`}>
             <nav className={`bg-slate-900 ${darkMode ? 'dark:bg-slate-900' : ''} `}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
@@ -27,7 +27,7 @@ export default function UserLayout({ children }) {
                                     <img src="/img/logo-project.png" className="w-11 h-8" />
                                 </Link>
                                 <h2 className={`text-xl font-bold text-gray-200 ${darkMode ? 'dark:text-gray-200' : ''}`}>
-                                    START PROJECT
+                                    Start Project
                                 </h2>
                             </div>
                         </div>
