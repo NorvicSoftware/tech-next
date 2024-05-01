@@ -1,6 +1,6 @@
-# SOFTWARE TECH-NEXT
+# START PROJECT
 
-<center><img src="/public/images/Logo.png" alt="centered image"></center>
+<p align="center"><a target="_blank"><img src="/public/img/logo-project.png"></a></p>
 
 ## Objetivo
 Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de las diferentes universidades de último semestre una variedad de ideas personalizadas para proyectos de grado, basadas en sus intereses académicos, tendencias del mercado y necesidades sociales, facilitando así la selección de un tema viable y relevante para su proyecto final.
@@ -27,14 +27,14 @@ Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de l
 ## Diseño del Sistema
 ### Mockups: Dispositivo Movil
 
-<p align="center"><a target="_blank"><img src="/public/images/Carreras.png"></a></p>
+<p align="center"><a target="_blank"><img src="/public/img/Carrera2.png"></a></p>
 
 ---
 > El sistema presentará una serie de botones diferenciados por carreras universitarias.
 > 
 > El usuario al ingresar al sistema podrá seleccionar una carrera en específico, esto permitirá al sistema enfocar la búsqueda y ofrecer resultados más relevantes y precisos en cuanto al área de interés del usuario brindando una experiencia más personalizada y eficiente.
 ---
-<p align="center"><a target="_blank"><img src="/public/images/Lista.png"></a></p>
+<p align="center"><a target="_blank"><img src="/public/img/Lista1.png"></a></p>
 
 ---
 >El sistema tendrá una función de búsqueda que permitirá al usuario encontrar fácilmente los proyectos específicos que necesita. Además, ofrecerá un modo oscuro para una mejor experiencia visual, especialmente en condiciones de poca luz o para usuarios que prefieren una interfaz más tenue.
@@ -42,10 +42,12 @@ Desarrollar un sistema dinámico y adaptativo que ofrezca a los estudiantes de l
 >A medida que el usuario realiza la búsqueda, el sistema mostrará la información del contenido utilizando un formato de lista de manera ordenada y concisa, facilitando la búsqueda y comparación de proyectos, permitiendo al usuario navegar de forma rápida y eficiente ajustandose a sus necesidades.
 
 ---
-<p align="center"><a target="_blank""><img class="centered-image " src="/public/images/Projectos_1ro.png"></a>
+
+<p align="center"><a target="_blank"><img src="/public/img/Descrip_Proyecto1.png"></a></p>
+<!-- <p align="center"><a target="_blank""><img class="centered-image " src="/public/img/Descrip_Proyecto1.png"></a>
     <span> </span>
-<a target="_blank"><img class="centered-image" src="/public/images/Projectos_2do.png"></a>
-</p>
+<a target="_blank"><img class="centered-image" src="/public/img/Descrip_Proyecto2.png"></a>
+</p> -->
 
 ---
 

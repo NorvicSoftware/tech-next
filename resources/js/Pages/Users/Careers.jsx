@@ -1,4 +1,4 @@
-import { usePage } from "@inertiajs/react";
+import { usePage, Head } from "@inertiajs/react";
 import React from "react";
 import LinkButton from "@/Components/LinkButton";
 import UserLayout from "@/Layouts/UserLayout";
@@ -7,15 +7,17 @@ export default function Career() {
     const { careers } = usePage().props;
 
     const getImagePath = (careerId) => {
-        return `/img/careers/img${careerId}.png`;
+      return `/img/careers/img${careerId}.png`;
     };
 
     return (
+        
         <UserLayout>
-            <div className="dark:bg-gray-800 w-full mx-auto h-screen sm:px-6 lg:px-8 md:mt-0 px-4">
+            <Head title="Start Project"></Head>
+            <div className="dark:bg-gray-800 w-full mx-auto sm:px-6 lg:px-8 md:mt-0 px-4">
                 <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div className="text-gray-900 dark:text-gray-100">
-                        <h4 className="pt-3 text-center text-xl font-bold mb-0">
+                        <h4 className="pt-2 text-center text-xl font-bold mb-0">
                             Inspirate con nuevas ideas
                         </h4>
                         <h4 className="text-center text-xl font-bold mb-2">
