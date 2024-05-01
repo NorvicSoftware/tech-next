@@ -1,3 +1,90 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.blue-box {
+    background-color: rgb(31, 41, 55);
+    color: white;
+    padding: 20px;
+    border-radius: 0px;
+    width: 500px;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-label {
+    margin-right: 10px;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.input-text {
+    border-radius: 20px;
+    color: gray;
+    width: 320px;
+    height: 30px;
+}
+
+.login-button {
+    background-color: blue;
+    color: white;
+    width: 450px;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.forgot-password-link {
+    color: blue;
+}
+
+.flex-justify {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-image {
+    margin-bottom: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.project-title {
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.presentation-image {
+    width: 50%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 640px) {
+    .presentation-image {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .blue-box {
+        width: 100%;
+    }
+}
