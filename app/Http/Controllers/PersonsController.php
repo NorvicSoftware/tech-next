@@ -91,7 +91,7 @@ class PersonsController extends Controller
                     Storage::delete('public/' . $person->image->url);
                     $person->image()->delete();
                 }
-                $person->image()->create(['url' => 'img/users/' . $imageName]); // Guarda la ruta relativa de la nueva imagen
+                $person->image()->create(['url' => 'img/users/' . $imageName]);
             }
         }
 

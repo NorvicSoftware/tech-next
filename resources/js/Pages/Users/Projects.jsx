@@ -3,7 +3,7 @@ import LinkProject from "@/Components/LinkProject";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import UserLayout from "@/Layouts/UserLayout";
-import { usePage, useForm } from "@inertiajs/react";
+import { usePage, useForm, Head } from "@inertiajs/react";
 import Search from "@/Components/Icons/Search";
 import Qualification from "@/Components/Qualification";
 import ScoreProject from "@/Components/ScoreProject";
@@ -18,35 +18,40 @@ export default function Project() {
 
     function search(event, searchValue) {
         event.preventDefault();
-        post(route('projects.searchProjectsByCareer', career_id), {
-            onSuccess: () => console.log('OK'),
-            onError: () => console.log('ERROR'),
-        })
+        post(route("projects.searchProjectsByCareer", career_id), {
+            onSuccess: () => console.log("OK"),
+            onError: () => console.log("ERROR"),
+        });
     }
+    const defaultImageUrl = "/img/users/imgDefault.jpg";
+    const handleImageError = (event) => {
+        event.target.onerror = null; 
+        event.target.src = defaultImageUrl; 
+    };
 
     return (
+        
         <UserLayout>
-            <div>
+            <Head title="Proyectos" />
+            <div className="bg-white dark:bg-slate-800">
                 <form
                     onSubmit={search}
-                    className="flex gap-2 w-[90%] m-auto mt-4 mb-4"
+                    className="flex gap-2 w-[90%] m-auto py-4"
                 >
                     <TextInput
-                        className="w-full bg-gray-200 border-4 "
+                        className="w-full bg-white border-4 "
                         placeholder="Buscar proyecto"
                         value={data.search}
-                        onChange={(e) =>
-                            setData("search", e.target.value)
-                        }
+                        onChange={(e) => setData("search", e.target.value)}
                     />
-                    <PrimaryButton className="">
-                        <Search />
-                    </PrimaryButton>
+                    <PrimaryButton
+                        children={<Search />}
+                        className="dark:bg-gray-800"
+                    />
                 </form>
                 <div className="px-4">
-                <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-2xl">
                     {projects.map((project, id) => (
-                        <div key={project.id} className="text-gray-900 dark:text-gray-100 mb-4">
+                        <div key={project.id} className="text-gray-200  mb-4">
                             <div className="flex border-t-4 border-indigo-500 items-center gap-4 p-2">
                                 <img
                                     className="w-10 h-10 rounded-full"
@@ -69,32 +74,51 @@ export default function Project() {
                                     <p>Carrera: {career.name}</p>
                                 </div>
                                 <div className="flex flex-col ml-auto">
-                                    <Qualification qualification={project.qualification} />
+                                    <Qualification
+                                        qualification={project.qualification}
+                                    />
                                     <p className="ml-auto">
                                         Año: {project.year}
                                     </p>
                                 </div>
                             </div>
-                            <p className="text-center my-4 uppercase" key={project.id}>
+                            <p
+                                className="text-center my-4 uppercase"
+                                key={project.id}
+                            >
                                 {project.title}
                             </p>
-                            <div className="flex justify-between">
-                                <LinkProject name="Ver Proyecto" url={route("usershow.showProjectById", project.id)}>
-                                </LinkProject>
+                            <div className="flex justify-between items-center">
+                                <LinkProject
+                                    name="Ver Proyecto"
+                                    url={route(
+                                        "usershow.showProjectById",
+                                        project.id
+                                    )}
+                                ></LinkProject>
                                 <div className="flex gap-4">
                                     <div>
-                                        <div className="flex gap-6 text-center">
+                                        <div className="flex gap-4 text-center">
                                             <div className="flex items-center gap-2">
-                                                <ReactionProject reaction="Bueno"/>
-                                                <ScoreProject reaction="Bueno" scores={project.scores}/>
+                                                <ReactionProject reaction="Bueno" />
+                                                <ScoreProject
+                                                    reaction="Bueno"
+                                                    scores={project.scores}
+                                                />
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <ReactionProject reaction="Indiferente"/>
-                                                <ScoreProject reaction="Indiferente" scores={project.scores}/>
+                                                <ReactionProject reaction="Indiferente" />
+                                                <ScoreProject
+                                                    reaction="Indiferente"
+                                                    scores={project.scores}
+                                                />
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <ReactionProject reaction="Malo"/>
-                                                <ScoreProject reaction="Malo" scores={project.scores}/>
+                                                <ReactionProject reaction="Malo" />
+                                                <ScoreProject
+                                                    reaction="Malo"
+                                                    scores={project.scores}
+                                                />
                                             </div>
                                         </div>
                                     </div>
