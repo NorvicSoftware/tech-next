@@ -245,7 +245,7 @@ $ npm run dev
   
 ### Desarrolladores 
 * Cristian Reynaldo Barrios Flores
-* Bryan Cazorla Viscarra
+* Diland Gustavo Castellón
 * Erick Angel Tibubay Quecaña
 * Jhojan Bruno Coro Torrico
 * Alexander Felix Flores Perez
