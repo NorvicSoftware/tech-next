@@ -1,8 +1,15 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import ProjectData from "@/Components/ProjectData";
 import LinkButton from "@/Components/LinkButton";
+import { usePage } from "@inertiajs/react";
 
-const Show = ({ auth, project }) => {
+export default function Show({ auth }) {
+    const defaultImageUrl = "/img/users/imgDefault.jpg";
+    const handleImageError = (event) => {
+        event.target.onerror = null;
+        event.target.src = defaultImageUrl;
+    };
+    const { project } = usePage().props;
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -16,39 +23,52 @@ const Show = ({ auth, project }) => {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900 dark:text-gray-100">
-                            <div className="space-y-4 text-center justify-center flex flex-col items-center">
-                                <ProjectData
-                                    className="font-extrabold uppercase"
-                                    data={project.title}
-                                />
-                                <ProjectData
-                                    name="Autor:"
-                                    data={
-                                        project.person
-                                            ? project.person.first_name +
-                                              " " +
-                                              project.person.last_name
-                                            : "N/A"
-                                    }
-                                />
-                                <ProjectData
-                                    name="Carrera:"
-                                    data={
-                                        project.career
-                                            ? project.career.name
-                                            : "N/A"
-                                    }
-                                />
-                                <ProjectData
-                                    name="Docente/Tutor:"
-                                    data={project.manager}
-                                />
-                                <ProjectData
-                                    name="Calificación:"
-                                    data={project.qualification}
-                                />
-                                <ProjectData name="Año:" data={project.year} />
-                                <div className="">
+                            <div className="space-y-4 text-center justify-center flex gap-5 items-center rounded-lg flex-wrap">
+                                <div className="sm:w-[20%]  grid justify-center top-1">
+                                    <img
+                                        src={`/img/users/user${project.person.id}.jpg`}
+                                        alt={`foto de ${project.person.first_name}`}
+                                        className="w-[150px] h-[150px] rounded-full object-cover"
+                                        onError={handleImageError}
+                                    />
+                                </div>
+                                <div className="sm:w-[35%] grid justify-center">
+                                    <ProjectData
+                                        className="font-extrabold uppercase"
+                                        children={project.title}
+                                    />
+                                    <ProjectData
+                                        name="Autor:"
+                                        children={
+                                            project.person
+                                                ? project.person.first_name +
+                                                  " " +
+                                                  project.person.last_name
+                                                : "N/A"
+                                        }
+                                    />
+                                    <ProjectData
+                                        name="Carrera:"
+                                        children={
+                                            project.career
+                                                ? project.career.name
+                                                : "N/A"
+                                        }
+                                    />
+                                    <ProjectData
+                                        name="Docente/Tutor:"
+                                        children={project.manager}
+                                    />
+                                    <ProjectData
+                                        name="Calificación:"
+                                        children={project.qualification}
+                                    />
+                                    <ProjectData
+                                        name="Año:"
+                                        children={project.year}
+                                    />
+                                </div>
+                                <div className="sm:w-[41%] grid justify-center">
                                     {project.image && (
                                         <img
                                             src={`${window.location.origin}/${project.image.url}`}
@@ -71,6 +91,4 @@ const Show = ({ auth, project }) => {
             </div>
         </AuthenticatedLayout>
     );
-};
-
-export default Show;
+}
