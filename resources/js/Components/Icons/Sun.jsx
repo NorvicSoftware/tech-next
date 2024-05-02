@@ -3,10 +3,10 @@ export default function Sun(props) {
         <svg
             {...props}
             xmlns="http://www.w3.org/2000/svg"
-            fill="rgb(229, 231, 235)"
+            fill="rgb(51, 54, 69)"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke="rgb(229, 231, 235)"
+            stroke="rgb(51, 54, 69)"
             className="w-6 h-6"
         >
             <path
