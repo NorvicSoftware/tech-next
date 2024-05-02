@@ -33,13 +33,13 @@ export default function Project() {
         
         <UserLayout>
             <Head title="Proyectos" />
-            <div className="bg-white dark:bg-slate-800">
+            <div className="bg-white dark:bg-slate-900">
                 <form
                     onSubmit={search}
                     className="flex gap-2 w-[90%] m-auto py-4"
                 >
                     <TextInput
-                        className="w-full bg-white border-4 "
+                        className="w-full bg-white border-4 text-black dark:text-slate-950"
                         placeholder="Buscar proyecto"
                         value={data.search}
                         onChange={(e) => setData("search", e.target.value)}

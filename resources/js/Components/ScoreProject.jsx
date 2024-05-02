@@ -1,6 +1,6 @@
 export default function ScoreProject({ reaction, scores }) {
     return (
-        <p>
+        <p className="font-bold">
             {
                 scores.filter(
                     (score) =>
