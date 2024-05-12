@@ -22,7 +22,8 @@ export default function Authenticated({
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                                    {/* <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" /> */}
+                                    <img className="w-16" src="img/logo-project.png" alt="" />
                                 </Link>
                             </div>
 
@@ -116,14 +117,14 @@ export default function Authenticated({
                                         <Dropdown.Link
                                             href={route("profile.edit")}
                                         >
-                                            Profile
+                                            Perfil
                                         </Dropdown.Link>
                                         <Dropdown.Link
                                             href={route("logout")}
                                             method="post"
                                             as="button"
                                         >
-                                            Log Out
+                                            Cerrar Sesión
                                         </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>
@@ -236,14 +237,14 @@ export default function Authenticated({
 
                         <div className="mt-3 space-y-1">
                             <ResponsiveNavLink href={route("profile.edit")}>
-                                Profile
+                                Perfil
                             </ResponsiveNavLink>
                             <ResponsiveNavLink
                                 method="post"
                                 href={route("logout")}
                                 as="button"
                             >
-                                Log Out
+                                Cerrar Sesión
                             </ResponsiveNavLink>
                         </div>
                     </div>

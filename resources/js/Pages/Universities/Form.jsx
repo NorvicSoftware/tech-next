@@ -22,19 +22,19 @@ const Form = ({ auth }) => {
         if (id === 0) {
             post(route("universities.store"), {
                 onSuccess: () => {
-                    alert("Carrera creada correctamente");
+                    console.log("Ok");
                 },
                 onError: (error) => {
-                    alert("Error al crear nueva carrera");
+                    console.log("error" + error);
                 },
             });
         } else {
             put(route("universities.update", university.id), {
                 onSuccess: () => {
-                    alert("Carrera editada correctamente");
+                    console.log("Ok");
                 },
                 onError: (error) => {
-                    alert("Error al editar la carrera");
+                    console.log("error " + error);
                 },
             });
         }
@@ -66,6 +66,11 @@ const Form = ({ auth }) => {
                                             setData("name", e.target.value)
                                         }
                                     />
+                                    {errors.name && (
+                                        <span className="text-red-500">
+                                            {errors.name}
+                                        </span>
+                                    )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
@@ -78,6 +83,11 @@ const Form = ({ auth }) => {
                                             setData("phone", e.target.value)
                                         }
                                     />
+                                    {errors.phone && (
+                                        <span className="text-red-500">
+                                            {errors.phone}
+                                        </span>
+                                    )}
                                 </div>
                                 <div className="mt-4">
                                     <InputLabel className="text-lg">
@@ -90,6 +100,11 @@ const Form = ({ auth }) => {
                                             setData("address", e.target.value)
                                         }
                                     />
+                                    {errors.address && (
+                                        <span className="text-red-500">
+                                            {errors.address}
+                                        </span>
+                                    )}
                                 </div>
 
                                 <div className="flex justify-end mt-4">

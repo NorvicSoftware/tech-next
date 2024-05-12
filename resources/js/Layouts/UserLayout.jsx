@@ -17,30 +17,30 @@ export default function UserLayout({ children }) {
     };
 
     return (
-        <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
-            <nav className={`bg-slate-900 ${darkMode ? 'dark:bg-slate-900' : ''} `}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`min-h-screen bg-gray-300  dark:bg-slate-900 ${darkMode ? 'dark' : ''} `}>
+            <nav className={`bg-white border-b border-gray-100 ${darkMode ? 'dark:bg-slate-900  dark:border-gray-700' : ''} `}>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
                     <div className="flex justify-between h-16">
-                        <div className="flex">
                             <div className="shrink-0 flex items-center gap-4">
                                 <Link href="/">
-                                    <img src="/img/logo-project.png" className="w-11 h-8" />
+                                    <img
+                                        src="/img/logo-project.png"
+                                        className="w-11 h-8"
+                                    />
                                 </Link>
-                                <h2 className={`text-xl font-bold text-gray-200 ${darkMode ? 'dark:text-gray-200' : ''}`}>
-                                    START PROJECT
+                                <h2 className={`text-xl font-bold text-gray-900 ${darkMode ? 'dark:text-gray-200' : ''}`}>
+                                    Start Project
                                 </h2>
                             </div>
-                        </div>
                         <div className="flex items-center ms-6">
                             {!darkMode && (
                                 <button onClick={toggleDarkMode}>
-                                    <Sun className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-20" />
+                                    <Sun className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                                 </button>
                             )}
                             {darkMode && (
                                 <button onClick={toggleDarkMode}>
-                                    
-                                    <Moon className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-20" />
+                                    <Moon className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                                 </button>
                             )}
                         </div>
